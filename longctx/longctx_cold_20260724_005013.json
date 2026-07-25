@@ -1,0 +1,99 @@
+{
+  "started_at": "2026-07-23T14:42:50.564347+00:00",
+  "base": "http://localhost:8000/v1",
+  "method": "cold-prefill via unique first-line nonce (defeats prefix cache from position 0)",
+  "runs": [
+    {
+      "ok": true,
+      "prompt_tokens": 103708,
+      "completion_tokens": 19,
+      "ttft_s": 45.601,
+      "decode_tok_s": 19.46,
+      "total_wall_s": 46.641,
+      "response": "HERMES-COLD-100K-r0-iHozyufa",
+      "tag": "100K-r0",
+      "n_lines": 2712,
+      "needle": "HERMES-COLD-100K-r0-iHozyufa",
+      "needle_found": true,
+      "kv_usage_during": 0.2999908441677348
+    },
+    {
+      "ok": true,
+      "prompt_tokens": 103709,
+      "completion_tokens": 18,
+      "ttft_s": 45.707,
+      "decode_tok_s": 18.47,
+      "total_wall_s": 46.743,
+      "response": "HERMES-COLD-100K-r1-N2swPuYu",
+      "tag": "100K-r1",
+      "n_lines": 2712,
+      "needle": "HERMES-COLD-100K-r1-N2swPuYu",
+      "needle_found": true,
+      "kv_usage_during": 0.2999908441677348
+    },
+    {
+      "ok": true,
+      "prompt_tokens": 209478,
+      "completion_tokens": 18,
+      "ttft_s": 132.795,
+      "decode_tok_s": 17.57,
+      "total_wall_s": 133.89,
+      "response": "HERMES-COLD-200K-r0-XSamCb9u",
+      "tag": "200K-r0",
+      "n_lines": 5424,
+      "needle": "HERMES-COLD-200K-r0-XSamCb9u",
+      "needle_found": true,
+      "kv_usage_during": 0.6025911005310383
+    },
+    {
+      "ok": true,
+      "prompt_tokens": 209481,
+      "completion_tokens": 20,
+      "ttft_s": 133.237,
+      "decode_tok_s": 14.28,
+      "total_wall_s": 134.567,
+      "response": "HERMES-COLD-200K-r1-dw626Xu3",
+      "tag": "200K-r1",
+      "n_lines": 5424,
+      "needle": "HERMES-COLD-200K-r1-dw626Xu3",
+      "needle_found": true,
+      "kv_usage_during": 0.6025911005310383
+    }
+  ],
+  "tokens_per_line": 36.872,
+  "concurrent_2x100k": {
+    "wall_s": 93.122,
+    "streams": [
+      {
+        "ok": true,
+        "prompt_tokens": 103706,
+        "completion_tokens": 17,
+        "ttft_s": 48.083,
+        "decode_tok_s": 0.47,
+        "total_wall_s": 87.001,
+        "response": "HERMES-COLD-CONC-0-131XtczZ",
+        "tag": "CONC-0",
+        "n_lines": 2712,
+        "needle": "HERMES-COLD-CONC-0-131XtczZ",
+        "needle_found": true,
+        "kv_usage_during": 0.3713147775132759
+      },
+      {
+        "ok": true,
+        "prompt_tokens": 103710,
+        "completion_tokens": 17,
+        "ttft_s": 91.844,
+        "decode_tok_s": 13.84,
+        "total_wall_s": 93.118,
+        "response": "HERMES-COLD-CONC-1-ubnU48PV",
+        "tag": "CONC-1",
+        "n_lines": 2712,
+        "needle": "HERMES-COLD-CONC-1-ubnU48PV",
+        "needle_found": true,
+        "kv_usage_during": 0.29985350668375754
+      }
+    ],
+    "aggregate_completion_tokens": 34,
+    "aggregate_tok_s_e2e": 0.37
+  }
+}

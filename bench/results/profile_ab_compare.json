@@ -1,0 +1,114 @@
+{
+  "beat_c1": {
+    "tool": {
+      "median": 27.21,
+      "mean": 28.62,
+      "n": 18,
+      "max": 35.26
+    },
+    "code": {
+      "median": 38.3,
+      "mean": 39.68,
+      "n": 18,
+      "max": 46.95
+    },
+    "json": {
+      "median": 18.8,
+      "mean": 18.58,
+      "n": 18,
+      "max": 21.31
+    },
+    "prose": {
+      "median": 18.05,
+      "mean": 18.12,
+      "n": 18,
+      "max": 19.73
+    }
+  },
+  "r0b0tlab_c1": {
+    "tool": {
+      "median": 29.62,
+      "mean": 30.78,
+      "n": 18,
+      "max": 41.16
+    },
+    "code": {
+      "median": 43.48,
+      "mean": 42.47,
+      "n": 18,
+      "max": 50.59
+    },
+    "json": {
+      "median": 20.11,
+      "mean": 20.12,
+      "n": 18,
+      "max": 23.62
+    },
+    "prose": {
+      "median": 19.55,
+      "mean": 19.6,
+      "n": 18,
+      "max": 21.34
+    }
+  },
+  "delta_median_c1": {
+    "code": -5.18,
+    "prose": -1.5,
+    "json": -1.31,
+    "tool": -2.41
+  },
+  "beat_overall_median": 21.75,
+  "r0_overall_median": 23.43,
+  "delta_overall_median": -1.68,
+  "beat_c4_agg": {
+    "tool": {
+      "median_agg": 59.57,
+      "mean_agg": 56.59,
+      "n": 12
+    },
+    "code": {
+      "median_agg": 99.1,
+      "mean_agg": 96.9,
+      "n": 12
+    },
+    "json": {
+      "median_agg": 45.23,
+      "mean_agg": 45.2,
+      "n": 12
+    },
+    "prose": {
+      "median_agg": 42.47,
+      "mean_agg": 42.31,
+      "n": 12
+    }
+  },
+  "r0_c4_agg": {
+    "tool": {
+      "median_agg": 57.55,
+      "mean_agg": 59.22,
+      "n": 12
+    },
+    "code": {
+      "median_agg": 104.6,
+      "mean_agg": 102.89,
+      "n": 12
+    },
+    "json": {
+      "median_agg": 45.56,
+      "mean_agg": 45.71,
+      "n": 12
+    },
+    "prose": {
+      "median_agg": 42.7,
+      "mean_agg": 42.5,
+      "n": 12
+    }
+  },
+  "delta_c4_agg_median": {
+    "code": -5.5,
+    "prose": -0.23,
+    "json": -0.33,
+    "tool": 2.02
+  },
+  "verdict": "On Hermes bench v1 (agent shapes), r0b0tlab K=7/seqs=32 slightly higher c1 medians; beat K=6/seqs=4 still strong on code. Neither dominates all categories. Report honestly."
+}
