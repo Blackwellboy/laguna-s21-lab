@@ -1,0 +1,11 @@
+{
+ "fired": 20,
+ "total": 20,
+ "pass": true,
+ "per_task": {
+  "math": 5,
+  "code": 5,
+  "reasoning": 5,
+  "summary": 5
+ }
+}

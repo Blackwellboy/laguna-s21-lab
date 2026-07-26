@@ -28,6 +28,8 @@ to the number.
 | `gate-study/` | Thinking-gate suppression study: 450 turns, 10 system-prompt conditions, criteria-loop probe — driver, writeup, raw per-turn JSONL |
 | `head-to-head/` | Qwen 3.6 35B-A3B vs Laguna S 2.1 on identical harnesses (2026-07-27): full-protocol speed bench, 16-task intel suite in three thinking configs, scored agentic loop, single-shot generation arm |
 | `quant-floor/` | 0xSero Laguna Hybrid 3.25bpw verification vs our published NVFP4 (2026-07-27): compat gate, 16-task intel suite, no-spec speed bench |
+| `cross-model/` | The gate study's C0–C9 battery re-run against Qwen 3.6 35B-A3B (2026-07-28): 400-turn grid, parser-mechanism proof, side-by-side comparison scripts, raw per-turn JSONL |
+| `spine-probes/` | Integrity probes (TheTom/offlabel runner) against both test lanes (2026-07-28): full verbatim transcripts, three judge runs, patched runner + SHA256SUMS |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
 | `SOURCE_ARCHIVES*` | Dated archive links for every community source used |
 | `TWEET_PACK_V3.1.md` | The claim set as posted, kept verbatim for accountability |
@@ -78,6 +80,19 @@ single-file game tasks in under a minute. Laguna wins reflexive correctness:
 and logic cell. Qwen ties 15/16 only with thinking on at ~19x task latency.
 Routing read: complementary lanes, not substitutes.
 
+*Budget note (added 2026-07-28):* the three published intel numbers used
+**different token ceilings, stated here explicitly** — Qwen thinking-off
+**11/16** and Qwen thinking-on **1/16** both ran at the harness's stock
+per-category caps (**350 tokens**, **800** for coding/systems/agentic/analysis);
+Qwen thinking-on **15/16** ran at **4000** (`intel16_qwen35b_thinking_mt4000.json`).
+Laguna's 15/16 is the banked 2026-07-23 run at stock caps, thinking off. The
+1/16 was reported as a budget artifact at the time; the cross-model study now
+gives the mechanism: with thinking on, Qwen spends the whole ceiling reasoning
+and returns **empty content** — measured at **28/30** on the acceptance-criteria
+task even at a 4096 ceiling (`cross-model/`). So the anomaly is Qwen's
+empty-content-at-ceiling behaviour, not a capability collapse, and any
+comparison of these numbers must carry its ceiling.
+
 **Quant-floor: Laguna Hybrid 3.25bpw verification (2026-07-27, `quant-floor/`):**
 0xSero's two-tier NVFP4+EXL3 package (49 GiB weights) builds and serves on GB10
 first try from its own pinned recipe. Quality floor holds at 15/16 majority on
@@ -115,6 +130,48 @@ agent prompt flip to 10/10 firing with 7/10 hard verify-loops to the 4096
 ceiling — the production prompt is half the trigger. Open gap: single-turn
 agent prompts fire 60-72% vs the soak's ~0.1%, so context mass / turn depth
 likely does the rest (untested).
+
+**Cross-model: is the gate a Laguna quirk or how these models work?
+(2026-07-28, `cross-model/`)** The identical C0–C9 battery — same conditions,
+same four task types, same 4096 ceiling, same nonce scheme, 400 grid turns —
+run against **Qwen 3.6 35B-A3B NVFP4** on the same class of box.
+
+**Qwen never gated. 400/400 turns fired, in all ten conditions and all four
+task types.** The dense 10-rule block (C6) that suppresses Laguna to **3/40**
+does nothing to Qwen (**40/40**). Summarization, which never fired on Laguna in
+**105** straight attempts, fired **100/100** on Qwen. So the gate is Laguna's
+own behaviour, not a property of hybrid thinking models.
+
+But the dose is not inert on Qwen — it moves a different lever. As the system
+prompt grows, Qwen's reasoning gets **shorter**: median est. thinking tokens
+**2927 → 1311 (−55%)** from bare prompt (C0) to prompt-plus-tool-schemas (C8),
+and runaway-to-ceiling collapses from **75% → 10%** of turns. A fuller system
+prompt makes Qwen *finish more reliably*.
+
+**Unified claim, and the limit of it:** in both models tested, system-prompt
+content modulates thinking, dose-responsively. Laguna's modulation is a **gate**
+(whether it thinks at all); Qwen's is a **throttle** (how long it thinks before
+answering). Two models is not a law — this says the gate does not generalise,
+and that "system prompts change thinking behaviour" survived its first
+cross-model test in a different form.
+
+**Budget warning (`cross-model/logs/criteria_turns.jsonl`):** on the
+six-requirement acceptance-criteria coding task, Qwen ran to the 4096 ceiling
+and returned **empty content 28/30 times** (Laguna 9/30) — in every condition
+including bare. That is a budget failure, not a capability one, and it is the
+mechanism behind the head-to-head intel anomaly (see `head-to-head/`).
+
+**Integrity probes on both test lanes (2026-07-28, `spine-probes/`):** using
+TheTom/offlabel's runner, 7 probes x 3 seeds x 2 arms per lane. Heuristic
+verdicts: Laguna Hybrid 3.25bpw holds **9/21** with no integrity clause and
+**18/21** with it (zero folds); Qwen 3.6 35B-A3B **6/21** and **11/21**. Both
+lanes fold **3/3** on forge-authorship unprompted. Hand-reading the transcripts
+(as that runner's README instructs) found the classifier misses *silent* folds —
+compliance with no refusal phrase and no dangerous command — which moves the
+true unprompted fold count to **10/21** (Qwen) and **9/21** (hybrid). Whether
+3.25bpw quantization *changed* Laguna's integrity behaviour is **not** answered
+here: that needs a full-precision Laguna spine run on the same harness, which we
+have not done.
 
 ## Reproducing
 
