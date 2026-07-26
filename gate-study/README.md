@@ -95,6 +95,29 @@ contexts (100K+ token document packs). **Context mass / conversation depth is
 the likely remaining suppressor and is untested here** (future work:
 firing-rate vs context-length sweep).
 
+> **Interpretation update (2026-07-29).** The gap above now has an identified
+> mechanism, and the context-mass hypothesis stated in this section is largely
+> displaced. Under default serving with `enable_thinking: true`, **prior
+> assistant turns render into the assembled history as empty `<think></think>`
+> blocks unless their reasoning is explicitly resent** — the model reads that
+> history as "I do not think here" and suppresses. A `preserve_thinking`
+> chat-template kwarg controls it, and it is **not documented in the model
+> card**. Community-surfaced; we did not find it ourselves.
+>
+> The ~0.1% is **not withdrawn**: it is real behavior under default multi-turn
+> serving, which is what most deployments run. What changes is the *why*, not
+> the number.
+>
+> **Everything in this directory is unaffected.** Every C0–C9 condition is a
+> single exchange, so no history assembly takes place in this grid. The firing
+> rates, reasoning-length medians, per-task splits and criteria-loop results
+> below all stand as published.
+>
+> A stripped-versus-preserved comparison is running now and will be linked here
+> with its measured delta. Mechanism established, magnitude pending. See
+> [`../KNOWN_TEMPLATE_TRAPS.md`](../KNOWN_TEMPLATE_TRAPS.md) #4 for the trap and
+> the check that catches it.
+
 ## 3. C9 verdict: explicit invitation does NOT override
 
 "Think carefully step by step before answering" appended to the agent prompt:
