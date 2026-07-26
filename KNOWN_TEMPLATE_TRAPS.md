@@ -32,10 +32,20 @@ reasoning. Worse, it reads 0% *consistently*, which looks like a clean finding
 rather than a bug. Any harness that also uses reasoning length as a signal
 silently loses that signal too.
 
-**Where it bit.** Three separate times: our own vLLM/NVFP4 lane; a community
-spine-probe runner whose reasoning column read 0 on all 42 rows; and a third
-stack whose "0% fired" could not be distinguished from "was not parsed" until
-the field was checked directly.
+**Where it bit.** Five surfaces across three separate tools. Our own vLLM/NVFP4
+lane; a community spine-probe runner whose reasoning column read 0 on all 42
+rows; a third stack whose "0% fired" could not be distinguished from "was not
+parsed" until the field was checked directly; and then, after that was fixed,
+**two thinking-probe scripts in the same upstream toolkit that still read only
+the one field**. Those two are the sharpest case, because their entire job is to
+measure whether a model reasons: on a vLLM lane one would have reported
+`NO_REASONING` in every arm, and the other would have shown a persona gate as
+perfectly effective *including in its own control cell*. Both are fabricated
+results that look like findings.
+
+The generalisation worth carrying: this is not a bug that happened to some
+scripts, it is a property of **any tool that reads a reasoning field**. Audit all
+of them at once, not the one that surfaced the problem.
 
 **The check.** Read **both** keys, and fall back to scraping `<think>` tags out
 of `content`:
@@ -156,6 +166,52 @@ variable, and if it sits near a thinking branch, assume it changes your results
 until you have shown it does not.
 
 **Found.** 2026-07-27, after the gate study published.
+
+---
+
+## #5 — A scoring detail silently flips a verdict
+
+The other four traps corrupt what the model *receives* or what you *read back*.
+This one corrupts what your scorer *decides*, which is worse in one specific way:
+it leaves no trace in the raw logs at all. The transcript is fine. The number is
+wrong.
+
+**The trap.** A scoring or parsing detail that normalizes differently from the
+text it is scoring. Unicode punctuation is the common one: a matcher written with
+a straight apostrophe (`'`) does not match a model that emitted a curly one
+(`’`). Same class: smart quotes, non-breaking spaces, collapsed whitespace,
+en-dash versus hyphen, and any regex assuming ASCII against a model that emits
+typographic characters.
+
+**The symptom.** Verdicts that flip on characters nobody looked at. A clean
+refusal scored as compliance, or a fold scored as a hold. The tell is that the
+classifier's counts do not survive a hand-read of the same transcripts, and the
+disagreements cluster on responses that "look fine" to a human reader. Because
+the underlying text is unchanged, no amount of re-reading the raw logs shows you
+anything wrong.
+
+**Where it bit.** An upstream behavioral checker, in exactly the way that makes
+the point: a response reading "I can't omit the PII" used a curly apostrophe, the
+checker matched only the straight one, and a clean hold was briefly scored as a
+silent fold. The detail that matters is that this happened **inside a script
+written specifically to catch an earlier classifier failure**. The tool built to
+catch the bug had the bug. Caught and corrected by its author before the numbers
+were published.
+
+**The check.** Two parts, and the second is not optional:
+
+1. **Normalize before matching.** `unicodedata.normalize("NFKC", text)` plus an
+   explicit fold of typographic punctuation to ASCII, applied to both the pattern
+   and the text. Assume any model can emit smart quotes, because they do.
+2. **Hand-read a sample of every borderline verdict**, especially the `UNCLEAR`
+   and near-threshold bucket. A classifier's agreement with itself proves
+   nothing. This is the same lesson as trap #4 from a different direction: the
+   check that cannot fail is not a check.
+
+If a scored result is going to be published, the hand-read step is the difference
+between a number and a claim.
+
+**Found.** 2026-07-29, during a cross-checked fold-count correction.
 
 ---
 
