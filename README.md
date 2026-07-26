@@ -178,6 +178,28 @@ Independent model/quant verification, DGX Spark and local-inference deployment
 engineering, and performance tuning, done the way this repo is done. DM
 [@Blackwellboy on X](https://x.com/BlackwellBoy).
 
+## Support this work
+
+Support funds hardware time, longer soaks, and more models characterized, with
+the results published the same way as everything above.
+
+- **GitHub Sponsors:** <https://github.com/sponsors/Blackwellboy>
+- **Buy Me a Coffee:** coming soon
+- **Crypto:**
+
+BTC:
+```
+bc1qc72f808h05kjxzfx5zyev52qn0cau8cm705mjd
+```
+ETH:
+```
+0xB6F7d7382c36F882c2E5A114d1efe592491C5451
+```
+SOL:
+```
+HApCyv7UyQh29egtYa8cA2PoVzhHGCNqmnqVQNr1wK1R
+```
+
 ## License
 
 MIT for everything in this repository (see `LICENSE`). Model weights are **not
