@@ -282,9 +282,26 @@ that bear directly on this repo's data:
   states that `false` is a real structural off-switch, that omitting the kwarg
   is not the `false` path, and that which arm "absent" lands in is
   revision-dependent (our rev `0761412` checkpoint and poolside's current HF
-  upload both default `enable_thinking` to `true`). The guide's §2 was also
-  reframed around a firing dose-response curve, partly from the gate-study
-  data below.
+  upload both default `enable_thinking` to `true`).
+
+  *Status 2026-07-28, upstream adoptions:*
+  - The guide briefly reframed §2 around a firing **dose-response curve**; that
+    framing was **retracted the same day** after we showed it is non-monotonic
+    (a dense 10-rule block suppresses harder than a much longer agent prompt).
+    Superseded by a **two-axis** model in
+    [offlabel#12](https://github.com/TheTom/offlabel/pull/12) (open), which
+    rebuilds §2 on this repo's `gate-study/` grid: our ten conditions replace
+    the previous three-stack composite, and C7 vs C8 is the worked example of
+    firing rate and reasoning length moving in opposite directions.
+  - Our two spine-runner fixes merged as
+    [offlabel#9](https://github.com/TheTom/offlabel/pull/9) (thinking exposed on
+    `reasoning` as well as `reasoning_content`; judge budget).
+  - [offlabel#8](https://github.com/TheTom/offlabel/issues/8) closed with both
+    judgement-call items adopted: the silent-fold undercount is documented in
+    the spine-probes README, and the quantized-judge caveat is in `patterns.md`.
+  - Our cross-model cap-hit result (`cross-model/`) is now a standalone
+    `patterns.md` entry upstream: an empty response at a token cap is a failure,
+    not a truncation.
 
 ## Credits
 
