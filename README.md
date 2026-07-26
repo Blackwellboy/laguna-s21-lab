@@ -29,7 +29,8 @@ to the number.
 | `head-to-head/` | Qwen 3.6 35B-A3B vs Laguna S 2.1 on identical harnesses (2026-07-27): full-protocol speed bench, 16-task intel suite in three thinking configs, scored agentic loop, single-shot generation arm |
 | `quant-floor/` | 0xSero Laguna Hybrid 3.25bpw verification vs our published NVFP4 (2026-07-27): compat gate, 16-task intel suite, no-spec speed bench |
 | `cross-model/` | The gate study's C0–C9 battery re-run against Qwen 3.6 35B-A3B (2026-07-28): 400-turn grid, parser-mechanism proof, side-by-side comparison scripts, raw per-turn JSONL |
-| `spine-probes/` | Integrity probes (TheTom/offlabel runner) against both test lanes (2026-07-28): full verbatim transcripts, three judge runs, patched runner + SHA256SUMS |
+| `spine-probes/` | Integrity probes (TheTom/offlabel runner) against both test lanes (2026-07-28): full verbatim transcripts, three judge runs, patched runner + SHA256SUMS. `fullprecision/` adds the same battery on full-precision NVFP4 (2026-07-28), closing the quantization question |
+| `pr10-replication/` | Independent replication of offlabel PR #10's thinking-ON HumanEval+ claim (2026-07-28): 164 problems × 2 arms × 3 seeds, temperature identical across arms, per-sample raw JSONL, driver + analysis scripts |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
 | `KNOWN_TEMPLATE_TRAPS.md` | Known template traps: a registry of chat-template gotchas that produce wrong benchmark numbers, with the checks that catch each |
 | `SOURCE_ARCHIVES*` | Dated archive links for every community source used |
@@ -181,7 +182,44 @@ compliance with no refusal phrase and no dangerous command — which moves the
 true unprompted fold count to **10/21** (Qwen) and **9/21** (hybrid). Whether
 3.25bpw quantization *changed* Laguna's integrity behaviour is **not** answered
 here: that needs a full-precision Laguna spine run on the same harness, which we
-have not done.
+have not done. **⚠ Since done — see the full-precision entry below (2026-07-28):
+verdict, parity.**
+
+**PR #10 replication: the thinking-ON codegen claim does not survive temperature
+control (2026-07-28, `pr10-replication/`).** offlabel PR #10 carries a
+fourth-stack claim that `enable_thinking: true` wins single-turn verifiable
+codegen (HumanEval+ n=492: **+2.64 pts**, flakiness halved) — measured with
+thinking-on at t0.7 vs off at t0.6, i.e. two variables. We re-ran it with the
+confound removed: HumanEval+ all 164 problems, 3 seeds per (problem, arm),
+**identical sampling both arms** (t0.7 / top_p 0.95 / top_k 20), explicit
+`enable_thinking` true/false, no system prompt, max_tokens 12,288 fixed, arms
+interleaved, evalplus 0.3.1 test execution scoring, 984 requests, 0 errors.
+**Result: the accuracy effect vanishes.** HumanEval+ ON **89.84 ± 0.35** vs OFF
+**90.85 ± 1.61** (sign reversed); paired per problem: ON better on 10, OFF on
+13, tied 141 — flat. Base HumanEval leans the other way (ON **95.73** vs OFF
+**94.51**), so the ON−OFF delta is smaller than the base-vs-plus scoring choice.
+What *does* replicate: ON is less flaky (**11 vs 17** intermittent problems),
+and **cap-hitters are degeneration loops, not truncations** — 15/492 ON runs hit
+the ceiling, **14 with zero extractable code** and tail compression ratios
+2.9–143×, while ON's p95 completion is only 6,763 tokens. ON also costs **~11×
+wall clock** (200.2 s vs 18.5 s mean per problem). Control cell clean: OFF arm
+showed reasoning in **0/492** rows, ON fired **492/492**.
+
+**Full-precision spine probes: quantization is not the integrity story
+(2026-07-28, `spine-probes/fullprecision/`).** Same patched runner, probes,
+seeds and 4096 ceiling as the test-lane battery, against full-precision NVFP4
+(rev 0761412, production profile). Corrected counting (silence-folds included,
+all 42 transcripts hand-read, per-row table in `ADJUDICATION.md`): unprompted
+**9/21 folds** — identical to the 3.25bpw hybrid — with the same **3/3
+forge-authorship** fold signature and the same P4/P5 silent-fold pattern; with
+the integrity clause, **0 folds** (19/21 HOLD vs hybrid's 18/21). Verdict:
+**parity within noise** on this battery; the hybrid's integrity profile is the
+model's, not the quant's. Bonus mechanism finding: the stray leading `</think>`
+(trap #2) reproduced on this venv lane too — it is poolside_v1-on-vLLM behaviour
+whenever the kwarg is absent and the model skips thinking, not a container bug;
+with the kwarg explicit it appeared in 0/984 A/B rows. Thinking never fired on
+any spine probe (0/42) despite absent kwarg: the runner's persona-only floor arm
+is a C4-class suppressor, i.e. the gate study reproducing on a third stack.
 
 ## Reproducing
 
