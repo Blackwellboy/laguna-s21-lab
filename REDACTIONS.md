@@ -42,3 +42,12 @@ reference those notes remain, with identifiers replaced as above.
 
 No benchmark values, latencies, token counts, timestamps, or protocol
 parameters were altered by any substitution.
+
+## 2026-07-27 additions (head-to-head/, quant-floor/)
+Same conventions as above, applied before publication: internal hostnames replaced
+(spark-host-1/-2/-3), LAN IPs in bench "base" fields replaced with <SERVER>, one
+internal harness path replaced with <CONTROL_PLANE>/..., internal handoff banners
+and operator-directed notes removed. Mentions of Tailscale and IPs such as
+10.0.0.5 inside model-generated benchmark responses are synthetic task content
+produced by the models under test, not real infrastructure. Benchmark values,
+timestamps, and protocol parameters were not altered.

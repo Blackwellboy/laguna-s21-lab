@@ -1,0 +1,536 @@
+[warm]
+[calibrate] tool depth~1000
+  actual_prompt_tokens=953
+[run] tool d~1000 g=96 r=0 c=1
+  decode=123.3 n=96 ttft=268.25
+[run] tool d~1000 g=96 r=1 c=1
+  decode=128.39 n=96 ttft=271.16
+[run] tool d~1000 g=96 r=2 c=1
+  decode=130.13 n=96 ttft=257.67
+[run] tool d~1000 g=384 r=0 c=1
+  decode=131.56 n=145 ttft=264.87
+[run] tool d~1000 g=384 r=1 c=1
+  decode=131.37 n=145 ttft=479.63
+[run] tool d~1000 g=384 r=2 c=1
+  decode=131.29 n=145 ttft=255.97
+[run] tool d~1000 g=1024 r=0 c=1
+  decode=131.11 n=145 ttft=249.87
+[run] tool d~1000 g=1024 r=1 c=1
+  decode=132.01 n=145 ttft=258.82
+[run] tool d~1000 g=1024 r=2 c=1
+  decode=131.89 n=145 ttft=254.84
+[calibrate] code depth~1000
+  actual_prompt_tokens=995
+[run] code d~1000 g=96 r=0 c=1
+  decode=113.87 n=96 ttft=268.12
+[run] code d~1000 g=96 r=1 c=1
+  decode=105.51 n=96 ttft=278.26
+[run] code d~1000 g=96 r=2 c=1
+  decode=96.52 n=96 ttft=271.33
+[run] code d~1000 g=384 r=0 c=1
+  decode=101.76 n=384 ttft=291.24
+[run] code d~1000 g=384 r=1 c=1
+  decode=116.15 n=384 ttft=288.11
+[run] code d~1000 g=384 r=2 c=1
+  decode=111.82 n=384 ttft=276.37
+[run] code d~1000 g=1024 r=0 c=1
+  decode=110.15 n=591 ttft=262.08
+[run] code d~1000 g=1024 r=1 c=1
+  decode=117.66 n=541 ttft=277.41
+[run] code d~1000 g=1024 r=2 c=1
+  decode=114.01 n=539 ttft=268.44
+[calibrate] json depth~1000
+  actual_prompt_tokens=956
+[run] json d~1000 g=96 r=0 c=1
+  decode=87.3 n=96 ttft=269.72
+[run] json d~1000 g=96 r=1 c=1
+  decode=100.16 n=96 ttft=264.43
+[run] json d~1000 g=96 r=2 c=1
+  decode=96.69 n=96 ttft=264.3
+[run] json d~1000 g=384 r=0 c=1
+  decode=98.29 n=384 ttft=274.87
+[run] json d~1000 g=384 r=1 c=1
+  decode=94.37 n=384 ttft=259.86
+[run] json d~1000 g=384 r=2 c=1
+  decode=99.23 n=384 ttft=260.38
+[run] json d~1000 g=1024 r=0 c=1
+  decode=97.65 n=382 ttft=499.14
+[run] json d~1000 g=1024 r=1 c=1
+  decode=102.21 n=351 ttft=477.23
+[run] json d~1000 g=1024 r=2 c=1
+  decode=94.58 n=401 ttft=474.25
+[calibrate] prose depth~1000
+  actual_prompt_tokens=949
+[run] prose d~1000 g=96 r=0 c=1
+  decode=85.06 n=96 ttft=270.21
+[run] prose d~1000 g=96 r=1 c=1
+  decode=83.03 n=96 ttft=264.57
+[run] prose d~1000 g=96 r=2 c=1
+  decode=82.78 n=96 ttft=263.84
+[run] prose d~1000 g=384 r=0 c=1
+  decode=87.3 n=205 ttft=270.43
+[run] prose d~1000 g=384 r=1 c=1
+  decode=77.16 n=208 ttft=267.0
+[run] prose d~1000 g=384 r=2 c=1
+  decode=74.96 n=193 ttft=268.94
+[run] prose d~1000 g=1024 r=0 c=1
+  decode=82.37 n=227 ttft=258.85
+[run] prose d~1000 g=1024 r=1 c=1
+  decode=85.98 n=229 ttft=258.11
+[run] prose d~1000 g=1024 r=2 c=1
+  decode=81.56 n=227 ttft=258.88
+[calibrate] tool depth~3000
+  actual_prompt_tokens=2738
+[run] tool d~3000 g=96 r=0 c=1
+  decode=125.13 n=96 ttft=514.69
+[run] tool d~3000 g=96 r=1 c=1
+  decode=128.79 n=96 ttft=506.25
+[run] tool d~3000 g=96 r=2 c=1
+  decode=129.46 n=96 ttft=507.83
+[run] tool d~3000 g=384 r=0 c=1
+  decode=130.21 n=145 ttft=511.36
+[run] tool d~3000 g=384 r=1 c=1
+  decode=130.64 n=145 ttft=509.89
+[run] tool d~3000 g=384 r=2 c=1
+  decode=127.98 n=145 ttft=503.06
+[run] tool d~3000 g=1024 r=0 c=1
+  decode=127.1 n=145 ttft=519.8
+[run] tool d~3000 g=1024 r=1 c=1
+  decode=127.2 n=145 ttft=513.64
+[run] tool d~3000 g=1024 r=2 c=1
+  decode=126.91 n=145 ttft=519.15
+[calibrate] code depth~3000
+  actual_prompt_tokens=2774
+[run] code d~3000 g=96 r=0 c=1
+  decode=111.14 n=96 ttft=533.51
+[run] code d~3000 g=96 r=1 c=1
+  decode=104.01 n=96 ttft=530.96
+[run] code d~3000 g=96 r=2 c=1
+  decode=98.63 n=96 ttft=535.88
+[run] code d~3000 g=384 r=0 c=1
+  decode=113.43 n=384 ttft=550.05
+[run] code d~3000 g=384 r=1 c=1
+  decode=111.46 n=384 ttft=520.72
+[run] code d~3000 g=384 r=2 c=1
+  decode=114.14 n=384 ttft=511.87
+[run] code d~3000 g=1024 r=0 c=1
+  decode=116.01 n=597 ttft=533.98
+[run] code d~3000 g=1024 r=1 c=1
+  decode=114.41 n=613 ttft=538.83
+[run] code d~3000 g=1024 r=2 c=1
+  decode=108.65 n=739 ttft=536.33
+[calibrate] json depth~3000
+  actual_prompt_tokens=2827
+[run] json d~3000 g=96 r=0 c=1
+  decode=103.22 n=96 ttft=541.05
+[run] json d~3000 g=96 r=1 c=1
+  decode=97.81 n=96 ttft=529.85
+[run] json d~3000 g=96 r=2 c=1
+  decode=105.15 n=96 ttft=526.89
+[run] json d~3000 g=384 r=0 c=1
+  decode=103.62 n=339 ttft=541.37
+[run] json d~3000 g=384 r=1 c=1
+  decode=105.43 n=342 ttft=536.23
+[run] json d~3000 g=384 r=2 c=1
+  decode=102.16 n=384 ttft=542.59
+[run] json d~3000 g=1024 r=0 c=1
+  decode=102.87 n=388 ttft=562.26
+[run] json d~3000 g=1024 r=1 c=1
+  decode=98.17 n=406 ttft=539.78
+[run] json d~3000 g=1024 r=2 c=1
+  decode=99.51 n=329 ttft=543.74
+[calibrate] prose depth~3000
+  actual_prompt_tokens=2840
+[run] prose d~3000 g=96 r=0 c=1
+  decode=76.68 n=96 ttft=537.58
+[run] prose d~3000 g=96 r=1 c=1
+  decode=83.15 n=96 ttft=541.95
+[run] prose d~3000 g=96 r=2 c=1
+  decode=94.73 n=96 ttft=524.3
+[run] prose d~3000 g=384 r=0 c=1
+  decode=83.89 n=160 ttft=523.21
+[run] prose d~3000 g=384 r=1 c=1
+  decode=87.79 n=183 ttft=525.88
+[run] prose d~3000 g=384 r=2 c=1
+  decode=78.4 n=233 ttft=545.59
+[run] prose d~3000 g=1024 r=0 c=1
+  decode=81.71 n=218 ttft=552.28
+[run] prose d~3000 g=1024 r=1 c=1
+  decode=79.01 n=232 ttft=546.1
+[run] prose d~3000 g=1024 r=2 c=1
+  decode=82.49 n=202 ttft=532.52
+[calibrate] tool depth~6000
+  actual_prompt_tokens=5459
+[run] tool d~6000 g=96 r=0 c=1
+  decode=125.64 n=96 ttft=662.05
+[run] tool d~6000 g=96 r=1 c=1
+  decode=127.53 n=96 ttft=630.54
+[run] tool d~6000 g=96 r=2 c=1
+  decode=127.03 n=96 ttft=625.91
+[run] tool d~6000 g=384 r=0 c=1
+  decode=126.78 n=145 ttft=647.25
+[run] tool d~6000 g=384 r=1 c=1
+  decode=128.52 n=145 ttft=629.43
+[run] tool d~6000 g=384 r=2 c=1
+  decode=127.3 n=145 ttft=649.33
+[run] tool d~6000 g=1024 r=0 c=1
+  decode=130.66 n=145 ttft=644.1
+[run] tool d~6000 g=1024 r=1 c=1
+  decode=129.13 n=145 ttft=655.64
+[run] tool d~6000 g=1024 r=2 c=1
+  decode=125.88 n=145 ttft=651.72
+[calibrate] code depth~6000
+  actual_prompt_tokens=5577
+[run] code d~6000 g=96 r=0 c=1
+  decode=102.44 n=96 ttft=676.89
+[run] code d~6000 g=96 r=1 c=1
+  decode=97.39 n=96 ttft=658.24
+[run] code d~6000 g=96 r=2 c=1
+  decode=95.82 n=96 ttft=676.62
+[run] code d~6000 g=384 r=0 c=1
+  decode=113.73 n=384 ttft=653.87
+[run] code d~6000 g=384 r=1 c=1
+  decode=109.64 n=384 ttft=657.21
+[run] code d~6000 g=384 r=2 c=1
+  decode=108.07 n=384 ttft=643.89
+[run] code d~6000 g=1024 r=0 c=1
+  decode=108.12 n=630 ttft=650.24
+[run] code d~6000 g=1024 r=1 c=1
+  decode=112.44 n=623 ttft=670.71
+[run] code d~6000 g=1024 r=2 c=1
+  decode=112.35 n=632 ttft=663.51
+[calibrate] json depth~6000
+  actual_prompt_tokens=5547
+[run] json d~6000 g=96 r=0 c=1
+  decode=104.28 n=96 ttft=665.56
+[run] json d~6000 g=96 r=1 c=1
+  decode=101.61 n=96 ttft=649.06
+[run] json d~6000 g=96 r=2 c=1
+  decode=98.56 n=96 ttft=649.85
+[run] json d~6000 g=384 r=0 c=1
+  decode=108.85 n=328 ttft=669.57
+[run] json d~6000 g=384 r=1 c=1
+  decode=109.63 n=346 ttft=663.59
+[run] json d~6000 g=384 r=2 c=1
+  decode=112.78 n=328 ttft=641.61
+[run] json d~6000 g=1024 r=0 c=1
+  decode=102.87 n=327 ttft=645.44
+[run] json d~6000 g=1024 r=1 c=1
+  decode=96.95 n=391 ttft=651.44
+[run] json d~6000 g=1024 r=2 c=1
+  decode=100.07 n=406 ttft=674.95
+[calibrate] prose depth~6000
+  actual_prompt_tokens=5592
+[run] prose d~6000 g=96 r=0 c=1
+  decode=86.82 n=96 ttft=684.11
+[run] prose d~6000 g=96 r=1 c=1
+  decode=73.52 n=96 ttft=660.56
+[run] prose d~6000 g=96 r=2 c=1
+  decode=90.96 n=96 ttft=664.2
+[run] prose d~6000 g=384 r=0 c=1
+  decode=81.11 n=187 ttft=657.81
+[run] prose d~6000 g=384 r=1 c=1
+  decode=81.08 n=185 ttft=653.1
+[run] prose d~6000 g=384 r=2 c=1
+  decode=80.72 n=292 ttft=650.79
+[run] prose d~6000 g=1024 r=0 c=1
+  decode=84.15 n=236 ttft=659.91
+[run] prose d~6000 g=1024 r=1 c=1
+  decode=84.41 n=173 ttft=660.85
+[run] prose d~6000 g=1024 r=2 c=1
+  decode=88.41 n=173 ttft=653.49
+[calibrate] tool depth~24000
+  actual_prompt_tokens=22155
+[run] tool d~24000 g=96 r=0 c=1
+  decode=104.63 n=96 ttft=818.29
+[run] tool d~24000 g=96 r=1 c=1
+  decode=103.41 n=96 ttft=799.95
+[run] tool d~24000 g=96 r=2 c=1
+  decode=94.82 n=96 ttft=811.69
+[run] tool d~24000 g=384 r=0 c=1
+  decode=97.49 n=285 ttft=790.9
+[run] tool d~24000 g=384 r=1 c=1
+  decode=106.88 n=299 ttft=795.04
+[run] tool d~24000 g=384 r=2 c=1
+  decode=106.56 n=240 ttft=782.97
+[run] tool d~24000 g=1024 r=0 c=1
+  decode=125.5 n=145 ttft=792.12
+[run] tool d~24000 g=1024 r=1 c=1
+  decode=106.19 n=298 ttft=794.74
+[run] tool d~24000 g=1024 r=2 c=1
+  decode=105.93 n=297 ttft=786.04
+[calibrate] code depth~24000
+  actual_prompt_tokens=22186
+[run] code d~24000 g=96 r=0 c=1
+  decode=94.95 n=96 ttft=811.87
+[run] code d~24000 g=96 r=1 c=1
+  decode=96.39 n=96 ttft=816.67
+[run] code d~24000 g=96 r=2 c=1
+  decode=95.13 n=96 ttft=792.57
+[run] code d~24000 g=384 r=0 c=1
+  decode=96.94 n=384 ttft=807.36
+[run] code d~24000 g=384 r=1 c=1
+  decode=99.98 n=384 ttft=788.28
+[run] code d~24000 g=384 r=2 c=1
+  decode=97.59 n=384 ttft=793.09
+[run] code d~24000 g=1024 r=0 c=1
+  decode=110.12 n=591 ttft=799.52
+[run] code d~24000 g=1024 r=1 c=1
+  decode=102.64 n=642 ttft=808.49
+[run] code d~24000 g=1024 r=2 c=1
+  decode=110.02 n=614 ttft=800.03
+[calibrate] json depth~24000
+  actual_prompt_tokens=22160
+[run] json d~24000 g=96 r=0 c=1
+  decode=93.91 n=96 ttft=787.72
+[run] json d~24000 g=96 r=1 c=1
+  decode=94.89 n=96 ttft=785.39
+[run] json d~24000 g=96 r=2 c=1
+  decode=95.3 n=96 ttft=780.61
+[run] json d~24000 g=384 r=0 c=1
+  decode=100.23 n=326 ttft=794.4
+[run] json d~24000 g=384 r=1 c=1
+  decode=98.12 n=325 ttft=790.56
+[run] json d~24000 g=384 r=2 c=1
+  decode=100.0 n=329 ttft=787.38
+[run] json d~24000 g=1024 r=0 c=1
+  decode=101.02 n=325 ttft=802.49
+[run] json d~24000 g=1024 r=1 c=1
+  decode=105.65 n=326 ttft=796.8
+[run] json d~24000 g=1024 r=2 c=1
+  decode=98.54 n=339 ttft=787.59
+[calibrate] prose depth~24000
+  actual_prompt_tokens=22396
+[run] prose d~24000 g=96 r=0 c=1
+  decode=83.63 n=96 ttft=839.42
+[run] prose d~24000 g=96 r=1 c=1
+  decode=80.14 n=96 ttft=854.11
+[run] prose d~24000 g=96 r=2 c=1
+  decode=82.49 n=96 ttft=849.16
+[run] prose d~24000 g=384 r=0 c=1
+  decode=75.34 n=205 ttft=844.88
+[run] prose d~24000 g=384 r=1 c=1
+  decode=76.53 n=188 ttft=858.51
+[run] prose d~24000 g=384 r=2 c=1
+  decode=85.13 n=170 ttft=840.76
+[run] prose d~24000 g=1024 r=0 c=1
+  decode=76.93 n=220 ttft=817.02
+[run] prose d~24000 g=1024 r=1 c=1
+  decode=82.26 n=167 ttft=846.77
+[run] prose d~24000 g=1024 r=2 c=1
+  decode=82.89 n=172 ttft=823.41
+[calibrate] tool depth~64000
+  actual_prompt_tokens=59379
+[run] tool d~64000 g=96 r=0 c=1
+  decode=113.31 n=96 ttft=1543.64
+[run] tool d~64000 g=96 r=1 c=1
+  decode=116.46 n=96 ttft=1517.04
+[run] tool d~64000 g=96 r=2 c=1
+  decode=113.6 n=96 ttft=1517.4
+[run] tool d~64000 g=96 r=0 c=1
+  decode=117.74 n=96 ttft=1499.91
+[run] tool d~64000 g=96 r=1 c=1
+  decode=117.61 n=96 ttft=1487.23
+[run] tool d~64000 g=96 r=2 c=1
+  decode=114.95 n=96 ttft=1472.95
+[run] tool d~64000 g=96 r=0 c=1
+  decode=115.83 n=96 ttft=1474.49
+[run] tool d~64000 g=96 r=1 c=1
+  decode=121.82 n=87 ttft=1492.14
+[run] tool d~64000 g=96 r=2 c=1
+  decode=113.46 n=96 ttft=1501.97
+[calibrate] code depth~64000
+  actual_prompt_tokens=59410
+[run] code d~64000 g=96 r=0 c=1
+  decode=95.52 n=96 ttft=1512.41
+[run] code d~64000 g=96 r=1 c=1
+  decode=93.62 n=96 ttft=1493.15
+[run] code d~64000 g=96 r=2 c=1
+  decode=92.41 n=96 ttft=1510.75
+[run] code d~64000 g=96 r=0 c=1
+  decode=89.25 n=96 ttft=1516.51
+[run] code d~64000 g=96 r=1 c=1
+  decode=95.22 n=96 ttft=1517.39
+[run] code d~64000 g=96 r=2 c=1
+  decode=95.56 n=96 ttft=1525.39
+[run] code d~64000 g=96 r=0 c=1
+  decode=94.72 n=96 ttft=1512.55
+[run] code d~64000 g=96 r=1 c=1
+  decode=97.27 n=96 ttft=1524.3
+[run] code d~64000 g=96 r=2 c=1
+  decode=89.79 n=96 ttft=1513.92
+[calibrate] json depth~64000
+  actual_prompt_tokens=59384
+[run] json d~64000 g=96 r=0 c=1
+  decode=97.97 n=96 ttft=1521.07
+[run] json d~64000 g=96 r=1 c=1
+  decode=94.57 n=96 ttft=1526.01
+[run] json d~64000 g=96 r=2 c=1
+  decode=93.51 n=96 ttft=1521.13
+[run] json d~64000 g=96 r=0 c=1
+  decode=93.12 n=96 ttft=1516.13
+[run] json d~64000 g=96 r=1 c=1
+  decode=91.72 n=96 ttft=1525.61
+[run] json d~64000 g=96 r=2 c=1
+  decode=91.78 n=96 ttft=1513.24
+[run] json d~64000 g=96 r=0 c=1
+  decode=91.63 n=96 ttft=1508.7
+[run] json d~64000 g=96 r=1 c=1
+  decode=99.12 n=96 ttft=1514.27
+[run] json d~64000 g=96 r=2 c=1
+  decode=90.3 n=96 ttft=1501.32
+[calibrate] prose depth~64000
+  actual_prompt_tokens=60042
+[run] prose d~64000 g=96 r=0 c=1
+  decode=81.33 n=96 ttft=1029.36
+[run] prose d~64000 g=96 r=1 c=1
+  decode=79.27 n=96 ttft=1029.15
+[run] prose d~64000 g=96 r=2 c=1
+  decode=89.09 n=96 ttft=1024.6
+[run] prose d~64000 g=96 r=0 c=1
+  decode=83.26 n=96 ttft=1006.17
+[run] prose d~64000 g=96 r=1 c=1
+  decode=84.88 n=96 ttft=991.54
+[run] prose d~64000 g=96 r=2 c=1
+  decode=74.04 n=96 ttft=999.41
+[run] prose d~64000 g=96 r=0 c=1
+  decode=79.98 n=96 ttft=992.5
+[run] prose d~64000 g=96 r=1 c=1
+  decode=87.08 n=96 ttft=989.7
+[run] prose d~64000 g=96 r=2 c=1
+  decode=80.88 n=96 ttft=1006.88
+[warm]
+[calibrate] tool depth~1000
+  actual_prompt_tokens=954
+[run] tool d~1000 g=96 r=0 c=4
+  agg=111.25 med_dec=82.91
+[run] tool d~1000 g=96 r=1 c=4
+  agg=207.58 med_dec=89.21
+[run] tool d~1000 g=384 r=0 c=4
+  agg=255.92 med_dec=97.6
+[run] tool d~1000 g=384 r=1 c=4
+  agg=230.14 med_dec=85.12
+[calibrate] code depth~1000
+  actual_prompt_tokens=995
+[run] code d~1000 g=96 r=0 c=4
+  agg=166.79 med_dec=64.19
+[run] code d~1000 g=96 r=1 c=4
+  agg=176.75 med_dec=70.52
+[run] code d~1000 g=384 r=0 c=4
+  agg=226.83 med_dec=69.08
+[run] code d~1000 g=384 r=1 c=4
+  agg=246.97 med_dec=70.88
+[calibrate] json depth~1000
+  actual_prompt_tokens=957
+[run] json d~1000 g=96 r=0 c=4
+  agg=170.73 med_dec=67.44
+[run] json d~1000 g=96 r=1 c=4
+  agg=166.06 med_dec=65.76
+[run] json d~1000 g=384 r=0 c=4
+  agg=218.76 med_dec=62.63
+[run] json d~1000 g=384 r=1 c=4
+  agg=211.66 med_dec=65.04
+[calibrate] prose depth~1000
+  actual_prompt_tokens=949
+[run] prose d~1000 g=96 r=0 c=4
+  agg=152.26 med_dec=55.85
+[run] prose d~1000 g=96 r=1 c=4
+  agg=163.92 med_dec=61.83
+[run] prose d~1000 g=384 r=0 c=4
+  agg=179.41 med_dec=57.45
+[run] prose d~1000 g=384 r=1 c=4
+  agg=179.13 med_dec=53.48
+[calibrate] tool depth~3000
+  actual_prompt_tokens=2739
+[run] tool d~3000 g=96 r=0 c=4
+  agg=125.72 med_dec=85.34
+[run] tool d~3000 g=96 r=1 c=4
+  agg=127.43 med_dec=85.27
+[run] tool d~3000 g=384 r=0 c=4
+  agg=160.3 med_dec=85.67
+[run] tool d~3000 g=384 r=1 c=4
+  agg=161.8 med_dec=87.06
+[calibrate] code depth~3000
+  actual_prompt_tokens=2774
+[run] code d~3000 g=96 r=0 c=4
+  agg=118.74 med_dec=71.64
+[run] code d~3000 g=96 r=1 c=4
+  agg=118.14 med_dec=68.94
+[run] code d~3000 g=384 r=0 c=4
+  agg=193.55 med_dec=66.19
+[run] code d~3000 g=384 r=1 c=4
+  agg=196.8 med_dec=66.97
+[calibrate] json depth~3000
+  actual_prompt_tokens=2827
+[run] json d~3000 g=96 r=0 c=4
+  agg=107.09 med_dec=61.34
+[run] json d~3000 g=96 r=1 c=4
+  agg=108.51 med_dec=60.1
+[run] json d~3000 g=384 r=0 c=4
+  agg=177.44 med_dec=63.85
+[run] json d~3000 g=384 r=1 c=4
+  agg=185.22 med_dec=62.16
+[calibrate] prose depth~3000
+  actual_prompt_tokens=2840
+[run] prose d~3000 g=96 r=0 c=4
+  agg=101.52 med_dec=53.35
+[run] prose d~3000 g=96 r=1 c=4
+  agg=104.74 med_dec=57.42
+[run] prose d~3000 g=384 r=0 c=4
+  agg=136.35 med_dec=54.44
+[run] prose d~3000 g=384 r=1 c=4
+  agg=138.27 med_dec=54.2
+[calibrate] tool depth~6000
+  actual_prompt_tokens=5459
+[run] tool d~6000 g=96 r=0 c=4
+  agg=112.19 med_dec=89.85
+[run] tool d~6000 g=96 r=1 c=4
+  agg=168.57 med_dec=81.14
+[run] tool d~6000 g=384 r=0 c=4
+  agg=215.67 med_dec=86.35
+[run] tool d~6000 g=384 r=1 c=4
+  agg=212.33 med_dec=85.3
+[calibrate] code depth~6000
+  actual_prompt_tokens=5578
+[run] code d~6000 g=96 r=0 c=4
+  agg=98.44 med_dec=65.81
+[run] code d~6000 g=96 r=1 c=4
+  agg=158.63 med_dec=69.72
+[run] code d~6000 g=384 r=0 c=4
+  agg=219.04 med_dec=66.66
+[run] code d~6000 g=384 r=1 c=4
+  agg=220.19 med_dec=66.53
+[calibrate] json depth~6000
+  actual_prompt_tokens=5546
+[run] json d~6000 g=96 r=0 c=4
+  agg=100.78 med_dec=66.94
+[run] json d~6000 g=96 r=1 c=4
+  agg=146.79 med_dec=65.62
+[run] json d~6000 g=384 r=0 c=4
+  agg=197.73 med_dec=63.38
+[run] json d~6000 g=384 r=1 c=4
+  agg=197.18 med_dec=60.47
+[calibrate] prose depth~6000
+  actual_prompt_tokens=5593
+[run] prose d~6000 g=96 r=0 c=4
+  agg=96.07 med_dec=59.34
+[run] prose d~6000 g=96 r=1 c=4
+  agg=132.74 med_dec=53.58
+[run] prose d~6000 g=384 r=0 c=4
+  agg=155.79 med_dec=56.05
+[run] prose d~6000 g=384 r=1 c=4
+  agg=154.07 med_dec=53.6
+WROTE results/hermes_bench_v1_qwen35b_a3b_nvfp4_mtp3_spark-host-2_20260726_172442.json
+{
+  "profile": "qwen35b_a3b_nvfp4_mtp3_spark-host-2",
+  "median_by_cat": {
+    "tool": 126.78,
+    "code": 104.01,
+    "json": 98.56,
+    "prose": 82.49
+  },
+  "prose_floor": 82.49,
+  "code_median": 104.01,
+  "overall_median": 99.37,
+  "overall_mean": 101.75
+}

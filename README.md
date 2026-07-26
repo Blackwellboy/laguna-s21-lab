@@ -25,6 +25,8 @@ to the number.
 | `sweep/` | `LAGUNA_TUNING_SWEEP_20260723.md` (protocol + full grid + analysis) and `cells/` — all 21 raw per-cell JSONs |
 | `longctx/` | Cold long-context probe script + raw JSON (nonce defeats prefix cache from position 0) |
 | `soak/` | 12h soak: driver, runner, score/restore scripts, results report, and `logs/` with raw `turns.jsonl`, `sessions.jsonl`, `incidents.jsonl`, `integrity_probes.jsonl`, `service_samples.jsonl` |
+| `head-to-head/` | Qwen 3.6 35B-A3B vs Laguna S 2.1 on identical harnesses (2026-07-27): full-protocol speed bench, 16-task intel suite in three thinking configs, scored agentic loop, single-shot generation arm |
+| `quant-floor/` | 0xSero Laguna Hybrid 3.25bpw verification vs our published NVFP4 (2026-07-27): compat gate, 16-task intel suite, no-spec speed bench |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
 | `SOURCE_ARCHIVES*` | Dated archive links for every community source used |
 | `TWEET_PACK_V3.1.md` | The claim set as posted, kept verbatim for accountability |
@@ -66,6 +68,21 @@ labeled fake planted by the probe).
 run finished. The final logs in `soak/logs/` run **409 sessions / 3,099 turns /
 3,096 HTTP-200**. Same run, later cut; the success rate is 99.9% at either
 checkpoint.
+
+**Head-to-head: Qwen 3.6 35B-A3B vs Laguna (2026-07-27, `head-to-head/`):**
+identical harness on both sides. Qwen wins raw speed decisively (~4.2x c=1
+decode, 99.4 vs 23.4 overall median tok/s, near-flat to 64K) and one-shots
+single-file game tasks in under a minute. Laguna wins reflexive correctness:
+15/16 vs 11/16 on the canonical suite, where thinking-off Qwen loses every math
+and logic cell. Qwen ties 15/16 only with thinking on at ~19x task latency.
+Routing read: complementary lanes, not substitutes.
+
+**Quant-floor: Laguna Hybrid 3.25bpw verification (2026-07-27, `quant-floor/`):**
+0xSero's two-tier NVFP4+EXL3 package (49 GiB weights) builds and serves on GB10
+first try from its own pinned recipe. Quality floor holds at 15/16 majority on
+our suite; the one stable regression is a single logic cell. Plain decode is a
+flat 15.1 tok/s c=1 with no draft model (our published NVFP4 numbers include
+DFlash, so speed columns are not like-for-like and are labeled as such).
 
 **Two precision caveats on the soak, stated up front:**
 
@@ -148,6 +165,25 @@ that bear directly on this repo's data:
   ([offlabel PR#3](https://github.com/TheTom/offlabel/pull/3),
   `scripts/spine-probes/`): drives any OpenAI-compatible endpoint, ablates
   the integrity clause rule by rule, re-scores transcripts offline.
+
+- **Third-way measurement of the native-schema cliff and the math split**
+  ([Peter Morris's sparkrun-recipes benchmark grid](https://github.com/mrpmorris/sparkrun-recipes/tree/master/benchmarks)):
+  his lm-eval/EvalScope runs put Laguna NVFP4 at GSM8K strict-match 0.8476
+  while Qwen 3.6 35B-A3B official-recipe rows land 0.3480 to 0.4086 (recipe
+  matters: atlas-recipe rows reach 0.90, which itself echoes the
+  config-over-capability theme). His BFCL v4 run drives Laguna through a
+  generic OpenAI tools path and the weighted aggregate lands at 0.21, with the
+  parallel-call categories at 0.04 to 0.08: the native-schema collapse
+  measured a third way, after TheTom's 83 percent native vs 0 chatml and our
+  100 percent native-path soak.
+- **Head-to-head in this repo** (`head-to-head/`): first single-suite test of
+  the community claim "Qwen 3.6 35B-A3B beats Laguna" with identical harnesses
+  on both sides. Confirmed for single-shot generation and raw speed; reversed
+  for reflexive thinking-off correctness (15/16 vs 11/16).
+- **Quant-floor verification in this repo** (`quant-floor/`): 0xSero's Hybrid
+  3.25bpw Laguna scores 15/16 majority on the same 16-task suite as our NVFP4,
+  intel parity within one logic cell, verifying the community quant claim on
+  independent hardware.
 
 ### Known interpretation updates
 

@@ -1,0 +1,157 @@
+{
+  "label": "Qwen3.6-35B-A3B NVFP4 (spark-host-2 GB10) default-sampling thinking-on",
+  "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+  "sampling": {},
+  "ctk": null,
+  "runs": 3,
+  "cells": [
+    "tetris_html",
+    "snake_py",
+    "cli_todo_py"
+  ],
+  "passes": 9,
+  "total": 9,
+  "rows": [
+    {
+      "run": 0,
+      "id": "tetris_html",
+      "error": null,
+      "completion_tokens": 5435,
+      "total_s": 47.6,
+      "decode_tok_s": 118.41,
+      "finish_len_hit": false,
+      "score": {
+        "has_html": true,
+        "has_canvas": true,
+        "features": 7,
+        "js_parses": true,
+        "pass": true
+      },
+      "artifact": "arm_b_artifacts_qwen/tetris_html_run0.html"
+    },
+    {
+      "run": 0,
+      "id": "snake_py",
+      "error": null,
+      "completion_tokens": 1805,
+      "total_s": 17.4,
+      "decode_tok_s": 121.09,
+      "finish_len_hit": false,
+      "score": {
+        "compiles": true,
+        "smoke": null,
+        "pass": true
+      },
+      "artifact": "arm_b_artifacts_qwen/snake_py_run0.py"
+    },
+    {
+      "run": 0,
+      "id": "cli_todo_py",
+      "error": null,
+      "completion_tokens": 1310,
+      "total_s": 11.7,
+      "decode_tok_s": 310.19,
+      "finish_len_hit": false,
+      "score": {
+        "compiles": true,
+        "smoke": true,
+        "pass": true
+      },
+      "artifact": "arm_b_artifacts_qwen/cli_todo_py_run0.py"
+    },
+    {
+      "run": 1,
+      "id": "tetris_html",
+      "error": null,
+      "completion_tokens": 3642,
+      "total_s": 31.3,
+      "decode_tok_s": 125.17,
+      "finish_len_hit": false,
+      "score": {
+        "has_html": true,
+        "has_canvas": true,
+        "features": 7,
+        "js_parses": true,
+        "pass": true
+      },
+      "artifact": "arm_b_artifacts_qwen/tetris_html_run1.html"
+    },
+    {
+      "run": 1,
+      "id": "snake_py",
+      "error": null,
+      "completion_tokens": 4000,
+      "total_s": 40.6,
+      "decode_tok_s": null,
+      "finish_len_hit": true,
+      "score": {
+        "compiles": true,
+        "smoke": null,
+        "pass": true
+      },
+      "artifact": "arm_b_artifacts_qwen/snake_py_run1.py"
+    },
+    {
+      "run": 1,
+      "id": "cli_todo_py",
+      "error": null,
+      "completion_tokens": 1440,
+      "total_s": 13.0,
+      "decode_tok_s": 310.5,
+      "finish_len_hit": false,
+      "score": {
+        "compiles": true,
+        "smoke": true,
+        "pass": true
+      },
+      "artifact": "arm_b_artifacts_qwen/cli_todo_py_run1.py"
+    },
+    {
+      "run": 2,
+      "id": "tetris_html",
+      "error": null,
+      "completion_tokens": 4392,
+      "total_s": 37.8,
+      "decode_tok_s": 123.55,
+      "finish_len_hit": false,
+      "score": {
+        "has_html": true,
+        "has_canvas": true,
+        "features": 7,
+        "js_parses": true,
+        "pass": true
+      },
+      "artifact": "arm_b_artifacts_qwen/tetris_html_run2.html"
+    },
+    {
+      "run": 2,
+      "id": "snake_py",
+      "error": null,
+      "completion_tokens": 4000,
+      "total_s": 40.9,
+      "decode_tok_s": null,
+      "finish_len_hit": true,
+      "score": {
+        "compiles": true,
+        "smoke": null,
+        "pass": true
+      },
+      "artifact": "arm_b_artifacts_qwen/snake_py_run2.py"
+    },
+    {
+      "run": 2,
+      "id": "cli_todo_py",
+      "error": null,
+      "completion_tokens": 839,
+      "total_s": 7.9,
+      "decode_tok_s": 144.88,
+      "finish_len_hit": false,
+      "score": {
+        "compiles": true,
+        "smoke": true,
+        "pass": true
+      },
+      "artifact": "arm_b_artifacts_qwen/cli_todo_py_run2.py"
+    }
+  ]
+}
