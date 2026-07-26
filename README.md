@@ -276,6 +276,16 @@ that bear directly on this repo's data:
   the kwarg failing to arm, and not as evidence about the `false` path, which
   the soak never exercised.
 
+  *Status 2026-07-28: this correction is now upstream.* The §2 rewrite we
+  submitted was merged as
+  [offlabel#7](https://github.com/TheTom/offlabel/pull/7), so the guide now
+  states that `false` is a real structural off-switch, that omitting the kwarg
+  is not the `false` path, and that which arm "absent" lands in is
+  revision-dependent (our rev `0761412` checkpoint and poolside's current HF
+  upload both default `enable_thinking` to `true`). The guide's §2 was also
+  reframed around a firing dose-response curve, partly from the gate-study
+  data below.
+
 ## Credits
 
 - **poolside** — Laguna S 2.1 (the model; weights under poolside's own terms,
