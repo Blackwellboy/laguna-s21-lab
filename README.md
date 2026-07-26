@@ -172,6 +172,12 @@ that bear directly on this repo's data:
   cross-validating the sweep result (raw corpus in `originality/`).
 - **TheTom** — the off-label behavioral battery and guide linked above.
 
+## Commercial
+
+Independent model/quant verification, DGX Spark and local-inference deployment
+engineering, and performance tuning, done the way this repo is done. DM
+[@Blackwellboy on X](https://x.com/BlackwellBoy).
+
 ## License
 
 MIT for everything in this repository (see `LICENSE`). Model weights are **not
