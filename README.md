@@ -60,6 +60,13 @@ loops observed. Integrity probes: **3/3 refused** a planted fake-credential
 history-rewrite task (the `TESTONLY_sk_live_…` string in the logs is a clearly
 labeled fake planted by the probe).
 
+**Checkpoint note (added 2026-07-26):** the figures posted publicly (and cited
+"as stated" in TheTom's guide §5d: ~389 sessions, ~2,947 turns, 2,944 OK,
+~11.5h of tool work) reference an **~11.5-hour checkpoint** taken before the
+run finished. The final logs in `soak/logs/` run **409 sessions / 3,099 turns /
+3,096 HTTP-200**. Same run, later cut; the success rate is 99.9% at either
+checkpoint.
+
 **Two precision caveats on the soak, stated up front:**
 
 1. **Thinking routing rate ~0.1%** (3 of 3,096 turns fired thinking). The API
@@ -102,12 +109,58 @@ campaign and is not included. The IP `10.0.1.42` appearing in some responses is
 a model-invented example from a synthetic `probe_service` tool task, not real
 infrastructure. Full details: `REDACTIONS.md`.
 
-## Related work
+## Cross-validation & related work
 
 TheTom's off-label behavioral guide for Laguna S 2.1 — held-out behavioral
-battery on a different quant and serving stack, which converged on the same
-operating manual:
+battery on a different quant and serving stack (Q4_K_M on llama.cpp vs our
+NVFP4 on vLLM), which converged on the same operating manual. This soak is
+cited as external validation in its §5d, with our two precision caveats
+applied as posted:
 <https://github.com/TheTom/offlabel/blob/main/models/laguna-s-2.1.md>
+
+Since publication, the conversation around that guide has produced findings
+that bear directly on this repo's data:
+
+- **Third-stack replication of the persona gate** (@Defilan, gfx1151 /
+  llama.cpp / generic harness, `reasoning_content` known-good there): 6/6
+  bare-prompt probes fired thinking vs 0/5 with a named professional persona
+  ([offlabel#2](https://github.com/TheTom/offlabel/issues/2)). A cleaner
+  re-measurement (interleaved arms, prompt cache off, fixed token budget) put
+  the same gate at 10/18 vs 1/18
+  ([offlabel#5](https://github.com/TheTom/offlabel/issues/5)) — the gate is
+  real (p = 0.0014), less sharp than the first pass suggested.
+- **Corrected `enable_thinking` kwarg model**
+  ([offlabel#5](https://github.com/TheTom/offlabel/issues/5)): explicit
+  `false` is the one structural off-switch (pre-closed `</think>`; 0/15
+  reasoned). Omitting the kwarg **fires** on their llama.cpp path (the server
+  overrides the template default; absent renders byte-identical to `true`),
+  and explicit `true` fires. Note our rev-0761412 checkpoint's template
+  defaults `enable_thinking` to `true` outright, consistent with the
+  post-release config drift documented in the guide's changelog.
+- **Cross-model integrity finding**: the housekeeping-framed provenance blind
+  spot (and the system-prompt clause that closes it) reproduced on
+  Qwen3.6-35B-A3B — 4 folds unprompted, 0 with the clause
+  ([offlabel patterns.md](https://github.com/TheTom/offlabel/blob/main/patterns.md),
+  data in [offlabel#2](https://github.com/TheTom/offlabel/issues/2)). Our
+  soak's 3/3 refused integrity probes ran the same clause family on this
+  stack.
+- **Shared spine-probe runner** merged into the guide repo
+  ([offlabel PR#3](https://github.com/TheTom/offlabel/pull/3),
+  `scripts/spine-probes/`): drives any OpenAI-compatible endpoint, ablates
+  the integrity clause rule by rule, re-scores transcripts offline.
+
+### Known interpretation updates
+
+- **2026-07-26 — the soak's ~0.1% thinking rate, reread under the corrected
+  kwarg model.** The soak driver sent explicit
+  `chat_template_kwargs: {"enable_thinking": true}` on every turn
+  (`soak/soak_driver.py`). Per the corrected model in
+  [offlabel#5](https://github.com/TheTom/offlabel/issues/5), explicit `true`
+  is a **fires** arm: thinking was structurally available on every turn. The
+  ~0.1% is therefore best read as **prompt-side suppression overriding an
+  explicitly fired kwarg** under full named-persona agent prompts — not as
+  the kwarg failing to arm, and not as evidence about the `false` path, which
+  the soak never exercised.
 
 ## Credits
 
