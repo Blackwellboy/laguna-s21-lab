@@ -31,6 +31,7 @@ to the number.
 | `cross-model/` | The gate study's C0–C9 battery re-run against Qwen 3.6 35B-A3B (2026-07-28): 400-turn grid, parser-mechanism proof, side-by-side comparison scripts, raw per-turn JSONL |
 | `spine-probes/` | Integrity probes (TheTom/offlabel runner) against both test lanes (2026-07-28): full verbatim transcripts, three judge runs, patched runner + SHA256SUMS |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
+| `KNOWN_TEMPLATE_TRAPS.md` | Known template traps: a registry of chat-template gotchas that produce wrong benchmark numbers, with the checks that catch each |
 | `SOURCE_ARCHIVES*` | Dated archive links for every community source used |
 | `TWEET_PACK_V3.1.md` | The claim set as posted, kept verbatim for accountability |
 | `REDACTIONS.md` | Exact sanitization applied to these files before publication |
@@ -115,6 +116,13 @@ DFlash, so speed columns are not like-for-like and are labeled as such).
 provably emits reasoning on this stack, so the soak's ~0.1% was real
 suppression.)*
 
+*(**2026-07-29:** the ~0.1% stands, and its mechanism is now identified as
+template-level rather than context-mass — prior assistant turns render as empty
+`<think></think>` blocks in the assembled history under default serving. The
+number describes real default-config multi-turn behavior. See the interpretation
+update under "Known interpretation updates" and
+[`KNOWN_TEMPLATE_TRAPS.md`](KNOWN_TEMPLATE_TRAPS.md) #4.)*
+
 **Thinking-gate suppression study (2026-07-27, `gate-study/`):** 450 logged
 turns, 10 system-prompt conditions x 4 task types, plus a criteria-loop probe.
 The gate is two-dimensional: firing probability is a persona-x-task
@@ -129,7 +137,9 @@ bulleted acceptance criteria mostly suppress bare (1/10) but under the full
 agent prompt flip to 10/10 firing with 7/10 hard verify-loops to the 4096
 ceiling — the production prompt is half the trigger. Open gap: single-turn
 agent prompts fire 60-72% vs the soak's ~0.1%, so context mass / turn depth
-likely does the rest (untested).
+likely does the rest (untested). **⚠ That "open gap" now has an identified
+mechanism and it is not primarily context mass — see the interpretation update
+dated 2026-07-29 below, and `KNOWN_TEMPLATE_TRAPS.md` #4.**
 
 **Cross-model: is the gate a Laguna quirk or how these models work?
 (2026-07-28, `cross-model/`)** The identical C0–C9 battery — same conditions,
@@ -264,6 +274,42 @@ that bear directly on this repo's data:
   independent hardware.
 
 ### Known interpretation updates
+
+- **2026-07-29 — the single-turn vs multi-turn firing gap has an identified
+  mechanism, and it is template-level.** The gate study left an open gap:
+  single-turn agent prompts fire **60-72%**, the 12h soak measured **~0.1%**
+  (3 of 3,096 turns), and we attributed the remainder to context mass or turn
+  depth. That hypothesis is now largely displaced.
+
+  Under default serving with `enable_thinking: true`, **prior assistant turns
+  render into the assembled history as empty `<think></think>` blocks unless
+  their reasoning is explicitly resent**. The model then reads its own history
+  as evidence that it does not think in this conversation, and suppresses
+  accordingly. A `preserve_thinking` chat-template kwarg controls this. It is
+  **not documented in the model card**. The trap was community-surfaced; we did
+  not find it ourselves, and four independent testers had all missed it, because
+  every check any of us ran inspected the *request* rather than the *assembled
+  prompt*.
+
+  What this does and does not change:
+
+  - **The ~0.1% is not withdrawn and is not a measurement error.** It is real
+    observed behavior under **default multi-turn serving**, which is what most
+    deployments actually run. A pipeline that does not resend prior reasoning
+    will see this. That is the operationally relevant configuration.
+  - **The mechanism attribution changes.** The suppression is being driven by
+    what the history looks like, not primarily by context length or turn count.
+  - **The C0-C9 single-turn grid is unaffected.** Every condition in that grid
+    is a single exchange, so no history assembly is involved. Those ten
+    conditions, their firing rates, and their reasoning-length medians stand
+    exactly as published.
+  - **The soak's other findings are unaffected** (turn success, stability,
+    tool-call reliability, integrity-clause behavior).
+
+  **Quantification is in progress.** A stripped-versus-preserved comparison arm
+  is running now and will be linked here with its measured delta when it lands.
+  Until then: mechanism established, magnitude unquantified. Registry entry with
+  the check that catches this class: [`KNOWN_TEMPLATE_TRAPS.md`](KNOWN_TEMPLATE_TRAPS.md) #4.
 
 - **2026-07-26 — the soak's ~0.1% thinking rate, reread under the corrected
   kwarg model.** The soak driver sent explicit
