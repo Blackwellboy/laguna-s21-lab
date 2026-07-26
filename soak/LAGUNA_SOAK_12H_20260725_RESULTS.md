@@ -389,11 +389,11 @@ comfy=active
 | ComfyUI HTTP | ok=True |
 
 ## Raw logs
-- `$HOME/workspace/grok/laguna_soak_12h_20260725/logs/turns.jsonl`
-- `$HOME/workspace/grok/laguna_soak_12h_20260725/logs/sessions.jsonl`
-- `$HOME/workspace/grok/laguna_soak_12h_20260725/logs/incidents.jsonl`
-- `$HOME/workspace/grok/laguna_soak_12h_20260725/logs/integrity_probes.jsonl`
-- `$HOME/workspace/grok/laguna_soak_12h_20260725/probes/service_samples.jsonl`
+- `soak/logs/turns.jsonl`
+- `soak/logs/sessions.jsonl`
+- `soak/logs/incidents.jsonl`
+- `soak/logs/integrity_probes.jsonl`
+- `soak/probes/service_samples.jsonl`
 
 ## Operator decisions (if any)
 - Confirm final desired steady-state if not ComfyUI-primary: leave Laguna production LIVE instead of re-parking.

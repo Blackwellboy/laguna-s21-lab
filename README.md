@@ -25,6 +25,7 @@ to the number.
 | `sweep/` | `LAGUNA_TUNING_SWEEP_20260723.md` (protocol + full grid + analysis) and `cells/` — all 21 raw per-cell JSONs |
 | `longctx/` | Cold long-context probe script + raw JSON (nonce defeats prefix cache from position 0) |
 | `soak/` | 12h soak: driver, runner, score/restore scripts, results report, and `logs/` with raw `turns.jsonl`, `sessions.jsonl`, `incidents.jsonl`, `integrity_probes.jsonl`, `service_samples.jsonl` |
+| `gate-study/` | Thinking-gate suppression study: 450 turns, 10 system-prompt conditions, criteria-loop probe — driver, writeup, raw per-turn JSONL |
 | `head-to-head/` | Qwen 3.6 35B-A3B vs Laguna S 2.1 on identical harnesses (2026-07-27): full-protocol speed bench, 16-task intel suite in three thinking configs, scored agentic loop, single-shot generation arm |
 | `quant-floor/` | 0xSero Laguna Hybrid 3.25bpw verification vs our published NVFP4 (2026-07-27): compat gate, 16-task intel suite, no-spec speed bench |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
@@ -94,6 +95,26 @@ DFlash, so speed columns are not like-for-like and are labeled as such).
 2. **"Zero loops" is scoped**: zero unbounded-generation loops *while the
    thinking gate barely opened*. It is not a claim about thinking-heavy
    workloads.
+
+*(Caveat 1 was subsequently resolved by the gate study below: the parser
+provably emits reasoning on this stack, so the soak's ~0.1% was real
+suppression.)*
+
+**Thinking-gate suppression study (2026-07-27, `gate-study/`):** 450 logged
+turns, 10 system-prompt conditions x 4 task types, plus a criteria-loop probe.
+The gate is two-dimensional: firing probability is a persona-x-task
+conjunction, non-monotonic in prompt length (a dense 10-rule block suppresses
+to 3/40, harder than the much longer full agent prompt at 24/40), while
+reasoning LENGTH collapses monotonically with dose (median est. thinking
+tokens: 3536 bare, 745 agent prompt, 282 with tool schemas). The named
+senior-engineer persona zeroes code specifically (0/10; math stays 10/10).
+Summarization never fired in 105 attempts under any condition. Explicit
+"think step by step" does not override (23/40 vs 24/40). Criteria-loop probe:
+bulleted acceptance criteria mostly suppress bare (1/10) but under the full
+agent prompt flip to 10/10 firing with 7/10 hard verify-loops to the 4096
+ceiling — the production prompt is half the trigger. Open gap: single-turn
+agent prompts fire 60-72% vs the soak's ~0.1%, so context mass / turn depth
+likely does the rest (untested).
 
 ## Reproducing
 
@@ -220,7 +241,7 @@ Support funds hardware time, longer soaks, and more models characterized, with
 the results published the same way as everything above.
 
 - **GitHub Sponsors:** <https://github.com/sponsors/Blackwellboy>
-- **Buy Me a Coffee:** coming soon
+- **Buy Me a Coffee:** <https://buymeacoffee.com/blackwellboy>
 - **Crypto:**
 
 BTC:

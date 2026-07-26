@@ -1,9 +1,5 @@
 # LAGUNA TUNING SWEEP — 2026-07-23/24 (Hermes / spark-host)
 
-**TEMPORARY HANDOFF — NOT CANONICAL.** Canonical truth lives in `<CONTROL_PLANE>`; staged
-state-doc text is in `LAGUNA_SWEEP_STATEDOC_PATCH_20260723.md` (apply only after
-remediation batch 1 completes).
-
 ## Executive summary
 
 - **Production default promoted: DFlash K=7, max-num-seqs=32**, with 12 GiB KV
@@ -15,7 +11,7 @@ remediation batch 1 completes).
   differences: prefix caching ON, chunked prefill ON, 12 GiB KV pin.
 - **DEEP_GEMM discrepancy CLOSED: INERT** on this build/path (source + measured).
 - Cold long-context on the final config: see §6 (honest cold-prefill numbers).
-- Live lane state at session start: Grok HAD restored the interactive profile
+- Live lane state at session start: a prior session had restored the interactive profile
   (restart 2026-07-23 13:08:28) — the restore was real, only unrecorded.
 
 ## 0. Phase 0 — live-state probe (2026-07-23 13:30 AEST)
@@ -63,7 +59,7 @@ agent-serving differentiator). Median cold load per restart: **614 s**.
 Readings: **K=7 peaks at every seqs level; K≥8 collapses** (per-position DFlash
 acceptance ~0 past position 3; TTFT also degrades ~50 ms). Failures: none.
 K6s4 (prior production) re-measured at 26.0/39.35 — consistent with the earlier
-Grok-audit numbers (21.75 overall on the 4-category matrix incl. prose; 38.3
+prior-audit numbers (21.75 overall on the 4-category matrix incl. prose; 38.3
 code), i.e. good cross-session reproducibility.
 
 ## 2. Top-3 full Hermes bench v1 (all categories, depths 1K–64K, 3 runs)
@@ -104,7 +100,7 @@ and holds the grid's best c=4 aggregate (61.65); K7s8 takes tool/prose narrowly
 - Measured: full-bench deltas within run noise (above).
 - Policy: keep `VLLM_USE_DEEP_GEMM=0` in recipe/unit for explicitness (also
   skips loading an unused vendored module). Historical note: boots from the
-  Grok era ran with it effectively default-on — immaterial to those numbers.
+  prior-audit era ran with it effectively default-on — immaterial to those numbers.
 
 ## 4. Final production config (live since 2026-07-24 ~00:40 AEST)
 
@@ -171,7 +167,7 @@ Readings:
 - Short-bench cells are 2-run medians on a 3-category subset — good for
   ranking, not for publication headline numbers; publication numbers should
   come from the full-bench table (§2) and the smoke (§4).
-- Prior Grok-audit A/B confound noted for the record: its "r0b0tlab profile"
+- Prior prior-audit A/B confound noted for the record: its "r0b0tlab profile"
   also disabled prefix caching, so K/seqs was confounded with cache state.
   This sweep held prefix caching ON everywhere.
 - Raw data: `cells/*.json` (+ per-cell run logs + DFlash acceptance log

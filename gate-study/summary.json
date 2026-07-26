@@ -1,0 +1,292 @@
+{
+ "parser_check": {
+  "fired": 15,
+  "n": 20,
+  "rate": 0.75
+ },
+ "grid": {
+  "C0": {
+   "fired": 30,
+   "n": 40,
+   "rate": 0.75,
+   "per_task": {
+    "math": {
+     "fired": 10,
+     "n": 10
+    },
+    "code": {
+     "fired": 10,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 10,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 3536,
+   "length_finishes": 29
+  },
+  "C1": {
+   "fired": 24,
+   "n": 40,
+   "rate": 0.6,
+   "per_task": {
+    "math": {
+     "fired": 10,
+     "n": 10
+    },
+    "code": {
+     "fired": 8,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 6,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 3154,
+   "length_finishes": 21
+  },
+  "C2": {
+   "fired": 16,
+   "n": 40,
+   "rate": 0.4,
+   "per_task": {
+    "math": {
+     "fired": 10,
+     "n": 10
+    },
+    "code": {
+     "fired": 6,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 0,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 2219,
+   "length_finishes": 8
+  },
+  "C3": {
+   "fired": 25,
+   "n": 40,
+   "rate": 0.625,
+   "per_task": {
+    "math": {
+     "fired": 10,
+     "n": 10
+    },
+    "code": {
+     "fired": 8,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 7,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 3069,
+   "length_finishes": 23
+  },
+  "C4": {
+   "fired": 18,
+   "n": 40,
+   "rate": 0.45,
+   "per_task": {
+    "math": {
+     "fired": 10,
+     "n": 10
+    },
+    "code": {
+     "fired": 0,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 8,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 2390,
+   "length_finishes": 16
+  },
+  "C5": {
+   "fired": 9,
+   "n": 40,
+   "rate": 0.225,
+   "per_task": {
+    "math": {
+     "fired": 9,
+     "n": 10
+    },
+    "code": {
+     "fired": 0,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 0,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 1735,
+   "length_finishes": 4
+  },
+  "C6": {
+   "fired": 3,
+   "n": 40,
+   "rate": 0.075,
+   "per_task": {
+    "math": {
+     "fired": 3,
+     "n": 10
+    },
+    "code": {
+     "fired": 0,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 0,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 325,
+   "length_finishes": 0
+  },
+  "C7": {
+   "fired": 24,
+   "n": 40,
+   "rate": 0.6,
+   "per_task": {
+    "math": {
+     "fired": 10,
+     "n": 10
+    },
+    "code": {
+     "fired": 10,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 4,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 745,
+   "length_finishes": 5
+  },
+  "C8": {
+   "fired": 29,
+   "n": 40,
+   "rate": 0.725,
+   "per_task": {
+    "math": {
+     "fired": 10,
+     "n": 10
+    },
+    "code": {
+     "fired": 10,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 9,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 282,
+   "length_finishes": 2
+  },
+  "C9": {
+   "fired": 23,
+   "n": 40,
+   "rate": 0.575,
+   "per_task": {
+    "math": {
+     "fired": 10,
+     "n": 10
+    },
+    "code": {
+     "fired": 10,
+     "n": 10
+    },
+    "reasoning": {
+     "fired": 3,
+     "n": 10
+    },
+    "summary": {
+     "fired": 0,
+     "n": 10
+    }
+   },
+   "errors": 0,
+   "median_thinking_tokens_fired": 1028,
+   "length_finishes": 5
+  }
+ },
+ "criteria": {
+  "C0": {
+   "fired": 1,
+   "n": 10,
+   "rate": 0.1,
+   "length_finishes": 1,
+   "loop_events": 1
+  },
+  "C4": {
+   "fired": 1,
+   "n": 10,
+   "rate": 0.1,
+   "length_finishes": 1,
+   "loop_events": 1
+  },
+  "C7": {
+   "fired": 10,
+   "n": 10,
+   "rate": 1.0,
+   "length_finishes": 8,
+   "loop_events": 7
+  }
+ }
+}

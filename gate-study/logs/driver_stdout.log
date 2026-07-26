@@ -1,0 +1,456 @@
+[2026-07-26T04:03:43.837238+00:00] gate study start endpoint=http://localhost:8000/v1
+[2026-07-26T04:05:14.130849+00:00] parser_check math 0 fired=True fr=length
+[2026-07-26T04:06:47.963873+00:00] parser_check math 1 fired=True fr=length
+[2026-07-26T04:08:18.987331+00:00] parser_check math 2 fired=True fr=length
+[2026-07-26T04:09:48.360223+00:00] parser_check math 3 fired=True fr=length
+[2026-07-26T04:11:07.342208+00:00] parser_check math 4 fired=True fr=length
+[2026-07-26T04:13:11.208535+00:00] parser_check code 0 fired=True fr=length
+[2026-07-26T04:15:18.317013+00:00] parser_check code 1 fired=True fr=length
+[2026-07-26T04:17:21.317652+00:00] parser_check code 2 fired=True fr=length
+[2026-07-26T04:19:34.865443+00:00] parser_check code 3 fired=True fr=length
+[2026-07-26T04:21:46.023659+00:00] parser_check code 4 fired=True fr=length
+[2026-07-26T04:23:44.888123+00:00] parser_check reasoning 0 fired=True fr=length
+[2026-07-26T04:25:51.069632+00:00] parser_check reasoning 1 fired=True fr=length
+[2026-07-26T04:27:48.826447+00:00] parser_check reasoning 2 fired=True fr=length
+[2026-07-26T04:29:39.684123+00:00] parser_check reasoning 3 fired=True fr=length
+[2026-07-26T04:31:39.678522+00:00] parser_check reasoning 4 fired=True fr=length
+[2026-07-26T04:31:45.172575+00:00] parser_check summary 0 fired=False fr=stop
+[2026-07-26T04:31:50.512219+00:00] parser_check summary 1 fired=False fr=stop
+[2026-07-26T04:31:55.490267+00:00] parser_check summary 2 fired=False fr=stop
+[2026-07-26T04:31:58.939644+00:00] parser_check summary 3 fired=False fr=stop
+[2026-07-26T04:32:05.089694+00:00] parser_check summary 4 fired=False fr=stop
+[2026-07-26T04:32:05.089744+00:00] PARSER CHECK: fired 15/20
+[2026-07-26T04:32:05.090215+00:00] PARSER CHECK FAILED (<90% bare-prompt firing) — STOPPING before grid per protocol
+[2026-07-26T04:34:20.556838+00:00] gate study start endpoint=http://localhost:8000/v1
+[2026-07-26T04:34:20.556870+00:00] SKIP_PARSER=1 — parser check already done (15/20, divergence report on file); going to grid
+[2026-07-26T04:35:47.850544+00:00] grid C0 math 0 ok=True fired=True rtok~2406 fr=length lat=87.293
+[2026-07-26T04:37:06.970744+00:00] grid C0 math 1 ok=True fired=True rtok~1947 fr=length lat=79.12
+[2026-07-26T04:38:38.975367+00:00] grid C0 math 2 ok=True fired=True rtok~2349 fr=length lat=92.004
+[2026-07-26T04:40:11.610177+00:00] grid C0 math 3 ok=True fired=True rtok~2505 fr=length lat=92.632
+[2026-07-26T04:41:43.985158+00:00] grid C0 math 4 ok=True fired=True rtok~2659 fr=length lat=92.373
+[2026-07-26T04:43:10.401051+00:00] grid C0 math 5 ok=True fired=True rtok~2212 fr=length lat=86.415
+[2026-07-26T04:44:36.463082+00:00] grid C0 math 6 ok=True fired=True rtok~2264 fr=length lat=86.059
+[2026-07-26T04:45:46.915128+00:00] grid C0 math 7 ok=True fired=True rtok~1641 fr=stop lat=70.45
+[2026-07-26T04:47:13.908423+00:00] grid C0 math 8 ok=True fired=True rtok~2358 fr=length lat=86.993
+[2026-07-26T04:48:39.545815+00:00] grid C0 math 9 ok=True fired=True rtok~2471 fr=length lat=85.637
+[2026-07-26T04:50:50.021464+00:00] grid C0 code 0 ok=True fired=True rtok~3643 fr=length lat=130.475
+[2026-07-26T04:53:07.829816+00:00] grid C0 code 1 ok=True fired=True rtok~3678 fr=length lat=137.808
+[2026-07-26T04:55:19.608054+00:00] grid C0 code 2 ok=True fired=True rtok~3536 fr=length lat=131.778
+[2026-07-26T04:57:22.548973+00:00] grid C0 code 3 ok=True fired=True rtok~3417 fr=length lat=122.941
+[2026-07-26T04:59:39.277453+00:00] grid C0 code 4 ok=True fired=True rtok~3535 fr=length lat=136.728
+[2026-07-26T05:01:47.346037+00:00] grid C0 code 5 ok=True fired=True rtok~3374 fr=length lat=128.068
+[2026-07-26T05:04:16.628949+00:00] grid C0 code 6 ok=True fired=True rtok~3613 fr=length lat=149.283
+[2026-07-26T05:06:27.935930+00:00] grid C0 code 7 ok=True fired=True rtok~3429 fr=length lat=131.307
+[2026-07-26T05:08:47.000008+00:00] grid C0 code 8 ok=True fired=True rtok~3558 fr=length lat=139.064
+[2026-07-26T05:11:00.319835+00:00] grid C0 code 9 ok=True fired=True rtok~3512 fr=length lat=133.32
+[2026-07-26T05:13:00.600575+00:00] grid C0 reasoning 0 ok=True fired=True rtok~3598 fr=length lat=120.278
+[2026-07-26T05:14:58.108411+00:00] grid C0 reasoning 1 ok=True fired=True rtok~3562 fr=length lat=117.506
+[2026-07-26T05:16:55.516694+00:00] grid C0 reasoning 2 ok=True fired=True rtok~3698 fr=length lat=117.408
+[2026-07-26T05:18:57.375343+00:00] grid C0 reasoning 3 ok=True fired=True rtok~3539 fr=length lat=121.858
+[2026-07-26T05:20:58.342099+00:00] grid C0 reasoning 4 ok=True fired=True rtok~3627 fr=length lat=120.966
+[2026-07-26T05:22:55.629080+00:00] grid C0 reasoning 5 ok=True fired=True rtok~3596 fr=length lat=117.286
+[2026-07-26T05:25:08.264125+00:00] grid C0 reasoning 6 ok=True fired=True rtok~3573 fr=length lat=132.634
+[2026-07-26T05:27:10.877420+00:00] grid C0 reasoning 7 ok=True fired=True rtok~3701 fr=length lat=122.613
+[2026-07-26T05:29:08.682372+00:00] grid C0 reasoning 8 ok=True fired=True rtok~3573 fr=length lat=117.805
+[2026-07-26T05:31:07.488752+00:00] grid C0 reasoning 9 ok=True fired=True rtok~3610 fr=length lat=118.806
+[2026-07-26T05:31:12.870723+00:00] grid C0 summary 0 ok=True fired=False rtok~0 fr=stop lat=5.382
+[2026-07-26T05:31:15.910149+00:00] grid C0 summary 1 ok=True fired=False rtok~0 fr=stop lat=3.039
+[2026-07-26T05:31:19.293958+00:00] grid C0 summary 2 ok=True fired=False rtok~0 fr=stop lat=3.383
+[2026-07-26T05:31:26.080892+00:00] grid C0 summary 3 ok=True fired=False rtok~0 fr=stop lat=6.787
+[2026-07-26T05:31:31.690456+00:00] grid C0 summary 4 ok=True fired=False rtok~0 fr=stop lat=5.609
+[2026-07-26T05:31:37.503526+00:00] grid C0 summary 5 ok=True fired=False rtok~0 fr=stop lat=5.813
+[2026-07-26T05:31:43.012649+00:00] grid C0 summary 6 ok=True fired=False rtok~0 fr=stop lat=5.509
+[2026-07-26T05:31:45.372538+00:00] grid C0 summary 7 ok=True fired=False rtok~0 fr=stop lat=2.36
+[2026-07-26T05:31:50.772706+00:00] grid C0 summary 8 ok=True fired=False rtok~0 fr=stop lat=5.4
+[2026-07-26T05:31:54.837396+00:00] grid C0 summary 9 ok=True fired=False rtok~0 fr=stop lat=4.064
+[2026-07-26T05:33:15.261242+00:00] grid C1 math 0 ok=True fired=True rtok~2082 fr=length lat=80.424
+[2026-07-26T05:35:00.223690+00:00] grid C1 math 1 ok=True fired=True rtok~2477 fr=length lat=104.962
+[2026-07-26T05:36:28.345961+00:00] grid C1 math 2 ok=True fired=True rtok~2374 fr=length lat=88.122
+[2026-07-26T05:37:57.684102+00:00] grid C1 math 3 ok=True fired=True rtok~2307 fr=length lat=89.338
+[2026-07-26T05:39:18.744922+00:00] grid C1 math 4 ok=True fired=True rtok~2018 fr=length lat=81.061
+[2026-07-26T05:40:44.707252+00:00] grid C1 math 5 ok=True fired=True rtok~2114 fr=stop lat=85.962
+[2026-07-26T05:42:17.381109+00:00] grid C1 math 6 ok=True fired=True rtok~2407 fr=length lat=92.674
+[2026-07-26T05:43:41.925889+00:00] grid C1 math 7 ok=True fired=True rtok~2221 fr=length lat=84.544
+[2026-07-26T05:45:06.437774+00:00] grid C1 math 8 ok=True fired=True rtok~2256 fr=length lat=84.512
+[2026-07-26T05:46:36.702231+00:00] grid C1 math 9 ok=True fired=True rtok~2418 fr=length lat=90.264
+[2026-07-26T05:48:11.031643+00:00] grid C1 code 0 ok=True fired=True rtok~3195 fr=length lat=94.329
+[2026-07-26T05:50:19.390639+00:00] grid C1 code 1 ok=True fired=True rtok~3513 fr=length lat=128.359
+[2026-07-26T05:52:26.110169+00:00] grid C1 code 2 ok=True fired=True rtok~3154 fr=length lat=126.719
+[2026-07-26T05:54:24.365362+00:00] grid C1 code 3 ok=True fired=True rtok~3311 fr=length lat=118.255
+[2026-07-26T05:54:35.489733+00:00] grid C1 code 4 ok=True fired=False rtok~0 fr=stop lat=11.124
+[2026-07-26T05:56:41.058293+00:00] grid C1 code 5 ok=True fired=True rtok~3449 fr=length lat=125.568
+[2026-07-26T05:58:46.470106+00:00] grid C1 code 6 ok=True fired=True rtok~3481 fr=length lat=125.411
+[2026-07-26T06:00:50.011574+00:00] grid C1 code 7 ok=True fired=True rtok~3474 fr=length lat=123.541
+[2026-07-26T06:01:05.374113+00:00] grid C1 code 8 ok=True fired=False rtok~0 fr=stop lat=15.362
+[2026-07-26T06:03:10.835888+00:00] grid C1 code 9 ok=True fired=True rtok~3338 fr=length lat=125.461
+[2026-07-26T06:03:30.297516+00:00] grid C1 reasoning 0 ok=True fired=False rtok~0 fr=stop lat=19.461
+[2026-07-26T06:03:47.016901+00:00] grid C1 reasoning 1 ok=True fired=False rtok~0 fr=stop lat=16.719
+[2026-07-26T06:05:47.965827+00:00] grid C1 reasoning 2 ok=True fired=True rtok~3639 fr=length lat=120.949
+[2026-07-26T06:07:36.425787+00:00] grid C1 reasoning 3 ok=True fired=True rtok~2784 fr=stop lat=108.46
+[2026-07-26T06:09:33.079455+00:00] grid C1 reasoning 4 ok=True fired=True rtok~3561 fr=length lat=116.653
+[2026-07-26T06:11:28.660203+00:00] grid C1 reasoning 5 ok=True fired=True rtok~3584 fr=length lat=115.58
+[2026-07-26T06:11:53.093619+00:00] grid C1 reasoning 6 ok=True fired=False rtok~0 fr=stop lat=24.433
+[2026-07-26T06:12:12.545861+00:00] grid C1 reasoning 7 ok=True fired=False rtok~0 fr=stop lat=19.452
+[2026-07-26T06:14:05.267980+00:00] grid C1 reasoning 8 ok=True fired=True rtok~2979 fr=stop lat=112.722
+[2026-07-26T06:16:06.056014+00:00] grid C1 reasoning 9 ok=True fired=True rtok~3663 fr=length lat=120.787
+[2026-07-26T06:16:11.839282+00:00] grid C1 summary 0 ok=True fired=False rtok~0 fr=stop lat=5.783
+[2026-07-26T06:16:17.005571+00:00] grid C1 summary 1 ok=True fired=False rtok~0 fr=stop lat=5.166
+[2026-07-26T06:16:22.415203+00:00] grid C1 summary 2 ok=True fired=False rtok~0 fr=stop lat=5.409
+[2026-07-26T06:16:27.066458+00:00] grid C1 summary 3 ok=True fired=False rtok~0 fr=stop lat=4.651
+[2026-07-26T06:16:32.891902+00:00] grid C1 summary 4 ok=True fired=False rtok~0 fr=stop lat=5.825
+[2026-07-26T06:16:35.838774+00:00] grid C1 summary 5 ok=True fired=False rtok~0 fr=stop lat=2.947
+[2026-07-26T06:16:41.065761+00:00] grid C1 summary 6 ok=True fired=False rtok~0 fr=stop lat=5.227
+[2026-07-26T06:16:45.553963+00:00] grid C1 summary 7 ok=True fired=False rtok~0 fr=stop lat=4.488
+[2026-07-26T06:16:50.119374+00:00] grid C1 summary 8 ok=True fired=False rtok~0 fr=stop lat=4.565
+[2026-07-26T06:16:56.187660+00:00] grid C1 summary 9 ok=True fired=False rtok~0 fr=stop lat=6.068
+[2026-07-26T06:18:19.806049+00:00] grid C2 math 0 ok=True fired=True rtok~2313 fr=length lat=83.618
+[2026-07-26T06:19:43.146823+00:00] grid C2 math 1 ok=True fired=True rtok~2233 fr=length lat=83.34
+[2026-07-26T06:21:09.193112+00:00] grid C2 math 2 ok=True fired=True rtok~2219 fr=length lat=86.046
+[2026-07-26T06:22:02.697051+00:00] grid C2 math 3 ok=True fired=True rtok~1162 fr=stop lat=53.504
+[2026-07-26T06:22:23.433577+00:00] grid C2 math 4 ok=True fired=True rtok~378 fr=stop lat=20.736
+[2026-07-26T06:22:46.681069+00:00] grid C2 math 5 ok=True fired=True rtok~433 fr=stop lat=23.247
+[2026-07-26T06:24:16.670539+00:00] grid C2 math 6 ok=True fired=True rtok~2579 fr=length lat=89.989
+[2026-07-26T06:25:44.828962+00:00] grid C2 math 7 ok=True fired=True rtok~2472 fr=length lat=88.158
+[2026-07-26T06:27:16.907506+00:00] grid C2 math 8 ok=True fired=True rtok~2412 fr=length lat=92.078
+[2026-07-26T06:27:32.126433+00:00] grid C2 math 9 ok=True fired=True rtok~197 fr=stop lat=15.219
+[2026-07-26T06:29:04.540739+00:00] grid C2 code 0 ok=True fired=True rtok~1971 fr=stop lat=92.414
+[2026-07-26T06:29:19.868935+00:00] grid C2 code 1 ok=True fired=False rtok~0 fr=stop lat=15.328
+[2026-07-26T06:30:52.179128+00:00] grid C2 code 2 ok=True fired=True rtok~1820 fr=stop lat=92.31
+[2026-07-26T06:31:24.616889+00:00] grid C2 code 3 ok=True fired=False rtok~0 fr=stop lat=32.437
+[2026-07-26T06:33:20.894797+00:00] grid C2 code 4 ok=True fired=True rtok~2972 fr=length lat=116.278
+[2026-07-26T06:33:56.564648+00:00] grid C2 code 5 ok=True fired=True rtok~704 fr=stop lat=35.67
+[2026-07-26T06:34:12.828393+00:00] grid C2 code 6 ok=True fired=False rtok~0 fr=stop lat=16.263
+[2026-07-26T06:36:19.517289+00:00] grid C2 code 7 ok=True fired=True rtok~3478 fr=length lat=126.689
+[2026-07-26T06:37:14.329750+00:00] grid C2 code 8 ok=True fired=True rtok~1072 fr=stop lat=54.812
+[2026-07-26T06:37:32.901306+00:00] grid C2 code 9 ok=True fired=False rtok~0 fr=stop lat=18.571
+[2026-07-26T06:37:49.682066+00:00] grid C2 reasoning 0 ok=True fired=False rtok~0 fr=stop lat=16.781
+[2026-07-26T06:38:07.830744+00:00] grid C2 reasoning 1 ok=True fired=False rtok~0 fr=stop lat=18.148
+[2026-07-26T06:38:22.658747+00:00] grid C2 reasoning 2 ok=True fired=False rtok~0 fr=stop lat=14.828
+[2026-07-26T06:38:44.401694+00:00] grid C2 reasoning 3 ok=True fired=False rtok~0 fr=stop lat=21.743
+[2026-07-26T06:39:05.279894+00:00] grid C2 reasoning 4 ok=True fired=False rtok~0 fr=stop lat=20.878
+[2026-07-26T06:39:23.697300+00:00] grid C2 reasoning 5 ok=True fired=False rtok~0 fr=stop lat=18.417
+[2026-07-26T06:39:45.400308+00:00] grid C2 reasoning 6 ok=True fired=False rtok~0 fr=stop lat=21.703
+[2026-07-26T06:40:11.924951+00:00] grid C2 reasoning 7 ok=True fired=False rtok~0 fr=stop lat=26.524
+[2026-07-26T06:40:32.747307+00:00] grid C2 reasoning 8 ok=True fired=False rtok~0 fr=stop lat=20.822
+[2026-07-26T06:40:50.851135+00:00] grid C2 reasoning 9 ok=True fired=False rtok~0 fr=stop lat=18.104
+[2026-07-26T06:40:56.634235+00:00] grid C2 summary 0 ok=True fired=False rtok~0 fr=stop lat=5.783
+[2026-07-26T06:41:01.941167+00:00] grid C2 summary 1 ok=True fired=False rtok~0 fr=stop lat=5.307
+[2026-07-26T06:41:07.246184+00:00] grid C2 summary 2 ok=True fired=False rtok~0 fr=stop lat=5.305
+[2026-07-26T06:41:12.688542+00:00] grid C2 summary 3 ok=True fired=False rtok~0 fr=stop lat=5.442
+[2026-07-26T06:41:18.334317+00:00] grid C2 summary 4 ok=True fired=False rtok~0 fr=stop lat=5.645
+[2026-07-26T06:41:24.161136+00:00] grid C2 summary 5 ok=True fired=False rtok~0 fr=stop lat=5.827
+[2026-07-26T06:41:29.369588+00:00] grid C2 summary 6 ok=True fired=False rtok~0 fr=stop lat=5.208
+[2026-07-26T06:41:32.982376+00:00] grid C2 summary 7 ok=True fired=False rtok~0 fr=stop lat=3.613
+[2026-07-26T06:41:40.030486+00:00] grid C2 summary 8 ok=True fired=False rtok~0 fr=stop lat=7.048
+[2026-07-26T06:41:44.615014+00:00] grid C2 summary 9 ok=True fired=False rtok~0 fr=stop lat=4.584
+[2026-07-26T06:43:07.286454+00:00] grid C3 math 0 ok=True fired=True rtok~2171 fr=length lat=82.671
+[2026-07-26T06:44:37.256689+00:00] grid C3 math 1 ok=True fired=True rtok~2430 fr=length lat=89.97
+[2026-07-26T06:46:04.091788+00:00] grid C3 math 2 ok=True fired=True rtok~2047 fr=length lat=86.835
+[2026-07-26T06:47:30.306180+00:00] grid C3 math 3 ok=True fired=True rtok~2351 fr=length lat=86.214
+[2026-07-26T06:48:55.807340+00:00] grid C3 math 4 ok=True fired=True rtok~2297 fr=length lat=85.498
+[2026-07-26T06:50:19.593784+00:00] grid C3 math 5 ok=True fired=True rtok~2169 fr=length lat=83.785
+[2026-07-26T06:51:48.315929+00:00] grid C3 math 6 ok=True fired=True rtok~2338 fr=length lat=88.722
+[2026-07-26T06:53:16.792819+00:00] grid C3 math 7 ok=True fired=True rtok~2373 fr=length lat=88.477
+[2026-07-26T06:54:44.060645+00:00] grid C3 math 8 ok=True fired=True rtok~2293 fr=length lat=87.268
+[2026-07-26T06:56:10.100214+00:00] grid C3 math 9 ok=True fired=True rtok~2220 fr=length lat=86.039
+[2026-07-26T06:58:07.198954+00:00] grid C3 code 0 ok=True fired=True rtok~3272 fr=length lat=117.098
+[2026-07-26T07:00:19.675199+00:00] grid C3 code 1 ok=True fired=True rtok~3301 fr=length lat=132.476
+[2026-07-26T07:00:38.008943+00:00] grid C3 code 2 ok=True fired=False rtok~0 fr=stop lat=18.333
+[2026-07-26T07:02:39.323898+00:00] grid C3 code 3 ok=True fired=True rtok~2783 fr=stop lat=121.315
+[2026-07-26T07:04:43.836848+00:00] grid C3 code 4 ok=True fired=True rtok~3244 fr=length lat=124.512
+[2026-07-26T07:06:45.534976+00:00] grid C3 code 5 ok=True fired=True rtok~3383 fr=length lat=121.698
+[2026-07-26T07:09:05.942891+00:00] grid C3 code 6 ok=True fired=True rtok~3069 fr=length lat=140.408
+[2026-07-26T07:09:23.853432+00:00] grid C3 code 7 ok=True fired=False rtok~0 fr=stop lat=17.91
+[2026-07-26T07:11:20.257763+00:00] grid C3 code 8 ok=True fired=True rtok~3668 fr=length lat=116.404
+[2026-07-26T07:13:19.733926+00:00] grid C3 code 9 ok=True fired=True rtok~3359 fr=length lat=119.476
+[2026-07-26T07:15:15.587651+00:00] grid C3 reasoning 0 ok=True fired=True rtok~3592 fr=length lat=115.853
+[2026-07-26T07:16:17.303753+00:00] grid C3 reasoning 1 ok=True fired=True rtok~1289 fr=stop lat=61.716
+[2026-07-26T07:16:42.194154+00:00] grid C3 reasoning 2 ok=True fired=False rtok~0 fr=stop lat=24.89
+[2026-07-26T07:18:46.215534+00:00] grid C3 reasoning 3 ok=True fired=True rtok~3676 fr=length lat=124.021
+[2026-07-26T07:19:11.971866+00:00] grid C3 reasoning 4 ok=True fired=False rtok~0 fr=stop lat=25.756
+[2026-07-26T07:20:59.031313+00:00] grid C3 reasoning 5 ok=True fired=True rtok~3649 fr=length lat=107.059
+[2026-07-26T07:21:19.205199+00:00] grid C3 reasoning 6 ok=True fired=False rtok~0 fr=stop lat=20.174
+[2026-07-26T07:23:08.303298+00:00] grid C3 reasoning 7 ok=True fired=True rtok~3650 fr=length lat=109.095
+[2026-07-26T07:25:04.781005+00:00] grid C3 reasoning 8 ok=True fired=True rtok~3428 fr=length lat=116.476
+[2026-07-26T07:27:00.549781+00:00] grid C3 reasoning 9 ok=True fired=True rtok~3548 fr=length lat=115.768
+[2026-07-26T07:27:04.750962+00:00] grid C3 summary 0 ok=True fired=False rtok~0 fr=stop lat=4.201
+[2026-07-26T07:27:10.502614+00:00] grid C3 summary 1 ok=True fired=False rtok~0 fr=stop lat=5.751
+[2026-07-26T07:27:12.596984+00:00] grid C3 summary 2 ok=True fired=False rtok~0 fr=stop lat=2.094
+[2026-07-26T07:27:18.938314+00:00] grid C3 summary 3 ok=True fired=False rtok~0 fr=stop lat=6.341
+[2026-07-26T07:27:23.918756+00:00] grid C3 summary 4 ok=True fired=False rtok~0 fr=stop lat=4.98
+[2026-07-26T07:27:28.672637+00:00] grid C3 summary 5 ok=True fired=False rtok~0 fr=stop lat=4.754
+[2026-07-26T07:27:33.594997+00:00] grid C3 summary 6 ok=True fired=False rtok~0 fr=stop lat=4.922
+[2026-07-26T07:27:39.515131+00:00] grid C3 summary 7 ok=True fired=False rtok~0 fr=stop lat=5.92
+[2026-07-26T07:27:43.159814+00:00] grid C3 summary 8 ok=True fired=False rtok~0 fr=stop lat=3.644
+[2026-07-26T07:27:48.070009+00:00] grid C3 summary 9 ok=True fired=False rtok~0 fr=stop lat=4.91
+[2026-07-26T07:29:05.150877+00:00] grid C4 math 0 ok=True fired=True rtok~1850 fr=stop lat=77.081
+[2026-07-26T07:30:32.074948+00:00] grid C4 math 1 ok=True fired=True rtok~2282 fr=length lat=86.924
+[2026-07-26T07:32:12.730466+00:00] grid C4 math 2 ok=True fired=True rtok~2390 fr=length lat=100.655
+[2026-07-26T07:33:47.767858+00:00] grid C4 math 3 ok=True fired=True rtok~2646 fr=length lat=95.037
+[2026-07-26T07:35:09.330295+00:00] grid C4 math 4 ok=True fired=True rtok~2139 fr=length lat=81.562
+[2026-07-26T07:36:37.639933+00:00] grid C4 math 5 ok=True fired=True rtok~2228 fr=length lat=88.309
+[2026-07-26T07:38:00.629950+00:00] grid C4 math 6 ok=True fired=True rtok~2279 fr=length lat=82.99
+[2026-07-26T07:39:25.208561+00:00] grid C4 math 7 ok=True fired=True rtok~2344 fr=length lat=84.578
+[2026-07-26T07:40:50.630864+00:00] grid C4 math 8 ok=True fired=True rtok~2121 fr=length lat=85.418
+[2026-07-26T07:42:10.084775+00:00] grid C4 math 9 ok=True fired=True rtok~2150 fr=length lat=79.453
+[2026-07-26T07:42:24.422804+00:00] grid C4 code 0 ok=True fired=False rtok~0 fr=stop lat=14.338
+[2026-07-26T07:42:45.085554+00:00] grid C4 code 1 ok=True fired=False rtok~0 fr=stop lat=20.663
+[2026-07-26T07:42:58.844340+00:00] grid C4 code 2 ok=True fired=False rtok~0 fr=stop lat=13.758
+[2026-07-26T07:43:10.959344+00:00] grid C4 code 3 ok=True fired=False rtok~0 fr=stop lat=12.115
+[2026-07-26T07:43:26.310025+00:00] grid C4 code 4 ok=True fired=False rtok~0 fr=stop lat=15.35
+[2026-07-26T07:43:41.995396+00:00] grid C4 code 5 ok=True fired=False rtok~0 fr=stop lat=15.685
+[2026-07-26T07:43:58.741779+00:00] grid C4 code 6 ok=True fired=False rtok~0 fr=stop lat=16.746
+[2026-07-26T07:44:12.827651+00:00] grid C4 code 7 ok=True fired=False rtok~0 fr=stop lat=14.086
+[2026-07-26T07:44:27.790645+00:00] grid C4 code 8 ok=True fired=False rtok~0 fr=stop lat=14.963
+[2026-07-26T07:44:47.407627+00:00] grid C4 code 9 ok=True fired=False rtok~0 fr=stop lat=19.617
+[2026-07-26T07:46:51.065132+00:00] grid C4 reasoning 0 ok=True fired=True rtok~3717 fr=length lat=123.657
+[2026-07-26T07:47:09.502225+00:00] grid C4 reasoning 1 ok=True fired=False rtok~0 fr=stop lat=18.437
+[2026-07-26T07:48:06.078984+00:00] grid C4 reasoning 2 ok=True fired=True rtok~1151 fr=stop lat=56.577
+[2026-07-26T07:49:58.392679+00:00] grid C4 reasoning 3 ok=True fired=True rtok~3490 fr=length lat=112.311
+[2026-07-26T07:51:56.484260+00:00] grid C4 reasoning 4 ok=True fired=True rtok~3634 fr=length lat=118.09
+[2026-07-26T07:53:54.483866+00:00] grid C4 reasoning 5 ok=True fired=True rtok~3615 fr=length lat=117.999
+[2026-07-26T07:55:49.300721+00:00] grid C4 reasoning 6 ok=True fired=True rtok~3632 fr=length lat=114.814
+[2026-07-26T07:56:08.360608+00:00] grid C4 reasoning 7 ok=True fired=False rtok~0 fr=stop lat=19.058
+[2026-07-26T07:58:04.226898+00:00] grid C4 reasoning 8 ok=True fired=True rtok~3642 fr=length lat=115.866
+[2026-07-26T07:59:57.737582+00:00] grid C4 reasoning 9 ok=True fired=True rtok~3615 fr=length lat=113.508
+[2026-07-26T08:00:02.625370+00:00] grid C4 summary 0 ok=True fired=False rtok~0 fr=stop lat=4.886
+[2026-07-26T08:00:07.229682+00:00] grid C4 summary 1 ok=True fired=False rtok~0 fr=stop lat=4.604
+[2026-07-26T08:00:13.352164+00:00] grid C4 summary 2 ok=True fired=False rtok~0 fr=stop lat=6.122
+[2026-07-26T08:00:16.929717+00:00] grid C4 summary 3 ok=True fired=False rtok~0 fr=stop lat=3.577
+[2026-07-26T08:00:22.214992+00:00] grid C4 summary 4 ok=True fired=False rtok~0 fr=stop lat=5.285
+[2026-07-26T08:00:25.060625+00:00] grid C4 summary 5 ok=True fired=False rtok~0 fr=stop lat=2.845
+[2026-07-26T08:00:30.970490+00:00] grid C4 summary 6 ok=True fired=False rtok~0 fr=stop lat=5.91
+[2026-07-26T08:00:36.515016+00:00] grid C4 summary 7 ok=True fired=False rtok~0 fr=stop lat=5.544
+[2026-07-26T08:00:41.606536+00:00] grid C4 summary 8 ok=True fired=False rtok~0 fr=stop lat=5.091
+[2026-07-26T08:00:46.861730+00:00] grid C4 summary 9 ok=True fired=False rtok~0 fr=stop lat=5.255
+[2026-07-26T08:02:14.910047+00:00] grid C5 math 0 ok=True fired=True rtok~2274 fr=length lat=88.048
+[2026-07-26T08:03:22.460734+00:00] grid C5 math 1 ok=True fired=True rtok~2202 fr=length lat=67.55
+[2026-07-26T08:04:03.701038+00:00] grid C5 math 2 ok=True fired=True rtok~833 fr=stop lat=41.24
+[2026-07-26T08:04:32.185331+00:00] grid C5 math 3 ok=True fired=True rtok~635 fr=stop lat=28.484
+[2026-07-26T08:05:49.424719+00:00] grid C5 math 4 ok=True fired=True rtok~1735 fr=stop lat=77.239
+[2026-07-26T08:07:18.617554+00:00] grid C5 math 5 ok=True fired=True rtok~2390 fr=length lat=89.193
+[2026-07-26T08:08:18.296863+00:00] grid C5 math 6 ok=True fired=True rtok~1251 fr=stop lat=59.679
+[2026-07-26T08:09:09.263054+00:00] grid C5 math 7 ok=True fired=True rtok~1129 fr=stop lat=50.966
+[2026-07-26T08:09:15.314145+00:00] grid C5 math 8 ok=True fired=False rtok~0 fr=stop lat=6.051
+[2026-07-26T08:10:37.705145+00:00] grid C5 math 9 ok=True fired=True rtok~2044 fr=length lat=82.391
+[2026-07-26T08:10:56.792308+00:00] grid C5 code 0 ok=True fired=False rtok~0 fr=stop lat=19.087
+[2026-07-26T08:11:01.591516+00:00] grid C5 code 1 ok=True fired=False rtok~0 fr=stop lat=4.799
+[2026-07-26T08:11:18.852589+00:00] grid C5 code 2 ok=True fired=False rtok~0 fr=stop lat=17.261
+[2026-07-26T08:11:35.151344+00:00] grid C5 code 3 ok=True fired=False rtok~0 fr=stop lat=16.298
+[2026-07-26T08:11:56.184150+00:00] grid C5 code 4 ok=True fired=False rtok~0 fr=stop lat=21.033
+[2026-07-26T08:12:19.387524+00:00] grid C5 code 5 ok=True fired=False rtok~0 fr=stop lat=23.203
+[2026-07-26T08:12:34.066171+00:00] grid C5 code 6 ok=True fired=False rtok~0 fr=stop lat=14.678
+[2026-07-26T08:12:50.392718+00:00] grid C5 code 7 ok=True fired=False rtok~0 fr=stop lat=16.326
+[2026-07-26T08:12:58.845775+00:00] grid C5 code 8 ok=True fired=False rtok~0 fr=stop lat=8.453
+[2026-07-26T08:13:05.190295+00:00] grid C5 code 9 ok=True fired=False rtok~0 fr=stop lat=6.344
+[2026-07-26T08:13:14.945862+00:00] grid C5 reasoning 0 ok=True fired=False rtok~0 fr=stop lat=9.755
+[2026-07-26T08:13:40.323630+00:00] grid C5 reasoning 1 ok=True fired=False rtok~0 fr=stop lat=25.378
+[2026-07-26T08:13:55.583673+00:00] grid C5 reasoning 2 ok=True fired=False rtok~0 fr=stop lat=15.26
+[2026-07-26T08:14:10.409837+00:00] grid C5 reasoning 3 ok=True fired=False rtok~0 fr=stop lat=14.826
+[2026-07-26T08:14:26.132300+00:00] grid C5 reasoning 4 ok=True fired=False rtok~0 fr=stop lat=15.722
+[2026-07-26T08:14:49.602924+00:00] grid C5 reasoning 5 ok=True fired=False rtok~0 fr=stop lat=23.47
+[2026-07-26T08:15:06.155997+00:00] grid C5 reasoning 6 ok=True fired=False rtok~0 fr=stop lat=16.553
+[2026-07-26T08:15:32.675873+00:00] grid C5 reasoning 7 ok=True fired=False rtok~0 fr=stop lat=26.52
+[2026-07-26T08:15:49.090964+00:00] grid C5 reasoning 8 ok=True fired=False rtok~0 fr=stop lat=16.415
+[2026-07-26T08:16:01.084535+00:00] grid C5 reasoning 9 ok=True fired=False rtok~0 fr=stop lat=11.993
+[2026-07-26T08:16:06.203871+00:00] grid C5 summary 0 ok=True fired=False rtok~0 fr=stop lat=5.119
+[2026-07-26T08:16:11.434647+00:00] grid C5 summary 1 ok=True fired=False rtok~0 fr=stop lat=5.231
+[2026-07-26T08:16:17.594017+00:00] grid C5 summary 2 ok=True fired=False rtok~0 fr=stop lat=6.159
+[2026-07-26T08:16:23.225333+00:00] grid C5 summary 3 ok=True fired=False rtok~0 fr=stop lat=5.631
+[2026-07-26T08:16:28.460091+00:00] grid C5 summary 4 ok=True fired=False rtok~0 fr=stop lat=5.234
+[2026-07-26T08:16:31.532643+00:00] grid C5 summary 5 ok=True fired=False rtok~0 fr=stop lat=3.072
+[2026-07-26T08:16:37.150681+00:00] grid C5 summary 6 ok=True fired=False rtok~0 fr=stop lat=5.618
+[2026-07-26T08:16:42.572782+00:00] grid C5 summary 7 ok=True fired=False rtok~0 fr=stop lat=5.422
+[2026-07-26T08:16:48.062779+00:00] grid C5 summary 8 ok=True fired=False rtok~0 fr=stop lat=5.49
+[2026-07-26T08:16:54.319389+00:00] grid C5 summary 9 ok=True fired=False rtok~0 fr=stop lat=6.256
+[2026-07-26T08:16:57.618239+00:00] grid C6 math 0 ok=True fired=False rtok~0 fr=stop lat=3.299
+[2026-07-26T08:17:05.714297+00:00] grid C6 math 1 ok=True fired=False rtok~0 fr=stop lat=8.096
+[2026-07-26T08:17:23.990109+00:00] grid C6 math 2 ok=True fired=True rtok~325 fr=stop lat=18.276
+[2026-07-26T08:17:31.250622+00:00] grid C6 math 3 ok=True fired=False rtok~0 fr=stop lat=7.26
+[2026-07-26T08:17:48.886256+00:00] grid C6 math 4 ok=True fired=True rtok~277 fr=stop lat=17.635
+[2026-07-26T08:17:52.904474+00:00] grid C6 math 5 ok=True fired=False rtok~0 fr=stop lat=4.018
+[2026-07-26T08:17:58.116213+00:00] grid C6 math 6 ok=True fired=False rtok~0 fr=stop lat=5.211
+[2026-07-26T08:18:04.478702+00:00] grid C6 math 7 ok=True fired=False rtok~0 fr=stop lat=6.362
+[2026-07-26T08:18:23.529422+00:00] grid C6 math 8 ok=True fired=True rtok~371 fr=stop lat=19.05
+[2026-07-26T08:18:28.782154+00:00] grid C6 math 9 ok=True fired=False rtok~0 fr=stop lat=5.252
+[2026-07-26T08:18:40.186963+00:00] grid C6 code 0 ok=True fired=False rtok~0 fr=stop lat=11.405
+[2026-07-26T08:18:51.211215+00:00] grid C6 code 1 ok=True fired=False rtok~0 fr=stop lat=11.024
+[2026-07-26T08:19:04.623209+00:00] grid C6 code 2 ok=True fired=False rtok~0 fr=stop lat=13.412
+[2026-07-26T08:19:16.410289+00:00] grid C6 code 3 ok=True fired=False rtok~0 fr=stop lat=11.787
+[2026-07-26T08:19:34.949768+00:00] grid C6 code 4 ok=True fired=False rtok~0 fr=stop lat=18.539
+[2026-07-26T08:19:48.288922+00:00] grid C6 code 5 ok=True fired=False rtok~0 fr=stop lat=13.339
+[2026-07-26T08:19:58.468483+00:00] grid C6 code 6 ok=True fired=False rtok~0 fr=stop lat=10.179
+[2026-07-26T08:20:08.824293+00:00] grid C6 code 7 ok=True fired=False rtok~0 fr=stop lat=10.356
+[2026-07-26T08:20:26.325408+00:00] grid C6 code 8 ok=True fired=False rtok~0 fr=stop lat=17.501
+[2026-07-26T08:20:33.349515+00:00] grid C6 code 9 ok=True fired=False rtok~0 fr=stop lat=7.024
+[2026-07-26T08:20:51.576538+00:00] grid C6 reasoning 0 ok=True fired=False rtok~0 fr=stop lat=18.227
+[2026-07-26T08:21:03.473024+00:00] grid C6 reasoning 1 ok=True fired=False rtok~0 fr=stop lat=11.896
+[2026-07-26T08:21:18.817769+00:00] grid C6 reasoning 2 ok=True fired=False rtok~0 fr=stop lat=15.344
+[2026-07-26T08:21:34.328595+00:00] grid C6 reasoning 3 ok=True fired=False rtok~0 fr=stop lat=15.511
+[2026-07-26T08:21:47.394773+00:00] grid C6 reasoning 4 ok=True fired=False rtok~0 fr=stop lat=13.066
+[2026-07-26T08:21:59.900208+00:00] grid C6 reasoning 5 ok=True fired=False rtok~0 fr=stop lat=12.505
+[2026-07-26T08:22:18.179005+00:00] grid C6 reasoning 6 ok=True fired=False rtok~0 fr=stop lat=18.279
+[2026-07-26T08:22:27.437726+00:00] grid C6 reasoning 7 ok=True fired=False rtok~0 fr=stop lat=9.258
+[2026-07-26T08:22:32.834869+00:00] grid C6 reasoning 8 ok=True fired=False rtok~0 fr=stop lat=5.397
+[2026-07-26T08:22:43.534148+00:00] grid C6 reasoning 9 ok=True fired=False rtok~0 fr=stop lat=10.699
+[2026-07-26T08:22:49.005311+00:00] grid C6 summary 0 ok=True fired=False rtok~0 fr=stop lat=5.471
+[2026-07-26T08:22:54.390392+00:00] grid C6 summary 1 ok=True fired=False rtok~0 fr=stop lat=5.385
+[2026-07-26T08:22:58.019247+00:00] grid C6 summary 2 ok=True fired=False rtok~0 fr=stop lat=3.629
+[2026-07-26T08:23:02.952561+00:00] grid C6 summary 3 ok=True fired=False rtok~0 fr=stop lat=4.933
+[2026-07-26T08:23:09.359828+00:00] grid C6 summary 4 ok=True fired=False rtok~0 fr=stop lat=6.407
+[2026-07-26T08:23:14.986054+00:00] grid C6 summary 5 ok=True fired=False rtok~0 fr=stop lat=5.626
+[2026-07-26T08:23:21.026659+00:00] grid C6 summary 6 ok=True fired=False rtok~0 fr=stop lat=6.04
+[2026-07-26T08:23:24.453452+00:00] grid C6 summary 7 ok=True fired=False rtok~0 fr=stop lat=3.427
+[2026-07-26T08:23:30.359094+00:00] grid C6 summary 8 ok=True fired=False rtok~0 fr=stop lat=5.905
+[2026-07-26T08:23:35.573689+00:00] grid C6 summary 9 ok=True fired=False rtok~0 fr=stop lat=5.214
+[2026-07-26T08:23:46.787862+00:00] grid C7 math 0 ok=True fired=True rtok~143 fr=stop lat=11.214
+[2026-07-26T08:23:59.157493+00:00] grid C7 math 1 ok=True fired=True rtok~128 fr=stop lat=12.369
+[2026-07-26T08:24:15.013553+00:00] grid C7 math 2 ok=True fired=True rtok~72 fr=stop lat=15.856
+[2026-07-26T08:24:25.010536+00:00] grid C7 math 3 ok=True fired=True rtok~122 fr=stop lat=9.997
+[2026-07-26T08:24:33.595648+00:00] grid C7 math 4 ok=True fired=True rtok~74 fr=stop lat=8.585
+[2026-07-26T08:24:50.241452+00:00] grid C7 math 5 ok=True fired=True rtok~120 fr=stop lat=16.646
+[2026-07-26T08:25:01.305367+00:00] grid C7 math 6 ok=True fired=True rtok~120 fr=stop lat=11.064
+[2026-07-26T08:25:13.154010+00:00] grid C7 math 7 ok=True fired=True rtok~122 fr=stop lat=11.848
+[2026-07-26T08:25:23.107465+00:00] grid C7 math 8 ok=True fired=True rtok~138 fr=stop lat=9.953
+[2026-07-26T08:25:39.032669+00:00] grid C7 math 9 ok=True fired=True rtok~218 fr=stop lat=15.925
+[2026-07-26T08:26:13.975172+00:00] grid C7 code 0 ok=True fired=True rtok~229 fr=stop lat=34.942
+[2026-07-26T08:28:11.570372+00:00] grid C7 code 1 ok=True fired=True rtok~3148 fr=length lat=117.595
+[2026-07-26T08:30:17.571882+00:00] grid C7 code 2 ok=True fired=True rtok~3097 fr=length lat=126.001
+[2026-07-26T08:31:38.924205+00:00] grid C7 code 3 ok=True fired=True rtok~1441 fr=stop lat=81.352
+[2026-07-26T08:33:35.593903+00:00] grid C7 code 4 ok=True fired=True rtok~2134 fr=length lat=116.669
+[2026-07-26T08:34:22.668951+00:00] grid C7 code 5 ok=True fired=True rtok~736 fr=stop lat=47.075
+[2026-07-26T08:36:18.613863+00:00] grid C7 code 6 ok=True fired=True rtok~2572 fr=length lat=115.945
+[2026-07-26T08:38:04.302366+00:00] grid C7 code 7 ok=True fired=True rtok~2154 fr=length lat=105.688
+[2026-07-26T08:39:34.820478+00:00] grid C7 code 8 ok=True fired=True rtok~1779 fr=stop lat=90.518
+[2026-07-26T08:41:16.277534+00:00] grid C7 code 9 ok=True fired=True rtok~1522 fr=stop lat=101.457
+[2026-07-26T08:41:30.596223+00:00] grid C7 reasoning 0 ok=True fired=False rtok~0 fr=stop lat=14.318
+[2026-07-26T08:41:48.259006+00:00] grid C7 reasoning 1 ok=True fired=False rtok~0 fr=stop lat=17.662
+[2026-07-26T08:42:05.121841+00:00] grid C7 reasoning 2 ok=True fired=False rtok~0 fr=stop lat=16.863
+[2026-07-26T08:42:52.441505+00:00] grid C7 reasoning 3 ok=True fired=True rtok~745 fr=stop lat=47.319
+[2026-07-26T08:43:45.100168+00:00] grid C7 reasoning 4 ok=True fired=True rtok~962 fr=stop lat=52.658
+[2026-07-26T08:44:02.992089+00:00] grid C7 reasoning 5 ok=True fired=False rtok~0 fr=stop lat=17.892
+[2026-07-26T08:44:27.845983+00:00] grid C7 reasoning 6 ok=True fired=False rtok~0 fr=stop lat=24.854
+[2026-07-26T08:44:43.322577+00:00] grid C7 reasoning 7 ok=True fired=False rtok~0 fr=stop lat=15.476
+[2026-07-26T08:45:53.868646+00:00] grid C7 reasoning 8 ok=True fired=True rtok~1332 fr=stop lat=70.546
+[2026-07-26T08:46:43.141559+00:00] grid C7 reasoning 9 ok=True fired=True rtok~892 fr=stop lat=49.269
+[2026-07-26T08:46:47.438069+00:00] grid C7 summary 0 ok=True fired=False rtok~0 fr=stop lat=4.296
+[2026-07-26T08:46:50.168272+00:00] grid C7 summary 1 ok=True fired=False rtok~0 fr=stop lat=2.73
+[2026-07-26T08:46:54.749028+00:00] grid C7 summary 2 ok=True fired=False rtok~0 fr=stop lat=4.58
+[2026-07-26T08:46:59.923111+00:00] grid C7 summary 3 ok=True fired=False rtok~0 fr=stop lat=5.174
+[2026-07-26T08:47:04.820735+00:00] grid C7 summary 4 ok=True fired=False rtok~0 fr=stop lat=4.897
+[2026-07-26T08:47:09.773319+00:00] grid C7 summary 5 ok=True fired=False rtok~0 fr=stop lat=4.952
+[2026-07-26T08:47:15.592020+00:00] grid C7 summary 6 ok=True fired=False rtok~0 fr=stop lat=5.818
+[2026-07-26T08:47:18.325345+00:00] grid C7 summary 7 ok=True fired=False rtok~0 fr=stop lat=2.733
+[2026-07-26T08:47:24.214589+00:00] grid C7 summary 8 ok=True fired=False rtok~0 fr=stop lat=5.889
+[2026-07-26T08:47:30.664001+00:00] grid C7 summary 9 ok=True fired=False rtok~0 fr=stop lat=6.449
+[2026-07-26T08:47:42.966274+00:00] grid C8 math 0 ok=True fired=True rtok~126 fr=tool_calls lat=12.302
+[2026-07-26T08:47:52.394169+00:00] grid C8 math 1 ok=True fired=True rtok~121 fr=tool_calls lat=9.428
+[2026-07-26T08:48:13.241361+00:00] grid C8 math 2 ok=True fired=True rtok~251 fr=tool_calls lat=20.847
+[2026-07-26T08:48:23.185944+00:00] grid C8 math 3 ok=True fired=True rtok~121 fr=tool_calls lat=9.944
+[2026-07-26T08:48:34.158410+00:00] grid C8 math 4 ok=True fired=True rtok~119 fr=tool_calls lat=10.972
+[2026-07-26T08:48:44.561587+00:00] grid C8 math 5 ok=True fired=True rtok~125 fr=tool_calls lat=10.403
+[2026-07-26T08:48:55.409401+00:00] grid C8 math 6 ok=True fired=True rtok~140 fr=tool_calls lat=10.848
+[2026-07-26T08:49:08.081624+00:00] grid C8 math 7 ok=True fired=True rtok~123 fr=stop lat=12.672
+[2026-07-26T08:49:17.885365+00:00] grid C8 math 8 ok=True fired=True rtok~120 fr=tool_calls lat=9.803
+[2026-07-26T08:49:28.221495+00:00] grid C8 math 9 ok=True fired=True rtok~120 fr=tool_calls lat=10.336
+[2026-07-26T08:49:53.624974+00:00] grid C8 code 0 ok=True fired=True rtok~232 fr=tool_calls lat=25.403
+[2026-07-26T08:50:29.520037+00:00] grid C8 code 1 ok=True fired=True rtok~282 fr=tool_calls lat=35.895
+[2026-07-26T08:50:52.395333+00:00] grid C8 code 2 ok=True fired=True rtok~131 fr=tool_calls lat=22.875
+[2026-07-26T08:52:56.808603+00:00] grid C8 code 3 ok=True fired=True rtok~3124 fr=length lat=124.412
+[2026-07-26T08:54:10.182656+00:00] grid C8 code 4 ok=True fired=True rtok~1264 fr=tool_calls lat=73.373
+[2026-07-26T08:55:59.651862+00:00] grid C8 code 5 ok=True fired=True rtok~2405 fr=tool_calls lat=109.469
+[2026-07-26T08:56:08.241927+00:00] grid C8 code 6 ok=True fired=True rtok~152 fr=tool_calls lat=8.59
+[2026-07-26T08:58:18.530932+00:00] grid C8 code 7 ok=True fired=True rtok~3110 fr=length lat=130.288
+[2026-07-26T08:58:46.133905+00:00] grid C8 code 8 ok=True fired=True rtok~219 fr=tool_calls lat=27.603
+[2026-07-26T09:00:34.272289+00:00] grid C8 code 9 ok=True fired=True rtok~2393 fr=tool_calls lat=108.138
+[2026-07-26T09:01:14.255437+00:00] grid C8 reasoning 0 ok=True fired=True rtok~516 fr=stop lat=39.983
+[2026-07-26T09:02:11.836723+00:00] grid C8 reasoning 1 ok=True fired=True rtok~1045 fr=stop lat=57.581
+[2026-07-26T09:02:36.951501+00:00] grid C8 reasoning 2 ok=True fired=False rtok~0 fr=stop lat=25.115
+[2026-07-26T09:03:36.109885+00:00] grid C8 reasoning 3 ok=True fired=True rtok~1192 fr=stop lat=59.156
+[2026-07-26T09:04:34.266104+00:00] grid C8 reasoning 4 ok=True fired=True rtok~1251 fr=tool_calls lat=58.154
+[2026-07-26T09:05:27.946202+00:00] grid C8 reasoning 5 ok=True fired=True rtok~935 fr=stop lat=53.68
+[2026-07-26T09:06:18.947887+00:00] grid C8 reasoning 6 ok=True fired=True rtok~755 fr=stop lat=51.001
+[2026-07-26T09:07:09.435921+00:00] grid C8 reasoning 7 ok=True fired=True rtok~905 fr=tool_calls lat=50.488
+[2026-07-26T09:08:04.184263+00:00] grid C8 reasoning 8 ok=True fired=True rtok~931 fr=stop lat=54.748
+[2026-07-26T09:09:00.162196+00:00] grid C8 reasoning 9 ok=True fired=True rtok~946 fr=stop lat=55.978
+[2026-07-26T09:09:04.685503+00:00] grid C8 summary 0 ok=True fired=False rtok~0 fr=stop lat=4.523
+[2026-07-26T09:09:12.298958+00:00] grid C8 summary 1 ok=True fired=False rtok~0 fr=stop lat=7.613
+[2026-07-26T09:09:18.756644+00:00] grid C8 summary 2 ok=True fired=False rtok~0 fr=stop lat=6.457
+[2026-07-26T09:09:21.916712+00:00] grid C8 summary 3 ok=True fired=False rtok~0 fr=stop lat=3.16
+[2026-07-26T09:09:27.435868+00:00] grid C8 summary 4 ok=True fired=False rtok~0 fr=stop lat=5.519
+[2026-07-26T09:09:32.345022+00:00] grid C8 summary 5 ok=True fired=False rtok~0 fr=stop lat=4.909
+[2026-07-26T09:09:38.579681+00:00] grid C8 summary 6 ok=True fired=False rtok~0 fr=stop lat=6.234
+[2026-07-26T09:09:44.853647+00:00] grid C8 summary 7 ok=True fired=False rtok~0 fr=stop lat=6.274
+[2026-07-26T09:09:48.081521+00:00] grid C8 summary 8 ok=True fired=False rtok~0 fr=stop lat=3.228
+[2026-07-26T09:09:50.364066+00:00] grid C8 summary 9 ok=True fired=False rtok~0 fr=stop lat=2.282
+[2026-07-26T09:10:06.593868+00:00] grid C9 math 0 ok=True fired=True rtok~120 fr=stop lat=16.23
+[2026-07-26T09:10:22.040568+00:00] grid C9 math 1 ok=True fired=True rtok~122 fr=stop lat=15.446
+[2026-07-26T09:10:34.128716+00:00] grid C9 math 2 ok=True fired=True rtok~122 fr=stop lat=12.088
+[2026-07-26T09:10:44.697076+00:00] grid C9 math 3 ok=True fired=True rtok~120 fr=stop lat=10.568
+[2026-07-26T09:10:57.653903+00:00] grid C9 math 4 ok=True fired=True rtok~124 fr=stop lat=12.957
+[2026-07-26T09:11:14.410314+00:00] grid C9 math 5 ok=True fired=True rtok~266 fr=stop lat=16.756
+[2026-07-26T09:11:26.438708+00:00] grid C9 math 6 ok=True fired=True rtok~73 fr=stop lat=12.028
+[2026-07-26T09:11:36.971181+00:00] grid C9 math 7 ok=True fired=True rtok~121 fr=stop lat=10.532
+[2026-07-26T09:11:50.793374+00:00] grid C9 math 8 ok=True fired=True rtok~122 fr=stop lat=13.822
+[2026-07-26T09:12:03.259615+00:00] grid C9 math 9 ok=True fired=True rtok~139 fr=stop lat=12.466
+[2026-07-26T09:14:06.616227+00:00] grid C9 code 0 ok=True fired=True rtok~2883 fr=length lat=123.356
+[2026-07-26T09:15:53.674701+00:00] grid C9 code 1 ok=True fired=True rtok~2425 fr=stop lat=107.058
+[2026-07-26T09:17:07.904032+00:00] grid C9 code 2 ok=True fired=True rtok~1110 fr=stop lat=74.229
+[2026-07-26T09:19:05.961576+00:00] grid C9 code 3 ok=True fired=True rtok~3207 fr=length lat=118.057
+[2026-07-26T09:20:47.597692+00:00] grid C9 code 4 ok=True fired=True rtok~1864 fr=stop lat=101.636
+[2026-07-26T09:22:31.659798+00:00] grid C9 code 5 ok=True fired=True rtok~1748 fr=stop lat=104.062
+[2026-07-26T09:24:41.248232+00:00] grid C9 code 6 ok=True fired=True rtok~3111 fr=length lat=129.588
+[2026-07-26T09:26:21.188888+00:00] grid C9 code 7 ok=True fired=True rtok~1696 fr=stop lat=99.938
+[2026-07-26T09:28:36.225437+00:00] grid C9 code 8 ok=True fired=True rtok~2737 fr=length lat=135.034
+[2026-07-26T09:30:00.480629+00:00] grid C9 code 9 ok=True fired=True rtok~1688 fr=stop lat=84.255
+[2026-07-26T09:30:19.151243+00:00] grid C9 reasoning 0 ok=True fired=False rtok~0 fr=stop lat=18.67
+[2026-07-26T09:31:12.694699+00:00] grid C9 reasoning 1 ok=True fired=True rtok~1028 fr=stop lat=53.543
+[2026-07-26T09:31:52.167027+00:00] grid C9 reasoning 2 ok=True fired=True rtok~818 fr=stop lat=39.472
+[2026-07-26T09:34:07.007481+00:00] grid C9 reasoning 3 ok=True fired=True rtok~2961 fr=length lat=134.84
+[2026-07-26T09:34:25.823229+00:00] grid C9 reasoning 4 ok=True fired=False rtok~0 fr=stop lat=18.815
+[2026-07-26T09:34:51.361924+00:00] grid C9 reasoning 5 ok=True fired=False rtok~0 fr=stop lat=25.538
+[2026-07-26T09:35:05.508082+00:00] grid C9 reasoning 6 ok=True fired=False rtok~0 fr=stop lat=14.146
+[2026-07-26T09:35:30.983205+00:00] grid C9 reasoning 7 ok=True fired=False rtok~0 fr=stop lat=25.475
+[2026-07-26T09:35:52.037104+00:00] grid C9 reasoning 8 ok=True fired=False rtok~0 fr=stop lat=21.054
+[2026-07-26T09:36:11.262287+00:00] grid C9 reasoning 9 ok=True fired=False rtok~0 fr=stop lat=19.225
+[2026-07-26T09:36:17.950632+00:00] grid C9 summary 0 ok=True fired=False rtok~0 fr=stop lat=6.688
+[2026-07-26T09:36:22.336202+00:00] grid C9 summary 1 ok=True fired=False rtok~0 fr=stop lat=4.385
+[2026-07-26T09:36:25.130944+00:00] grid C9 summary 2 ok=True fired=False rtok~0 fr=stop lat=2.794
+[2026-07-26T09:36:30.466074+00:00] grid C9 summary 3 ok=True fired=False rtok~0 fr=stop lat=5.335
+[2026-07-26T09:36:35.692265+00:00] grid C9 summary 4 ok=True fired=False rtok~0 fr=stop lat=5.226
+[2026-07-26T09:36:41.547758+00:00] grid C9 summary 5 ok=True fired=False rtok~0 fr=stop lat=5.855
+[2026-07-26T09:36:47.313338+00:00] grid C9 summary 6 ok=True fired=False rtok~0 fr=stop lat=5.765
+[2026-07-26T09:36:52.153921+00:00] grid C9 summary 7 ok=True fired=False rtok~0 fr=stop lat=4.84
+[2026-07-26T09:36:54.453531+00:00] grid C9 summary 8 ok=True fired=False rtok~0 fr=stop lat=2.299
+[2026-07-26T09:36:59.571815+00:00] grid C9 summary 9 ok=True fired=False rtok~0 fr=stop lat=5.118
+[2026-07-26T09:37:23.679763+00:00] criteria C0 0 fired=False fr=stop loop=False content_chars=4017
+[2026-07-26T09:37:52.889395+00:00] criteria C0 1 fired=False fr=stop loop=False content_chars=4640
+[2026-07-26T09:39:59.331408+00:00] criteria C0 2 fired=True fr=length loop=True content_chars=0
+[2026-07-26T09:40:24.821206+00:00] criteria C0 3 fired=False fr=stop loop=False content_chars=4043
+[2026-07-26T09:40:48.804336+00:00] criteria C0 4 fired=False fr=stop loop=False content_chars=4288
+[2026-07-26T09:41:05.923221+00:00] criteria C0 5 fired=False fr=stop loop=False content_chars=3160
+[2026-07-26T09:41:32.120933+00:00] criteria C0 6 fired=False fr=stop loop=False content_chars=4391
+[2026-07-26T09:41:50.039565+00:00] criteria C0 7 fired=False fr=stop loop=False content_chars=2746
+[2026-07-26T09:42:07.454077+00:00] criteria C0 8 fired=False fr=stop loop=False content_chars=2982
+[2026-07-26T09:42:23.963183+00:00] criteria C0 9 fired=False fr=stop loop=False content_chars=2857
+[2026-07-26T09:42:51.280491+00:00] criteria C4 0 fired=False fr=stop loop=False content_chars=4801
+[2026-07-26T09:44:49.030523+00:00] criteria C4 1 fired=True fr=length loop=True content_chars=0
+[2026-07-26T09:45:41.507580+00:00] criteria C4 2 fired=False fr=stop loop=False content_chars=7789
+[2026-07-26T09:46:11.237734+00:00] criteria C4 3 fired=False fr=stop loop=False content_chars=5168
+[2026-07-26T09:46:34.401540+00:00] criteria C4 4 fired=False fr=stop loop=False content_chars=4203
+[2026-07-26T09:47:01.080734+00:00] criteria C4 5 fired=False fr=stop loop=False content_chars=4159
+[2026-07-26T09:47:38.827075+00:00] criteria C4 6 fired=False fr=stop loop=False content_chars=5506
+[2026-07-26T09:48:01.133365+00:00] criteria C4 7 fired=False fr=stop loop=False content_chars=4102
+[2026-07-26T09:48:34.931112+00:00] criteria C4 8 fired=False fr=stop loop=False content_chars=5754
+[2026-07-26T09:49:08.599969+00:00] criteria C4 9 fired=False fr=stop loop=False content_chars=5716
+[2026-07-26T09:51:27.888986+00:00] criteria C7 0 fired=True fr=length loop=True content_chars=0
+[2026-07-26T09:52:57.573856+00:00] criteria C7 1 fired=True fr=stop loop=False content_chars=6149
+[2026-07-26T09:55:15.595237+00:00] criteria C7 2 fired=True fr=length loop=True content_chars=0
+[2026-07-26T09:57:27.550134+00:00] criteria C7 3 fired=True fr=length loop=True content_chars=0
+[2026-07-26T09:59:31.033747+00:00] criteria C7 4 fired=True fr=length loop=True content_chars=0
+[2026-07-26T10:00:59.906937+00:00] criteria C7 5 fired=True fr=stop loop=False content_chars=7237
+[2026-07-26T10:02:54.406688+00:00] criteria C7 6 fired=True fr=length loop=True content_chars=0
+[2026-07-26T10:04:51.015114+00:00] criteria C7 7 fired=True fr=length loop=True content_chars=0
+[2026-07-26T10:06:42.743096+00:00] criteria C7 8 fired=True fr=length loop=False content_chars=1568
+[2026-07-26T10:08:40.820568+00:00] criteria C7 9 fired=True fr=length loop=True content_chars=0
+[2026-07-26T10:08:40.820611+00:00] gate study COMPLETE

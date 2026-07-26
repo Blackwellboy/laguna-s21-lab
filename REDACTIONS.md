@@ -51,3 +51,23 @@ and operator-directed notes removed. Mentions of Tailscale and IPs such as
 10.0.0.5 inside model-generated benchmark responses are synthetic task content
 produced by the models under test, not real infrastructure. Benchmark values,
 timestamps, and protocol parameters were not altered.
+
+## Additions of 2026-07-27 (gate-study/) + ops-language pass
+
+The thinking-gate study artifacts were sanitized with the same policy on the
+staged copies, then verified with the full pattern set PLUS an ops-language
+sweep (per the 2026-07-27 convention): zero identifier hits across the entire
+tree. Two doc-level cleanups applied in staging: the internal handoff banner
+removed from the sweep report header, and an internal agent tag removed from
+the study driver docstring.
+
+Accepted, documented leftovers (raw-log fidelity, identifiers already
+scrubbed): soak `turns.jsonl` response previews contain generic ops vocabulary
+and internal project codenames quoted from the soak's ingest corpus ("handoff",
+"parked", "grok", "codex", unit/marker names such as `hermes-agent` and
+`lane_state` paths) because that corpus was internal operations notes; all
+hostnames, usernames, IPs, and filesystem identities in those previews were
+replaced per the tables above. The soak scripts likewise retain their raw
+protocol strings (task prompts, `$HOME/.hermes/lane_state/*.parked` marker
+paths, systemd unit names) for reproduction fidelity. Raw log payloads and
+protocol scripts are not edited beyond identifier substitution.
