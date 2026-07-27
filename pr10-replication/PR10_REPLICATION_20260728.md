@@ -119,10 +119,16 @@ prior data on those stands. Quantization arm (3.25bpw hybrid) not run this sessi
 - The **§5f methodology findings** (cap-hits with no extractable code are failures,
   ~12k ceiling, loop-detection stopping rule) replicate and deserve to land regardless
   of what happens to the regime table's accuracy row. The qualifier matters: a cap-hit
-  that still emitted usable code is not a failure. Our own HumanEval/32 seed 2 hit the
-  ceiling with extractable code (tail compression 2.88, the lowest in our cap
-  population) and was scored as a pass, which is why the bucketing criterion here is
-  zero extractable code rather than `finish_reason`.
+  that still emitted usable code is not automatically a failure. Our own HumanEval/32
+  seed 2 hit the ceiling with extractable code (tail compression 2.88, the lowest in
+  our cap population) and went to the scorer like any other sample instead of being
+  auto-failed. It then failed the evalplus tests on content grounds, as /32 did in all
+  six of our runs on both arms, so the clean cap-hit-that-passed case remains
+  apollo-mg's /47, not ours. The bucketing criterion here is zero extractable code
+  rather than `finish_reason`.
+  (Correction 2026-07-27: this bullet previously said /32 "was scored as a pass". The
+  shipped eval results, `evidence/samples_on_s2-sanitized_eval_results.json`, score it
+  fail on base and plus. The criterion argument stands; the pass claim was wrong.)
 - The temperature confound Tom flagged appears to have been **the whole accuracy story**:
   removing it removed the effect. (Consistent with his own review note that a
   lower-temperature arm losing by 2.64 was "not the shape you would predict.")
