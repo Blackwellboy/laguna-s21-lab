@@ -31,6 +31,8 @@ to the number.
 | `cross-model/` | The gate study's C0–C9 battery re-run against Qwen 3.6 35B-A3B (2026-07-28): 400-turn grid, parser-mechanism proof, side-by-side comparison scripts, raw per-turn JSONL |
 | `spine-probes/` | Integrity probes (TheTom/offlabel runner) against both test lanes (2026-07-28): full verbatim transcripts, three judge runs, patched runner + SHA256SUMS. `fullprecision/` adds the same battery on full-precision NVFP4 (2026-07-28), closing the quantization question |
 | `pr10-replication/` | Independent replication of offlabel PR #10's thinking-ON HumanEval+ claim (2026-07-28): 164 problems × 2 arms × 3 seeds, temperature identical across arms, per-sample raw JSONL, driver + analysis scripts |
+| `context-mass/` | Context-mass sweep + preserved-reasoning mechanism arm on the 3.25bpw hybrid (2026-07-29): 15 depth×mass cells, live history-building logs, stripped-vs-preserved comparison, template passthrough proofs, raw per-turn JSONL |
+| `qwen-ceiling/` | Qwen 3.6 35B-A3B empty-at-ceiling map (2026-07-29): max_tokens {4096→16384} budget axis on the byte-identical criteria task, 4-shape structured axis @12288, per-cap-hit degeneration metrics, raw JSONL |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
 | `KNOWN_TEMPLATE_TRAPS.md` | Known template traps: a registry of chat-template gotchas that produce wrong benchmark numbers, with the checks that catch each |
 | `SOURCE_ARCHIVES*` | Dated archive links for every community source used |
@@ -38,6 +40,38 @@ to the number.
 | `REDACTIONS.md` | Exact sanitization applied to these files before publication |
 
 ## Headline findings (conditions attached)
+
+**Multi-turn gate collapse: mechanism identified and quantified (2026-07-29,
+`context-mass/`, 3.25bpw hybrid lane):** the single-turn vs multi-turn firing
+gap is **reasoning-stripping in history assembly, not context depth or mass**.
+A 15-cell sweep (turn depth 1–40 × context mass ~2K–32K tokens, standard
+client-default histories) fired **0/150** against a **18/40 (45%)** single-turn
+C7 baseline on the same lane — and the 276 live history-building turns
+themselves fired 0/276. The comparison arm then separated the hypotheses:
+identical transcripts probed with prior-turn reasoning stripped vs resent fired
+**0/10 vs 10/10 at depth 10 / 8K** and **0/10 vs 10/10 at depth 20 / 8K**.
+Mechanism (template read + vLLM passthrough verified live): with
+`enable_thinking: true` the template renders every prior assistant turn as
+`<think>{reasoning}</think>{content}`; standard OpenAI-style clients never
+resend reasoning, so every prior turn renders an **empty `<think></think>`**
+and the model stops thinking from turn 2. Fix: resend `reasoning` on assistant
+history messages (or `preserve_thinking: true` for thinking-off flows), at
+~160 prompt tokens per preserved turn in these cells. Scope: 3.25bpw
+EXL3-hybrid stack; the transfer check landed at 45% vs NVFP4's 60% (overlapping
+CIs, same task-shape profile — borderline, documented in the writeup); NVFP4
+confirmation on the production lane is pending. Full detail:
+[`context-mass/CONTEXT_MASS_SWEEP_20260729.md`](context-mass/CONTEXT_MASS_SWEEP_20260729.md).
+
+**Qwen empty-at-ceiling is truncation, not failure (2026-07-29,
+`qwen-ceiling/`):** the criteria task that returned empty content 28/30 at the
+4096 ceiling in `cross-model/` converts to **10/10 non-empty, criteria-valid
+answers at max_tokens 8192** and stays 10/10 at 12288 and 16384 (reasoning
+demand plateaus at ~5.2–5.7K tokens median; it does not grow to fill the
+budget). Every 4096 cap-hit tail is non-degenerate (median unique-line ratio
+0.86, median zlib ratio 0.33 — ordinary mid-task reasoning, no loops). Shape
+axis @12288: reasoning-demand-driven, not criteria-specific — constrained math
+still caps 3/10 while JSON-schema/table tasks (~1.5–2K reasoning) never cap.
+Full detail: [`qwen-ceiling/QWEN_CEILING_MAP_20260729.md`](qwen-ceiling/QWEN_CEILING_MAP_20260729.md).
 
 **Tuning sweep (2026-07-23, 20 cells, K∈{5..9} × seqs∈{4,8,16,32}):**
 production winner **K=7 / max-num-seqs=32** — same flag pair r0b0tlab qualified
@@ -344,10 +378,22 @@ that bear directly on this repo's data:
   - **The soak's other findings are unaffected** (turn success, stability,
     tool-call reliability, integrity-clause behavior).
 
-  **Quantification is in progress.** A stripped-versus-preserved comparison arm
-  is running now and will be linked here with its measured delta when it lands.
-  Until then: mechanism established, magnitude unquantified. Registry entry with
-  the check that catches this class: [`KNOWN_TEMPLATE_TRAPS.md`](KNOWN_TEMPLATE_TRAPS.md) #4.
+  **Quantification landed 2026-07-29 (`context-mass/`): the mechanism is
+  confirmed and the effect is binary at these ns.** Identical transcripts
+  probed with prior-turn reasoning stripped vs resent fired **0/10 vs 10/10 at
+  depth 10 / ~8K tokens and 0/10 vs 10/10 at depth 20 / ~8K** on the 3.25bpw
+  hybrid lane. The surrounding 15-cell depth×mass sweep (all standard stripped
+  histories) fired 0/150 with flat-zero marginal curves on both axes — depth
+  and mass are epiphenomenal; the stripping is the variable. The gap's cause
+  is identified and quantified; the **~0.1% soak figure stands** as real
+  default-client behavior; the **C0-C9 single-turn grid is unaffected**.
+  Practical handle: resend `reasoning` on assistant history messages, or
+  `preserve_thinking: true` for thinking-off flows (~160 prompt tokens per
+  preserved turn in these cells). NVFP4 confirmation on the production lane is
+  pending. Full writeup:
+  [`context-mass/CONTEXT_MASS_SWEEP_20260729.md`](context-mass/CONTEXT_MASS_SWEEP_20260729.md).
+  Registry entry with the check that catches this class:
+  [`KNOWN_TEMPLATE_TRAPS.md`](KNOWN_TEMPLATE_TRAPS.md) #4.
 
 - **2026-07-26 — the soak's ~0.1% thinking rate, reread under the corrected
   kwarg model.** The soak driver sent explicit

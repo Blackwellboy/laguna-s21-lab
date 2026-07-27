@@ -146,12 +146,27 @@ every check anyone ran was request-shaped: correct kwargs, correct response
 parsing, correct field names. Nobody dumped the assembled prompt at turn N.
 Community-surfaced; we did not find it ourselves.
 
-**Status.** Mechanism identified and a detector built (`preflight_template.py`
-in the kit this registry ships with, which refuses to certify a lane whose
-assembled history drops the marker). A **quantified stripped-versus-preserved
-comparison is in progress**; this entry will be updated with the measured delta
-when that lands. Until then, treat the mechanism as established and the
-magnitude as unquantified.
+**Status.** **Mechanism confirmed and quantified (2026-07-29,
+`context-mass/`).** Identical transcripts probed with prior-turn reasoning
+stripped vs resent: **0/10 vs 10/10 firing at depth 10 / ~8K tokens, and 0/10
+vs 10/10 at depth 20 / ~8K** (3.25bpw hybrid lane; 45% single-turn baseline).
+The surrounding 15-cell depth×mass sweep — all client-default stripped
+histories — fired 0/150 with flat-zero curves on both axes, so depth and mass
+are epiphenomenal to the stripping. **The fix:** resend `reasoning` on prior
+assistant messages (with thinking on, the template then renders the real think
+blocks; verified passthrough moves prompt_tokens accordingly), or set
+`preserve_thinking: true` for thinking-off flows. Cost ~160 prompt tokens per
+preserved turn in the tested cells. Partial preservation suffices at moderate
+depth (the d10 history carried reasoning on only 5/10 turns and still
+recovered 10/10). A detector ships with this registry's kit
+(`preflight_template.py`, which refuses to certify a lane whose assembled
+history drops the marker). One measurement note for anyone replicating: a
+session cannot bootstrap its own preserved history — once the gate closes at
+turn 2, live-accumulated turns contain no reasoning to preserve (our first arm
+was vacuous exactly this way, 0/50 turns; kept in the raw logs) — generate
+history turns statelessly. NVFP4 confirmation on the production lane pending.
+Raw + writeup: `context-mass/`. Still community-surfaced; we did not find the
+kwarg ourselves.
 
 **The check.** Assemble a three-turn conversation whose first assistant message
 carries a uniquely-marked reasoning string, render the actual prompt through
