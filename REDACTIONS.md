@@ -31,14 +31,14 @@ Deliberately left in place:
 - `TESTONLY_sk_live_LEAKED_KEY_abc123` in `soak/logs/integrity_probes.jsonl`
   and turn previews — a clearly labeled fake credential planted by the
   integrity probe itself. No real credential exists in this tree.
-- `10.0.1.42` in some `soak/logs/turns.jsonl` response previews — a
+- `10.0.1.42` appeared in some `soak/logs/turns.jsonl` response previews, a
   model-invented private-range example IP answering the synthetic
-  `probe_service` tool task. Not real infrastructure.
+  `probe_service` tool task. Not real infrastructure. That file was withdrawn
+  on 2026-07-28 (see the correction at the end of this document).
 
-`soak/logs/turns.jsonl` stores truncated response previews only (no full
-prompt payloads). The soak's ingest corpus was internal working notes about
-this same Laguna campaign and is not published; sanitized previews that
-reference those notes remain, with identifiers replaced as above.
+`soak/logs/turns.jsonl` stored truncated response previews only (no full
+prompt payloads) and is no longer published. The soak's ingest corpus was
+internal working notes about this same Laguna campaign and is not published.
 
 No benchmark values, latencies, token counts, timestamps, or protocol
 parameters were altered by any substitution.
@@ -97,7 +97,10 @@ removed from the sweep report header, and an internal agent tag removed from
 the study driver docstring.
 
 Accepted, documented leftovers (raw-log fidelity, identifiers already
-scrubbed): soak `turns.jsonl` response previews contain generic ops vocabulary
+scrubbed). NOTE, 2026-07-28: the claim in this paragraph about `turns.jsonl`
+was wrong and that file has been withdrawn; see the correction at the end of
+this document. The paragraph is left in place, uncorrected, so the failure is
+visible. Original text: soak `turns.jsonl` response previews contain generic ops vocabulary
 and internal project codenames quoted from the soak's ingest corpus ("handoff",
 "parked", "grok", "codex", unit/marker names such as `hermes-agent` and
 `lane_state` paths) because that corpus was internal operations notes; all
@@ -165,3 +168,38 @@ Proof: full REDACTIONS pattern set (36 patterns) run on the actual staged
 copies of both additions, zero hits, plus an em/en-dash scan (zero) and a
 supplemental fleet-vocabulary scan (zero). Proof transcript archived
 operator-side with the session return.
+
+
+## Correction, 2026-07-28: withdrawal of `soak/logs/turns.jsonl`
+
+The "Accepted, documented leftovers" note above (added 2026-07-26) promised
+that all hostnames, usernames, IPs and filesystem identities in the soak turn
+previews had been replaced. That promise was not kept. A whole-tree re-scan of
+the published tip on 2026-07-28 found, in `soak/logs/turns.jsonl` only:
+
+- an internal node codename, unreplaced, inside a model-generated provenance
+  critique (the codename itself is deliberately not repeated here);
+- internal fleet topology, naming which model ran on which lane pair;
+- internal control-plane vocabulary and private document filenames quoted from
+  the soak's ingest corpus.
+
+No credentials, real names, usernames, home paths or real network addresses
+were involved, and the rest of the tree was clean.
+
+The file has been withdrawn rather than patched, and purged from git history.
+The reasons are recorded here so the decision stays auditable: the soak's value
+is its aggregate result, not 2,900 raw turn previews; the previews are
+model-generated, so a future batch could leak in a shape no substitution table
+anticipates; and this repository must not carry a promise it does not keep.
+
+What stays published: the soak report, `sessions.jsonl`, `incidents.jsonl`,
+`integrity_probes.jsonl` and `service_samples.jsonl`, plus the driver and
+scoring scripts, so every number in the report remains checkable. The raw
+per-turn log is retained privately. This follows the aggregates-first
+precedent set by `bonsai-battery/`.
+
+Why earlier proofs missed it: publication proofs were run per batch, on the
+subdirectory being added. `soak/` was proven on 2026-07-26 against the check
+list of that date, and was never re-proven as that list grew. The standing rule
+is now that a tree counts as proven clean only by a scan of the entire
+published tree at the current tip, under the current check list.

@@ -51,7 +51,7 @@ the companion document on the prompt side.
 | `bench/results/` | Reference + interactive profile results; `full/` holds the full-protocol runs behind the headline medians |
 | `sweep/` | `LAGUNA_TUNING_SWEEP_20260723.md` (protocol + full grid + analysis) and `cells/` — all 21 raw per-cell JSONs |
 | `longctx/` | Cold long-context probe script + raw JSON (nonce defeats prefix cache from position 0) |
-| `soak/` | 12h soak: driver, runner, score/restore scripts, results report, and `logs/` with raw `turns.jsonl`, `sessions.jsonl`, `incidents.jsonl`, `integrity_probes.jsonl`, `service_samples.jsonl` |
+| `soak/` | 12h soak: driver, runner, score/restore scripts, results report, and `logs/` with `sessions.jsonl`, `incidents.jsonl`, `integrity_probes.jsonl`, `service_samples.jsonl`. The raw per-turn `turns.jsonl` was withdrawn on 2026-07-28; see REDACTIONS.md |
 | `gate-study/` | Thinking-gate suppression study: 450 turns, 10 system-prompt conditions, criteria-loop probe — driver, writeup, raw per-turn JSONL |
 | `head-to-head/` | Qwen 3.6 35B-A3B vs Laguna S 2.1 on identical harnesses (2026-07-26): full-protocol speed bench, 16-task intel suite in three thinking configs, scored agentic loop, single-shot generation arm |
 | `quant-floor/` | 0xSero Laguna Hybrid 3.25bpw verification vs our published NVFP4 (2026-07-26): compat gate, 16-task intel suite, no-spec speed bench. `THINKING_QUANT_FLOOR_SYNTHESIS_20260727.md` adds the three-stack thinking-ON codegen synthesis (NVFP4/vLLM + Q4_K_M/llama.cpp temperature-controlled replications vs the original Q2_K_XL claim) |
@@ -408,10 +408,11 @@ Logs and scripts came from live runs on a private network. Before publication,
 overlay-network IPs were replaced with `localhost`/`<SERVER>`, hostnames with
 `spark-host`, usernames with `operator`, and internal control-plane paths with
 `<CONTROL_PLANE>`/`workspace` placeholders. Benchmark values, timestamps, token
-counts, and protocol parameters were not altered. `soak/logs/turns.jsonl`
-contains truncated response previews (not full prompt payloads); the soak's
-document corpus consisted of internal working notes about this same Laguna
-campaign and is not included. The IP `10.0.1.42` appearing in some responses is
+counts, and protocol parameters were not altered. `soak/logs/turns.jsonl` was
+withdrawn on 2026-07-28 after a whole-tree re-scan found internal identifiers
+its previews were documented as not containing; see REDACTIONS.md for the
+correction. The soak's document corpus consisted of internal working notes
+about this same Laguna campaign and is not included. The IP `10.0.1.42` appearing in some responses is
 a model-invented example from a synthetic `probe_service` tool task, not real
 infrastructure. Full details: `REDACTIONS.md`.
 

@@ -389,7 +389,9 @@ comfy=active
 | ComfyUI HTTP | ok=True |
 
 ## Raw logs
-- `soak/logs/turns.jsonl`
+- `soak/logs/turns.jsonl` (WITHDRAWN 2026-07-28, retained privately; see
+  `REDACTIONS.md`. Every number in this report is derived from the session and
+  incident logs below, which stay published)
 - `soak/logs/sessions.jsonl`
 - `soak/logs/incidents.jsonl`
 - `soak/logs/integrity_probes.jsonl`
