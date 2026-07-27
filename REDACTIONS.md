@@ -106,3 +106,26 @@ replaced per the tables above. The soak scripts likewise retain their raw
 protocol strings (task prompts, `$HOME/.hermes/lane_state/*.parked` marker
 paths, systemd unit names) for reproduction fidelity. Raw log payloads and
 protocol scripts are not edited beyond identifier substitution.
+
+## Additions of 2026-07-29 (context-mass/, qwen-ceiling/)
+
+Same policy, applied on the staged copies and re-proven on the in-repo copies
+with the six-class pattern set plus the ops-language extended sweep: **zero
+hits** in both trees before push. Substitutions per the standing tables, with
+this batch using node aliases  (the Qwen test lane) and
+ (the hybrid test lane) — the same physical lanes appear as
+ /  in the 2026-07-28 additions; alias drift between batches
+is cosmetic, the ports (:8100/:8101) disambiguate. Endpoints in drivers →
+; the upstream driver import path in the two new
+drivers →  (byte-identity of the
+reused prompts is asserted against s published driver).
+
+Raw-log fidelity notes:  stores corpus
+user turns as source-name + sha1 prefix + char count only (the soak ingest
+corpus is internal notes and is not published; identifiers in the retained
+ doc names were scrubbed per the tables). Probe rows carry 200-char
+model-output previews only. Two extended-sweep false positives during proving
+(random hex nonces matching a bare port number) were adjudicated and the port
+patterns tightened to colon-prefixed; no file content changed. No benchmark
+values, firing counts, token counts, timestamps, or protocol parameters were
+altered by any substitution.
