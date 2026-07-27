@@ -98,6 +98,18 @@ into the prompt. If your framework "supports every model" through one
 generic tools adapter, assume it is the 0% path until you have measured
 otherwise.
 
+**Cited elsewhere (2026-07-27).** This guide was cited in
+[youssofal/MTPLX PR #195](https://github.com/youssofal/MTPLX/pull/195#issuecomment-5096652285)
+as the operator guide this checkpoint is documented against, in work
+bringing that server's Laguna tool calling in line with the vLLM
+configuration above. The check named in this section, send a request with
+a `tools` array and confirm a real `tool_calls` array comes back, did not
+pass on that stack until its bridge learned to parse the checkpoint's
+`<tool_call>name<arg_key>k</arg_key><arg_value>v</arg_value>` dialect,
+which had been falling through and returning the call as prose in
+`content`. Reported by @davidtai, who also surfaced the reasoning
+field-name scoping error corrected in this repo's README on 2026-07-28.
+
 One side effect worth knowing: attaching a `tools` array changes thinking
 behavior too. Under the same large system prompt, firing went from 24/40
 without schemas to 29/40 with them while median reasoning length collapsed
