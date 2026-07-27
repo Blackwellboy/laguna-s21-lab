@@ -61,6 +61,7 @@ the companion document on the prompt side.
 | `context-mass/` | Context-mass sweep + preserved-reasoning mechanism arm on the 3.25bpw hybrid (2026-07-27): 15 depth×mass cells, live history-building logs, stripped-vs-preserved comparison, template passthrough proofs, raw per-turn JSONL |
 | `qwen-ceiling/` | Qwen 3.6 35B-A3B empty-at-ceiling map (2026-07-27): max_tokens {4096→16384} budget axis on the byte-identical criteria task, 4-shape structured axis @12288, per-cap-hit degeneration metrics, raw JSONL |
 | `prompt-topology/` | Prompt-topology study (2026-07-27): one fixed 8-requirement set rendered in 5 token-band-controlled shapes (±4.2%) × bare/C7 × 4 tasks × both models, plus a reversed-order arm — 1,120 turns, raw per-turn JSONL, tested against a community reader's format-as-control-token hypothesis; ordering-isolation follow-up (direction replicated connective-free, cell magnitudes run-scoped) |
+| `identity-prefix/` | Identity-prefix study (2026-07-27): C6/C7 x 4 identity-position variants x both models (640 turns, blocked protocol), plus two in-run interleaved 4-variant suffix-composition controls (`suffix-control/` on the 3.25bpw hybrid, `nvfp4-suffix-control/` on NVFP4, 160 turns each), drivers, analyzers, raw per-turn JSONLs |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
 | `KNOWN_TEMPLATE_TRAPS.md` | Stub. The template-trap registry moved to its own contributable repo: [model-serving-minefield](https://github.com/Blackwellboy/model-serving-minefield) |
 | `SOURCE_ARCHIVES*` | Dated archive links for every community source used |
@@ -68,6 +69,26 @@ the companion document on the prompt side.
 | `REDACTIONS.md` | Exact sanitization applied to these files before publication |
 
 ## Headline findings (conditions attached)
+
+**The trained-identity prefix hypothesis fails on our builds; what exists
+instead is a position-generic tail effect (2026-07-27, `identity-prefix/`):**
+a community wire-level report proposed that thinking collapse under long
+system prompts is eviction of the trained identity prefix, not instruction
+dose (registry trap #6). Tested directly: prepending the trained identity as
+the literal first line of C6 fired **0/40** against published C6 5/40, the
+worst cell in the study, and C7 was unmoved (17/40 both arms). The published
+dose reading stands. But two in-run interleaved 4-variant controls (3.25bpw
+hybrid and NVFP4 builds, 160 turns each, token-band-matched suffixes) found
+that roughly 29 tokens of ANY tail text reopens the gate: bare C6 0/40 and
+2/40 vs identity tail 13/40 and 17/40, neutral filler 14/40 and 10/40,
+topical 10/40 and 11/40 (every suffix vs bare p <= 0.025 on both builds;
+identity vs neutral p = 1.0 hybrid, p = 0.155 NVFP4, both NS). The tail
+effect is position-generic and build-general on this family; the identity
+text carries no special weight at either end. Build scoping wherever the
+dose curve is cited: measured on NVFP4, replicated on the 3.25bpw hybrid,
+FP8 community-reported as divergent. Qwen ungated control stayed at ceiling,
+480/480 across all arms. Full detail:
+[`identity-prefix/IDENTITY_PREFIX_STUDY_20260730.md`](identity-prefix/IDENTITY_PREFIX_STUDY_20260730.md).
 
 **Prompt shape is a real but secondary gate control — and ordering beats
 topology (2026-07-27, `prompt-topology/`):** testing a community hypothesis
@@ -396,7 +417,7 @@ that bear directly on this repo's data:
   100 percent native-path soak.
 - **Wire-level confirmation of the history-stripping mechanism**
   (@quantumleap68, publicly shared; no canonical archive URL at time of
-  writing — cited by handle with the author's consent): Hermes CLI → vLLM
+  writing — cited by handle with the author's consent): his CLI client → vLLM
   0.25.1, Laguna NVFP4 TP=1 and FP8 TP=2, a logging proxy between client and
   server, N≥6 per cell, every claim measured on the wire. A client that strips
   reasoning from replayed history renders each prior turn as an empty
@@ -494,7 +515,8 @@ that bear directly on this repo's data:
     framing was **retracted the same day** after we showed it is non-monotonic
     (a dense 10-rule block suppresses harder than a much longer agent prompt).
     Superseded by a **two-axis** model in
-    [offlabel#12](https://github.com/TheTom/offlabel/pull/12) (open), which
+    [offlabel#12](https://github.com/TheTom/offlabel/pull/12) (merged
+    2026-07-26), which
     rebuilds §2 on this repo's `gate-study/` grid: our ten conditions replace
     the previous three-stack composite, and C7 vs C8 is the worked example of
     firing rate and reasoning length moving in opposite directions.

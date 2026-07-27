@@ -1,0 +1,21 @@
+===== NVFP4 (lane-host) n=160 (dropped 0 duplicate cells) =====
+
+variant             fired      math      code reasoning   summary   depth_med  depth_mean
+none                2/40       2/10      0/10      0/10      0/10       301.0        301
+suffix_identity    17/40      10/10      7/10      0/10      0/10         573        681
+suffix_neutral     10/40       5/10      1/10      4/10      0/10       782.5        746
+suffix_topical     11/40       7/10      2/10      2/10      0/10         391        768
+
+Fisher exact (two-sided), pooled per variant:
+  suffix_identity 17/40 vs none 2/40: p=0.0001275
+  suffix_neutral 10/40 vs none 2/40: p=0.0252
+  suffix_topical 11/40 vs none 2/40: p=0.01294
+  suffix_identity 17/40 vs suffix_neutral 10/40: p=0.1554
+  suffix_identity 17/40 vs suffix_topical 11/40: p=0.241
+  suffix_neutral 10/40 vs suffix_topical 11/40: p=1
+
+Same-build replication: this run C6/none 2/40 vs published gate-study C6 3/40: p=1
+Cross-build (hybrid blocked study): none 2/40 vs 5/40 p=0.4315; suffix_identity 17/40 vs 18/40 p=1
+
+Interleave proof: max same-variant run length in execution order = 2; every aligned quartet covers all 4 variants: True
+First 12 in execution order: ['topical', 'none', 'neutral', 'identity', 'topical', 'neutral', 'identity', 'none', 'neutral', 'topical', 'identity', 'none']
