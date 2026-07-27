@@ -1,0 +1,6 @@
+c7_tools             fr=tool_calls n=20 median=   462
+c7_tools             fr=stop       n= 4 median=  1293
+c7_tools             fr=length     n= 3 median=  3162
+c7_identity_tools    fr=tool_calls n=20 median=   136
+c7_identity_tools    fr=stop       n= 4 median=   847
+c7_identity_tools    fr=length     n= 2 median=  3019

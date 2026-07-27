@@ -62,6 +62,7 @@ the companion document on the prompt side.
 | `qwen-ceiling/` | Qwen 3.6 35B-A3B empty-at-ceiling map (2026-07-27): max_tokens {4096→16384} budget axis on the byte-identical criteria task, 4-shape structured axis @12288, per-cap-hit degeneration metrics, raw JSONL |
 | `prompt-topology/` | Prompt-topology study (2026-07-27): one fixed 8-requirement set rendered in 5 token-band-controlled shapes (±4.2%) × bare/C7 × 4 tasks × both models, plus a reversed-order arm — 1,120 turns, raw per-turn JSONL, tested against a community reader's format-as-control-token hypothesis; ordering-isolation follow-up (direction replicated connective-free, cell magnitudes run-scoped) |
 | `identity-prefix/` | Identity-prefix study (2026-07-27): C6/C7 x 4 identity-position variants x both models (640 turns, blocked protocol), plus two in-run interleaved 4-variant suffix-composition controls (`suffix-control/` on the 3.25bpw hybrid, `nvfp4-suffix-control/` on NVFP4, 160 turns each), drivers, analyzers, raw per-turn JSONLs |
+| `c7-depth-collapse/` | C7 depth study (2026-07-27): 5 arms (bare / +identity / +neutral / +tools / +identity+tools) x 4 tasks x 10 samples, in-run interleaved, NVFP4 build - the depth-collapse check; driver, analysis, raw per-turn JSONL |
 | `bonsai-battery/` | Bonsai 27B quant-floor battery, aggregates only (run 2026-07-23, published 2026-07-27): 1-bit PrismML-fork build vs 2-bit ternary production build, 512-case blinded suite across 13 groups, variance battery, solo performance matrix, runtime robustness, five-patch build story. Prompt corpus, answer keys and per-item raw withheld (see the writeup for why) |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
 | `KNOWN_TEMPLATE_TRAPS.md` | Stub. The template-trap registry moved to its own contributable repo: [model-serving-minefield](https://github.com/Blackwellboy/model-serving-minefield) |
@@ -70,6 +71,29 @@ the companion document on the prompt side.
 | `REDACTIONS.md` | Exact sanitization applied to these files before publication |
 
 ## Headline findings (conditions attached)
+
+**Reasoning DEPTH is not dose-suppressed on this build; our published
+depth-collapse readings are retracted as causal claims (2026-07-27,
+`c7-depth-collapse/`):** a dedicated 200-turn in-run interleaved grid at C7
+(bare / +identity suffix / +neutral suffix / +tool schemas / +identity+tools)
+found depth among fired turns statistically flat across all five arms
+(medians 858 / 806 / 721 / 933 / 474 est. tokens; all pairwise Mann-Whitney
+p >= 0.13) - the tools arm was the HIGHEST. The published C7->C8 length
+collapse (745 -> 282) and the identity-presence collapse (1080 -> 120-200)
+were cross-run reads; both are retracted as depth-suppression effects. The
+measured numbers stand; the mechanism does not. What structures depth
+instead: task type (math is a ~120-token floor in every arm, code runs
+1064-2130, summarization fired 0/200 - third replication), and tool-boundary
+truncation (turns that exit to a tool call carry median 462/136 tokens of
+pre-call reasoning vs 1293/847 for direct answers vs ~3100 at ceiling; half
+of tool-arm turns exit to calls, so pooled medians collapse structurally).
+Firing directions replicate (tools 27/40 vs bare 20/40) but nothing
+separates at n=40. The identity+tools stacking hint (p=0.13) is
+hypothesis-grade and labelled as such. Cross-run depth comparisons on these
+lanes are not valid evidence; in-run interleaved arms are the protocol.
+Full detail:
+[`c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md`](c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).
+
 
 **The trained-identity prefix hypothesis fails on our builds; what exists
 instead is a position-generic tail effect (2026-07-27, `identity-prefix/`):**

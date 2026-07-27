@@ -1,0 +1,80 @@
+rows=200 ok=200 unique=200 errors=0 dupes_dropped=0
+
+=== PRIMARY: depth among fired (thinking_tokens_est) ===
+arm                    n fired  median           IQR    mean ceil
+c7_bare               40    20     858 [  121, 2132]    1191    3
+c7_identity           40    22     806 [  136, 1682]     991    2
+c7_neutral            40    19     721 [  329, 1011]     978    2
+c7_tools              40    27     933 [  127, 1454]    1081    3
+c7_identity_tools     40    26     474 [  121, 1062]     785    2
+
+=== per-task depth medians among fired (n_fired) ===
+arm                             math            code       reasoning         summary
+c7_bare                      121 (8)       2130 (10)        1419 (2)           - (0)
+c7_identity                  123 (9)       1756 (10)         864 (3)           - (0)
+c7_neutral                   142 (4)        1064 (8)         675 (7)           - (0)
+c7_tools                    122 (10)       1464 (10)        1257 (7)           - (0)
+c7_identity_tools           116 (10)       1274 (10)         940 (6)           - (0)
+
+=== SECONDARY: firing rates ===
+c7_bare              20/40
+c7_identity          22/40
+c7_neutral           19/40
+c7_tools             27/40
+c7_identity_tools    26/40
+
+=== pairwise Mann-Whitney on depth among fired (two-sided) ===
+c7_bare              vs c7_identity          n=(20,22) p=0.9097
+c7_bare              vs c7_neutral           n=(20,19) p=0.7895
+c7_bare              vs c7_tools             n=(20,27) p=1
+c7_bare              vs c7_identity_tools    n=(20,26) p=0.2182
+c7_identity          vs c7_neutral           n=(22,19) p=0.7339
+c7_identity          vs c7_tools             n=(22,27) p=0.9759
+c7_identity          vs c7_identity_tools    n=(22,26) p=0.2067
+c7_neutral           vs c7_tools             n=(19,27) p=0.8583
+c7_neutral           vs c7_identity_tools    n=(19,26) p=0.232
+c7_tools             vs c7_identity_tools    n=(27,26) p=0.1325
+
+=== pairwise Fisher on firing ===
+c7_bare              vs c7_identity          20/40 vs 22/40 p=0.823
+c7_bare              vs c7_neutral           20/40 vs 19/40 p=1
+c7_bare              vs c7_tools             20/40 vs 27/40 p=0.1726
+c7_bare              vs c7_identity_tools    20/40 vs 26/40 p=0.258
+c7_identity          vs c7_neutral           22/40 vs 19/40 p=0.6549
+c7_identity          vs c7_tools             22/40 vs 27/40 p=0.3588
+c7_identity          vs c7_identity_tools    22/40 vs 26/40 p=0.4939
+c7_neutral           vs c7_tools             19/40 vs 27/40 p=0.1128
+c7_neutral           vs c7_identity_tools    19/40 vs 26/40 p=0.1759
+c7_tools             vs c7_identity_tools    27/40 vs 26/40 p=1
+
+=== integrity ===
+shim_hits=0 finish_reasons={'stop': 148, 'tool_calls': 40, 'length': 12} tool_calls_by_arm={'c7_bare': 0, 'c7_identity': 0, 'c7_neutral': 0, 'c7_tools': 20, 'c7_identity_tools': 20}
+latency median=13.7s max=133.3s
+
+wrote ~/c7-depth-collapse/summary.json
+EXPLORATORY (not pre-stated): within-task depth, code + reasoning
+--- code ---
+c7_bare              n=10 median=   2130 vals=[771, 945, 1346, 1812, 2083, 2176, 2446, 2700, 2748, 3033]
+c7_identity          n=10 median=   1756 vals=[259, 1056, 1632, 1682, 1750, 1762, 1914, 2291, 2538, 2872]
+c7_neutral           n= 8 median=   1064 vals=[329, 967, 1011, 1016, 1112, 2368, 2849, 3214]
+c7_tools             n=10 median=   1464 vals=[795, 933, 1245, 1278, 1455, 1473, 2207, 3140, 3162, 3347]
+c7_identity_tools    n=10 median=   1274 vals=[72, 223, 232, 1175, 1235, 1313, 1646, 1987, 2919, 3119]
+c7_bare              vs c7_identity          p=0.4497
+c7_bare              vs c7_neutral           p=0.5340
+c7_bare              vs c7_tools             p=0.8798
+c7_bare              vs c7_identity_tools    p=0.1736
+c7_identity          vs c7_neutral           p=0.5340
+c7_identity          vs c7_tools             p=0.8206
+c7_identity          vs c7_identity_tools    p=0.2899
+c7_neutral           vs c7_tools             p=0.4239
+c7_neutral           vs c7_identity_tools    p=0.9292
+c7_tools             vs c7_identity_tools    p=0.2265
+--- reasoning ---
+c7_bare              n= 2 median=   1419 vals=[706, 2132]
+c7_identity          n= 3 median=    864 vals=[747, 864, 1240]
+c7_neutral           n= 7 median=    675 vals=[533, 636, 662, 675, 721, 852, 999]
+c7_tools             n= 7 median=   1257 vals=[757, 920, 1058, 1257, 1329, 1454, 2170]
+c7_identity_tools    n= 6 median=    940 vals=[716, 747, 934, 947, 1033, 1062]
+c7_neutral           vs c7_tools             p=0.0060
+c7_neutral           vs c7_identity_tools    p=0.0455
+c7_tools             vs c7_identity_tools    p=0.0865

@@ -1,0 +1,10 @@
+{
+  "session": "c7_depth_collapse_20260727",
+  "lane": "Laguna S 2.1 NVFP4, single GB10-class host, vLLM 0.25.1 venv serve",
+  "checkpoint": "poolside--Laguna-S-2.1-NVFP4-0761412",
+  "template_md5": "9d5abbf83510d99e20a72fdeb1f155e2 (verified pre-run on the serving chat_template.jinja)",
+  "identity_extraction": "grep from the serving chat_template.jinja this session; byte-identical to the suffix-control study's extraction",
+  "serving_config": "DFlash draft num_spec_tokens=7, max_num_seqs=32, kv_cache_memory_bytes=12884901888 fp8, prefix_caching+chunked_prefill, max_num_batched_tokens=8192, reasoning_parser=poolside_v1, generation defaults temp0.7/top_p0.95/top_k20, no env overrides present",
+  "protocol": "single driver, conc=1, lane exclusive, in-run interleaved per-quintet shuffled order (seed logged), process-table checked clean pre-run",
+  "apparatus": "C7+TOOLS+TASKS imported byte-identical from the published gate-study driver; NEUTRAL filler byte-identical from the suffix-control drivers"
+}
