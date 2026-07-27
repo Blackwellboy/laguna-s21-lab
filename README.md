@@ -432,8 +432,9 @@ that bear directly on this repo's data:
   their reasoning is explicitly resent**. The model then reads its own history
   as evidence that it does not think in this conversation, and suppresses
   accordingly. A `preserve_thinking` chat-template kwarg controls this. It is
-  **not documented in the model card**. The trap was community-surfaced; we did
-  not find it ourselves, and four independent testers had all missed it, because
+  **not documented in the model card**. The trap was surfaced by
+  @quantumleap68; we did not find it ourselves, and four independent testers
+  had all missed it, because
   every check any of us ran inspected the *request* rather than the *assembled
   prompt*.
 

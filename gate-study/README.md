@@ -102,7 +102,7 @@ firing-rate vs context-length sweep).
 > blocks unless their reasoning is explicitly resent** — the model reads that
 > history as "I do not think here" and suppresses. A `preserve_thinking`
 > chat-template kwarg controls it, and it is **not documented in the model
-> card**. Community-surfaced; we did not find it ourselves.
+> card**. Surfaced by @quantumleap68; we did not find it ourselves.
 >
 > The ~0.1% is **not withdrawn**: it is real behavior under default multi-turn
 > serving, which is what most deployments run. What changes is the *why*, not
