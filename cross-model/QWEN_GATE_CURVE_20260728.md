@@ -71,9 +71,19 @@ across the two studies and is not used in any claim here).
 
 ## Protocol gate: parser check BEFORE the grid
 
-Qwen exposes thinking on **`message.reasoning`** — it has no `reasoning_content`
-key at all. A detector written against `reasoning_content` would have scored
-every turn "did not fire" and produced a fake 0% curve. Verified live in both
+On this lane (Qwen 3.6 35B-A3B under vLLM 0.25.1) thinking arrives on
+**`message.reasoning`** and there is no `reasoning_content` key at all. A
+detector written against `reasoning_content` would have scored
+every turn "did not fire" and produced a fake 0% curve. The field name is a
+property of the serving stack, not of the model, so probe it on your own lane
+rather than carrying this one across (registry [trap
+01](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/reasoning/01-reasoning-field-two-names.md)
+for the read side, [trap
+20](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/reasoning/20-reasoning-write-field-name-diverges.md)
+for the write side). **[CORRECTION 2026-07-28: this paragraph previously read
+"Qwen exposes thinking on `message.reasoning`, it has no `reasoning_content`
+key at all", stating a serving-stack property as a model property. Same
+correction as the README trap #1 clause.]** Verified live in both
 directions before collecting data (`PARSER_MECHANISM_QWEN.md`):
 
 | request | `reasoning` | content chars | completion tokens |

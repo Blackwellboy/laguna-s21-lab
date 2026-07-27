@@ -475,12 +475,31 @@ that bear directly on this repo's data:
   reasoning deltas; turns 2 and 3 with stripped history emitted none**. That
   is our trap #4 / `context-mass/` mechanism confirmed independently on a
   second client and serving pair, at the transport layer. The same battery
-  corroborates trap #1 (Laguna streams reasoning as `delta.reasoning`, not
-  `delta.reasoning_content`) and our C7→C8 tools result (same big system
+  corroborates trap #1 (on that serving stack, vLLM 0.25.1 with the
+  `poolside_v1` reasoning parser, Laguna streams reasoning as
+  `delta.reasoning`, not `delta.reasoning_content`) and our C7→C8 tools
+  result (same big system
   prompt: 0/8 firing without a `tools` array, ~5/6 with one), sources the two
   new registry entries (identity-sentence eviction, `reasoning_effort` no-op —
   traps #6 and #7), and adds the FP8-vs-NVFP4 build-policy split behind the
-  build-scoping note above.
+  build-scoping note above. **[CORRECTION 2026-07-28: the trap #1 clause
+  above previously read "Laguna streams reasoning as `delta.reasoning`, not
+  `delta.reasoning_content`", stating the field name as a property of the
+  model. It is a property of the serving stack, not of the checkpoint, and
+  the read side and the write side can disagree on the same runtime. Other
+  servers running this same model emit the other name: MTPLX emits
+  `reasoning_content` on its MLX lane ([youssofal/MTPLX
+  #195](https://github.com/youssofal/MTPLX/pull/195#issuecomment-5096652285),
+  reported by @davidtai, who surfaced this scoping error), and on llama.cpp
+  only `reasoning_content` reaches the template when reasoning is resent on
+  history ([offlabel
+  #16](https://github.com/TheTom/offlabel/issues/16#issuecomment-5086926968),
+  @Defilan). Read both names, and write whichever one your runtime accepts:
+  registry [trap
+  01](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/reasoning/01-reasoning-field-two-names.md)
+  for the read side, [trap
+  20](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/reasoning/20-reasoning-write-field-name-diverges.md)
+  for the write side.]**
 - **Head-to-head in this repo** (`head-to-head/`): first single-suite test of
   the community claim "Qwen 3.6 35B-A3B beats Laguna" with identical harnesses
   on both sides. Confirmed for single-shot generation and raw speed; reversed
