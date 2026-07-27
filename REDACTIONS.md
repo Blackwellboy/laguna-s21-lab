@@ -140,3 +140,28 @@ set was re-run on the staged tree: **no new hits** — the documented synthetic
 leftovers above are unchanged — and a diff-level scan of every added line
 returned **zero hits** across all classes. All measured cells quoted in the
 new entries are the author's published numbers, reproduced verbatim.
+
+## Additions of 2026-07-27 (quant-floor synthesis, bonsai-battery/)
+
+Two aggregates-first additions, staged pending owner GO:
+
+- `quant-floor/THINKING_QUANT_FLOOR_SYNTHESIS_20260727.md`: synthesis document
+  only; every own number re-derived from the already-published
+  `pr10-replication/evidence/` raw before writing; external numbers are
+  attributed to their authors and paraphrased, not reproduced.
+- `bonsai-battery/`: aggregates-only publication of a private 512-case A/B
+  battery. The prompt corpus, answer keys, per-item raw runs and variance
+  transcripts are deliberately withheld: the prompts embed realistic
+  operational scenarios and remain a topology disclosure even after token
+  scrubbing (same precedent as the private retrieval-bench gold set). The
+  three staged JSONs (SCORE_AGG, PERFORMANCE_RESULTS, RUNTIME_ROBUSTNESS)
+  carried zero pattern hits unmodified; no values were altered.
+  `FILE_HASHES.jsonl` was REGENERATED over the staged copies with relative
+  paths (the original manifest carries absolute private paths and is not
+  published). Prose describes the host only as a shared 32GB Apple-silicon
+  desktop; no hostnames, usernames, ports or lane vocabulary appear.
+
+Proof: full REDACTIONS pattern set (36 patterns) run on the actual staged
+copies of both additions, zero hits, plus an em/en-dash scan (zero) and a
+supplemental fleet-vocabulary scan (zero). Proof transcript archived
+operator-side with the session return.

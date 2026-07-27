@@ -1,0 +1,105 @@
+{
+ "B": {
+  "clean_start_s": 6.1,
+  "loaded_health": true,
+  "rss_loaded_kb": 4508656,
+  "first_request_ok": true,
+  "seq100": {
+   "errors": 0,
+   "wall_s": 87.2
+  },
+  "mixed25": {
+   "errors": 0
+  },
+  "malformed10": [
+   "http_400",
+   "http_400",
+   "http_400",
+   "http_404",
+   "http_404",
+   "err_RemoteDisconnected",
+   "http_404",
+   "http_400",
+   "accepted",
+   "err_RemoteDisconnected"
+  ],
+  "alive_after_malformed": true,
+  "cache": {
+   "cold_s": 7.557,
+   "warm_s": 0.993,
+   "miss_s": 7.638
+  },
+  "ctx_32000": {
+   "ok": true,
+   "wall_s": 568.141,
+   "content": "DONE"
+  },
+  "thermal_after_32000": "Note: No thermal warning level has been recorded N",
+  "swap_32000": "total = 11264.00M  used = 9713.62M  free = 1550.38M  (encrypted)",
+  "ctx_64000": {
+   "ok": true,
+   "wall_s": 1304.689,
+   "content": "DONE"
+  },
+  "thermal_after_64000": "Note: No thermal warning level has been recorded N",
+  "swap_64000": "total = 11264.00M  used = 9713.62M  free = 1550.38M  (encrypted)",
+  "listeners_after_stop": 0,
+  "orphans_after_stop": 0,
+  "restart_s": 6.1,
+  "post_restart_health": true,
+  "post_restart_answer": true,
+  "duplicate_listeners": 1,
+  "crash_loop": "no"
+ },
+ "A": {
+  "clean_start_s": 3.1,
+  "loaded_health": true,
+  "rss_loaded_kb": 3340704,
+  "first_request_ok": true,
+  "seq100": {
+   "errors": 0,
+   "wall_s": 107.9
+  },
+  "mixed25": {
+   "errors": 0
+  },
+  "malformed10": [
+   "http_400",
+   "http_400",
+   "http_400",
+   "http_404",
+   "http_404",
+   "err_RemoteDisconnected",
+   "http_404",
+   "http_400",
+   "accepted",
+   "err_RemoteDisconnected"
+  ],
+  "alive_after_malformed": true,
+  "cache": {
+   "cold_s": 8.283,
+   "warm_s": 1.644,
+   "miss_s": 8.408
+  },
+  "ctx_32000": {
+   "ok": true,
+   "wall_s": 572.473,
+   "content": "DONE"
+  },
+  "thermal_after_32000": "Note: No thermal warning level has been recorded N",
+  "swap_32000": "total = 11264.00M  used = 9697.62M  free = 1566.38M  (encrypted)",
+  "ctx_64000": {
+   "ok": false,
+   "error": "RemoteDisconnected: Remote end closed connection without response"
+  },
+  "thermal_after_64000": "Note: No thermal warning level has been recorded N",
+  "swap_64000": "total = 11264.00M  used = 10126.69M  free = 1137.31M  (encrypted)",
+  "listeners_after_stop": 0,
+  "orphans_after_stop": 0,
+  "restart_s": 3.1,
+  "post_restart_health": true,
+  "post_restart_answer": true,
+  "duplicate_listeners": 1,
+  "crash_loop": "no"
+ }
+}

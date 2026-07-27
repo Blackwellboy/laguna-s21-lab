@@ -1,0 +1,926 @@
+{
+ "A": {
+  "rss_kb_loaded": 7866480,
+  "prefill": {
+   "128": {
+    "cold": {
+     "wall": {
+      "p50": 2.444,
+      "p95": 2.444,
+      "mean": 2.444,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 2.363,
+      "p95": 2.363,
+      "mean": 2.363,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 12.35,
+      "p95": 12.35,
+      "mean": 12.35,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.535,
+      "p95": 0.535,
+      "mean": 0.535,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.453,
+      "p95": 0.453,
+      "mean": 0.453,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 12.2,
+      "p95": 12.2,
+      "mean": 12.2,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 54.2
+   },
+   "1000": {
+    "cold": {
+     "wall": {
+      "p50": 13.694,
+      "p95": 13.694,
+      "mean": 13.694,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 13.612,
+      "p95": 13.612,
+      "mean": 13.612,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 12.2,
+      "p95": 12.2,
+      "mean": 12.2,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.543,
+      "p95": 0.543,
+      "mean": 0.543,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.462,
+      "p95": 0.462,
+      "mean": 0.462,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 12.35,
+      "p95": 12.35,
+      "mean": 12.35,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 73.5
+   },
+   "4000": {
+    "cold": {
+     "wall": {
+      "p50": 53.905,
+      "p95": 53.905,
+      "mean": 53.905,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 53.816,
+      "p95": 53.816,
+      "mean": 53.816,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 11.24,
+      "p95": 11.24,
+      "mean": 11.24,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.588,
+      "p95": 0.588,
+      "mean": 0.588,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.502,
+      "p95": 0.502,
+      "mean": 0.502,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 11.63,
+      "p95": 11.63,
+      "mean": 11.63,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 74.3
+   },
+   "8000": {
+    "cold": {
+     "wall": {
+      "p50": 108.6,
+      "p95": 108.6,
+      "mean": 108.6,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 108.514,
+      "p95": 108.514,
+      "mean": 108.514,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 11.63,
+      "p95": 11.63,
+      "mean": 11.63,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.603,
+      "p95": 0.603,
+      "mean": 0.603,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.517,
+      "p95": 0.517,
+      "mean": 0.517,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 11.63,
+      "p95": 11.63,
+      "mean": 11.63,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 73.7
+   },
+   "16000": {
+    "cold": {
+     "wall": {
+      "p50": 218.557,
+      "p95": 218.557,
+      "mean": 218.557,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 218.464,
+      "p95": 218.464,
+      "mean": 218.464,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 10.75,
+      "p95": 10.75,
+      "mean": 10.75,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.683,
+      "p95": 0.683,
+      "mean": 0.683,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.59,
+      "p95": 0.59,
+      "mean": 0.59,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 10.75,
+      "p95": 10.75,
+      "mean": 10.75,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 73.2
+   },
+   "32000": {
+    "cold": {
+     "wall": {
+      "p50": 461.523,
+      "p95": 461.523,
+      "mean": 461.523,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 461.415,
+      "p95": 461.415,
+      "mean": 461.415,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 9.26,
+      "p95": 9.26,
+      "mean": 9.26,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.85,
+      "p95": 0.85,
+      "mean": 0.85,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.743,
+      "p95": 0.743,
+      "mean": 0.743,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 9.35,
+      "p95": 9.35,
+      "mean": 9.35,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 69.4
+   },
+   "64000": {
+    "cold": {
+     "wall": {
+      "p50": 1049.389,
+      "p95": 1049.389,
+      "mean": 1049.389,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 1049.246,
+      "p95": 1049.246,
+      "mean": 1049.246,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 6.99,
+      "p95": 6.99,
+      "mean": 6.99,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 1.234,
+      "p95": 1.234,
+      "mean": 1.234,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 1.093,
+      "p95": 1.093,
+      "mean": 1.093,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 7.09,
+      "p95": 7.09,
+      "mean": 7.09,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 61.0
+   }
+  },
+  "rss_after_128": 7910112,
+  "thermal_after_128": "Note: No thermal warning level has been recorded N",
+  "rss_after_1000": 7910480,
+  "thermal_after_1000": "Note: No thermal warning level has been recorded N",
+  "rss_after_4000": 7912112,
+  "thermal_after_4000": "Note: No thermal warning level has been recorded N",
+  "rss_after_8000": 7914320,
+  "thermal_after_8000": "Note: No thermal warning level has been recorded N",
+  "rss_after_16000": 7919904,
+  "thermal_after_16000": "Note: No thermal warning level has been recorded N",
+  "rss_after_32000": 7928800,
+  "thermal_after_32000": "Note: No thermal warning level has been recorded N",
+  "rss_after_64000": 7626656,
+  "thermal_after_64000": "Note: No thermal warning level has been recorded N",
+  "decode": {
+   "16": {
+    "wall": {
+     "p50": 2.109,
+     "p95": 2.109,
+     "mean": 2.518,
+     "n": 5
+    },
+    "ttft": {
+     "p50": 0.919,
+     "p95": 0.919,
+     "mean": 1.329,
+     "n": 5
+    },
+    "decode_tok_s": {
+     "p50": 19.33,
+     "p95": 19.33,
+     "mean": 19.342,
+     "n": 5
+    },
+    "errors": 0
+   },
+   "64": {
+    "wall": {
+     "p50": 5.511,
+     "p95": 6.062,
+     "mean": 5.71,
+     "n": 5
+    },
+    "ttft": {
+     "p50": 0.453,
+     "p95": 0.922,
+     "mean": 0.641,
+     "n": 5
+    },
+    "decode_tok_s": {
+     "p50": 16.41,
+     "p95": 16.54,
+     "mean": 16.378,
+     "n": 5
+    },
+    "errors": 0
+   },
+   "256": {
+    "wall": {
+     "p50": 21.247,
+     "p95": 21.43,
+     "mean": 21.156,
+     "n": 5
+    },
+    "ttft": {
+     "p50": 0.926,
+     "p95": 0.939,
+     "mean": 0.747,
+     "n": 5
+    },
+    "decode_tok_s": {
+     "p50": 13.52,
+     "p95": 13.58,
+     "mean": 13.522,
+     "n": 5
+    },
+    "errors": 0
+   },
+   "1024": {
+    "wall": {
+     "p50": 83.82,
+     "p95": 83.362,
+     "mean": 83.82,
+     "n": 2
+    },
+    "ttft": {
+     "p50": 0.714,
+     "p95": 0.472,
+     "mean": 0.714,
+     "n": 2
+    },
+    "decode_tok_s": {
+     "p50": 13.225,
+     "p95": 13.19,
+     "mean": 13.225,
+     "n": 2
+    },
+    "errors": 0
+   }
+  },
+  "concurrency": {
+   "1": {
+    "level": 1,
+    "agg_wall_s": 10.7,
+    "completed": 1,
+    "errors": 0,
+    "per_req_wall": [
+     10.7
+    ],
+    "swap": "total = 11264.00M  used = 9980.06M  free = 1283.94M  (encrypted)",
+    "thermal": "Note: No thermal warning level has been recorded N"
+   },
+   "2": {
+    "level": 2,
+    "agg_wall_s": 19.85,
+    "completed": 2,
+    "errors": 0,
+    "per_req_wall": [
+     19.85,
+     19.85
+    ],
+    "swap": "total = 11264.00M  used = 9972.06M  free = 1291.94M  (encrypted)",
+    "thermal": "Note: No thermal warning level has been recorded N"
+   },
+   "4": {
+    "level": 4,
+    "agg_wall_s": 37.05,
+    "completed": 4,
+    "errors": 0,
+    "per_req_wall": [
+     36.81,
+     37.04,
+     37.05,
+     37.05
+    ],
+    "swap": "total = 11264.00M  used = 9972.06M  free = 1291.94M  (encrypted)",
+    "thermal": "Note: No thermal warning level has been recorded N"
+   }
+  },
+  "swap_final": "total = 11264.00M  used = 9972.06M  free = 1291.94M  (encrypted)",
+  "thermal_final": "Note: No thermal warning level has been recorded Note: No performance warning le",
+  "rss_final": 7786896
+ },
+ "B": {
+  "rss_kb_loaded": 4509440,
+  "prefill": {
+   "128": {
+    "cold": {
+     "wall": {
+      "p50": 2.241,
+      "p95": 2.241,
+      "mean": 2.241,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 2.192,
+      "p95": 2.192,
+      "mean": 2.192,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 20.41,
+      "p95": 20.41,
+      "mean": 20.41,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.36,
+      "p95": 0.36,
+      "mean": 0.36,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.303,
+      "p95": 0.303,
+      "mean": 0.303,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 17.54,
+      "p95": 17.54,
+      "mean": 17.54,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 58.4
+   },
+   "1000": {
+    "cold": {
+     "wall": {
+      "p50": 13.346,
+      "p95": 13.346,
+      "mean": 13.346,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 13.288,
+      "p95": 13.288,
+      "mean": 13.288,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 17.24,
+      "p95": 17.24,
+      "mean": 17.24,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.367,
+      "p95": 0.367,
+      "mean": 0.367,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.31,
+      "p95": 0.31,
+      "mean": 0.31,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 17.54,
+      "p95": 17.54,
+      "mean": 17.54,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 75.3
+   },
+   "4000": {
+    "cold": {
+     "wall": {
+      "p50": 53.415,
+      "p95": 53.415,
+      "mean": 53.415,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 53.353,
+      "p95": 53.353,
+      "mean": 53.353,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 16.13,
+      "p95": 16.13,
+      "mean": 16.13,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.401,
+      "p95": 0.401,
+      "mean": 0.401,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.339,
+      "p95": 0.339,
+      "mean": 0.339,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 16.13,
+      "p95": 16.13,
+      "mean": 16.13,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 75.0
+   },
+   "8000": {
+    "cold": {
+     "wall": {
+      "p50": 107.529,
+      "p95": 107.529,
+      "mean": 107.529,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 107.415,
+      "p95": 107.415,
+      "mean": 107.415,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 8.77,
+      "p95": 8.77,
+      "mean": 8.77,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.476,
+      "p95": 0.476,
+      "mean": 0.476,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.362,
+      "p95": 0.362,
+      "mean": 0.362,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 8.77,
+      "p95": 8.77,
+      "mean": 8.77,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 74.5
+   },
+   "16000": {
+    "cold": {
+     "wall": {
+      "p50": 215.711,
+      "p95": 215.711,
+      "mean": 215.711,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 215.584,
+      "p95": 215.584,
+      "mean": 215.584,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 7.87,
+      "p95": 7.87,
+      "mean": 7.87,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.551,
+      "p95": 0.551,
+      "mean": 0.551,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.424,
+      "p95": 0.424,
+      "mean": 0.424,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 7.87,
+      "p95": 7.87,
+      "mean": 7.87,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 74.2
+   },
+   "32000": {
+    "cold": {
+     "wall": {
+      "p50": 455.206,
+      "p95": 455.206,
+      "mean": 455.206,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 455.052,
+      "p95": 455.052,
+      "mean": 455.052,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 6.49,
+      "p95": 6.49,
+      "mean": 6.49,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 0.729,
+      "p95": 0.729,
+      "mean": 0.729,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.569,
+      "p95": 0.569,
+      "mean": 0.569,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 6.25,
+      "p95": 6.25,
+      "mean": 6.25,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 70.3
+   },
+   "64000": {
+    "cold": {
+     "wall": {
+      "p50": 1037.037,
+      "p95": 1037.037,
+      "mean": 1037.037,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 1036.815,
+      "p95": 1036.815,
+      "mean": 1036.815,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 4.5,
+      "p95": 4.5,
+      "mean": 4.5,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "warm": {
+     "wall": {
+      "p50": 1.129,
+      "p95": 1.129,
+      "mean": 1.129,
+      "n": 1
+     },
+     "ttft": {
+      "p50": 0.908,
+      "p95": 0.908,
+      "mean": 0.908,
+      "n": 1
+     },
+     "decode_tok_s": {
+      "p50": 4.52,
+      "p95": 4.52,
+      "mean": 4.52,
+      "n": 1
+     },
+     "errors": 0
+    },
+    "prefill_tok_s_est": 61.7
+   }
+  },
+  "rss_after_128": 4559200,
+  "thermal_after_128": "Note: No thermal warning level has been recorded N",
+  "rss_after_1000": 4559440,
+  "thermal_after_1000": "Note: No thermal warning level has been recorded N",
+  "rss_after_4000": 4561104,
+  "thermal_after_4000": "Note: No thermal warning level has been recorded N",
+  "rss_after_8000": 4565360,
+  "thermal_after_8000": "Note: No thermal warning level has been recorded N",
+  "rss_after_16000": 4569552,
+  "thermal_after_16000": "Note: No thermal warning level has been recorded N",
+  "rss_after_32000": 4581936,
+  "thermal_after_32000": "Note: No thermal warning level has been recorded N",
+  "rss_after_64000": 4407504,
+  "thermal_after_64000": "Note: No thermal warning level has been recorded N",
+  "decode": {
+   "16": {
+    "wall": {
+     "p50": 1.448,
+     "p95": 1.462,
+     "mean": 1.865,
+     "n": 5
+    },
+    "ttft": {
+     "p50": 0.766,
+     "p95": 0.773,
+     "mean": 1.18,
+     "n": 5
+    },
+    "decode_tok_s": {
+     "p50": 32.21,
+     "p95": 32.21,
+     "mean": 32.136,
+     "n": 5
+    },
+    "errors": 0
+   },
+   "64": {
+    "wall": {
+     "p50": 3.129,
+     "p95": 3.596,
+     "mean": 3.315,
+     "n": 5
+    },
+    "ttft": {
+     "p50": 0.299,
+     "p95": 0.768,
+     "mean": 0.486,
+     "n": 5
+    },
+    "decode_tok_s": {
+     "p50": 28.28,
+     "p95": 28.29,
+     "mean": 28.282,
+     "n": 5
+    },
+    "errors": 0
+   },
+   "256": {
+    "wall": {
+     "p50": 12.276,
+     "p95": 12.292,
+     "mean": 12.13,
+     "n": 5
+    },
+    "ttft": {
+     "p50": 0.768,
+     "p95": 0.78,
+     "mean": 0.588,
+     "n": 5
+    },
+    "decode_tok_s": {
+     "p50": 26.94,
+     "p95": 26.96,
+     "mean": 26.862,
+     "n": 5
+    },
+    "errors": 0
+   },
+   "1024": {
+    "wall": {
+     "p50": 46.203,
+     "p95": 45.97,
+     "mean": 46.203,
+     "n": 2
+    },
+    "ttft": {
+     "p50": 0.543,
+     "p95": 0.301,
+     "mean": 0.543,
+     "n": 2
+    },
+    "decode_tok_s": {
+     "p50": 25.685,
+     "p95": 25.68,
+     "mean": 25.685,
+     "n": 2
+    },
+    "errors": 0
+   }
+  },
+  "concurrency": {
+   "1": {
+    "level": 1,
+    "agg_wall_s": 6.04,
+    "completed": 1,
+    "errors": 0,
+    "per_req_wall": [
+     6.04
+    ],
+    "swap": "total = 11264.00M  used = 9884.06M  free = 1379.94M  (encrypted)",
+    "thermal": "Note: No thermal warning level has been recorded N"
+   },
+   "2": {
+    "level": 2,
+    "agg_wall_s": 11.28,
+    "completed": 2,
+    "errors": 0,
+    "per_req_wall": [
+     11.28,
+     11.28
+    ],
+    "swap": "total = 11264.00M  used = 9884.06M  free = 1379.94M  (encrypted)",
+    "thermal": "Note: No thermal warning level has been recorded N"
+   },
+   "4": {
+    "level": 4,
+    "agg_wall_s": 21.42,
+    "completed": 4,
+    "errors": 0,
+    "per_req_wall": [
+     21.27,
+     21.41,
+     21.42,
+     21.42
+    ],
+    "swap": "total = 11264.00M  used = 9884.06M  free = 1379.94M  (encrypted)",
+    "thermal": "Note: No thermal warning level has been recorded N"
+   }
+  },
+  "swap_final": "total = 11264.00M  used = 9884.06M  free = 1379.94M  (encrypted)",
+  "thermal_final": "Note: No thermal warning level has been recorded Note: No performance warning le",
+  "rss_final": 4457280
+ }
+}
