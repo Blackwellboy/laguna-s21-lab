@@ -12,8 +12,19 @@ raw material behind the numbers posted publicly the week of 2026-07-20:
   log, integrity probes, and service memory samples.
 
 One operator, one box, single runs scoped as such. Model revision **0761412**
-everywhere. Where a number depends on a condition, the condition is stated next
+everywhere; unless a section says otherwise, "Laguna" here means the **NVFP4
+build** of that revision (the 3.25bpw EXL3-hybrid lane is always labeled as
+such). Where a number depends on a condition, the condition is stated next
 to the number.
+
+**Build scoping (added 2026-07-30):** thinking policy differs by **build**,
+not just revision — @quantumleap68's wire-level measurements show the FP8 and
+NVFP4 uploads of this same model applying different thinking policies (FP8
+skips trivial follow-up turns under every prompt tried; NVFP4 reasons
+essentially every turn). Every published firing rate must therefore state
+build **and** revision, and none of this repo's NVFP4 firing rates should be
+assumed to transfer to the FP8 build. See `KNOWN_TEMPLATE_TRAPS.md`, preamble
+and traps #6–#7.
 
 ## Repo map
 
@@ -336,6 +347,22 @@ that bear directly on this repo's data:
   parallel-call categories at 0.04 to 0.08: the native-schema collapse
   measured a third way, after TheTom's 83 percent native vs 0 chatml and our
   100 percent native-path soak.
+- **Wire-level confirmation of the history-stripping mechanism**
+  (@quantumleap68, publicly shared; no canonical archive URL at time of
+  writing — cited by handle with the author's consent): Hermes CLI → vLLM
+  0.25.1, Laguna NVFP4 TP=1 and FP8 TP=2, a logging proxy between client and
+  server, N≥6 per cell, every claim measured on the wire. A client that strips
+  reasoning from replayed history renders each prior turn as an empty
+  `<think></think>` and the collapse tracks turn-by-turn: **turn 1 emitted 199
+  reasoning deltas; turns 2 and 3 with stripped history emitted none**. That
+  is our trap #4 / `context-mass/` mechanism confirmed independently on a
+  second client and serving pair, at the transport layer. The same battery
+  corroborates trap #1 (Laguna streams reasoning as `delta.reasoning`, not
+  `delta.reasoning_content`) and our C7→C8 tools result (same big system
+  prompt: 0/8 firing without a `tools` array, ~5/6 with one), sources the two
+  new registry entries (identity-sentence eviction, `reasoning_effort` no-op —
+  traps #6 and #7), and adds the FP8-vs-NVFP4 build-policy split behind the
+  build-scoping note above.
 - **Head-to-head in this repo** (`head-to-head/`): first single-suite test of
   the community claim "Qwen 3.6 35B-A3B beats Laguna" with identical harnesses
   on both sides. Confirmed for single-shot generation and raw speed; reversed
@@ -442,6 +469,10 @@ that bear directly on this repo's data:
 - **r0b0tlab** — independent qualification of the K=7/seqs=32 pair,
   cross-validating the sweep result (raw corpus in `originality/`).
 - **TheTom** — the off-label behavioral battery and guide linked above.
+- **@quantumleap68** — wire-level measurements (logging-proxy methodology):
+  independent confirmation of the history-stripping mechanism, the
+  identity-sentence eviction and `reasoning_effort` findings (traps #6–#7),
+  and the FP8/NVFP4 build-policy split.
 
 ## Commercial
 

@@ -129,3 +129,14 @@ model-output previews only. Two extended-sweep false positives during proving
 patterns tightened to colon-prefixed; no file content changed. No benchmark
 values, firing counts, token counts, timestamps, or protocol parameters were
 altered by any substitution.
+
+## Additions of 2026-07-30 (README, KNOWN_TEMPLATE_TRAPS #6–#7, build-scoping note)
+
+Documentation-only batch folding in @quantumleap68's wire-level findings
+(credited by handle with the author's consent; no canonical archive URL
+existed at time of writing, so the material is cited as publicly shared
+rather than linked). No logs, run data, or scripts added. The full pattern
+set was re-run on the staged tree: **no new hits** — the documented synthetic
+leftovers above are unchanged — and a diff-level scan of every added line
+returned **zero hits** across all classes. All measured cells quoted in the
+new entries are the author's published numbers, reproduced verbatim.

@@ -19,6 +19,16 @@ Trap #1 and #4 are template/serving-path classes and should be assumed present
 elsewhere until checked. The specific model revisions are named so you can tell
 "this was true of that checkpoint" from "this is true of the family".
 
+**Build scoping (added 2026-07-30).** Revision alone is not enough. Thinking
+policy differs by **build**, not just revision: FP8 and NVFP4 uploads of the
+same model behave differently on the wire (@quantumleap68 measured the FP8
+build skipping trivial follow-up turns under every prompt tried, including a
+byte-exact replay of a known-good client request shape at 1/6, while the NVFP4
+build reasons essentially every turn). A published firing rate that names a
+revision without its build is underspecified. State **build AND revision**
+next to every number, and treat cross-build comparisons as cross-model until
+shown otherwise.
+
 ---
 
 ## #1 — The reasoning field has two names
@@ -144,7 +154,8 @@ mechanism was the template.
 independent testers characterized this model and **all four missed it**, because
 every check anyone ran was request-shaped: correct kwargs, correct response
 parsing, correct field names. Nobody dumped the assembled prompt at turn N.
-Community-surfaced; we did not find it ourselves.
+Community-surfaced — the lead was @quantumleap68's; we did not find it
+ourselves.
 
 **Status.** **Mechanism confirmed and quantified (2026-07-29,
 `context-mass/`).** Identical transcripts probed with prior-turn reasoning
@@ -165,8 +176,20 @@ session cannot bootstrap its own preserved history — once the gate closes at
 turn 2, live-accumulated turns contain no reasoning to preserve (our first arm
 was vacuous exactly this way, 0/50 turns; kept in the raw logs) — generate
 history turns statelessly. NVFP4 confirmation on the production lane pending.
-Raw + writeup: `context-mass/`. Still community-surfaced; we did not find the
-kwarg ourselves.
+Raw + writeup: `context-mass/`. Still community-surfaced — @quantumleap68's
+lead; we did not find the kwarg ourselves.
+
+**Independently confirmed on a second stack and client (2026-07-30,
+@quantumleap68).** Wire-level measurement (Hermes CLI → vLLM 0.25.1, Laguna
+NVFP4 TP=1 and FP8 TP=2, a logging proxy between client and server, N≥6 per
+cell, all claims read off the wire): a client that strips reasoning from
+replayed history renders each prior turn as an empty `<think></think>`, and
+the collapse tracks turn-by-turn — **turn 1: 199 reasoning deltas; turns 2 and
+3 with stripped history: none**. Same mechanism, different client and serving
+pair, measured at the transport layer rather than the log layer. His
+client-side fix pattern is the right shape for tooling authors: **opt
+providers into echoing reasoning on replay** via an explicit per-provider
+capability flag, rather than vendor-sniffing which models need it.
 
 **The check.** Assemble a three-turn conversation whose first assistant message
 carries a uniquely-marked reasoning string, render the actual prompt through
@@ -186,7 +209,7 @@ until you have shown it does not.
 
 ## #5 — A scoring detail silently flips a verdict
 
-The other four traps corrupt what the model *receives* or what you *read back*.
+Traps #1–#4 corrupt what the model *receives* or what you *read back*.
 This one corrupts what your scorer *decides*, which is worse in one specific way:
 it leaves no trace in the raw logs at all. The transcript is fine. The number is
 wrong.
@@ -227,6 +250,71 @@ If a scored result is going to be published, the hand-read step is the differenc
 between a number and a claim.
 
 **Found.** 2026-07-29, during a cross-checked fold-count correction.
+
+---
+
+## #6 — Identity-sentence eviction: the thinking gate keys on the literal first line
+
+**The trap.** The template's trained identity sentence — the default
+"You are …" line the model was trained to see first — acts as a **pure prefix
+key** for the thinking gate. Replace it with your own system prompt and the
+gate closes; the content of your prompt barely matters, its *position* does.
+
+**The symptom.** Thinking collapses under any real system prompt, and no
+amount of instruction tuning brings it back — appending "always think",
+raising verbosity, or rewording the prompt does nothing. It looks exactly like
+generic prompt-dose suppression, so you tune the prompt harder and measure the
+same zero.
+
+**Where it bit.** @quantumleap68's wire-level battery (Hermes CLI → vLLM
+0.25.1, Laguna NVFP4 TP=1 and FP8 TP=2, logging proxy, N≥6 per cell). His
+measured cells: no system message **8/8** fired · "You are a helpful
+assistant." **6/6** · full 40K agent prompt **0/8** · the same 40K prompt with
+the identity sentence prepended as the literal first line **6–7/8** · identity
+appended at the **end** of the prompt **0/8** · identity spliced mid-sentence
+**1/6** · identity intact as line one plus a sentence after it **4/6**. A pure
+prefix prior: presence is not enough, position is the variable.
+
+**The check.** Prepend the template's own default identity sentence as the
+literal first line of your system message and re-measure firing. If the rate
+recovers, you were looking at identity eviction, not instruction-dose
+suppression — and every "prompt dose" number you took without controlling the
+first line is confounded.
+
+**Status.** Sourced from @quantumleap68's measurements. Independently under
+test on our stack (a study is running as of this entry); our result is not yet
+in.
+
+**Found.** 2026-07-30, reported by @quantumleap68 from wire-level measurement.
+
+---
+
+## #7 — `reasoning_effort` accepted and silently ignored
+
+**The trap.** The request schema accepts a `reasoning_effort` parameter, the
+server returns 200, and the chat template has **no handling for it at all**.
+The parameter parses, validates, and does nothing.
+
+**The symptom.** Effort levels change nothing — identical reasoning depth at
+`low`, `medium`, and `high` — and you conclude the model ignores depth
+requests, or worse, publish a "reasoning_effort has no effect on this model"
+finding as if it had been exercised. On templates like this, prompting is the
+only depth lever that exists.
+
+**Where it bit.** @quantumleap68's wire-level battery on Laguna (Hermes CLI →
+vLLM 0.25.1): `reasoning_effort` is a no-op because the template never reads
+it. Same class as trap #4's corollary in reverse — there, the template read a
+kwarg the model card didn't document; here, the API accepts a parameter the
+template doesn't read. Both directions of the schema/template mismatch produce
+silent wrong numbers.
+
+**The check.** Grep the chat template for the parameter name **before**
+trusting any knob you send. If the template never references it, the knob is
+dead on this build regardless of what the server accepts. The trap #4
+corollary generalizes to: diff the set of kwargs the template reads against
+the set the API accepts, in both directions.
+
+**Found.** 2026-07-30, reported by @quantumleap68 from wire-level measurement.
 
 ---
 
