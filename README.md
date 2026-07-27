@@ -60,7 +60,7 @@ the companion document on the prompt side.
 | `pr10-replication/` | Independent replication of offlabel PR #10's thinking-ON HumanEval+ claim (2026-07-27): 164 problems × 2 arms × 3 seeds, temperature identical across arms, per-sample raw JSONL, driver + analysis scripts |
 | `context-mass/` | Context-mass sweep + preserved-reasoning mechanism arm on the 3.25bpw hybrid (2026-07-27): 15 depth×mass cells, live history-building logs, stripped-vs-preserved comparison, template passthrough proofs, raw per-turn JSONL |
 | `qwen-ceiling/` | Qwen 3.6 35B-A3B empty-at-ceiling map (2026-07-27): max_tokens {4096→16384} budget axis on the byte-identical criteria task, 4-shape structured axis @12288, per-cap-hit degeneration metrics, raw JSONL |
-| `prompt-topology/` | Prompt-topology study (2026-07-27): one fixed 8-requirement set rendered in 5 token-band-controlled shapes (±4.2%) × bare/C7 × 4 tasks × both models, plus a reversed-order arm — 1,120 turns, raw per-turn JSONL, tested against a community reader's format-as-control-token hypothesis |
+| `prompt-topology/` | Prompt-topology study (2026-07-27): one fixed 8-requirement set rendered in 5 token-band-controlled shapes (±4.2%) × bare/C7 × 4 tasks × both models, plus a reversed-order arm — 1,120 turns, raw per-turn JSONL, tested against a community reader's format-as-control-token hypothesis; ordering-isolation follow-up (direction replicated connective-free, cell magnitudes run-scoped) |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
 | `KNOWN_TEMPLATE_TRAPS.md` | Stub. The template-trap registry moved to its own contributable repo: [model-serving-minefield](https://github.com/Blackwellboy/model-serving-minefield) |
 | `SOURCE_ARCHIVES*` | Dated archive links for every community source used |
@@ -84,7 +84,16 @@ study's only decisive effect is **ordering, which a topology-class story holds
 constant**: reversing requirement order inside the flowing-prose paragraph
 flips bare firing **1/40 → 15/40 (p=1.2e-4)** at identical semantics, shape,
 and token count, while the same reversal inside JSON does nothing. The gate
-reads fine-grained arrangement, not a format class. Summary-task firing stayed
+reads fine-grained arrangement, not a format class. **Replication status:** a
+same-day isolation run replicates the direction connective-free (4/40 vs
+15/40, p=0.0075; no single boundary slot is responsible) but also surfaced
+same-cell between-run drift: the original-order cell fired 1/40 in the main
+grid and 7/40 on byte-identical prompts about 3.5 h later (p about 0.057). So
+quote 1/40 vs 15/40 only as the contemporaneous in-run contrast it is; the
+flip's direction is replicated, its magnitude is run-scoped, and single-cell
+rates on this lane carry between-run noise of several/40
+([`prompt-topology/ORDERING_ISOLATION_20260730.md`](prompt-topology/ORDERING_ISOLATION_20260730.md)).
+Summary-task firing stayed
 0/200, replicating summarization-never-thinks. Latency in this run is
 non-comparable (a concurrent study shared the lanes; firing is
 prompt-determined and unaffected). Full detail:

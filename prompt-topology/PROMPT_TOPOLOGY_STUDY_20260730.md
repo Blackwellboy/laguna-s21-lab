@@ -70,13 +70,15 @@ Reversed requirement order, same words, same shape, same token count (reversed b
 
 The single largest effect in the whole study is **ordering, not shape**: reversing the requirement order inside the flowing-prose paragraph moves bare Laguna firing 2.5% → 37.5% (driven by math 9/10 and code 6/10), with zero change in semantics, shape class, or token count. The same reversal inside the JSON shape does nothing at bare. So the sensitivity is a shape × order interaction — the gate is reading fine-grained arrangement (plausibly what sits nearest the task boundary: original order ends the block with the 400-word cap requirement; reversed ends with "be direct and concise"), not a topology class. Mechanism unidentified; a targeted single-requirement-swap experiment would isolate it (parked).
 
+> **Replication status (added 2026-07-27):** the ordering-isolation follow-up ([`ORDERING_ISOLATION_20260730.md`](ORDERING_ISOLATION_20260730.md)) replicates the direction connective-free (4/40 vs 15/40, p=0.0075) and finds no single boundary slot responsible. It also surfaced same-cell between-run drift: conn_orig fired 1/40 in this grid and 7/40 on byte-identical prompts about 3.5 h later (p about 0.057). The 1/40 vs 15/40 contrast is contemporaneous and stands as measured, but its magnitude is run-scoped: single-cell rates on this lane carry between-run noise of several/40, and only within-run contrasts should be quoted bare.
+
 ## 5. Verdict
 
 **Does prompt topology function as an undocumented control on thinking? Partially, on Laguna only — and "topology" is the wrong abstraction.**
 
 1. **Qwen: clean null.** 560/560 fired across every shape, order, and apparatus. Prompt format is not a general prompt-format control on thinking; whatever the reader's hypothesis predicts for ungated models, firing does not move.
 2. **Laguna: format is a live input, but secondary and entangled.** Apparatus (bare vs C7) dominates (p ≈ 5e-13). With order fixed, shape shifts C7 firing about 2× (prose 27.5% vs numbered 50%), significant only when prose is pooled against the four structured shapes (p = 0.034), and redistributes firing across tasks (json suppresses the reasoning task specifically, p = 0.020).
-3. **The "control token" picture is too coarse.** Ordering — which a topology-class story holds constant ("same content, same shape") — produces the study's only decisive flip (prose/bare 1/40 → 15/40, p = 1.2e-4). The gate is sensitive to fine-grained prompt arrangement, interacting with shape and apparatus, and only on the gated model. "Latent policy selection from prompt topology" survives only in the weak form: *the Laguna gate conditions on prompt surface features beyond semantics — including shape and order — but no discrete format class acts like a token you can flip.*
+3. **The "control token" picture is too coarse.** Ordering — which a topology-class story holds constant ("same content, same shape") — produces the study's only decisive flip (prose/bare 1/40 → 15/40, p = 1.2e-4; direction replicated connective-free in the follow-up, magnitude run-scoped, see the replication note in section 4). The gate is sensitive to fine-grained prompt arrangement, interacting with shape and apparatus, and only on the gated model. "Latent policy selection from prompt topology" survives only in the weak form: *the Laguna gate conditions on prompt surface features beyond semantics — including shape and order — but no discrete format class acts like a token you can flip.*
 
 ## Scope and honesty
 
@@ -84,6 +86,7 @@ The single largest effect in the whole study is **ordering, not shape**: reversi
 - The prose connectives ("In addition, you must…") are the one wording difference between prose and the list shapes; prose is also where the ordering flip lives. A connective-free prose variant is the obvious follow-up (parked).
 - The dialogue topology uses `OP:` labels with no second speaker — a degenerate dialogue; a two-speaker variant untested (parked).
 - Single-turn only; nothing here speaks to multi-turn behavior (that mechanism is already established as reasoning-stripping, see the context-mass study).
+- Between-run drift: the isolation follow-up re-measured this grid's conn_orig cell at 7/40 on byte-identical prompts about 3.5 h later, vs 1/40 here (p about 0.057). Cell magnitudes on this lane are run-scoped; only within-run contrasts are safe to quote without that caveat.
 - Test-lane baseline note: bare-Laguna firing on this 3.25bpw hybrid lane with a requirement block prepended (~2.5–5%) is far below the plain-task bare firing seen in the original gate study; the requirement block itself is suppressive at bare. Consistent with the criteria-task finding (criteria+agent-prompt drove verify-loops; requirement lists interact with the gate).
 
 ## Parked / next
