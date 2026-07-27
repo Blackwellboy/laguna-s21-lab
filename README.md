@@ -284,6 +284,19 @@ likely does the rest (untested). **⚠ That "open gap" now has an identified
 mechanism and it is not primarily context mass — see the interpretation update
 dated 2026-07-27 below, and [registry trap 04](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/04-history-reasoning-stripping.md).**
 
+**[SCALE CAVEAT 2026-07-28: every firing figure in this entry is n=40 per
+cell on our NVFP4 build under vLLM 0.25.1 (GB10 sm_121). @apollo-mg's n=492
+apparatus cell (offlabel PR #10 comment 5093534067, 2026-07-27; Laguna S 2.1
+UD-Q2_K_XL, llama.cpp, 4x Tesla P100 sm_60; HumanEval+ 164 x K=3; 752-byte
+agent system prompt plus 3 tool schemas) measured firing on 445/492 samples
+(90.4%), mean reasoning_content 4,686 chars. Apparatus suppression of firing
+is real on our lanes and much weaker at scale on his. The datasets reconcile
+on task: his workload is 100% codegen and our C7 and C8 code rows are both
+10/10; our pooled 60-72% is a task-mix figure held down by summarization
+(0/10) and the reasoning task (4/10). Do not read our pooled rates as a
+general claim that agent apparatus closes the gate. Credit @apollo-mg. See
+`gate-study/README.md` for the full note.]**
+
 **Cross-model: is the gate a Laguna quirk or how these models work?
 (2026-07-26, `cross-model/`)** The identical C0–C9 battery — same conditions,
 same four task types, same 4096 ceiling, same nonce scheme, 400 grid turns —
@@ -294,6 +307,14 @@ task types.** The dense 10-rule block (C6) that suppresses Laguna to **3/40**
 does nothing to Qwen (**40/40**). Summarization, which never fired on Laguna in
 **105** straight attempts, fired **100/100** on Qwen. So the gate is Laguna's
 own behaviour, not a property of hybrid thinking models.
+
+**[SCOPE CAVEAT 2026-07-28: "Laguna's own behaviour" should read "Laguna's
+behaviour on the builds we measured". @apollo-mg ran Laguna S 2.1 UD-Q2_K_XL
+under llama.cpp on 4x Tesla P100 (sm_60) with a full agent apparatus and got
+firing on 445/492 samples (90.4%), i.e. no binary gate closure on that quant
+and runtime (offlabel PR #10 comment 5093534067, 2026-07-27). The Qwen
+contrast below is a comparison against OUR Laguna builds, not against Laguna
+in general. Detail in `cross-model/QWEN_GATE_CURVE_20260728.md`.]**
 
 But the dose is not inert on Qwen — it moves a different lever. As the system
 prompt grows, Qwen's reasoning gets **shorter**: median est. thinking tokens

@@ -109,6 +109,23 @@ contexts (100K+ token document packs). **Context mass / conversation depth is
 the likely remaining suppressor and is untested here** (future work:
 firing-rate vs context-length sweep).
 
+**SCALE CAVEAT (2026-07-28).** Every firing figure in this grid is n=40 per
+cell (4 task types x 10 samples), within-run, on our own Laguna S 2.1 NVFP4
+build under vLLM 0.25.1 on GB10 sm_121. Those are valid within-run contrasts
+and nothing here is withdrawn, but they do not support a general statement
+that agent apparatus closes the gate. An independent apparatus cell at n=492
+(HumanEval+, 164 problems x K=3), published by @apollo-mg on offlabel PR #10
+(comment 5093534067, 2026-07-27), ran Laguna S 2.1 UD-Q2_K_XL under
+llama.cpp on 4x Tesla P100 (sm_60) with a 752-byte agent system prompt plus
+3 tool schemas and measured firing on 445/492 samples (90.4%), mean
+reasoning_content 4,686 chars. His cell is 100% codegen; our C7 code row is
+10/10 and our C8 code row is 10/10, so the two datasets agree closely once
+task is held fixed. Our pooled 60-72% is a task-mix figure, dragged down by
+summarization (0/10 in every condition) and the reasoning task (4/10 at C7).
+Read the pooled rates as per-grid numbers on this build. The apparatus
+suppression that survives is real but weaker at scale than a 40-sample
+pooled cell implies. Credit @apollo-mg.
+
 > **Interpretation update (2026-07-27).** The gap above now has an identified
 > mechanism, and the context-mass hypothesis stated in this section is largely
 > displaced. Under default serving with `enable_thinking: true`, **prior

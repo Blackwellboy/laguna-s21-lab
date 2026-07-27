@@ -113,6 +113,17 @@ truncation (reasoning measured before a tool-call exit is structurally
 shorter: median 462 pre-call vs 1293 for direct answers on the same arm).
 See [c7-depth-collapse/](c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).
 
+**SCALE CAVEAT (2026-07-28).** The 24/40 and 29/40 figures are n=40
+within-run cells on our NVFP4 build under vLLM 0.25.1 (GB10 sm_121). At
+larger n on a different stack the apparatus effect on firing is much weaker:
+@apollo-mg's n=492 apparatus cell on offlabel PR #10 (comment 5093534067,
+2026-07-27) measured firing on 445/492 samples (90.4%) with a 752-byte agent
+system prompt plus 3 tool schemas, on Laguna S 2.1 UD-Q2_K_XL under
+llama.cpp on 4x Tesla P100 (sm_60). His workload is 100% codegen and our
+code rows at C7 and C8 are both 10/10, so the results reconcile on task; our
+pooled 60-72% is a task-mix number. Do not carry our pooled rates across
+quants, runtimes or task mixes.
+
 ## 3. Thinking: when to use it and what it costs
 
 **Accuracy: flat once temperature is controlled.** offlabel PR #10 claimed
@@ -210,6 +221,32 @@ So: if you need thinking, keep the system prompt lean and know that every
 rule block you add shortens the reasoning you get even when it still fires.
 If you want thinking suppressed, a compact dense rule block does more than
 sheer length.
+
+**CORRECTION AND SCALE CAVEAT (2026-07-28).** Two problems with the operator
+advice immediately above, left in place per our visible-corrections
+convention.
+
+1. The clause "every rule block you add shortens the reasoning you get even
+   when it still fires" is the depth claim retracted four lines earlier and
+   should not have survived here. It is withdrawn as a causal statement.
+   In-run interleaved arms are flat on depth (all pairwise p >= 0.13); what
+   moves depth is task composition and tool-boundary truncation. See
+   [c7-depth-collapse/](c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).
+2. The firing advice is n=40 per cell on our NVFP4 build under vLLM 0.25.1
+   (GB10 sm_121) and does not generalise across quants, runtimes or task
+   mixes. @apollo-mg's n=492 apparatus cell (offlabel PR #10 comment
+   5093534067, 2026-07-27; Laguna S 2.1 UD-Q2_K_XL, llama.cpp, 4x Tesla
+   P100 sm_60, 752-byte agent prompt plus 3 tool schemas, HumanEval+ 164 x
+   K=3) measured firing on 445/492 samples (90.4%). Apparatus suppression of
+   firing is real on our lanes but much weaker at scale on his. The two
+   datasets agree once task is held fixed: our C7 and C8 code rows are both
+   10/10, and his workload is 100% codegen; our pooled 24/40 is dragged down
+   by summarization (0/10) and the reasoning task (4/10).
+
+Restated advice that survives both points: the dense-rule-block lever on
+firing is the one measured effect here, it is a within-run n=40 result on one
+build, and if firing rate matters to you, measure it on your own stack and
+your own task mix rather than importing these numbers. Credit @apollo-mg.
 
 **Under test, stated as such:** wire-level measurements by @quantumleap68
 indicate the gate may key on the template's trained identity sentence as a

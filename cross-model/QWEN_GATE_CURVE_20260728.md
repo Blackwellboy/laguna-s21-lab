@@ -35,6 +35,22 @@ Qwen C8 cell. The Qwen medians are real measurements; whether Qwen has a
 genuine dose-depth effect is OPEN until the same in-run interleaved control
 is run on Qwen. See [c7-depth-collapse/](../c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).
 
+**SCALE AND STACK CAVEAT (2026-07-28): "Laguna-specific" is scoped to the
+builds we measured, not to the model.** Every Laguna cell behind this
+headline is n=40 per condition on our own lanes (Laguna S 2.1 NVFP4 and
+3.25bpw hybrid, vLLM 0.25.1, GB10 sm_121). An independent apparatus cell at
+n=492 (HumanEval+, 164 problems x K=3), published by @apollo-mg on offlabel
+PR #10 (comment 5093534067, 2026-07-27), ran Laguna S 2.1 UD-Q2_K_XL under
+llama.cpp on 4x Tesla P100 (sm_60) with a 752-byte agent system prompt plus
+3 tool schemas, and measured thinking firing on 445/492 samples (90.4%),
+mean reasoning_content 4,686 chars. Same model, different quant, runtime and
+hardware, and no binary gate closure under apparatus. The defensible scoping
+is "binary gate closure under apparatus is specific to Laguna on the builds
+we measured". The two results are not actually in conflict once task is held
+fixed: our own C7 code row fires 10/10, and our pooled 24/40 is a task-mix
+number (summarization 0/10, reasoning 4/10) while his cell is 100% codegen.
+Credit @apollo-mg.
+
 ## Setup
 
 | | Laguna (2026-07-26, gb10-c — NOT re-run) | Qwen (this run) |
