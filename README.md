@@ -23,8 +23,9 @@ NVFP4 uploads of this same model applying different thinking policies (FP8
 skips trivial follow-up turns under every prompt tried; NVFP4 reasons
 essentially every turn). Every published firing rate must therefore state
 build **and** revision, and none of this repo's NVFP4 firing rates should be
-assumed to transfer to the FP8 build. See `KNOWN_TEMPLATE_TRAPS.md`, preamble
-and traps #6–#7.
+assumed to transfer to the FP8 build. See the
+[model-serving-minefield registry](https://github.com/Blackwellboy/model-serving-minefield)
+(methodology preamble and traps 06 and 07).
 
 ## Repo map
 
@@ -45,7 +46,7 @@ and traps #6–#7.
 | `context-mass/` | Context-mass sweep + preserved-reasoning mechanism arm on the 3.25bpw hybrid (2026-07-29): 15 depth×mass cells, live history-building logs, stripped-vs-preserved comparison, template passthrough proofs, raw per-turn JSONL |
 | `qwen-ceiling/` | Qwen 3.6 35B-A3B empty-at-ceiling map (2026-07-29): max_tokens {4096→16384} budget axis on the byte-identical criteria task, 4-shape structured axis @12288, per-cap-hit degeneration metrics, raw JSONL |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
-| `KNOWN_TEMPLATE_TRAPS.md` | Known template traps: a registry of chat-template gotchas that produce wrong benchmark numbers, with the checks that catch each |
+| `KNOWN_TEMPLATE_TRAPS.md` | Stub. The template-trap registry moved to its own contributable repo: [model-serving-minefield](https://github.com/Blackwellboy/model-serving-minefield) |
 | `SOURCE_ARCHIVES*` | Dated archive links for every community source used |
 | `TWEET_PACK_V3.1.md` | The claim set as posted, kept verbatim for accountability |
 | `REDACTIONS.md` | Exact sanitization applied to these files before publication |
@@ -167,7 +168,7 @@ template-level rather than context-mass — prior assistant turns render as empt
 `<think></think>` blocks in the assembled history under default serving. The
 number describes real default-config multi-turn behavior. See the interpretation
 update under "Known interpretation updates" and
-[`KNOWN_TEMPLATE_TRAPS.md`](KNOWN_TEMPLATE_TRAPS.md) #4.)*
+[registry trap 04](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/04-history-reasoning-stripping.md).)*
 
 **Thinking-gate suppression study (2026-07-27, `gate-study/`):** 450 logged
 turns, 10 system-prompt conditions x 4 task types, plus a criteria-loop probe.
@@ -185,7 +186,7 @@ ceiling — the production prompt is half the trigger. Open gap: single-turn
 agent prompts fire 60-72% vs the soak's ~0.1%, so context mass / turn depth
 likely does the rest (untested). **⚠ That "open gap" now has an identified
 mechanism and it is not primarily context mass — see the interpretation update
-dated 2026-07-29 below, and `KNOWN_TEMPLATE_TRAPS.md` #4.**
+dated 2026-07-29 below, and [registry trap 04](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/04-history-reasoning-stripping.md).**
 
 **Cross-model: is the gate a Laguna quirk or how these models work?
 (2026-07-28, `cross-model/`)** The identical C0–C9 battery — same conditions,
@@ -272,7 +273,7 @@ is a C4-class suppressor, i.e. the gate study reproducing on a third stack.
   (`vllm/vllm-openai:v0.25.1@sha256:e4f88a…`), FlashInfer trio pinned with
   recorded sha256s, fail-closed install (a wrong flag aborts the build — proven
   live). Entrypoint prints the effective cmdline flag-by-flag. Weights are not
-  in the image; mount your own copy of the rev-0761412 checkpoint.
+  in the image; mount your own copy of the NVFP4-build rev-0761412 checkpoint.
 - **Bench:** point `bench/hermes_bench_v1.py` at any OpenAI-compatible endpoint
   and compare row-level JSON, not just medians.
 - **Sweep:** protocol in `sweep/LAGUNA_TUNING_SWEEP_20260723.md` §1; each cell
@@ -322,7 +323,7 @@ that bear directly on this repo's data:
   `false` is the one structural off-switch (pre-closed `</think>`; 0/15
   reasoned). Omitting the kwarg **fires** on their llama.cpp path (the server
   overrides the template default; absent renders byte-identical to `true`),
-  and explicit `true` fires. Note our rev-0761412 checkpoint's template
+  and explicit `true` fires. Note our NVFP4-build rev-0761412 checkpoint's template
   defaults `enable_thinking` to `true` outright, consistent with the
   post-release config drift documented in the guide's changelog.
 - **Cross-model integrity finding**: the housekeeping-framed provenance blind
@@ -420,7 +421,7 @@ that bear directly on this repo's data:
   pending. Full writeup:
   [`context-mass/CONTEXT_MASS_SWEEP_20260729.md`](context-mass/CONTEXT_MASS_SWEEP_20260729.md).
   Registry entry with the check that catches this class:
-  [`KNOWN_TEMPLATE_TRAPS.md`](KNOWN_TEMPLATE_TRAPS.md) #4.
+  [registry trap 04](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/04-history-reasoning-stripping.md).
 
 - **2026-07-26 — the soak's ~0.1% thinking rate, reread under the corrected
   kwarg model.** The soak driver sent explicit
@@ -438,7 +439,7 @@ that bear directly on this repo's data:
   [offlabel#7](https://github.com/TheTom/offlabel/pull/7), so the guide now
   states that `false` is a real structural off-switch, that omitting the kwarg
   is not the `false` path, and that which arm "absent" lands in is
-  revision-dependent (our rev `0761412` checkpoint and poolside's current HF
+  revision-dependent (our NVFP4-build rev `0761412` checkpoint and poolside's current HF
   upload both default `enable_thinking` to `true`).
 
   *Status 2026-07-28, upstream adoptions:*

@@ -115,8 +115,8 @@ firing-rate vs context-length sweep).
 >
 > A stripped-versus-preserved comparison is running now and will be linked here
 > with its measured delta. Mechanism established, magnitude pending. See
-> [`../KNOWN_TEMPLATE_TRAPS.md`](../KNOWN_TEMPLATE_TRAPS.md) #4 for the trap and
-> the check that catches it.
+> [the trap registry, entry 04](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/04-history-reasoning-stripping.md)
+> for the trap and the check that catches it.
 
 ## 3. C9 verdict: explicit invitation does NOT override
 
