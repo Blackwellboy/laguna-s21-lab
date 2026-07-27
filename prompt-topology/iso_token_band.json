@@ -1,0 +1,32 @@
+{
+ "laguna": {
+  "counts": {
+   "conn_orig": 153,
+   "conn_rev": 153,
+   "conn_swapends": 153,
+   "conn_r8first": 153,
+   "conn_r1last": 153,
+   "nocon_orig": 132,
+   "nocon_rev": 132
+  },
+  "mean": 147.0,
+  "band_lo": 132.3,
+  "band_hi": 161.7,
+  "all_in_band": false
+ },
+ "qwen": {
+  "counts": {
+   "conn_orig": 154,
+   "conn_rev": 154,
+   "conn_swapends": 154,
+   "conn_r8first": 154,
+   "conn_r1last": 154,
+   "nocon_orig": 133,
+   "nocon_rev": 133
+  },
+  "mean": 148.0,
+  "band_lo": 133.2,
+  "band_hi": 162.8,
+  "all_in_band": false
+ }
+}
