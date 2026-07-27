@@ -155,8 +155,8 @@ histories — fired 0/150 with flat-zero curves on both axes, so depth and mass
 are epiphenomenal to the stripping. **The fix:** resend `reasoning` on prior
 assistant messages (with thinking on, the template then renders the real think
 blocks; verified passthrough moves prompt_tokens accordingly), or set
-`preserve_thinking: true` for thinking-off flows. Cost ~160 prompt tokens per
-preserved turn in the tested cells. Partial preservation suffices at moderate
+`preserve_thinking: true` for thinking-off flows. Cost ~250-320 prompt tokens per
+preserved turn that carries reasoning (measured: +1,615 prompt tokens over 5 preserved turns at d10, +4,764 over 19 at d20). Partial preservation suffices at moderate
 depth (the d10 history carried reasoning on only 5/10 turns and still
 recovered 10/10). A detector ships with this registry's kit
 (`preflight_template.py`, which refuses to certify a lane whose assembled

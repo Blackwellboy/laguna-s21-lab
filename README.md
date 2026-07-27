@@ -56,7 +56,7 @@ Mechanism (template read + vLLM passthrough verified live): with
 resend reasoning, so every prior turn renders an **empty `<think></think>`**
 and the model stops thinking from turn 2. Fix: resend `reasoning` on assistant
 history messages (or `preserve_thinking: true` for thinking-off flows), at
-~160 prompt tokens per preserved turn in these cells. Scope: 3.25bpw
+~250-320 prompt tokens per preserved turn (the turn's reasoning length; +1,615 tokens over 5 preserved turns at d10, +4,764 over 19 at d20). Scope: 3.25bpw
 EXL3-hybrid stack; the transfer check landed at 45% vs NVFP4's 60% (overlapping
 CIs, same task-shape profile — borderline, documented in the writeup); NVFP4
 confirmation on the production lane is pending. Full detail:
@@ -388,8 +388,8 @@ that bear directly on this repo's data:
   is identified and quantified; the **~0.1% soak figure stands** as real
   default-client behavior; the **C0-C9 single-turn grid is unaffected**.
   Practical handle: resend `reasoning` on assistant history messages, or
-  `preserve_thinking: true` for thinking-off flows (~160 prompt tokens per
-  preserved turn in these cells). NVFP4 confirmation on the production lane is
+  `preserve_thinking: true` for thinking-off flows (~250-320 prompt tokens per
+  preserved turn that carries reasoning). NVFP4 confirmation on the production lane is
   pending. Full writeup:
   [`context-mass/CONTEXT_MASS_SWEEP_20260729.md`](context-mass/CONTEXT_MASS_SWEEP_20260729.md).
   Registry entry with the check that catches this class:

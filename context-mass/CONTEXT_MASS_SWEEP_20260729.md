@@ -143,7 +143,7 @@ preserved history had reasoning on only 5/10 turns and still recovered to
    10/10 in both tested cells. For agent harnesses on Laguna-family models,
    reasoning retention is a serving/client configuration decision with a
    ~40-percentage-point-plus behavioral consequence, plus a prompt-token cost
-   (~160 tokens per preserved turn in these cells).
+   (~250-320 tokens per preserved turn that carries reasoning: +1,615/5 turns at d10, +4,764/19 at d20).
 
 ## Scope and caveats
 
