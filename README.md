@@ -35,10 +35,17 @@ older document header disagrees with the commit date or the raw timestamps
 beside it, trust the commit and the raw logs (a dated-label normalization
 pass is recorded in the changelog).
 
+**Operators: start with
+[`LAGUNA_OPERATORS_GUIDE.md`](LAGUNA_OPERATORS_GUIDE.md)**: the
+configuration and serving decisions distilled from every study below, with
+conditions attached and raw links per claim. TheTom's behavioral guide is
+the companion document on the prompt side.
+
 ## Repo map
 
 | Path | What it is |
 |------|-----------|
+| `LAGUNA_OPERATORS_GUIDE.md` | The operators guide: quickstart config, tool calling, thinking cost, multi-turn preservation, prompt shape, quant, integrity, routing, and the verify-your-setup checks |
 | `container/` | Dockerfile, entrypoint, VERSIONS.md (pinned digests + wheel sha256s), build runbook context |
 | `bench/hermes_bench_v1.py` | The harness. Streaming decode measured as (n−1)/(t_last−t_first), TTFT separate, per-category (tool/code/json/prose) and per-depth rows |
 | `bench/results/` | Reference + interactive profile results; `full/` holds the full-protocol runs behind the headline medians |
