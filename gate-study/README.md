@@ -185,11 +185,14 @@ the production-shaped prompt is the trigger's other half.**
 
 - **The gate is not broken and not random.** It is a prompt-content dose
   response: what you put in the system prompt (and what kind of task you send)
-  decides whether and how long the model thinks.
+  decides **whether** the model thinks. It does not follow that the same dose
+  sets **how long** it thinks once it has started; see the correction at the
+  end of this section.
 - **If you want thinking OFF** (recommended for agents on this rev): a dense
   instruction block (~10 rules) is the strongest single-prompt suppressor we
-  measured, stronger than a persona line alone. Any realistic agent prompt
-  already keeps thinking down to short bursts.
+  measured, stronger than a persona line alone, measured as **firing rate**.
+  Do not read that as a guarantee of short reasoning on the turns that still
+  fire.
 - **If you want thinking ON:** send no/minimal system prompt and a
   reasoning-shaped or math-shaped task. Asking it to "think step by step"
   under an agent prompt does not work. Summarization will not think, period.
@@ -201,6 +204,28 @@ the production-shaped prompt is the trigger's other half.**
   prompting (which this model otherwise rewards) belongs with thinking off.
 - **Budget note:** every thinking-on turn that fires hot costs ~80–140 s on a
   single Spark at 4096 cap, vs ~3–18 s suppressed.
+
+**Correction, 2026-07-28.** This section previously said that prompt content
+decides both whether and how long the model thinks, and that a realistic agent
+prompt keeps reasoning to short bursts. The depth half of that is retracted.
+It came from pooled medians, which mix turns that answered directly with turns
+that exited early via a tool call, and a tool-call turn carries only the
+reasoning produced before the model decided to call. Pooled length therefore
+falls for a mechanical reason: the apparatus alters the **mixture of exit
+paths**, and the reasoning episode ends at the tool boundary.
+
+Measured on fired turns only, with the exit path held fixed, depth did not
+fall: 200 turns, 5 arms x 4 tasks x 10 samples, interleaved in-run, all
+pairwise Mann-Whitney p >= 0.13, and the arm carrying tool schemas had the
+highest median. Firing rate is dose-responsive, as this section says. Depth,
+conditional on firing, is not.
+
+What still holds for operators: the firing-rate guidance above, and the
+ceiling warning below it. What does not: any expectation that an agent prompt
+bounds how long a turn reasons once it fires. Full analysis in
+[c7-depth-collapse](../c7-depth-collapse), and the harness-side statement of
+the same mechanism in
+[minefield trap 42](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/evaluation/42-single-turn-harness-scores-tool-calls-as-wrong.md).
 
 ## 6. Files
 
