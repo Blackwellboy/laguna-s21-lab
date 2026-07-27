@@ -1,4 +1,7 @@
-# 0xSero Laguna S 2.1 Hybrid 3.25bpw vs our published NVFP4 — quant-floor verification, 2026-07-27
+# 0xSero Laguna S 2.1 Hybrid 3.25bpw vs our published NVFP4 — quant-floor verification, 2026-07-26
+
+> **Dating note:** the `_20260727` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-26 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
+
 
 
 ## Compatibility gate (PASSED — this was the go/no-go)

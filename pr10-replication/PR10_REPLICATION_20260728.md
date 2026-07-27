@@ -1,6 +1,9 @@
 # PR #10 replication: `enable_thinking` on HumanEval+ — Laguna S 2.1 NVFP4 rev 0761412
 
-**Fourth-stack independent replication requested in [TheTom/offlabel PR #10]. Run 2026-07-28.**
+> **Dating note:** the `_20260728` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-27 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
+
+
+**Fourth-stack independent replication requested in [TheTom/offlabel PR #10]. Run 2026-07-27.**
 
 ## Verdict, up front
 

@@ -1,6 +1,6 @@
 # Qwen thinking mechanism — verified BEFORE the grid (protocol step)
 
-Date: 2026-07-28. Lane: gb10-a :8100, `nvidia/Qwen3.6-35B-A3B-NVFP4` @ `491c2f1e`,
+Date: 2026-07-26. Lane: gb10-a :8100, `nvidia/Qwen3.6-35B-A3B-NVFP4` @ `491c2f1e`,
 vLLM nightly with `--reasoning-parser qwen3`.
 
 ## How this model exposes the gate

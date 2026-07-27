@@ -1,6 +1,9 @@
 # Qwen 3.6 35B-A3B empty-at-ceiling map — does budget ever fix it?
 
-TEMPORARY HANDOFF — NOT CANONICAL. Date 2026-07-29. Lane: spark-node-a :8100
+> **Dating note:** the `_20260729` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-27 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
+
+
+TEMPORARY HANDOFF — NOT CANONICAL. Date 2026-07-27. Lane: spark-node-a :8100
 (`nvidia/Qwen3.6-35B-A3B-NVFP4` @ 491c2f1e, vLLM, `qwen3` reasoning parser,
 thinking on `message.reasoning`, `chat_template_kwargs.enable_thinking: true`).
 
@@ -22,7 +25,7 @@ this ceiling: these are truncations that a 2× budget fully converts.
 
 ## Setup
 
-- Criteria task **byte-identical** to the 2026-07-28 cross-model study (the
+- Criteria task **byte-identical** to the 2026-07-26 cross-model study (the
   driver imports `CRITERIA_TASK` from the original driver module rather than
   copying the text).
 - Bare prompt (C0, no system prompt), Qwen generation_config sampling
@@ -83,7 +86,7 @@ to task demand, not task shape.
 
 ## Files
 
-- `qwen_ceiling_map_driver.py` — driver (imports the 2026-07-28 driver module
+- `qwen_ceiling_map_driver.py` — driver (imports the 2026-07-26 driver module
   for byte-identity; deviations documented in its docstring)
 - `logs/budget_axis.jsonl`, `logs/shape_axis.jsonl` — raw per-sample rows
 - `driver_stdout.log`

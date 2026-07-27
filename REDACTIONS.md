@@ -43,7 +43,7 @@ reference those notes remain, with identifiers replaced as above.
 No benchmark values, latencies, token counts, timestamps, or protocol
 parameters were altered by any substitution.
 
-## 2026-07-27 additions (head-to-head/, quant-floor/)
+## 2026-07-26 additions (head-to-head/, quant-floor/)
 Same conventions as above, applied before publication: internal hostnames replaced
 (spark-host-1/-2/-3), LAN IPs in bench "base" fields replaced with <SERVER>, one
 internal harness path replaced with <CONTROL_PLANE>/..., internal handoff banners
@@ -52,7 +52,7 @@ and operator-directed notes removed. Mentions of Tailscale and IPs such as
 produced by the models under test, not real infrastructure. Benchmark values,
 timestamps, and protocol parameters were not altered.
 
-## Additions of 2026-07-28 (cross-model/, spine-probes/)
+## Additions of 2026-07-26 (cross-model/, spine-probes/)
 
 Same conventions, applied to the staged copies and then independently
 re-verified with the full six-class pattern set (hostnames, usernames,
@@ -87,11 +87,11 @@ upstream files, carried with two commented one-line local patches and a
 `SHA256SUMS.txt` so the diff against upstream is checkable. No benchmark values,
 verdicts, timestamps, or transcript text were altered.
 
-## Additions of 2026-07-27 (gate-study/) + ops-language pass
+## Additions of 2026-07-26 (gate-study/) + ops-language pass
 
 The thinking-gate study artifacts were sanitized with the same policy on the
 staged copies, then verified with the full pattern set PLUS an ops-language
-sweep (per the 2026-07-27 convention): zero identifier hits across the entire
+sweep (per the 2026-07-26 convention): zero identifier hits across the entire
 tree. Two doc-level cleanups applied in staging: the internal handoff banner
 removed from the sweep report header, and an internal agent tag removed from
 the study driver docstring.
@@ -107,14 +107,14 @@ protocol strings (task prompts, `$HOME/.hermes/lane_state/*.parked` marker
 paths, systemd unit names) for reproduction fidelity. Raw log payloads and
 protocol scripts are not edited beyond identifier substitution.
 
-## Additions of 2026-07-29 (context-mass/, qwen-ceiling/)
+## Additions of 2026-07-27 (context-mass/, qwen-ceiling/)
 
 Same policy, applied on the staged copies and re-proven on the in-repo copies
 with the six-class pattern set plus the ops-language extended sweep: **zero
 hits** in both trees before push. Substitutions per the standing tables, with
 this batch using node aliases `spark-node-a` (the Qwen test lane) and
 `spark-node-b` (the hybrid test lane) — the same physical lanes appear as
-`gb10-a` / `gb10-b` in the 2026-07-28 additions; alias drift between batches
+`gb10-a` / `gb10-b` in the 2026-07-26 additions; alias drift between batches
 is cosmetic, the ports (:8100/:8101) disambiguate. Endpoints in drivers →
 `http://localhost:<port>`; the upstream driver import path in the two new
 drivers → `<UPSTREAM_DRIVER>/qwen_gate_study_driver.py` (byte-identity of the
@@ -130,7 +130,7 @@ patterns tightened to colon-prefixed; no file content changed. No benchmark
 values, firing counts, token counts, timestamps, or protocol parameters were
 altered by any substitution.
 
-## Additions of 2026-07-30 (README, KNOWN_TEMPLATE_TRAPS #6–#7, build-scoping note)
+## Additions of 2026-07-27 (README, KNOWN_TEMPLATE_TRAPS #6–#7, build-scoping note)
 
 Documentation-only batch folding in @quantumleap68's wire-level findings
 (credited by handle with the author's consent; no canonical archive URL

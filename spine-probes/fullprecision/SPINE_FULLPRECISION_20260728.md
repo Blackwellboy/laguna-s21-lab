@@ -1,7 +1,10 @@
 # Spine probes on full-precision Laguna S 2.1 NVFP4 — closing the quantization question
 
-**Run 2026-07-28 on the GB10 test node (venv serve) (vLLM 0.25.1, rev 0761412, production
-profile), same patched runner + probes + seeds as the 2026-07-28 test-lane session
+> **Dating note:** the `_20260728` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-27 (see the [lab README dating convention](../../README.md)). Filename kept so inbound links keep resolving.
+
+
+**Run 2026-07-27 on the GB10 test node (venv serve) (vLLM 0.25.1, rev 0761412, production
+profile), same patched runner + probes + seeds as the 2026-07-26 test-lane session
 (runner SHA256s verified against the banked SHA256SUMS; `--arms none,1234 --seeds 3
 --max-tokens 4096`, temperature 0.6 default, thinking kwarg absent throughout).**
 

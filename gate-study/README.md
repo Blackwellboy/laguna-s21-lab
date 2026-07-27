@@ -1,4 +1,4 @@
-# Laguna S 2.1 thinking-gate suppression study — 2026-07-27
+# Laguna S 2.1 thinking-gate suppression study — 2026-07-26
 
 **Scope:** single-turn dose-response study of the thinking gate on poolside
 Laguna S 2.1 NVFP4 **rev 0761412**, spark-host GB10, production serving profile
@@ -95,7 +95,7 @@ contexts (100K+ token document packs). **Context mass / conversation depth is
 the likely remaining suppressor and is untested here** (future work:
 firing-rate vs context-length sweep).
 
-> **Interpretation update (2026-07-29).** The gap above now has an identified
+> **Interpretation update (2026-07-27).** The gap above now has an identified
 > mechanism, and the context-mass hypothesis stated in this section is largely
 > displaced. Under default serving with `enable_thinking: true`, **prior
 > assistant turns render into the assembled history as empty `<think></think>`

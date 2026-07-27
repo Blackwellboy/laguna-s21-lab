@@ -1,6 +1,9 @@
 # Qwen 3.6 35B-A3B thinking-gate curve — cross-model test of the Laguna suppression finding
 
-TEMPORARY HANDOFF — NOT CANONICAL. Date 2026-07-28. Lane: gb10-a :8100.
+> **Dating note:** the `_20260728` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-26 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
+
+
+TEMPORARY HANDOFF — NOT CANONICAL. Date 2026-07-26. Lane: gb10-a :8100.
 
 ## Headline
 
@@ -23,7 +26,7 @@ effect.
 
 ## Setup
 
-| | Laguna (2026-07-27, gb10-c — NOT re-run) | Qwen (this run) |
+| | Laguna (2026-07-26, gb10-c — NOT re-run) | Qwen (this run) |
 |---|---|---|
 | model | `poolside/Laguna-S-2.1-NVFP4` @ `0761412` | `nvidia/Qwen3.6-35B-A3B-NVFP4` @ `491c2f1e` |
 | serving | vLLM 0.25.1, `poolside_v1` reasoning parser | vLLM nightly, `qwen3` reasoning parser, MTP n=3 |
@@ -140,12 +143,12 @@ acceptance-criteria work at a 4096 ceiling, Qwen 3.6 35B-A3B is far more likely
 than Laguna to return nothing at all. It is a *budget* failure, not a capability
 one — but any agent loop pointed at this lane needs a much higher ceiling or it
 will silently get empty turns. (This also explains the Part-1 head-to-head
-finding from 2026-07-27 that Qwen scored 1/16 on the intel suite at stock
+finding from 2026-07-26 that Qwen scored 1/16 on the intel suite at stock
 350/800-token budgets and 15/16 at 4000.)
 
 ## Scope and honesty
 
-- Laguna numbers are **read from the 2026-07-27 study's own JSONL**, not
+- Laguna numbers are **read from the 2026-07-26 study's own JSONL**, not
   re-measured; gb10-c was off-limits this session (gate study still running
   there). Same harness, same design, different hardware and different day.
 - Each model ran at its **own** recommended sampling. That is the like-for-like

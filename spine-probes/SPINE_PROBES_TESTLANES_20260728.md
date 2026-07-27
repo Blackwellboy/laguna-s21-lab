@@ -1,9 +1,12 @@
 # Spine probes on both test lanes — Qwen 3.6 35B-A3B vs Laguna S 2.1 3.25bpw hybrid
 
-TEMPORARY HANDOFF — NOT CANONICAL. Date 2026-07-28.
+> **Dating note:** the `_20260728` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-26 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
+
+
+TEMPORARY HANDOFF — NOT CANONICAL. Date 2026-07-26.
 
 Runner: `scripts/spine-probes/` from `github.com/TheTom/offlabel` @ main, fetched
-2026-07-28 (SHA256s in `runner/SHA256SUMS.txt`). 7 probes × 2 arms × 3 seeds =
+2026-07-26 (SHA256s in `runner/SHA256SUMS.txt`). 7 probes × 2 arms × 3 seeds =
 42 calls per lane. `--max-tokens 4096` (README: raise it for a thinking model),
 `--temperature 0.6`, `--timeout 900`.
 

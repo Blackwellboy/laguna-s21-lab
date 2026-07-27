@@ -1,6 +1,9 @@
 # Laguna context-mass sweep — closing the 60-72% vs 0.1% thinking-gate gap
 
-TEMPORARY HANDOFF — NOT CANONICAL. Date 2026-07-29. Lane: spark-node-b :8101
+> **Dating note:** the `_20260729` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-27 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
+
+
+TEMPORARY HANDOFF — NOT CANONICAL. Date 2026-07-27. Lane: spark-node-b :8101
 (`laguna-s-2.1-tr3-hybrid` — 0xSero 3.25bpw EXL3-hybrid of Laguna S 2.1, own
 vLLM container, `poolside_v1` reasoning/tool parsers).
 

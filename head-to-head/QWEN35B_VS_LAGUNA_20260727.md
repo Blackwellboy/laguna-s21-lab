@@ -1,4 +1,7 @@
-# Qwen 3.6 35B-A3B vs Laguna S 2.1 — head-to-head on identical harnesses, 2026-07-27
+# Qwen 3.6 35B-A3B vs Laguna S 2.1 — head-to-head on identical harnesses, 2026-07-26
+
+> **Dating note:** the `_20260727` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-26 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
+
 
 First single-suite head-to-head behind the community claim "Qwen 3.6 35B-A3B beats Laguna."
 
