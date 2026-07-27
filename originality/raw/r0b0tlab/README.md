@@ -1,5 +1,18 @@
 # Laguna S 2.1 NVFP4 on NVIDIA GB10
 
+<!-- Vendored verbatim for the originality audit. Do not edit the body. -->
+
+> **Note added 2026-07-28 by this repository, not by the author.** This file is
+> a verbatim copy of r0b0tlab's own README, vendored here as the comparison
+> artifact for
+> [ORIGINALITY_AUDIT.md](../../ORIGINALITY_AUDIT.md). Its relative links point
+> at files in the original repository, which are not copied here, so they do
+> not resolve from this directory. The source is
+> [r0b0tlab/laguna-s-2.1-nvfp4-sm121-vllm](https://github.com/r0b0tlab/laguna-s-2.1-nvfp4-sm121-vllm)
+> (MIT, Copyright (c) 2026 r0b0tlab); read it there. Only the four files
+> alongside this one were vendored.
+
+
 A production-oriented, fail-closed vLLM implementation for the exact Poolside checkpoint [`poolside/Laguna-S-2.1-NVFP4`](https://huggingface.co/poolside/Laguna-S-2.1-NVFP4) on NVIDIA GB10 / SM121.
 
 This repository follows r0b0tlab's proven release-contract structure: immutable dependency/model identity, source-built runtime, audit-before-exec entrypoint, native-path gates, matched AR/speculative qualification, machine-readable evidence, and SparkRun packaging.
