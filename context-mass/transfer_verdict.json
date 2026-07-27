@@ -1,0 +1,17 @@
+{
+ "fired": 9,
+ "total": 20,
+ "rate": 0.45,
+ "two_sided_control_ok": true,
+ "band": [
+  0.5,
+  0.75
+ ],
+ "in_band": false,
+ "per_task": {
+  "math": 3,
+  "code": 5,
+  "reasoning": 1,
+  "summary": 0
+ }
+}

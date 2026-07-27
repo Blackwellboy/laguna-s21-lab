@@ -1,0 +1,12 @@
+[2026-07-26T14:11:02.922213+00:00] context-mass sweep start endpoint=http://localhost:8101/v1 model=laguna-s-2.1-tr3-hybrid
+[2026-07-26T14:11:02.922792+00:00] corpus: 25 docs, 2 deep packs, diff=True
+[2026-07-26T14:11:25.139213+00:00] control think=True math: reasoning_chars=0
+[2026-07-26T14:15:23.765553+00:00] control think=True code: reasoning_chars=9403
+[2026-07-26T14:16:08.992748+00:00] control think=True reasoning: reasoning_chars=0
+[2026-07-26T14:16:16.799926+00:00] control think=True summary: reasoning_chars=0
+[2026-07-26T14:16:31.769104+00:00] control think=False math: reasoning_chars=0
+[2026-07-26T14:17:19.612841+00:00] control think=False code: reasoning_chars=0
+[2026-07-26T14:17:57.431698+00:00] control think=False reasoning: reasoning_chars=0
+[2026-07-26T14:18:04.294036+00:00] control think=False summary: reasoning_chars=0
+[2026-07-26T14:26:24.338997+00:00] TRANSFER CHECK: 9/20 (45%) two_sided_ok=True in_band=False
+[2026-07-26T14:26:24.339039+00:00] TRANSFER CHECK OUT OF BAND — STOPPING Study A per protocol

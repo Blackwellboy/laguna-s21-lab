@@ -1,0 +1,42 @@
+[2026-07-26T14:34:38.814482+00:00] context-mass sweep start endpoint=http://localhost:8101/v1 model=laguna-s-2.1-tr3-hybrid
+[2026-07-26T14:34:38.814938+00:00] corpus: 25 docs, 2 deep packs, diff=True
+[2026-07-26T14:35:13.308978+00:00] CELL d1_m8k hist0: built depth=1 est_tokens=6217 fallbacks=0 in 34s
+[2026-07-26T14:35:21.213670+00:00] CELL d1_m2k hist0: built depth=1 est_tokens=1840 fallbacks=0 in 42s
+[2026-07-26T14:37:21.783413+00:00] CELL d5_m2k hist0: built depth=5 est_tokens=2071 fallbacks=0 in 163s
+[2026-07-26T14:38:08.800831+00:00] CELL d1_m2k hist1: built depth=1 est_tokens=2261 fallbacks=0 in 53s
+[2026-07-26T14:38:19.650631+00:00] CELL d1_m8k hist1: built depth=1 est_tokens=6702 fallbacks=0 in 37s
+[2026-07-26T14:41:23.003956+00:00] CELL d1_m8k: fired 0/10 actual_prompt_tokens=6307..6794
+[2026-07-26T14:41:44.066143+00:00] CELL d1_m2k: fired 0/10 actual_prompt_tokens=1930..2353
+[2026-07-26T14:42:04.146291+00:00] CELL d5_m2k hist1: built depth=5 est_tokens=2033 fallbacks=0 in 196s
+[2026-07-26T14:42:50.312060+00:00] CELL d1_m32k hist0: built depth=1 est_tokens=26022 fallbacks=0 in 66s
+[2026-07-26T14:44:34.486123+00:00] CELL d5_m2k: fired 0/10 actual_prompt_tokens=2122..2163
+[2026-07-26T14:46:24.357101+00:00] CELL d10_m2k hist0: built depth=10 est_tokens=1926 fallbacks=0 in 301s
+[2026-07-26T14:46:26.555291+00:00] CELL d1_m32k hist1: built depth=1 est_tokens=24335 fallbacks=0 in 78s
+[2026-07-26T14:48:25.038070+00:00] CELL d5_m8k hist0: built depth=5 est_tokens=7362 fallbacks=0 in 231s
+[2026-07-26T14:48:59.027126+00:00] CELL d1_m32k: fired 0/10 actual_prompt_tokens=24426..26114
+[2026-07-26T14:50:39.840658+00:00] CELL d10_m2k hist1: built depth=10 est_tokens=2000 fallbacks=0 in 135s
+[2026-07-26T14:51:39.524582+00:00] CELL d20_m2k hist0: built depth=20 est_tokens=1964 fallbacks=0 in 160s
+[2026-07-26T14:51:59.629391+00:00] CELL d10_m2k: fired 0/10 actual_prompt_tokens=2016..2091
+[2026-07-26T14:53:56.110878+00:00] CELL d5_m8k hist1: built depth=5 est_tokens=8227 fallbacks=0 in 251s
+[2026-07-26T14:54:20.876932+00:00] CELL d20_m2k: fired 0/10 actual_prompt_tokens=2053..2055
+[2026-07-26T14:55:55.906843+00:00] CELL d5_m8k: fired 0/10 actual_prompt_tokens=7450..8319
+[2026-07-26T14:58:12.569670+00:00] CELL d10_m8k hist0: built depth=10 est_tokens=7900 fallbacks=0 in 373s
+[2026-07-26T14:59:23.998055+00:00] CELL d5_m32k hist0: built depth=5 est_tokens=30441 fallbacks=0 in 208s
+[2026-07-26T15:01:42.332572+00:00] CELL d40_m2k hist0: built depth=40 est_tokens=3772 fallbacks=0 in 441s
+[2026-07-26T15:05:28.661823+00:00] CELL d40_m2k: fired 0/10 actual_prompt_tokens=3861..3864
+[2026-07-26T15:05:36.027631+00:00] CELL d5_m32k hist1: built depth=5 est_tokens=30496 fallbacks=0 in 249s
+[2026-07-26T15:07:35.081105+00:00] CELL d5_m32k: fired 0/10 actual_prompt_tokens=30531..30587
+[2026-07-26T15:08:51.699623+00:00] CELL d10_m8k hist1: built depth=10 est_tokens=8122 fallbacks=0 in 399s
+[2026-07-26T15:10:53.186162+00:00] CELL d10_m8k: fired 0/10 actual_prompt_tokens=7990..8214
+[2026-07-26T15:13:40.205127+00:00] CELL d10_m32k hist0: built depth=10 est_tokens=31130 fallbacks=0 in 365s
+[2026-07-26T15:15:54.754697+00:00] CELL d20_m8k hist0: built depth=20 est_tokens=8393 fallbacks=0 in 626s
+[2026-07-26T15:19:02.759137+00:00] CELL d20_m8k: fired 0/10 actual_prompt_tokens=8481..8485
+[2026-07-26T15:20:10.422389+00:00] CELL d10_m32k hist1: built depth=10 est_tokens=31246 fallbacks=0 in 287s
+[2026-07-26T15:22:30.903682+00:00] CELL d10_m32k: fired 0/10 actual_prompt_tokens=31221..31338
+[2026-07-26T15:23:42.381838+00:00] CELL d40_m8k hist0: built depth=40 est_tokens=8223 fallbacks=0 in 769s
+[2026-07-26T15:26:48.575764+00:00] CELL d40_m8k: fired 0/10 actual_prompt_tokens=8312..8315
+[2026-07-26T15:35:08.124293+00:00] CELL d20_m32k hist0: built depth=20 est_tokens=32099 fallbacks=0 in 965s
+[2026-07-26T15:37:59.287929+00:00] CELL d20_m32k: fired 0/10 actual_prompt_tokens=32188..32191
+[2026-07-26T15:41:24.139472+00:00] CELL d40_m32k hist0: built depth=40 est_tokens=31985 fallbacks=0 in 1133s
+[2026-07-26T15:43:40.351944+00:00] CELL d40_m32k: fired 0/10 actual_prompt_tokens=32074..32077
+[2026-07-26T15:43:40.353064+00:00] context-mass sweep COMPLETE

@@ -1,0 +1,25 @@
+{
+ "fired": 18,
+ "total": 40,
+ "rate": 0.45,
+ "per_task": {
+  "math": [
+   4,
+   10
+  ],
+  "code": [
+   10,
+   10
+  ],
+  "reasoning": [
+   4,
+   10
+  ],
+  "summary": [
+   0,
+   10
+  ]
+ },
+ "decision": "PROCEED_BORDERLINE_WITH_CAVEAT",
+ "note": "extension to n=40 after 9/20 first pass; rule in transfer_extend.py docstring"
+}

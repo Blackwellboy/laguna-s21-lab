@@ -1,0 +1,91 @@
+[2026-07-26T14:10:54.396641+00:00] qwen ceiling map start endpoint=http://localhost:8100/v1 conc=4
+[2026-07-26T14:10:54.396703+00:00] sampling temp=1.0 top_p=0.95 top_k=20 (inherited from base driver)
+[2026-07-26T14:11:55.980039+00:00] budget criteria c4096 s3: fired=True cap=True nonempty=True ctok=4096 lat=61.581
+[2026-07-26T14:11:56.996602+00:00] budget criteria c4096 s2: fired=True cap=True nonempty=False ctok=4096 lat=62.598
+[2026-07-26T14:11:57.271728+00:00] budget criteria c4096 s0: fired=True cap=True nonempty=False ctok=4096 lat=62.874
+[2026-07-26T14:11:59.519680+00:00] budget criteria c4096 s1: fired=True cap=True nonempty=False ctok=4096 lat=65.122
+[2026-07-26T14:13:00.972957+00:00] budget criteria c4096 s4: fired=True cap=True nonempty=False ctok=4096 lat=64.992
+[2026-07-26T14:13:02.051598+00:00] budget criteria c4096 s5: fired=True cap=True nonempty=False ctok=4096 lat=65.055
+[2026-07-26T14:13:07.775962+00:00] budget criteria c4096 s7: fired=True cap=True nonempty=True ctok=4096 lat=68.256
+[2026-07-26T14:13:10.115353+00:00] budget criteria c4096 s6: fired=True cap=True nonempty=False ctok=4096 lat=72.843
+[2026-07-26T14:13:52.885276+00:00] budget criteria c4096 s9: fired=True cap=True nonempty=False ctok=4096 lat=50.833
+[2026-07-26T14:13:56.339234+00:00] budget criteria c4096 s8: fired=True cap=True nonempty=False ctok=4096 lat=55.366
+[2026-07-26T14:13:56.339797+00:00] BUDGET ceiling=4096: nonempty 2/10, cap-hits 10, 182s
+[2026-07-26T14:15:22.827230+00:00] budget criteria c8192 s1: fired=True cap=False nonempty=True ctok=5588 lat=86.487
+[2026-07-26T14:15:33.157297+00:00] budget criteria c8192 s0: fired=True cap=False nonempty=True ctok=6203 lat=96.817
+[2026-07-26T14:15:40.625995+00:00] budget criteria c8192 s3: fired=True cap=False nonempty=True ctok=6629 lat=104.284
+[2026-07-26T14:15:42.231966+00:00] budget criteria c8192 s2: fired=True cap=False nonempty=True ctok=6896 lat=105.891
+[2026-07-26T14:17:08.360070+00:00] budget criteria c8192 s4: fired=True cap=False nonempty=True ctok=6769 lat=105.533
+[2026-07-26T14:17:35.506363+00:00] budget criteria c8192 s7: fired=True cap=False nonempty=True ctok=7103 lat=113.274
+[2026-07-26T14:17:36.996860+00:00] budget criteria c8192 s5: fired=True cap=False nonempty=True ctok=7786 lat=123.839
+[2026-07-26T14:17:44.300445+00:00] budget criteria c8192 s6: fired=True cap=False nonempty=True ctok=7807 lat=123.674
+[2026-07-26T14:18:42.619363+00:00] budget criteria c8192 s9: fired=True cap=False nonempty=True ctok=5462 lat=67.113
+[2026-07-26T14:18:49.050749+00:00] budget criteria c8192 s8: fired=True cap=False nonempty=True ctok=7878 lat=100.69
+[2026-07-26T14:18:49.051311+00:00] BUDGET ceiling=8192: nonempty 10/10, cap-hits 0, 293s
+[2026-07-26T14:20:31.323256+00:00] budget criteria c12288 s0: fired=True cap=False nonempty=True ctok=6529 lat=102.271
+[2026-07-26T14:20:32.000612+00:00] budget criteria c12288 s1: fired=True cap=False nonempty=True ctok=6739 lat=102.948
+[2026-07-26T14:20:36.301670+00:00] budget criteria c12288 s2: fired=True cap=False nonempty=True ctok=6905 lat=107.249
+[2026-07-26T14:20:53.338044+00:00] budget criteria c12288 s3: fired=True cap=False nonempty=True ctok=7777 lat=124.285
+[2026-07-26T14:22:06.002218+00:00] budget criteria c12288 s5: fired=True cap=False nonempty=True ctok=6070 lat=94.001
+[2026-07-26T14:22:33.743517+00:00] budget criteria c12288 s4: fired=True cap=False nonempty=True ctok=7745 lat=122.42
+[2026-07-26T14:22:48.447243+00:00] budget criteria c12288 s7: fired=True cap=False nonempty=True ctok=6868 lat=115.109
+[2026-07-26T14:22:56.641681+00:00] budget criteria c12288 s6: fired=True cap=False nonempty=True ctok=8900 lat=140.34
+[2026-07-26T14:24:01.453337+00:00] budget criteria c12288 s8: fired=True cap=False nonempty=True ctok=7677 lat=115.451
+[2026-07-26T14:24:09.431218+00:00] budget criteria c12288 s9: fired=True cap=False nonempty=True ctok=7506 lat=95.687
+[2026-07-26T14:24:09.431737+00:00] BUDGET ceiling=12288: nonempty 10/10, cap-hits 0, 320s
+[2026-07-26T14:25:49.150909+00:00] budget criteria c16384 s1: fired=True cap=False nonempty=True ctok=6639 lat=99.718
+[2026-07-26T14:25:50.701330+00:00] budget criteria c16384 s0: fired=True cap=False nonempty=True ctok=6538 lat=101.269
+[2026-07-26T14:26:03.071044+00:00] budget criteria c16384 s3: fired=True cap=False nonempty=True ctok=7544 lat=113.638
+[2026-07-26T14:26:08.985198+00:00] budget criteria c16384 s2: fired=True cap=False nonempty=True ctok=7646 lat=119.552
+[2026-07-26T14:27:25.229066+00:00] budget criteria c16384 s4: fired=True cap=False nonempty=True ctok=6313 lat=96.078
+[2026-07-26T14:27:46.152164+00:00] budget criteria c16384 s5: fired=True cap=False nonempty=True ctok=7368 lat=115.45
+[2026-07-26T14:27:59.328364+00:00] budget criteria c16384 s7: fired=True cap=False nonempty=True ctok=7180 lat=110.343
+[2026-07-26T14:28:00.653916+00:00] budget criteria c16384 s6: fired=True cap=False nonempty=True ctok=7425 lat=117.583
+[2026-07-26T14:28:54.652553+00:00] budget criteria c16384 s8: fired=True cap=False nonempty=True ctok=6042 lat=89.423
+[2026-07-26T14:29:12.084577+00:00] budget criteria c16384 s9: fired=True cap=False nonempty=True ctok=7346 lat=85.932
+[2026-07-26T14:29:12.085129+00:00] BUDGET ceiling=16384: nonempty 10/10, cap-hits 0, 303s
+[2026-07-26T14:30:32.423157+00:00] shape numbered_requirements c12288 s0: fired=True cap=False nonempty=True ctok=4968 lat=80.337
+[2026-07-26T14:30:49.984826+00:00] shape numbered_requirements c12288 s1: fired=True cap=False nonempty=True ctok=6000 lat=97.899
+[2026-07-26T14:30:50.249111+00:00] shape numbered_requirements c12288 s3: fired=True cap=False nonempty=True ctok=6055 lat=98.162
+[2026-07-26T14:30:52.046924+00:00] shape numbered_requirements c12288 s2: fired=True cap=False nonempty=True ctok=6287 lat=99.961
+[2026-07-26T14:32:03.581389+00:00] shape numbered_requirements c12288 s4: fired=True cap=False nonempty=True ctok=5781 lat=91.158
+[2026-07-26T14:32:18.243132+00:00] shape numbered_requirements c12288 s5: fired=True cap=False nonempty=True ctok=5403 lat=88.258
+[2026-07-26T14:32:20.500813+00:00] shape numbered_requirements c12288 s7: fired=True cap=False nonempty=True ctok=5370 lat=88.454
+[2026-07-26T14:32:30.656978+00:00] shape numbered_requirements c12288 s6: fired=True cap=False nonempty=True ctok=6128 lat=100.408
+[2026-07-26T14:33:20.529843+00:00] shape numbered_requirements c12288 s9: fired=True cap=False nonempty=True ctok=5012 lat=62.286
+[2026-07-26T14:33:25.554760+00:00] shape numbered_requirements c12288 s8: fired=True cap=False nonempty=True ctok=6167 lat=81.973
+[2026-07-26T14:33:25.555417+00:00] SHAPE numbered_requirements: nonempty 10/10, cap-hits 0, 253s
+[2026-07-26T14:33:44.727022+00:00] shape json_schema_output c12288 s0: fired=True cap=False nonempty=True ctok=1405 lat=19.171
+[2026-07-26T14:33:51.624747+00:00] shape json_schema_output c12288 s2: fired=True cap=False nonempty=True ctok=1817 lat=26.068
+[2026-07-26T14:33:52.120489+00:00] shape json_schema_output c12288 s1: fired=True cap=False nonempty=True ctok=1707 lat=26.564
+[2026-07-26T14:33:53.670563+00:00] shape json_schema_output c12288 s3: fired=True cap=False nonempty=True ctok=1983 lat=28.113
+[2026-07-26T14:34:17.429137+00:00] shape json_schema_output c12288 s7: fired=True cap=False nonempty=True ctok=1637 lat=23.758
+[2026-07-26T14:34:19.031733+00:00] shape json_schema_output c12288 s6: fired=True cap=False nonempty=True ctok=1887 lat=26.911
+[2026-07-26T14:34:21.404714+00:00] shape json_schema_output c12288 s4: fired=True cap=False nonempty=True ctok=2288 lat=36.677
+[2026-07-26T14:34:23.790853+00:00] shape json_schema_output c12288 s5: fired=True cap=False nonempty=True ctok=2090 lat=32.166
+[2026-07-26T14:34:44.720526+00:00] shape json_schema_output c12288 s9: fired=True cap=False nonempty=True ctok=2089 lat=25.688
+[2026-07-26T14:34:45.691398+00:00] shape json_schema_output c12288 s8: fired=True cap=False nonempty=True ctok=2389 lat=28.262
+[2026-07-26T14:34:45.691971+00:00] SHAPE json_schema_output: nonempty 10/10, cap-hits 0, 80s
+[2026-07-26T14:35:11.113797+00:00] shape table_construction c12288 s2: fired=True cap=False nonempty=True ctok=1736 lat=25.421
+[2026-07-26T14:35:21.459413+00:00] shape table_construction c12288 s3: fired=True cap=False nonempty=True ctok=2241 lat=35.766
+[2026-07-26T14:35:26.228076+00:00] shape table_construction c12288 s1: fired=True cap=False nonempty=True ctok=2682 lat=40.535
+[2026-07-26T14:35:34.183184+00:00] shape table_construction c12288 s0: fired=True cap=False nonempty=True ctok=3325 lat=48.491
+[2026-07-26T14:35:52.458392+00:00] shape table_construction c12288 s4: fired=True cap=False nonempty=True ctok=2581 lat=41.344
+[2026-07-26T14:35:59.653393+00:00] shape table_construction c12288 s5: fired=True cap=False nonempty=True ctok=2467 lat=38.194
+[2026-07-26T14:36:06.270024+00:00] shape table_construction c12288 s6: fired=True cap=False nonempty=True ctok=2831 lat=40.042
+[2026-07-26T14:36:07.948939+00:00] shape table_construction c12288 s7: fired=True cap=False nonempty=True ctok=2186 lat=33.765
+[2026-07-26T14:36:23.920016+00:00] shape table_construction c12288 s8: fired=True cap=False nonempty=True ctok=2439 lat=31.461
+[2026-07-26T14:36:24.219843+00:00] shape table_construction c12288 s9: fired=True cap=False nonempty=True ctok=1985 lat=24.566
+[2026-07-26T14:36:24.220371+00:00] SHAPE table_construction: nonempty 10/10, cap-hits 0, 99s
+[2026-07-26T14:38:09.396343+00:00] shape multistep_math_constrained c12288 s3: fired=True cap=False nonempty=True ctok=6263 lat=105.174
+[2026-07-26T14:38:30.961547+00:00] shape multistep_math_constrained c12288 s1: fired=True cap=False nonempty=True ctok=7922 lat=126.74
+[2026-07-26T14:39:07.927889+00:00] shape multistep_math_constrained c12288 s4: fired=True cap=False nonempty=True ctok=3600 lat=58.531
+[2026-07-26T14:39:33.795956+00:00] shape multistep_math_constrained c12288 s5: fired=True cap=False nonempty=True ctok=3975 lat=62.834
+[2026-07-26T14:39:38.640272+00:00] shape multistep_math_constrained c12288 s0: fired=True cap=True nonempty=False ctok=12288 lat=194.419
+[2026-07-26T14:39:44.048907+00:00] shape multistep_math_constrained c12288 s2: fired=True cap=True nonempty=False ctok=12288 lat=199.827
+[2026-07-26T14:40:29.777760+00:00] shape multistep_math_constrained c12288 s6: fired=True cap=False nonempty=True ctok=5009 lat=81.85
+[2026-07-26T14:40:43.900447+00:00] shape multistep_math_constrained c12288 s8: fired=True cap=False nonempty=True ctok=4336 lat=65.26
+[2026-07-26T14:40:47.671898+00:00] shape multistep_math_constrained c12288 s9: fired=True cap=False nonempty=True ctok=4213 lat=63.623
+[2026-07-26T14:42:02.588659+00:00] shape multistep_math_constrained c12288 s7: fired=True cap=True nonempty=False ctok=12288 lat=148.792
+[2026-07-26T14:42:02.589134+00:00] SHAPE multistep_math_constrained: nonempty 7/10, cap-hits 3, 338s
+[2026-07-26T14:42:02.589157+00:00] qwen ceiling map COMPLETE

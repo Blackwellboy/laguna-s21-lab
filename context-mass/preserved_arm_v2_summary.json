@@ -1,0 +1,42 @@
+{
+ "v2_d10_m8k": {
+  "turns_with_reasoning": 5,
+  "depth": 10,
+  "stripped": {
+   "fired": 0,
+   "n": 10,
+   "prompt_tokens_range": [
+    8108,
+    8110
+   ]
+  },
+  "preserved": {
+   "fired": 10,
+   "n": 10,
+   "prompt_tokens_range": [
+    9723,
+    9725
+   ]
+  }
+ },
+ "v2_d20_m8k": {
+  "turns_with_reasoning": 19,
+  "depth": 20,
+  "stripped": {
+   "fired": 0,
+   "n": 10,
+   "prompt_tokens_range": [
+    10004,
+    10007
+   ]
+  },
+  "preserved": {
+   "fired": 10,
+   "n": 10,
+   "prompt_tokens_range": [
+    14768,
+    14770
+   ]
+  }
+ }
+}

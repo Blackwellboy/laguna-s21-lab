@@ -1,0 +1,8 @@
+[2026-07-26T16:19:51.566966+00:00] preserved-reasoning arm v2 start (stateless history gen)
+[2026-07-26T16:26:04.353047+00:00] v2_d10_m8k: 10 turns assembled, reasoning captured 5/10, in 373s
+[2026-07-26T16:28:52.862545+00:00] v2_d10_m8k stripped: fired 0/10 pt=[8108, 8110]
+[2026-07-26T16:36:05.200748+00:00] v2_d10_m8k preserved: fired 10/10 pt=[9723, 9725]
+[2026-07-26T16:42:46.971109+00:00] v2_d20_m8k: 20 turns assembled, reasoning captured 19/20, in 402s
+[2026-07-26T16:45:38.803039+00:00] v2_d20_m8k stripped: fired 0/10 pt=[10004, 10007]
+[2026-07-26T16:54:38.025202+00:00] v2_d20_m8k preserved: fired 10/10 pt=[14768, 14770]
+[2026-07-26T16:54:38.026008+00:00] preserved-reasoning arm v2 COMPLETE

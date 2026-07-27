@@ -1,0 +1,56 @@
+{
+ "arm_d10_m8k": {
+  "stripped": {
+   "fired": 0,
+   "n": 10,
+   "prompt_tokens_range": [
+    8394,
+    8397
+   ]
+  },
+  "preserved": {
+   "fired": 0,
+   "n": 10,
+   "prompt_tokens_range": [
+    8393,
+    8397
+   ]
+  }
+ },
+ "arm_d20_m8k": {
+  "stripped": {
+   "fired": 0,
+   "n": 10,
+   "prompt_tokens_range": [
+    9769,
+    9773
+   ]
+  },
+  "preserved": {
+   "fired": 0,
+   "n": 10,
+   "prompt_tokens_range": [
+    9770,
+    9773
+   ]
+  }
+ },
+ "arm_d20_m32k": {
+  "stripped": {
+   "fired": 0,
+   "n": 10,
+   "prompt_tokens_range": [
+    31119,
+    31123
+   ]
+  },
+  "preserved": {
+   "fired": 0,
+   "n": 10,
+   "prompt_tokens_range": [
+    31121,
+    31123
+   ]
+  }
+ }
+}

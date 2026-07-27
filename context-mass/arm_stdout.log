@@ -1,0 +1,11 @@
+[2026-07-26T15:44:01.701858+00:00] preserved-reasoning arm start
+[2026-07-26T15:48:06.876010+00:00] arm_d10_m8k: history built est_tokens=8305 turns_with_reasoning=0/10 in 245s
+[2026-07-26T15:50:55.480009+00:00] arm_d10_m8k stripped: fired 0/10 pt=[8394, 8397]
+[2026-07-26T15:53:01.374781+00:00] arm_d10_m8k preserved: fired 0/10 pt=[8393, 8397]
+[2026-07-26T16:01:07.107766+00:00] arm_d20_m8k: history built est_tokens=9680 turns_with_reasoning=0/20 in 486s
+[2026-07-26T16:03:13.804530+00:00] arm_d20_m8k stripped: fired 0/10 pt=[9769, 9773]
+[2026-07-26T16:05:13.471621+00:00] arm_d20_m8k preserved: fired 0/10 pt=[9770, 9773]
+[2026-07-26T16:13:52.534512+00:00] arm_d20_m32k: history built est_tokens=31031 turns_with_reasoning=0/20 in 519s
+[2026-07-26T16:16:21.502574+00:00] arm_d20_m32k stripped: fired 0/10 pt=[31119, 31123]
+[2026-07-26T16:18:34.371075+00:00] arm_d20_m32k preserved: fired 0/10 pt=[31121, 31123]
+[2026-07-26T16:18:34.371590+00:00] preserved-reasoning arm COMPLETE
