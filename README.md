@@ -27,6 +27,14 @@ assumed to transfer to the FP8 build. See the
 [model-serving-minefield registry](https://github.com/Blackwellboy/model-serving-minefield)
 (methodology preamble and traps 06 and 07).
 
+**Dating convention:** the date on a document, section, or entry follows the
+**commit that shipped it** — git/GitHub commit timestamps are canonical for
+all public-facing dates, since they are externally verifiable. Raw log `ts`
+fields are machine-written at run time and were never adjusted; where an
+older document header disagrees with the commit date or the raw timestamps
+beside it, trust the commit and the raw logs (a dated-label normalization
+pass is recorded in the changelog).
+
 ## Repo map
 
 | Path | What it is |
