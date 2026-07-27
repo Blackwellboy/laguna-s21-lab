@@ -71,6 +71,20 @@ turns — schemas present made it act, including calling tools on math tasks.)
    Tom's "attenuation, not elimination, in agentic loops" is exactly this,
    visible single-turn.
 
+   **CORRECTION (2026-07-28): the length axis of this claim is retracted as a
+   causal (dose) effect.** A dedicated 200-turn in-run interleaved depth grid
+   at C7 ([`../c7-depth-collapse/`](../c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md))
+   found depth among fired turns statistically flat across bare / +identity /
+   +neutral / +tools / +identity+tools (all pairwise p >= 0.13; the tools arm
+   was the HIGHEST median). The 3536 / 745 / 282 medians above are real
+   measurements of those cells, but the monotonic-dose reading was a cross-run
+   comparison and does not survive interleaved control. What moves depth:
+   task composition (which tasks fire; math is a ~120-token floor, code runs
+   1064-2130, summarization never fires) and tool-boundary truncation (turns
+   that exit to a tool call carry median 462/136 tokens of pre-call reasoning
+   vs 1293/847 for direct answers; half of tool-arm turns exit to calls, so
+   pooled medians collapse structurally). Firing axis (point 1) is unaffected.
+
 ### Per-task splits
 
 - **Summarization: never fired once — 0/105 summarization attempts** (10 per

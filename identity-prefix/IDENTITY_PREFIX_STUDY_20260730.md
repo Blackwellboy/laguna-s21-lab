@@ -164,6 +164,12 @@ is untouched; depth is not. (Task mix among fired turns is similar across the fo
 cells — code-dominated — so this is not obviously a mix artifact, but it was not a
 pre-registered comparison; treat as an observation to chase, not a claim.)
 
+**OUTCOME (2026-07-28): chased and refuted.** The dedicated in-run interleaved
+depth grid ([`../c7-depth-collapse/`](../c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md))
+found no identity depth effect at C7 (median 806 vs bare 858, p = 0.91).
+The 1080-vs-120-200 contrast above was a cross-run read and is retracted as
+a depth-suppression effect; the numbers remain as measured.
+
 ## Suffix-composition control (interleaved, 2026-07-27)
 
 The follow-up the ordering caveat demanded, run as its own grid on the same two
@@ -228,7 +234,11 @@ tail text reopens the gate on this build); it is not identity-specific.**
 
 Depth note: median reasoning tokens among fired turns rank identity 656 <
 neutral 809 < topical 1015, but fired-n per cell is 10 to 14 and this was not
-a pre-registered comparison; observation only.
+a pre-registered comparison; observation only. **[OUTCOME 2026-07-28: the
+identity-below-neutral depth ordering does not reproduce in the dedicated
+in-run depth grid (identity 806 vs neutral 721 at C7, reversed direction,
+p = 0.73); consistent with noise on small fired subsets. See
+[`../c7-depth-collapse/`](../c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).]**
 
 ## NVFP4-build replication (interleaved, 2026-07-27) and three-way convergence
 
@@ -300,12 +310,14 @@ per cell, and it is left open, not claimed.
    at both ends.
 4. Recommended follow-ups: ~~tail-effect replication on the NVFP4 build~~ (DONE,
    2026-07-27 — replicated, see the three-way table above); still parked:
-   tail-length dose curve (does the effect scale with suffix tokens?); the C7
-   reasoning-depth collapse under identity presence (and the fired-turn depth
-   orderings: hybrid control identity 656 < neutral 809 < topical 1015, NVFP4
-   identity 573 / neutral 782.5 / topical 391 — identity-below-neutral repeats
-   across builds, the topical position does not; n per cell 10-17, observation
-   only); powering the NVFP4 identity-vs-filler gap (17 vs 10/11, NS at n=40)
+   tail-length dose curve (does the effect scale with suffix tokens?); ~~the C7
+   reasoning-depth collapse under identity presence~~ (DONE 2026-07-28 -
+   REFUTED: no identity depth effect under in-run interleaved control, and the
+   identity-below-neutral ordering reversed; see
+   [`../c7-depth-collapse/`](../c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md);
+   the fired-turn depth orderings recorded here stay as historical
+   observations: hybrid control identity 656 < neutral 809 < topical 1015,
+   NVFP4 identity 573 / neutral 782.5 / topical 391; n per cell 10-17); powering the NVFP4 identity-vs-filler gap (17 vs 10/11, NS at n=40)
    at ~3x samples.
 
 ## Surfaces needing updates

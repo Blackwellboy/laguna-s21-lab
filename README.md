@@ -268,7 +268,11 @@ The gate is two-dimensional: firing probability is a persona-x-task
 conjunction, non-monotonic in prompt length (a dense 10-rule block suppresses
 to 3/40, harder than the much longer full agent prompt at 24/40), while
 reasoning LENGTH collapses monotonically with dose (median est. thinking
-tokens: 3536 bare, 745 agent prompt, 282 with tool schemas). The named
+tokens: 3536 bare, 745 agent prompt, 282 with tool schemas). **[CORRECTION
+2026-07-28: the length half of this sentence is retracted as a causal dose
+effect - the medians are real but the monotonic-dose reading was cross-run
+and does not survive in-run interleaved control; see the depth-collapse
+headline entry above and [`c7-depth-collapse/`](c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).]** The named
 senior-engineer persona zeroes code specifically (0/10; math stays 10/10).
 Summarization never fired in 105 attempts under any condition. Explicit
 "think step by step" does not override (23/40 vs 24/40). Criteria-loop probe:

@@ -24,6 +24,17 @@ Either result was publishable per the brief. This is the third option: the
 suppression finding does not generalise as a gate, and generalises as a depth
 effect.
 
+**CORRECTION (2026-07-28): the "depth effect" framing is retracted on the
+Laguna side.** The Laguna med. rtok column below is the gate-study cross-run
+data; a dedicated in-run interleaved depth grid found those depth
+differences do not survive interleaved control (all pairwise p >= 0.13),
+with task composition and tool-boundary truncation as the mechanism - note
+this doc's own finish-path table shows C8 is the only Qwen condition that
+produces tool calls (14/40), so the same truncation confound applies to the
+Qwen C8 cell. The Qwen medians are real measurements; whether Qwen has a
+genuine dose-depth effect is OPEN until the same in-run interleaved control
+is run on Qwen. See [c7-depth-collapse/](../c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).
+
 ## Setup
 
 | | Laguna (2026-07-26, gb10-c — NOT re-run) | Qwen (this run) |

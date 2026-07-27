@@ -105,6 +105,14 @@ without schemas to 29/40 with them while median reasoning length collapsed
 another client saw the same direction (0/8 without a tools array, about 5/6
 with one, credit @quantumleap68).
 
+**CORRECTION (2026-07-28):** the firing direction stands; the length half is
+retracted as a schema-suppression effect. In-run interleaved control found
+no depth difference between tools and no-tools arms (p = 1.0); the shorter
+pooled median under schemas is task composition plus tool-boundary
+truncation (reasoning measured before a tool-call exit is structurally
+shorter: median 462 pre-call vs 1293 for direct answers on the same arm).
+See [c7-depth-collapse/](c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).
+
 ## 3. Thinking: when to use it and what it costs
 
 **Accuracy: flat once temperature is controlled.** offlabel PR #10 claimed
@@ -194,7 +202,9 @@ turns: [gate-study/](gate-study/).
 
 **Reasoning length collapses monotonically with dose** even where firing
 does not: median estimated thinking tokens 3536 (bare) to 745 (agent prompt)
-to 282 (agent prompt plus tool schemas).
+to 282 (agent prompt plus tool schemas). **[CORRECTION 2026-07-28: retracted
+as a dose effect - cross-run reading; in-run interleaved arms are flat
+(p >= 0.13). See [c7-depth-collapse/](c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).]**
 
 So: if you need thinking, keep the system prompt lean and know that every
 rule block you add shortens the reasoning you get even when it still fires.
