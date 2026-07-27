@@ -60,6 +60,7 @@ the companion document on the prompt side.
 | `pr10-replication/` | Independent replication of offlabel PR #10's thinking-ON HumanEval+ claim (2026-07-27): 164 problems × 2 arms × 3 seeds, temperature identical across arms, per-sample raw JSONL, driver + analysis scripts |
 | `context-mass/` | Context-mass sweep + preserved-reasoning mechanism arm on the 3.25bpw hybrid (2026-07-27): 15 depth×mass cells, live history-building logs, stripped-vs-preserved comparison, template passthrough proofs, raw per-turn JSONL |
 | `qwen-ceiling/` | Qwen 3.6 35B-A3B empty-at-ceiling map (2026-07-27): max_tokens {4096→16384} budget axis on the byte-identical criteria task, 4-shape structured axis @12288, per-cap-hit degeneration metrics, raw JSONL |
+| `prompt-topology/` | Prompt-topology study (2026-07-27): one fixed 8-requirement set rendered in 5 token-band-controlled shapes (±4.2%) × bare/C7 × 4 tasks × both models, plus a reversed-order arm — 1,120 turns, raw per-turn JSONL, tested against a community reader's format-as-control-token hypothesis |
 | `originality/` | Side-by-side raw corpus of our container files vs r0b0tlab's published recipe, plus the similarity audit |
 | `KNOWN_TEMPLATE_TRAPS.md` | Stub. The template-trap registry moved to its own contributable repo: [model-serving-minefield](https://github.com/Blackwellboy/model-serving-minefield) |
 | `SOURCE_ARCHIVES*` | Dated archive links for every community source used |
@@ -67,6 +68,27 @@ the companion document on the prompt side.
 | `REDACTIONS.md` | Exact sanitization applied to these files before publication |
 
 ## Headline findings (conditions attached)
+
+**Prompt shape is a real but secondary gate control — and ordering beats
+topology (2026-07-27, `prompt-topology/`):** testing a community hypothesis
+that prompt FORMAT acts as a latent control token: one fixed 8-requirement set
+rendered in 5 shapes (prose/bullets/numbered/json/dialogue), token-band
+controlled to ±4.2% on both lanes' tokenizers, bare vs C7 apparatus, the
+gate-study's 4 tasks byte-identical, 10/cell, 1,120 turns, zero failed cells.
+**Qwen is a clean null: 560/560 fired** across every shape, order, and
+apparatus. On the Laguna hybrid, apparatus dominates (bare 7/200 vs C7 85/200,
+p≈5e-13), shape shifts C7 firing ~2× (prose 11/40 low outlier vs numbered
+20/40; prose-vs-pooled-structured p=0.034) and redistributes across tasks
+(JSON fires math 8/10 but the logic task 1/10, p=0.020 vs bullets) — but the
+study's only decisive effect is **ordering, which a topology-class story holds
+constant**: reversing requirement order inside the flowing-prose paragraph
+flips bare firing **1/40 → 15/40 (p=1.2e-4)** at identical semantics, shape,
+and token count, while the same reversal inside JSON does nothing. The gate
+reads fine-grained arrangement, not a format class. Summary-task firing stayed
+0/200, replicating summarization-never-thinks. Latency in this run is
+non-comparable (a concurrent study shared the lanes; firing is
+prompt-determined and unaffected). Full detail:
+[`prompt-topology/PROMPT_TOPOLOGY_STUDY_20260730.md`](prompt-topology/PROMPT_TOPOLOGY_STUDY_20260730.md).
 
 **Multi-turn gate collapse: mechanism identified and quantified (2026-07-27,
 `context-mass/`, 3.25bpw hybrid lane):** the single-turn vs multi-turn firing

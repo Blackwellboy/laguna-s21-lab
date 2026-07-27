@@ -1,0 +1,55 @@
+{
+ "band_pct": 10.0,
+ "lanes": {
+  "laguna": {
+   "block_tokens": {
+    "prose/original": 153,
+    "prose/reversed": 153,
+    "bullets/original": 149,
+    "bullets/reversed": 149,
+    "numbered/original": 157,
+    "numbered/reversed": 157,
+    "json/original": 152,
+    "json/reversed": 152,
+    "dialogue/original": 161,
+    "dialogue/reversed": 161
+   },
+   "originals_mean": 154.4,
+   "band_lo": 139.0,
+   "band_hi": 169.8,
+   "in_band": {
+    "prose/original": true,
+    "bullets/original": true,
+    "numbered/original": true,
+    "json/original": true,
+    "dialogue/original": true
+   },
+   "lane_ok": true
+  },
+  "qwen": {
+   "block_tokens": {
+    "prose/original": 154,
+    "prose/reversed": 154,
+    "bullets/original": 150,
+    "bullets/reversed": 150,
+    "numbered/original": 158,
+    "numbered/reversed": 158,
+    "json/original": 153,
+    "json/reversed": 153,
+    "dialogue/original": 162,
+    "dialogue/reversed": 162
+   },
+   "originals_mean": 155.4,
+   "band_lo": 139.9,
+   "band_hi": 170.9,
+   "in_band": {
+    "prose/original": true,
+    "bullets/original": true,
+    "numbered/original": true,
+    "json/original": true,
+    "dialogue/original": true
+   },
+   "lane_ok": true
+  }
+ }
+}
