@@ -1,20 +1,20 @@
-# LAGUNA TUNING SWEEP — 2026-07-23/24 (Hermes / spark-host)
+# LAGUNA TUNING SWEEP: 2026-07-23/24 (Hermes / spark-host)
 
 ## Executive summary
 
 - **Production default promoted: DFlash K=7, max-num-seqs=32**, with 12 GiB KV
   pin, prefix caching + chunked prefill, batched 8192, FP8 KV, FLASHINFER,
-  262,144 ctx — **selected via a 20-cell sweep on Hermes bench v1, 2026-07-23**
+  262,144 ctx, **selected via a 20-cell sweep on Hermes bench v1, 2026-07-23**
   (independence receipt below). Named alternate `interactive` = K=7/seqs=8.
-- The winner equals the community/r0b0tlab flag pair on K and seqs — but was
+- The winner equals the community/r0b0tlab flag pair on K and seqs, but was
   derived independently by measurement, and our config retains three deliberate
   differences: prefix caching ON, chunked prefill ON, 12 GiB KV pin.
 - **DEEP_GEMM discrepancy CLOSED: INERT** on this build/path (source + measured).
 - Cold long-context on the final config: see §6 (honest cold-prefill numbers).
 - Live lane state at session start: a prior session had restored the interactive profile
-  (restart 2026-07-23 13:08:28) — the restore was real, only unrecorded.
+  (restart 2026-07-23 13:08:28): the restore was real, only unrecorded.
 
-## 0. Phase 0 — live-state probe (2026-07-23 13:30 AEST)
+## 0. Phase 0: live-state probe (2026-07-23 13:30 AEST)
 
 - Live cmdline: K=6, seqs=4, KV pin 12884901888, prefix+chunked ON → the
   "interactive/beat" profile. `/v1/models` healthy, max_model_len 262144.
@@ -24,7 +24,7 @@
 - Rollback snapshot: `spark-host:~/backups/laguna_phase0_20260723/` (unit + start
   script).
 
-## 1. Phase 1 — 2D grid (20/20 cells, all OK)
+## 1. Phase 1: 2D grid (20/20 cells, all OK)
 
 Protocol per cell: full service restart → `/v1/models` readiness → cmdline
 verification → warmup → SHORT Hermes bench v1 subset (categories tool/code/json,
@@ -58,11 +58,11 @@ agent-serving differentiator). Median cold load per restart: **614 s**.
 
 Readings: **K=7 peaks at every seqs level; K≥8 collapses** (per-position DFlash
 acceptance ~0 past position 3; TTFT also degrades ~50 ms). Failures: none.
-K6s4 (prior production) re-measured at 26.0/39.35 — consistent with the earlier
+K6s4 (prior production) re-measured at 26.0/39.35, consistent with the earlier
 prior-audit numbers (21.75 overall on the 4-category matrix incl. prose; 38.3
 code), i.e. good cross-session reproducibility.
 
-## 2. Top-3 full Hermes bench v1 (all categories, depths 1K–64K, 3 runs)
+## 2. Top-3 full Hermes bench v1 (all categories, depths 1K to 64K, 3 runs)
 
 Combined-score finalists: K6s16 (0.906), K7s8 (0.879), K7s32 (0.753).
 
@@ -72,7 +72,7 @@ Combined-score finalists: K6s16 (0.906), K7s8 (0.879), K7s32 (0.753).
 | K7s8 | 22.25 | 43.56 | 29.44 | 19.07 | 18.71 | 21.1 |
 | **K7s32** | **23.43** | **45.82** | 26.79 | **19.28** | 18.35 | 20.59 |
 
-K6s16's short-bench 32.04 did not survive the full matrix (lucky tool window —
+K6s16's short-bench 32.04 did not survive the full matrix (lucky tool window,
 a caution against short-bench-only selection). **K7s32 wins** overall/code/json
 and holds the grid's best c=4 aggregate (61.65); K7s8 takes tool/prose narrowly
 → kept as the `interactive` alternate. All three hold >20 tok/s at 64K depth.
@@ -81,7 +81,7 @@ and holds the grid's best c=4 aggregate (61.65); K7s8 takes tool/prose narrowly
 
 | arm | overall | code | tool | json | prose | verdict |
 |-----|---------|------|------|------|-------|---------|
-| baseline (batched 8192, DG=0) | 23.43 | 45.82 | 26.79 | 19.28 | 18.35 | — |
+| baseline (batched 8192, DG=0) | 23.43 | 45.82 | 26.79 | 19.28 | 18.35 | n/a |
 | batched **16384** | 23.14 | 42.19 | 30.08 | 19.55 | 18.97 | no gain; category flips within noise → **keep 8192** |
 | DEEP_GEMM **unset** | 22.31 | 45.33 | 30.42 | 19.3 | 18.46 | noise-band → INERT |
 
@@ -93,14 +93,14 @@ and holds the grid's best c=4 aggregate (61.65); K7s8 takes tool/prose narrowly
   the **vendored** `vllm.third_party.deep_gemm` and logs "DeepGEMM PDL enabled"
   (2 log lines; none with `=0`).
 - Source: the live checkpoint is `compressed-tensors` / `nvfp4-pack-quantized`;
-  the compressed-tensors quant package contains **zero** deep_gemm references —
+  the compressed-tensors quant package contains **zero** deep_gemm references,
   DeepGEMM is wired to FP8-quantization/scaled-mm/MoE-fp8 paths only. FP8 KV is
   attention, not GEMM. The only Blackwell interaction is an auto-disable for
-  certain fp8 model types (config/vllm.py ~:945) — not our path.
+  certain fp8 model types (config/vllm.py ~:945), not our path.
 - Measured: full-bench deltas within run noise (above).
 - Policy: keep `VLLM_USE_DEEP_GEMM=0` in recipe/unit for explicitness (also
   skips loading an unused vendored module). Historical note: boots from the
-  prior-audit era ran with it effectively default-on — immaterial to those numbers.
+  prior-audit era ran with it effectively default-on, immaterial to those numbers.
 
 ## 4. Final production config (live since 2026-07-24 ~00:40 AEST)
 
@@ -118,7 +118,7 @@ profiles: production (default, K7/s32) · interactive (K7/s8)
 
 **Smoke verification (post-promotion short bench, same protocol as grid):**
 c1 overall 25.39 (grid 26.2, −3.1%) · code 43.71 (42.83, +2.1%) ·
-c4 aggregate 63.34 (61.65, +2.7%) · TTFT 337.9 ms (322.4) — **PASS, within noise.**
+c4 aggregate 63.34 (61.65, +2.7%) · TTFT 337.9 ms (322.4), **PASS, within noise.**
 
 ## 5. Independence receipt (dated derivation entry)
 
@@ -139,7 +139,7 @@ into decode.
 
 | run | prompt tokens | cold TTFT (s) | decode tok/s | total wall (s) | KV usage (of 327,717-tok pool) | needle |
 |-----|---------------|---------------|--------------|----------------|-------------------------------|--------|
-| cal ~18K | 18,436 | 6.0 | 16.8 | 6.8 | — | YES |
+| cal ~18K | 18,436 | 6.0 | 16.8 | 6.8 | n/a | YES |
 | 100K r0 | 103,708 | 45.60 | 19.46 | 46.6 | 30.0% | YES |
 | 100K r1 | 103,709 | 45.71 | 18.47 | 46.7 | 30.0% | YES |
 | 200K r0 | 209,478 | 132.80 | 17.57 | 133.9 | 60.3% | YES |
@@ -149,22 +149,22 @@ into decode.
 Readings:
 - **Cold prefill is the honest cost**: ≈2,270 tok/s at 100K depth (45.6 s to
   first token), ≈1,575 tok/s at 209K (133 s). Decode at depth stays strong:
-  ~19 tok/s @100K, ~14–18 @200K (vs 23.4 shallow overall median).
+  ~19 tok/s @100K, ~14 to 18 @200K (vs 23.4 shallow overall median).
 - **~200K works.** The prior audit's HTTP 400s at "200K" were the client
-  overshooting 262,144 during prompt growth — 209K prompts are accepted and
+  overshooting 262,144 during prompt growth, 209K prompts are accepted and
   retrieved fine. No binary-search ceiling needed: the ceiling is the
   configured window minus generation headroom.
 - Concurrent cold 100K pairs: both fit the KV pool and retrieve, but prefill
   serializes (stream 2 TTFT 91.8 s ≈ two sequential prefills); aggregate
   wall-clock ≈ sequential. Cold concurrency buys capacity, not latency.
 - These supersede the 2026-07-23 audit longctx speed figures, which were
-  prefix-cache-warm (1.1–1.5 s "walls" at 100K+) and must not be published.
+  prefix-cache-warm (1.1 to 1.5 s "walls" at 100K+) and must not be published.
 
 ## 7. Coverage & honesty notes
 
 - All 20 grid cells ran (no cuts); the only cut was the optional
   `--cuda-graph-sizes` arm.
-- Short-bench cells are 2-run medians on a 3-category subset — good for
+- Short-bench cells are 2-run medians on a 3-category subset, good for
   ranking, not for publication headline numbers; publication numbers should
   come from the full-bench table (§2) and the smoke (§4).
 - Prior prior-audit A/B confound noted for the record: its "r0b0tlab profile"

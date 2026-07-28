@@ -3,7 +3,7 @@
 **Scope:** 12h **single-run** soak on spark-host Laguna S 2.1 NVFP4 **rev 0761412**, **thinking-ON-with-ceiling (max_tokens=8192)**.  
 Not a multi-day claim. Production profile K=7 / max-num-seqs=32, poolside_v1 parsers, prefix caching on.
 
-## Part 0 — Graphic design lane identification + park
+## Part 0: Graphic design lane identification + park
 
 | Field | Value |
 |-------|-------|

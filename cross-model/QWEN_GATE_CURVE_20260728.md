@@ -1,16 +1,16 @@
-# Qwen 3.6 35B-A3B thinking-gate curve — cross-model test of the Laguna suppression finding
+# Qwen 3.6 35B-A3B thinking-gate curve: cross-model test of the Laguna suppression finding
 
 > **Dating note:** the `_20260728` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-26 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
 
 
-TEMPORARY HANDOFF — NOT CANONICAL. Date 2026-07-26. Lane: gb10-a :8100.
+TEMPORARY HANDOFF, NOT CANONICAL. Date 2026-07-26. Lane: gb10-a :8100.
 
 ## Headline
 
 **The binary suppression is Laguna-specific. The dose-response is not.**
 
-Run against the identical C0–C9 design that drove Laguna's thinking gate from
-75% down to 8%, Qwen 3.6 35B-A3B fired its thinking gate **400/400 times —
+Run against the identical C0 to C9 design that drove Laguna's thinking gate from
+75% down to 8%, Qwen 3.6 35B-A3B fired its thinking gate **400/400 times,
 100% in every condition, every task type.** Its gate never closes.
 
 But the same system-prompt dose that closes Laguna's gate still does something
@@ -53,16 +53,16 @@ Credit @apollo-mg.
 
 ## Setup
 
-| | Laguna (2026-07-26, gb10-c — NOT re-run) | Qwen (this run) |
+| | Laguna (2026-07-26, gb10-c, NOT re-run) | Qwen (this run) |
 |---|---|---|
 | model | `poolside/Laguna-S-2.1-NVFP4` @ `0761412` | `nvidia/Qwen3.6-35B-A3B-NVFP4` @ `491c2f1e` |
 | serving | vLLM 0.25.1, `poolside_v1` reasoning parser | vLLM nightly, `qwen3` reasoning parser, MTP n=3 |
 | sampling | temp 0.7 / top_p 0.95 / top_k 20 (Laguna defaults) | temp 1.0 / top_p 0.95 / top_k 20 (**Qwen's own** generation_config) |
 | gate kwarg | `enable_thinking: true` | `enable_thinking: true` |
 | ceiling | 4096 | 4096 |
-| design | C0–C9 × 4 tasks × 10 = 400 turns + 20 bare + 30 criteria | identical |
+| design | C0 to C9 × 4 tasks × 10 = 400 turns + 20 bare + 30 criteria | identical |
 
-Driver: `qwen_gate_study_driver.py` — adapted from the Laguna driver, **not
+Driver: `qwen_gate_study_driver.py`, adapted from the Laguna driver, **not
 rewritten**. Conditions, task prompts, sample counts, ceiling and nonce scheme
 are byte-identical. Deviations are listed in the driver docstring; the material
 ones are Qwen-native sampling, per-turn finish-path recording, and concurrency 4
@@ -92,7 +92,7 @@ directions before collecting data (`PARSER_MECHANISM_QWEN.md`):
 | `enable_thinking: false` | None | 1577 | 511 |
 
 Bare-prompt parser check: **20/20 fired (100%)**, passing the 90% protocol gate
-on the first attempt — including summarization 5/5. (Laguna's equivalent check
+on the first attempt, including summarization 5/5. (Laguna's equivalent check
 was 15/20 = 75%, with summarization 0/5; that divergence is what its
 `PARSER_CHECK_DIVERGENCE_REPORT.md` documents.) Qwen shows no task-shaped bare
 gate effect at all.
@@ -112,7 +112,7 @@ gate effect at all.
 | C8 | C7 + tool schemas | 29/40 (72%) | **40/40 (100%)** |
 | C9 | C7 + "think step by step" | 23/40 (58%) | **40/40 (100%)** |
 
-Per task type, Qwen is 10/10 in all four types in all ten conditions — a
+Per task type, Qwen is 10/10 in all four types in all ten conditions, a
 completely flat surface. C6, the condition that suppresses Laguna hardest,
 does nothing to it.
 
@@ -159,7 +159,7 @@ No `no_think_*` paths occurred at all (the gate never closed). Ceiling hits
 concentrate in code (73), reasoning (52) and math (38); summarization never
 hit the ceiling.
 
-## Criteria-loop probe — the operational warning
+## Criteria-loop probe: the operational warning
 
 Acceptance-criteria coding task, 10 samples each:
 
@@ -170,7 +170,7 @@ Acceptance-criteria coding task, 10 samples each:
 | C7 (agent prompt) | fired 10/10, loops 7/10 | fired 10/10, **loops 8/10** |
 
 A "loop" here is: thinking fired, ran to the 4096 ceiling, and returned **empty
-content** — the model burned its entire budget reasoning and delivered nothing.
+content**: the model burned its entire budget reasoning and delivered nothing.
 Qwen does this **28/30 times** on a six-requirement billing-function task, in
 every condition including bare. Laguna does it 9/30, and only really under the
 agent prompt.
@@ -178,7 +178,7 @@ agent prompt.
 This is the finding with the most operational bite in this report: on
 acceptance-criteria work at a 4096 ceiling, Qwen 3.6 35B-A3B is far more likely
 than Laguna to return nothing at all. It is a *budget* failure, not a capability
-one — but any agent loop pointed at this lane needs a much higher ceiling or it
+one, but any agent loop pointed at this lane needs a much higher ceiling or it
 will silently get empty turns. (This also explains the Part-1 head-to-head
 finding from 2026-07-26 that Qwen scored 1/16 on the intel suite at stock
 350/800-token budgets and 15/16 at 4000.)

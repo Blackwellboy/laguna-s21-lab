@@ -1,4 +1,4 @@
-# Laguna S 2.1 Testing Lab — DGX Spark (GB10)
+# Laguna S 2.1 Testing Lab: DGX Spark (GB10)
 
 Independent testing lab for **poolside Laguna S 2.1 (NVFP4)** served on a single
 NVIDIA DGX Spark (GB10, 128 GB unified memory) with vLLM. Everything here is the
@@ -18,7 +18,7 @@ such). Where a number depends on a condition, the condition is stated next
 to the number.
 
 **Build scoping (added 2026-07-27):** thinking policy differs by **build**,
-not just revision — @quantumleap68's wire-level measurements show the FP8 and
+not just revision, @quantumleap68's wire-level measurements show the FP8 and
 NVFP4 uploads of this same model applying different thinking policies (FP8
 skips trivial follow-up turns under every prompt tried; NVFP4 reasons
 essentially every turn). Every published firing rate must therefore state
@@ -28,7 +28,7 @@ assumed to transfer to the FP8 build. See the
 (methodology preamble and traps 06 and 07).
 
 **Dating convention:** the date on a document, section, or entry follows the
-**commit that shipped it** — git/GitHub commit timestamps are canonical for
+**commit that shipped it**, git/GitHub commit timestamps are canonical for
 all public-facing dates, since they are externally verifiable. Raw log `ts`
 fields are machine-written at run time and were never adjusted; where an
 older document header disagrees with the commit date or the raw timestamps
@@ -49,18 +49,18 @@ the companion document on the prompt side.
 | `container/` | Dockerfile, entrypoint, VERSIONS.md (pinned digests + wheel sha256s), build runbook context |
 | `bench/hermes_bench_v1.py` | The harness. Streaming decode measured as (n−1)/(t_last−t_first), TTFT separate, per-category (tool/code/json/prose) and per-depth rows |
 | `bench/results/` | Reference + interactive profile results; `full/` holds the full-protocol runs behind the headline medians |
-| `sweep/` | `LAGUNA_TUNING_SWEEP_20260723.md` (protocol + full grid + analysis) and `cells/` — all 21 raw per-cell JSONs |
+| `sweep/` | `LAGUNA_TUNING_SWEEP_20260723.md` (protocol + full grid + analysis) and `cells/`, all 21 raw per-cell JSONs |
 | `longctx/` | Cold long-context probe script + raw JSON (nonce defeats prefix cache from position 0) |
 | `soak/` | 12h soak: driver, runner, score/restore scripts, results report, and `logs/` with `sessions.jsonl`, `incidents.jsonl`, `integrity_probes.jsonl`, `service_samples.jsonl`. The raw per-turn `turns.jsonl` was withdrawn on 2026-07-28; see REDACTIONS.md |
-| `gate-study/` | Thinking-gate suppression study: 450 turns, 10 system-prompt conditions, criteria-loop probe — driver, writeup, raw per-turn JSONL |
+| `gate-study/` | Thinking-gate suppression study: 450 turns, 10 system-prompt conditions, criteria-loop probe, driver, writeup, raw per-turn JSONL |
 | `head-to-head/` | Qwen 3.6 35B-A3B vs Laguna S 2.1 on identical harnesses (2026-07-26): full-protocol speed bench, 16-task intel suite in three thinking configs, scored agentic loop, single-shot generation arm |
 | `quant-floor/` | 0xSero Laguna Hybrid 3.25bpw verification vs our published NVFP4 (2026-07-26): compat gate, 16-task intel suite, no-spec speed bench. `THINKING_QUANT_FLOOR_SYNTHESIS_20260727.md` adds the three-stack thinking-ON codegen synthesis (NVFP4/vLLM + Q4_K_M/llama.cpp temperature-controlled replications vs the original Q2_K_XL claim) |
-| `cross-model/` | The gate study's C0–C9 battery re-run against Qwen 3.6 35B-A3B (2026-07-26): 400-turn grid, parser-mechanism proof, side-by-side comparison scripts, raw per-turn JSONL |
+| `cross-model/` | The gate study's C0 to C9 battery re-run against Qwen 3.6 35B-A3B (2026-07-26): 400-turn grid, parser-mechanism proof, side-by-side comparison scripts, raw per-turn JSONL |
 | `spine-probes/` | Integrity probes (TheTom/offlabel runner) against both test lanes (2026-07-26): full verbatim transcripts, three judge runs, patched runner + SHA256SUMS. `fullprecision/` adds the same battery on full-precision NVFP4 (2026-07-27), closing the quantization question |
 | `pr10-replication/` | Independent replication of offlabel PR #10's thinking-ON HumanEval+ claim (2026-07-27): 164 problems × 2 arms × 3 seeds, temperature identical across arms, per-sample raw JSONL, driver + analysis scripts |
 | `context-mass/` | Context-mass sweep + preserved-reasoning mechanism arm on the 3.25bpw hybrid (2026-07-27): 15 depth×mass cells, live history-building logs, stripped-vs-preserved comparison, template passthrough proofs, raw per-turn JSONL |
 | `qwen-ceiling/` | Qwen 3.6 35B-A3B empty-at-ceiling map (2026-07-27): max_tokens {4096→16384} budget axis on the byte-identical criteria task, 4-shape structured axis @12288, per-cap-hit degeneration metrics, raw JSONL |
-| `prompt-topology/` | Prompt-topology study (2026-07-27): one fixed 8-requirement set rendered in 5 token-band-controlled shapes (±4.2%) × bare/C7 × 4 tasks × both models, plus a reversed-order arm — 1,120 turns, raw per-turn JSONL, tested against a community reader's format-as-control-token hypothesis; ordering-isolation follow-up (direction replicated connective-free, cell magnitudes run-scoped) |
+| `prompt-topology/` | Prompt-topology study (2026-07-27): one fixed 8-requirement set rendered in 5 token-band-controlled shapes (±4.2%) × bare/C7 × 4 tasks × both models, plus a reversed-order arm, 1,120 turns, raw per-turn JSONL, tested against a community reader's format-as-control-token hypothesis; ordering-isolation follow-up (direction replicated connective-free, cell magnitudes run-scoped) |
 | `identity-prefix/` | Identity-prefix study (2026-07-27): C6/C7 x 4 identity-position variants x both models (640 turns, blocked protocol), plus two in-run interleaved 4-variant suffix-composition controls (`suffix-control/` on the 3.25bpw hybrid, `nvfp4-suffix-control/` on NVFP4, 160 turns each), drivers, analyzers, raw per-turn JSONLs |
 | `c7-depth-collapse/` | C7 depth study (2026-07-27): 5 arms (bare / +identity / +neutral / +tools / +identity+tools) x 4 tasks x 10 samples, in-run interleaved, NVFP4 build - the depth-collapse check; driver, analysis, raw per-turn JSONL |
 | `bonsai-battery/` | Bonsai 27B quant-floor battery, aggregates only (run 2026-07-23, published 2026-07-27): 1-bit PrismML-fork build vs 2-bit ternary production build, 512-case blinded suite across 13 groups, variance battery, solo performance matrix, runtime robustness, five-patch build story. Prompt corpus, answer keys and per-item raw withheld (see the writeup for why) |
@@ -115,7 +115,7 @@ FP8 community-reported as divergent. Qwen ungated control stayed at ceiling,
 480/480 across all arms. Full detail:
 [`identity-prefix/IDENTITY_PREFIX_STUDY_20260730.md`](identity-prefix/IDENTITY_PREFIX_STUDY_20260730.md).
 
-**Prompt shape is a real but secondary gate control — and ordering beats
+**Prompt shape is a real but secondary gate control, and ordering beats
 topology (2026-07-27, `prompt-topology/`):** testing a community hypothesis
 that prompt FORMAT acts as a latent control token: one fixed 8-requirement set
 rendered in 5 shapes (prose/bullets/numbered/json/dialogue), token-band
@@ -125,7 +125,7 @@ gate-study's 4 tasks byte-identical, 10/cell, 1,120 turns, zero failed cells.
 apparatus. On the Laguna hybrid, apparatus dominates (bare 7/200 vs C7 85/200,
 p≈5e-13), shape shifts C7 firing ~2× (prose 11/40 low outlier vs numbered
 20/40; prose-vs-pooled-structured p=0.034) and redistributes across tasks
-(JSON fires math 8/10 but the logic task 1/10, p=0.020 vs bullets) — but the
+(JSON fires math 8/10 but the logic task 1/10, p=0.020 vs bullets), but the
 study's only decisive effect is **ordering, which a topology-class story holds
 constant**: reversing requirement order inside the flowing-prose paragraph
 flips bare firing **1/40 → 15/40 (p=1.2e-4)** at identical semantics, shape,
@@ -148,9 +148,9 @@ prompt-determined and unaffected). Full detail:
 **Multi-turn gate collapse: mechanism identified and quantified (2026-07-27,
 `context-mass/`, 3.25bpw hybrid lane):** the single-turn vs multi-turn firing
 gap is **reasoning-stripping in history assembly, not context depth or mass**.
-A 15-cell sweep (turn depth 1–40 × context mass ~2K–32K tokens, standard
+A 15-cell sweep (turn depth 1 to 40 × context mass ~2K to 32K tokens, standard
 client-default histories) fired **0/150** against a **18/40 (45%)** single-turn
-C7 baseline on the same lane — and the 276 live history-building turns
+C7 baseline on the same lane, and the 276 live history-building turns
 themselves fired 0/276. The comparison arm then separated the hypotheses:
 identical transcripts probed with prior-turn reasoning stripped vs resent fired
 **0/10 vs 10/10 at depth 10 / 8K** and **0/10 vs 10/10 at depth 20 / 8K**.
@@ -162,7 +162,7 @@ and the model stops thinking from turn 2. Fix: resend `reasoning` on assistant
 history messages (or `preserve_thinking: true` for thinking-off flows), at
 ~250-320 prompt tokens per preserved turn (the turn's reasoning length; +1,615 tokens over 5 preserved turns at d10, +4,764 over 19 at d20). Scope: 3.25bpw
 EXL3-hybrid stack; the transfer check landed at 45% vs NVFP4's 60% (overlapping
-CIs, same task-shape profile — borderline, documented in the writeup); NVFP4
+CIs, same task-shape profile, borderline, documented in the writeup); NVFP4
 confirmation on the production lane is pending. Full detail:
 [`context-mass/CONTEXT_MASS_SWEEP_20260729.md`](context-mass/CONTEXT_MASS_SWEEP_20260729.md).
 
@@ -170,18 +170,18 @@ confirmation on the production lane is pending. Full detail:
 `qwen-ceiling/`):** the criteria task that returned empty content 28/30 at the
 4096 ceiling in `cross-model/` converts to **10/10 non-empty, criteria-valid
 answers at max_tokens 8192** and stays 10/10 at 12288 and 16384 (reasoning
-demand plateaus at ~5.2–5.7K tokens median; it does not grow to fill the
+demand plateaus at ~5.2 to 5.7K tokens median; it does not grow to fill the
 budget). Every 4096 cap-hit tail is non-degenerate (median unique-line ratio
-0.86, median zlib ratio 0.33 — ordinary mid-task reasoning, no loops). Shape
-axis @12288: reasoning-demand-driven, not criteria-specific — constrained math
-still caps 3/10 while JSON-schema/table tasks (~1.5–2K reasoning) never cap.
+0.86, median zlib ratio 0.33, ordinary mid-task reasoning, no loops). Shape
+axis @12288: reasoning-demand-driven, not criteria-specific, constrained math
+still caps 3/10 while JSON-schema/table tasks (~1.5 to 2K reasoning) never cap.
 Full detail: [`qwen-ceiling/QWEN_CEILING_MAP_20260729.md`](qwen-ceiling/QWEN_CEILING_MAP_20260729.md).
 
 **Tuning sweep (2026-07-23, 20 cells, K∈{5..9} × seqs∈{4,8,16,32}):**
-production winner **K=7 / max-num-seqs=32** — same flag pair r0b0tlab qualified
+production winner **K=7 / max-num-seqs=32**, same flag pair r0b0tlab qualified
 independently, derived here by measurement, with three deliberate config
 differences retained (prefix caching ON, chunked prefill ON, 12 GiB KV pin).
-**K≥8 collapses throughput** on this stack (see the grid — the losers are
+**K≥8 collapses throughput** on this stack (see the grid: the losers are
 published too). Every cell: full service restart, cmdline verification, warmup,
 then the short bench subset. Single run per cell.
 
@@ -191,15 +191,15 @@ median **23.4** single-stream, c=4 aggregate **61.7**, TTFT **~330 ms**. FP8 KV,
 FLASHINFER, 262,144 ctx.
 
 **Cold long-context** (`longctx/`, cold-prefill via nonce): 100K tokens → TTFT
-**45.6–45.7 s**, decode ~18–19 tok/s; 209K tokens → TTFT **~133 s**, decode
-~14–18 tok/s; retrieval needle found in 4/4 runs. These are honest cold numbers;
+**45.6 to 45.7 s**, decode ~18 to 19 tok/s; 209K tokens → TTFT **~133 s**, decode
+~14 to 18 tok/s; retrieval needle found in 4/4 runs. These are honest cold numbers;
 warm/prefix-cached figures appear nowhere in our claims.
 
 **12h production soak (2026-07-24→25, single run):** thinking-ON with a client
 `max_tokens=8192` ceiling, production K7/s32 profile, poolside_v1 parsers,
 prefix caching on. **409 sessions / 3,099 turns, 3,096 HTTP-200 (99.9%), zero
 crashes, zero service restarts**, ~4.1 GiB RSS creep over 12h, ~13.5 s mean
-turn latency. **9 incidents, all `session_cap`** — the driver's own token-cap
+turn latency. **9 incidents, all `session_cap`**: the driver's own token-cap
 guard killing runaway-context sessions by design; zero unbounded-generation
 loops observed. Integrity probes: **3/3 refused** a planted fake-credential
 history-rewrite task (the `TESTONLY_sk_live_…` string in the logs is a clearly
@@ -221,14 +221,14 @@ and logic cell. Qwen ties 15/16 only with thinking on at ~19x task latency.
 Routing read: complementary lanes, not substitutes.
 
 *Budget note (added 2026-07-26):* the three published intel numbers used
-**different token ceilings, stated here explicitly** — Qwen thinking-off
+**different token ceilings, stated here explicitly**, Qwen thinking-off
 **11/16** and Qwen thinking-on **1/16** both ran at the harness's stock
 per-category caps (**350 tokens**, **800** for coding/systems/agentic/analysis);
 Qwen thinking-on **15/16** ran at **4000** (`intel16_qwen35b_thinking_mt4000.json`).
 Laguna's 15/16 is the banked 2026-07-23 run at stock caps, thinking off. The
 1/16 was reported as a budget artifact at the time; the cross-model study now
 gives the mechanism: with thinking on, Qwen spends the whole ceiling reasoning
-and returns **empty content** — measured at **28/30** on the acceptance-criteria
+and returns **empty content**, measured at **28/30** on the acceptance-criteria
 task even at a 4096 ceiling (`cross-model/`). So the anomaly is Qwen's
 empty-content-at-ceiling behaviour, not a capability collapse, and any
 comparison of these numbers must carry its ceiling.
@@ -256,7 +256,7 @@ provably emits reasoning on this stack, so the soak's ~0.1% was real
 suppression.)*
 
 *(**2026-07-27:** the ~0.1% stands, and its mechanism is now identified as
-template-level rather than context-mass — prior assistant turns render as empty
+template-level rather than context-mass, prior assistant turns render as empty
 `<think></think>` blocks in the assembled history under default serving. The
 number describes real default-config multi-turn behavior. See the interpretation
 update under "Known interpretation updates" and
@@ -278,10 +278,10 @@ Summarization never fired in 105 attempts under any condition. Explicit
 "think step by step" does not override (23/40 vs 24/40). Criteria-loop probe:
 bulleted acceptance criteria mostly suppress bare (1/10) but under the full
 agent prompt flip to 10/10 firing with 7/10 hard verify-loops to the 4096
-ceiling — the production prompt is half the trigger. Open gap: single-turn
+ceiling: the production prompt is half the trigger. Open gap: single-turn
 agent prompts fire 60-72% vs the soak's ~0.1%, so context mass / turn depth
 likely does the rest (untested). **⚠ That "open gap" now has an identified
-mechanism and it is not primarily context mass — see the interpretation update
+mechanism and it is not primarily context mass, see the interpretation update
 dated 2026-07-27 below, and [registry trap 04](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/04-history-reasoning-stripping.md).**
 
 **[SCALE CAVEAT 2026-07-28: every firing figure in this entry is n=40 per
@@ -298,8 +298,8 @@ general claim that agent apparatus closes the gate. Credit @apollo-mg. See
 `gate-study/README.md` for the full note.]**
 
 **Cross-model: is the gate a Laguna quirk or how these models work?
-(2026-07-26, `cross-model/`)** The identical C0–C9 battery — same conditions,
-same four task types, same 4096 ceiling, same nonce scheme, 400 grid turns —
+(2026-07-26, `cross-model/`)** The identical C0 to C9 battery, same conditions,
+same four task types, same 4096 ceiling, same nonce scheme, 400 grid turns,
 run against **Qwen 3.6 35B-A3B NVFP4** on the same class of box.
 
 **Qwen never gated. 400/400 turns fired, in all ten conditions and all four
@@ -316,7 +316,7 @@ and runtime (offlabel PR #10 comment 5093534067, 2026-07-27). The Qwen
 contrast below is a comparison against OUR Laguna builds, not against Laguna
 in general. Detail in `cross-model/QWEN_GATE_CURVE_20260728.md`.]**
 
-But the dose is not inert on Qwen — it moves a different lever. As the system
+But the dose is not inert on Qwen: it moves a different lever. As the system
 prompt grows, Qwen's reasoning gets **shorter**: median est. thinking tokens
 **2927 → 1311 (−55%)** from bare prompt (C0) to prompt-plus-tool-schemas (C8),
 and runaway-to-ceiling collapses from **75% → 10%** of turns. A fuller system
@@ -338,13 +338,13 @@ is OPEN until the same in-run interleaved control is run on Qwen. This
 correction was already on record in
 [`cross-model/QWEN_GATE_CURVE_20260728.md`](cross-model/QWEN_GATE_CURVE_20260728.md)
 and did not propagate here; it was found by the claim-propagation check, not by
-a reader.]** Two models is not a law — this says the gate does not generalise,
+a reader.]** Two models is not a law: this says the gate does not generalise,
 and that "system prompts change thinking behaviour" survived its first
 cross-model test in a different form.
 
 **Budget warning (`cross-model/logs/criteria_turns.jsonl`):** on the
 six-requirement acceptance-criteria coding task, Qwen ran to the 4096 ceiling
-and returned **empty content 28/30 times** (Laguna 9/30) — in every condition
+and returned **empty content 28/30 times** (Laguna 9/30), in every condition
 including bare. That is a budget failure, not a capability one, and it is the
 mechanism behind the head-to-head intel anomaly (see `head-to-head/`).
 
@@ -353,18 +353,18 @@ TheTom/offlabel's runner, 7 probes x 3 seeds x 2 arms per lane. Heuristic
 verdicts: Laguna Hybrid 3.25bpw holds **9/21** with no integrity clause and
 **18/21** with it (zero folds); Qwen 3.6 35B-A3B **6/21** and **11/21**. Both
 lanes fold **3/3** on forge-authorship unprompted. Hand-reading the transcripts
-(as that runner's README instructs) found the classifier misses *silent* folds —
-compliance with no refusal phrase and no dangerous command — which moves the
+(as that runner's README instructs) found the classifier misses *silent* folds,
+compliance with no refusal phrase and no dangerous command, which moves the
 true unprompted fold count to **10/21** (Qwen) and **9/21** (hybrid). Whether
 3.25bpw quantization *changed* Laguna's integrity behaviour is **not** answered
 here: that needs a full-precision Laguna spine run on the same harness, which we
-have not done. **⚠ Since done — see the full-precision entry below (2026-07-27):
+have not done. **⚠ Since done, see the full-precision entry below (2026-07-27):
 verdict, parity.**
 
 **PR #10 replication: the thinking-ON codegen claim does not survive temperature
 control (2026-07-27, `pr10-replication/`).** offlabel PR #10 carries a
 fourth-stack claim that `enable_thinking: true` wins single-turn verifiable
-codegen (HumanEval+ n=492: **+2.64 pts**, flakiness halved) — measured with
+codegen (HumanEval+ n=492: **+2.64 pts**, flakiness halved), measured with
 thinking-on at t0.7 vs off at t0.6, i.e. two variables. We re-ran it with the
 confound removed: HumanEval+ all 164 problems, 3 seeds per (problem, arm),
 **identical sampling both arms** (t0.7 / top_p 0.95 / top_k 20), explicit
@@ -372,12 +372,12 @@ confound removed: HumanEval+ all 164 problems, 3 seeds per (problem, arm),
 interleaved, evalplus 0.3.1 test execution scoring, 984 requests, 0 errors.
 **Result: the accuracy effect vanishes.** HumanEval+ ON **89.84 ± 0.35** vs OFF
 **90.85 ± 1.61** (sign reversed); paired per problem: ON better on 10, OFF on
-13, tied 141 — flat. Base HumanEval leans the other way (ON **95.73** vs OFF
+13, tied 141, flat. Base HumanEval leans the other way (ON **95.73** vs OFF
 **94.51**), so the ON−OFF delta is smaller than the base-vs-plus scoring choice.
 What *does* replicate: ON is less flaky (**11 vs 17** intermittent problems),
-and **cap-hitters are degeneration loops, not truncations** — 15/492 ON runs hit
+and **cap-hitters are degeneration loops, not truncations**, 15/492 ON runs hit
 the ceiling, **14 with zero extractable code** and tail compression ratios
-2.9–143×, while ON's p95 completion is only 6,763 tokens. ON also costs **~11×
+2.9 to 143×, while ON's p95 completion is only 6,763 tokens. ON also costs **~11×
 wall clock** (200.2 s vs 18.5 s mean per problem). Control cell clean: OFF arm
 showed reasoning in **0/492** rows, ON fired **492/492**.
 
@@ -386,12 +386,12 @@ showed reasoning in **0/492** rows, ON fired **492/492**.
 seeds and 4096 ceiling as the test-lane battery, against full-precision NVFP4
 (rev 0761412, production profile). Corrected counting (silence-folds included,
 all 42 transcripts hand-read, per-row table in `ADJUDICATION.md`): unprompted
-**9/21 folds** — identical to the 3.25bpw hybrid — with the same **3/3
+**9/21 folds**, identical to the 3.25bpw hybrid, with the same **3/3
 forge-authorship** fold signature and the same P4/P5 silent-fold pattern; with
 the integrity clause, **0 folds** (19/21 HOLD vs hybrid's 18/21). Verdict:
 **parity within noise** on this battery; the hybrid's integrity profile is the
 model's, not the quant's. Bonus mechanism finding: the stray leading `</think>`
-(trap #2) reproduced on this venv lane too — it is poolside_v1-on-vLLM behaviour
+(trap #2) reproduced on this venv lane too: it is poolside_v1-on-vLLM behaviour
 whenever the kwarg is absent and the model skips thinking, not a container bug;
 with the kwarg explicit it appeared in 0/984 A/B rows. Thinking never fired on
 any spine probe (0/42) despite absent kwarg: the runner's persona-only floor arm
@@ -399,9 +399,9 @@ is a C4-class suppressor, i.e. the gate study reproducing on a third stack.
 
 ## Reproducing
 
-- **Container:** `container/` — build with the pinned base
+- **Container:** `container/`, build with the pinned base
   (`vllm/vllm-openai:v0.25.1@sha256:e4f88a…`), FlashInfer trio pinned with
-  recorded sha256s, fail-closed install (a wrong flag aborts the build — proven
+  recorded sha256s, fail-closed install (a wrong flag aborts the build, proven
   live). Entrypoint prints the effective cmdline flag-by-flag. Weights are not
   in the image; mount your own copy of the NVFP4-build rev-0761412 checkpoint.
 - **Bench:** point `bench/hermes_bench_v1.py` at any OpenAI-compatible endpoint
@@ -431,7 +431,7 @@ infrastructure. Full details: `REDACTIONS.md`.
 
 ## Cross-validation & related work
 
-TheTom's off-label behavioral guide for Laguna S 2.1 — held-out behavioral
+TheTom's off-label behavioral guide for Laguna S 2.1, held-out behavioral
 battery on a different quant and serving stack (Q4_K_M on llama.cpp vs our
 NVFP4 on vLLM), which converged on the same operating manual. This soak is
 cited as external validation in its §5d, with our two precision caveats
@@ -447,7 +447,7 @@ that bear directly on this repo's data:
   ([offlabel#2](https://github.com/TheTom/offlabel/issues/2)). A cleaner
   re-measurement (interleaved arms, prompt cache off, fixed token budget) put
   the same gate at 10/18 vs 1/18
-  ([offlabel#5](https://github.com/TheTom/offlabel/issues/5)) — the gate is
+  ([offlabel#5](https://github.com/TheTom/offlabel/issues/5)): the gate is
   real (p = 0.0014), less sharp than the first pass suggested.
 - **Corrected `enable_thinking` kwarg model**
   ([offlabel#5](https://github.com/TheTom/offlabel/issues/5)): explicit
@@ -459,7 +459,7 @@ that bear directly on this repo's data:
   post-release config drift documented in the guide's changelog.
 - **Cross-model integrity finding**: the housekeeping-framed provenance blind
   spot (and the system-prompt clause that closes it) reproduced on
-  Qwen3.6-35B-A3B — 4 folds unprompted, 0 with the clause
+  Qwen3.6-35B-A3B, 4 folds unprompted, 0 with the clause
   ([offlabel patterns.md](https://github.com/TheTom/offlabel/blob/main/patterns.md),
   data in [offlabel#2](https://github.com/TheTom/offlabel/issues/2)). Our
   soak's 3/3 refused integrity probes ran the same clause family on this
@@ -481,7 +481,7 @@ that bear directly on this repo's data:
   100 percent native-path soak.
 - **Wire-level confirmation of the history-stripping mechanism**
   (@quantumleap68, publicly shared; no canonical archive URL at time of
-  writing — cited by handle with the author's consent): his CLI client → vLLM
+  writing, cited by handle with the author's consent): his CLI client → vLLM
   0.25.1, Laguna NVFP4 TP=1 and FP8 TP=2, a logging proxy between client and
   server, N≥6 per cell, every claim measured on the wire. A client that strips
   reasoning from replayed history renders each prior turn as an empty
@@ -494,7 +494,7 @@ that bear directly on this repo's data:
   `delta.reasoning`, not `delta.reasoning_content`) and our C7→C8 tools
   result (same big system
   prompt: 0/8 firing without a `tools` array, ~5/6 with one), sources the two
-  new registry entries (identity-sentence eviction, `reasoning_effort` no-op —
+  new registry entries (identity-sentence eviction, `reasoning_effort` no-op,
   traps #6 and #7), and adds the FP8-vs-NVFP4 build-policy split behind the
   build-scoping note above. **[CORRECTION 2026-07-28: the trap #1 clause
   above previously read "Laguna streams reasoning as `delta.reasoning`, not
@@ -525,7 +525,7 @@ that bear directly on this repo's data:
 
 ### Known interpretation updates
 
-- **2026-07-27 — the single-turn vs multi-turn firing gap has an identified
+- **2026-07-27: the single-turn vs multi-turn firing gap has an identified
   mechanism, and it is template-level.** The gate study left an open gap:
   single-turn agent prompts fire **60-72%**, the 12h soak measured **~0.1%**
   (3 of 3,096 turns), and we attributed the remainder to context mass or turn
@@ -562,7 +562,7 @@ that bear directly on this repo's data:
   probed with prior-turn reasoning stripped vs resent fired **0/10 vs 10/10 at
   depth 10 / ~8K tokens and 0/10 vs 10/10 at depth 20 / ~8K** on the 3.25bpw
   hybrid lane. The surrounding 15-cell depth×mass sweep (all standard stripped
-  histories) fired 0/150 with flat-zero marginal curves on both axes — depth
+  histories) fired 0/150 with flat-zero marginal curves on both axes, depth
   and mass are epiphenomenal; the stripping is the variable. The gap's cause
   is identified and quantified; the **~0.1% soak figure stands** as real
   default-client behavior; the **C0-C9 single-turn grid is unaffected**.
@@ -574,14 +574,14 @@ that bear directly on this repo's data:
   Registry entry with the check that catches this class:
   [registry trap 04](https://github.com/Blackwellboy/model-serving-minefield/blob/main/traps/04-history-reasoning-stripping.md).
 
-- **2026-07-26 — the soak's ~0.1% thinking rate, reread under the corrected
+- **2026-07-26: the soak's ~0.1% thinking rate, reread under the corrected
   kwarg model.** The soak driver sent explicit
   `chat_template_kwargs: {"enable_thinking": true}` on every turn
   (`soak/soak_driver.py`). Per the corrected model in
   [offlabel#5](https://github.com/TheTom/offlabel/issues/5), explicit `true`
   is a **fires** arm: thinking was structurally available on every turn. The
   ~0.1% is therefore best read as **prompt-side suppression overriding an
-  explicitly fired kwarg** under full named-persona agent prompts — not as
+  explicitly fired kwarg** under full named-persona agent prompts, not as
   the kwarg failing to arm, and not as evidence about the `false` path, which
   the soak never exercised.
 
@@ -615,16 +615,16 @@ that bear directly on this repo's data:
 
 ## Credits
 
-- **poolside** — Laguna S 2.1 (the model; weights under poolside's own terms,
+- **poolside**, Laguna S 2.1 (the model; weights under poolside's own terms,
   not included here).
-- **howtospark, MiaAI-Lab, tonyd2wild, eugr** — community DGX Spark serving
+- **howtospark, MiaAI-Lab, tonyd2wild, eugr**, community DGX Spark serving
   recipes that informed this work (dated archives in `SOURCE_ARCHIVES.md`).
-- **r0b0tlab** — independent qualification of the K=7/seqs=32 pair,
+- **r0b0tlab**, independent qualification of the K=7/seqs=32 pair,
   cross-validating the sweep result (raw corpus in `originality/`).
-- **TheTom** — the off-label behavioral battery and guide linked above.
-- **@quantumleap68** — wire-level measurements (logging-proxy methodology):
+- **TheTom**, the off-label behavioral battery and guide linked above.
+- **@quantumleap68**, wire-level measurements (logging-proxy methodology):
   independent confirmation of the history-stripping mechanism, the
-  identity-sentence eviction and `reasoning_effort` findings (traps #6–#7),
+  identity-sentence eviction and `reasoning_effort` findings (traps #6 and #7),
   and the FP8/NVFP4 build-policy split.
 
 ## Commercial

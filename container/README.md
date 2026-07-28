@@ -35,7 +35,7 @@ docker run --gpus all --ipc=host --shm-size 32g \
   -p 8000:8000 laguna-s21-nvfp4:hermes
 ```
 
-First start takes ~10–15 min (weight load + FlashInfer JIT + CUDA graph
+First start takes ~10 to 15 min (weight load + FlashInfer JIT + CUDA graph
 capture). Mount a persistent FlashInfer cache to speed later starts. Private
 binds: set `-e HOST=<your-ip>`; no operator IPs are baked into the image.
 
@@ -45,11 +45,11 @@ prints the effective vllm cmdline before exec.
 
 ## Measured (conditions matter)
 
-Hermes bench v1 (our protocol: agent-shaped prompts, depths 1–64K, streaming,
+Hermes bench v1 (our protocol: agent-shaped prompts, depths 1 to 64K, streaming,
 decode=(n−1)/(t_last−t_first)), single GB10, production profile: c=1 overall
 median 23.4 tok/s; code median 45.8; prose floor 18.4; c=4 aggregate 61.7;
 TTFT ~330 ms. Cold long-context (no prefix-cache reuse): 100K tokens → TTFT
-45.6 s, decode ~19 tok/s; 209K → TTFT 133 s, decode ~14–18 tok/s.
+45.6 s, decode ~19 tok/s; 209K → TTFT 133 s, decode ~14 to 18 tok/s.
 
 See `VERSIONS.md` for every pin (base digest, FlashInfer wheel sha256s, model
 and draft revisions).

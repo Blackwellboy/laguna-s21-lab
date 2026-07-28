@@ -1,4 +1,4 @@
-# Qwen thinking mechanism — verified BEFORE the grid (protocol step)
+# Qwen thinking mechanism: verified BEFORE the grid (protocol step)
 
 Date: 2026-07-26. Lane: gb10-a :8100, `nvidia/Qwen3.6-35B-A3B-NVFP4` @ `491c2f1e`,
 vLLM nightly with `--reasoning-parser qwen3`.
@@ -33,7 +33,7 @@ message object entirely. Message keys observed:
 Thinking arrives on **`message.reasoning`**. A detector written only against
 `reasoning_content` would have scored every Qwen turn as "did not fire" and
 produced a fake 0% curve. The Laguna driver's `measure()` already falls back to
-`msg.get("reasoning")`, so the detection logic carried over unchanged — but the
+`msg.get("reasoning")`, so the detection logic carried over unchanged, but the
 field name is recorded here because the failure mode is silent.
 
 ## Live two-sided control (math task, max_tokens 4096)
@@ -50,7 +50,7 @@ suppressed run answers directly in fewer total tokens).
 
 **Conclusion: the gate mechanism and firing detection are sound on this stack.**
 Any suppression curve measured below is a real content-dose effect, not a
-template or parser artifact — the same conclusion the Laguna study reached for
+template or parser artifact, the same conclusion the Laguna study reached for
 its own stack, established here independently before collecting grid data.
 
 ## Note on token accounting

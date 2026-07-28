@@ -1,4 +1,4 @@
-# PR #10 replication: `enable_thinking` on HumanEval+ — Laguna S 2.1 NVFP4 rev 0761412
+# PR #10 replication: `enable_thinking` on HumanEval+: Laguna S 2.1 NVFP4 rev 0761412
 
 > **Dating note:** the `_20260728` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-27 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
 
@@ -9,9 +9,9 @@
 
 **Apollo's +2.64 does not replicate once temperature is held identical across arms.**
 On HumanEval+ (the metric the claim was made on) thinking ON scored **89.84%** vs OFF
-**90.85%** — the sign reverses (−1.02), and a paired per-problem test says the true
+**90.85%**: the sign reverses (−1.02), and a paired per-problem test says the true
 reading is *flat*: of 164 problems, 10 favor ON, 13 favor OFF, 141 tied. On base
-HumanEval the delta is +1.22 for ON — also within noise. There is no regime advantage
+HumanEval the delta is +1.22 for ON, also within noise. There is no regime advantage
 for thinking on single-turn verifiable codegen on this stack, and it costs ~11× wall
 time (mean 200s vs 18.5s per problem).
 
@@ -20,11 +20,11 @@ time (mean 200s vs 18.5s per problem).
    Not halved here, but ON is measurably more run-to-run stable on the problems it can do.
 2. **Cap-hitters are degeneration loops, not truncations:** 15/492 ON runs hit the 12,288
    ceiling; 14 of those returned **zero extractable code** with the entire budget spent
-   inside the think block, and tail compression ratios of 2.9–143× (a coherent tail
-   compresses ~2.5–3×; ratios of 44/133/143 are hard loops). More budget would not have
-   converted them: ON's p95 completion is 6,763 tokens — the cap population isn't the tail
+   inside the think block, and tail compression ratios of 2.9 to 143× (a coherent tail
+   compresses ~2.5 to 3×; ratios of 44/133/143 are hard loops). More budget would not have
+   converted them: ON's p95 completion is 6,763 tokens: the cap population isn't the tail
    of the length distribution, it's a separate failure mode. One OFF run also cap-hit
-   (HumanEval/64 s0): a 40k-char *content* loop, ratio 20 — the failure mode exists with
+   (HumanEval/64 s0): a 40k-char *content* loop, ratio 20: the failure mode exists with
    thinking off, at 1/15th the rate.
 
 ## Numbers
@@ -55,12 +55,12 @@ The ON failure tail is dominated by its cap-hit loops: HumanEval/116 (ON 0/3 pas
 OFF 3/3), /113 (1/3 vs 3/3), /76, /134, /145. Degeneration is concentrated on specific
 problems, not uniform: /116 and /132 looped in all three ON seeds, /145 in two.
 A loop-detection stopping rule (Apollo's proposed harness change) would target exactly
-these — on our numbers it could recover at most ~1 pt for ON, i.e. it would bring ON to
+these, on our numbers it could recover at most ~1 pt for ON, i.e. it would bring ON to
 parity with OFF on plus, not ahead of it.
 
 ### No-extractable-answer census (Apollo: 11/492)
 
-ON: 22/492 — 14 cap-hit loops + 8 `finish=stop` responses whose content held no fenced
+ON: 22/492, 14 cap-hit loops + 8 `finish=stop` responses whose content held no fenced
 code block (prose + inline fragments after a large think block). OFF: 1/492 (the content
 loop). Apollo's ~2% no-answer rate is the right order of magnitude for ON; OFF is an
 order lower.
@@ -71,26 +71,26 @@ Built on the merged `scripts/thinking-probes/thinking_ab.py` patterns; run by dr
 `pr10_ab.py` (alongside this file).
 
 1. **Sampling confound (the review's main objection): eliminated.** Both arms ran
-   temperature 0.7, top_p 0.95, top_k 20 — the model card's recommended sampling, sent
+   temperature 0.7, top_p 0.95, top_k 20, the model card's recommended sampling, sent
    explicitly on every request. Identical bytes both arms except the one kwarg.
    Sampled (t>0) with **3 seeds per (problem, arm)**, same seed for both arms of a pair;
    pass@1 reported as mean ± sd, enabling the flaky-problem count.
-2. **Apparatus held at zero:** no system prompt, user message only — the C0 cell of the
+2. **Apparatus held at zero:** no system prompt, user message only, the C0 cell of the
    gate-study grid, which is where an all-coding no-apparatus benchmark sits. Thinking
    fired 492/492 with the kwarg on, consistent with C0 code firing 10/10 there.
 3. **Arms:** explicit `chat_template_kwargs: {"enable_thinking": true|false}` only
    (absent = ON on this revision per offlabel #5, so "absent" adds nothing).
-4. **Control cell:** OFF is the structural control — reasoning must not appear.
+4. **Control cell:** OFF is the structural control, reasoning must not appear.
    Measured: **0/492** OFF rows show any reasoning or think-marker. Instrument clean.
 5. **Interleaving:** submission order (seed, problem, [ON, OFF]) through a 16-worker
-   pool — both arms always co-resident in flight; drift/load shared symmetrically.
-6. **Nonce adaptation (deviation from thinking_ab.py, with reason):** no nonce — it
+   pool: both arms always co-resident in flight; drift/load shared symmetrically.
+6. **Nonce adaptation (deviation from thinking_ab.py, with reason):** no nonce: it
    would mutate the benchmark prompt. HumanEval+ items sent byte-identical. Substitutes:
    per-request vLLM `seed`, and vLLM prefix caching is exact-KV reuse (identical output
    distribution; the llama.cpp `cache_prompt` stale-reply hazard the nonce guards
    against does not exist on this stack). `cache_prompt` not sent.
 7. **Ceiling:** max_tokens 12,288 both arms, fixed, **no budget retry** (this is also a
-   direct test of Apollo's p95-derived ~12k recommendation — verdict below). One retry
+   direct test of Apollo's p95-derived ~12k recommendation, verdict below). One retry
    allowed on transport errors only; none occurred.
 8. **Field names:** reads `reasoning_content` *and* `reasoning` (this stack's
    poolside_v1 parser emits the latter; single-field readers undercount).
@@ -105,9 +105,9 @@ saves. 12k loses nothing vs 16k here and caps loop cost at ~14 wasted minutes ea
 
 Single stack: vLLM 0.25.1, NVFP4 W4A16 + DFlash speculative (K=7), FLASHINFER, fp8 KV,
 GB10, revision 0761412 pinned, production serving profile (max_num_seqs=32; run shared
-the lane with a concurrent 42-request probe battery for its first ~25 min — load
+the lane with a concurrent 42-request probe battery for its first ~25 min, load
 symmetric across interleaved arms). One benchmark, single-turn, one sampling point
-(t0.7), n=3 seeds. This says nothing about long-agentic or integrity regimes — our
+(t0.7), n=3 seeds. This says nothing about long-agentic or integrity regimes: our
 prior data on those stands. Quantization arm (3.25bpw hybrid) not run this session.
 
 ## For PR #10 specifically

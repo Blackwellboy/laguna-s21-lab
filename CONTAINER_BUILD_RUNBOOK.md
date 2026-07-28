@@ -1,6 +1,6 @@
-# CONTAINER BUILD RUNBOOK — Laguna S 2.1 NVFP4 (deferred until sweep completes)
+# CONTAINER BUILD RUNBOOK: Laguna S 2.1 NVFP4 (deferred until sweep completes)
 
-Target host: the DGX Spark serving host (venv service must be healthy — it is the
+Target host: the DGX Spark serving host (venv service must be healthy; it is the
 parity reference). Est. 20 min execution + one image build. Run only AFTER the
 tuning sweep has finished and the final production profile is promoted, so the
 smoke comparison is against the real production config.
@@ -48,7 +48,7 @@ docker run --rm --entrypoint bash laguna-s21-nvfp4:hermes -c '
 (Alternative if download differs from installed: `pip show -f` the installed dists
 inside the image and hash the site-packages dist-info RECORD files.)
 
-## 3. Smoke run (does not disturb the venv service — different port)
+## 3. Smoke run (does not disturb the venv service: different port)
 
 ```bash
 docker run -d --name laguna-smoke --gpus all --ipc=host \

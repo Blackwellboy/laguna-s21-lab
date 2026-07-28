@@ -1,10 +1,10 @@
-# Laguna S 2.1 thinking-gate suppression study — 2026-07-26
+# Laguna S 2.1 thinking-gate suppression study: 2026-07-26
 
 **Scope:** single-turn dose-response study of the thinking gate on poolside
 Laguna S 2.1 NVFP4 **rev 0761412**, spark-host GB10, production serving profile
 (vLLM 0.25.1 venv, DFlash K=7, max-num-seqs=32, poolside_v1 tool+reasoning
 parsers, prefix caching + chunked prefill, FP8 KV, FLASHINFER, ctx 262144,
-DEEP_GEMM=0 — cmdline verified flag-by-flag before any samples).
+DEEP_GEMM=0, cmdline verified flag-by-flag before any samples).
 Single rev, single stack, n=40 per condition, single runs. Not a multi-rev or
 multi-stack claim.
 
@@ -20,20 +20,20 @@ errors, run 2026-07-26 UTC (~5.6 h wall).
 
 ## 1. Parser caveat resolution (verdict up front)
 
-The 12h soak's published caveat — "empty reasoning fields might be partly
-template/parser-level" — is **resolved: the suppression was real.**
+The 12h soak's published caveat, "empty reasoning fields might be partly
+template/parser-level", is **resolved: the suppression was real.**
 
 - 20 bare-prompt samples (no system message): **15/20 fired**, and every firing
   sample produced substantial parsed reasoning (median ~3.5K est. tokens).
   The template + poolside_v1 parser demonstrably CAN emit reasoning on this
   exact stack, so the soak's ~0.1% cannot be a parse failure.
 - Divergence from the community "100% with no system prompt" report: firing was
-  **task-conditional even bare** — math 5/5, code 5/5, multi-step reasoning
+  **task-conditional even bare**, math 5/5, code 5/5, multi-step reasoning
   5/5, **summarization 0/5**. Protocol tripped its <90% stop; template
   investigated before continuing (see `PARSER_CHECK_DIVERGENCE_REPORT.md`):
   our rev-0761412 template and Poolside's current HF template are
   mechanism-identical (`enable_thinking | default(true)`, open `<think>` at
-  generation). Note the rev's default is TRUE — Tom's pinned config documented
+  generation). Note the rev's default is TRUE, Tom's pinned config documented
   default false; consistent with his changelog note of post-release drift.
 - The "492/492 (100%)" figure could not be located in canon or the offlabel
   page; the closest verified community datapoint is @Defilan's 6/6 bare vs 0/5
@@ -55,9 +55,9 @@ template/parser-level" — is **resolved: the suppression was real.**
 | C9 | C7 + "think step by step" | 23/40 | 10/10 | 10/10 | 3/10 | 0/10 | 1028 | 5 |
 
 (0 HTTP errors in all 400 turns. C8 additionally produced tool calls on 19/40
-turns — schemas present made it act, including calling tools on math tasks.)
+turns, schemas present made it act, including calling tools on math tasks.)
 
-### Shape: not a single cliff — two axes
+### Shape: not a single cliff: two axes
 
 1. **Firing probability is a persona-and-task conjunction, non-monotonic in
    prompt length.** The deepest suppression is NOT the biggest prompt: the
@@ -87,24 +87,24 @@ turns — schemas present made it act, including calling tools on math tasks.)
 
 ### Per-task splits
 
-- **Summarization: never fired once — 0/105 summarization attempts** (10 per
+- **Summarization: never fired once, 0/105 summarization attempts** (10 per
   grid condition x 10 conditions + 5 bare parser-check samples), under any
   condition including no system prompt. The strongest single suppressor found
   is the task itself.
 - **Math is the most thinking-sticky task**: ≥9/10 in every condition except
   C6 (3/10).
 - **Code is the persona-sensitive task**: 10/10 bare, **0/10 under the bare
-  "senior staff engineer" persona (C4)** — reproducing Tom's zero — but back
+  "senior staff engineer" persona (C4)**, reproducing Tom's zero, but back
   to 10/10 (short-burst) under the full agent prompt. So "coding-shaped tasks
   suppress regardless" refines to: code+persona gates hard, code+agent-prompt
   thinks briefly.
 
 ### Reconciling the three testers (hypothesis verdict)
 
-Bare ~100% (non-summary tasks) → persona 5–18% → soak ~0.1% is **directionally
+Bare ~100% (non-summary tasks) → persona 5 to 18% → soak ~0.1% is **directionally
 confirmed as a dose-response, with one honest gap**: our single-turn C7/C8
-(soak-style prompts) fire 60–72%, not 0.1%. The soak's near-zero therefore
-needs more than the system prompt — its turns carried large multi-turn
+(soak-style prompts) fire 60 to 72%, not 0.1%. The soak's near-zero therefore
+needs more than the system prompt; its turns carried large multi-turn
 contexts (100K+ token document packs). **Context mass / conversation depth is
 the likely remaining suppressor and is untested here** (future work:
 firing-rate vs context-length sweep).
@@ -152,7 +152,7 @@ pooled cell implies. Credit @apollo-mg.
 ## 3. C9 verdict: explicit invitation does NOT override
 
 "Think carefully step by step before answering" appended to the agent prompt:
-**23/40 vs 24/40 baseline — no firing increase at all.** Median reasoning
+**23/40 vs 24/40 baseline, no firing increase at all.** Median reasoning
 length rose modestly (745 → 1028 est. tokens). If your harness needs thinking
 back on this rev, a meta-instruction will not do it; the gate answers to
 prompt *shape*, not stated intent.
@@ -170,15 +170,15 @@ content** (still inside the think block at the ceiling).
 | C7 agent prompt | **10/10** | 8 | **7** |
 
 **The criteria-trigger report is confirmed, and it is a conjunction with the
-agent prompt — an inversion of every other result.** Structured requirement
+agent prompt, an inversion of every other result.** Structured requirement
 lists alone (bare or persona) mostly suppress thinking (1/10), like other
-structured tasks. But under the full agent prompt — the exact condition that
-elsewhere shortens thinking to ~745-token bursts — criteria lists flipped it
+structured tasks. But under the full agent prompt, the exact condition that
+elsewhere shortens thinking to ~745-token bursts, criteria lists flipped it
 to 10/10 firing, and **7 of 10 turns ran reasoning to the 4096 ceiling and
 never produced an answer** (verify-loop signature; one more truncated
 mid-answer; two completed cleanly with ~880-token reasoning). Latencies
-112–139 s per looping turn *with* the cap. Without a ceiling these are the
-community's "it never stops" reports. **Suppression does not protect here —
+112 to 139 s per looping turn *with* the cap. Without a ceiling these are the
+community's "it never stops" reports. **Suppression does not protect here,
 the production-shaped prompt is the trigger's other half.**
 
 ## 5. What this means for operators (plain language)
@@ -202,8 +202,8 @@ the production-shaped prompt is the trigger's other half.**
   ON and ship no output cap: **pin your revision, keep enable_thinking off in
   agent pipelines, and always set your own max_tokens.** Criteria-driven
   prompting (which this model otherwise rewards) belongs with thinking off.
-- **Budget note:** every thinking-on turn that fires hot costs ~80–140 s on a
-  single Spark at 4096 cap, vs ~3–18 s suppressed.
+- **Budget note:** every thinking-on turn that fires hot costs ~80 to 140 s on a
+  single Spark at 4096 cap, vs ~3 to 18 s suppressed.
 
 **Correction, 2026-07-28.** This section previously said that prompt content
 decides both whether and how long the model thinks, and that a realistic agent

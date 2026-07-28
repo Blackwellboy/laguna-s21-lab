@@ -1,4 +1,4 @@
-# Parser-check divergence report — written BEFORE grid continuation (per protocol)
+# Parser-check divergence report: written BEFORE grid continuation (per protocol)
 
 Date: 2026-07-26 (study folder dated 20260727)
 Status: divergence investigated; grid resumed with the finding documented.
@@ -6,7 +6,7 @@ Status: divergence investigated; grid resumed with the finding documented.
 ## What happened
 
 Bare-prompt parser check (20 samples, no system message, enable_thinking=true,
-max_tokens=4096): **fired 15/20 (75%)** — below the ~100% expected from the
+max_tokens=4096): **fired 15/20 (75%)**, below the ~100% expected from the
 community no-system-prompt report, tripping the protocol stop.
 
 Per-task split:
@@ -28,11 +28,11 @@ All 5 summarization samples returned clean, well-formed summaries with
    `enable_thinking = enable_thinking | default(true)`; generation prompt emits
    `<assistant><think>` when true, `<assistant></think>` when false.
 2. **Poolside current HF template** (poolside/Laguna-S-2.1 main, fetched live):
-   IDENTICAL mechanism — same default(true), same open-`<think>`/pre-closed-
+   IDENTICAL mechanism, same default(true), same open-`<think>`/pre-closed-
    `</think>` branches (header comment `laguna_glm_thinking_v8`).
 3. Note vs TheTom's offlabel guide: his pin (~2026-07-24, GGUF/llama.cpp)
    documented `default(false)`; both our rev and Poolside current are
-   `default(true)` — consistent with his changelog note that Poolside flipped
+   `default(true)`, consistent with his changelog note that Poolside flipped
    thinking on-by-default post-release.
 
 ## Verdict
@@ -53,8 +53,8 @@ All 5 summarization samples returned clean, well-formed summaries with
 
 ## Decision
 
-Grid resumed (SKIP_PARSER=1) because the stop-condition's target — parser or
-template divergence — is affirmatively ruled out, and the residual divergence
+Grid resumed (SKIP_PARSER=1) because the stop-condition's target, parser or
+template divergence, is affirmatively ruled out, and the residual divergence
 is exactly the kind of content-dose effect the grid is designed to measure.
 Flagged here rather than silently absorbed; if the operator prefers the strict
 reading (halt on any sub-100%), the grid data past this point is separable by
