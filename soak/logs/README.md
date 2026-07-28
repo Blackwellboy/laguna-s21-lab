@@ -1,18 +1,34 @@
-# `turns.jsonl` withdrawn, 2026-07-28
+# Soak logs
 
-The raw per-turn log of the 12h soak used to live here. It was withdrawn on
-2026-07-28 because a whole-tree re-scan of the published tip found internal
-identifiers in its model-generated response previews that this repository had
-documented as already replaced: a node codename, fleet topology, and
-control-plane vocabulary quoted from the soak's private ingest corpus.
+## `turns.jsonl` (republished 2026-07-29)
 
-It was withdrawn rather than patched. The previews are model-generated, so a
-future batch could leak in a shape no substitution table anticipates, and the
-soak's value is its aggregate result rather than 2,900 raw previews.
+The raw per-turn log of the 12h soak. Withdrawn on 2026-07-28 after a whole-tree
+re-scan found internal identifiers in its **model-generated response previews**.
+Republished on 2026-07-29 with those free-text preview fields removed and
+replaced by `*_chars` length counters so the structural measurements stay
+checkable without carrying model prose that quotes the private ingest corpus.
 
-The log is retained privately. Everything needed to check the published
-numbers stays here: `sessions.jsonl`, `incidents.jsonl`,
-`integrity_probes.jsonl`, `service_samples.jsonl`, the soak report in
-`../LAGUNA_SOAK_12H_20260725_RESULTS.md`, and the driver and scoring scripts.
+Fields kept include session id, persona, turn index, `http_status`, latencies,
+thinking flags and token counters, tool_success, cumulative session tokens,
+incident flag, and timestamp.
 
-Full correction: `../../REDACTIONS.md`.
+### Counts a reader can re-derive
+
+| Source | Count |
+|---|---|
+| `sessions.jsonl` lines | 409 |
+| unique `session_id` in sessions | 409 |
+| `turns.jsonl` lines | 3,099 |
+| turns with `http_status` 200 | 3,096 |
+| turns with `http_status` null | 3 |
+| unique `session_id` in turns (including null) | 410 |
+
+Every non-null turn `session_id` appears in `sessions.jsonl`. The three
+null-status rows are the incomplete in-flight records at cut. The scorecard
+in `../LAGUNA_SOAK_12H_20260725_RESULTS.md` reports 409 sessions and 3,096
+HTTP-200 turns on purpose.
+
+Also here: `sessions.jsonl`, `incidents.jsonl`, `integrity_probes.jsonl`,
+`service_samples.jsonl`.
+
+Full redaction history: `../../REDACTIONS.md`.

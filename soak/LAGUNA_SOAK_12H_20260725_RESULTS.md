@@ -389,13 +389,25 @@ comfy=active
 | ComfyUI HTTP | ok=True |
 
 ## Raw logs
-- `soak/logs/turns.jsonl` (WITHDRAWN 2026-07-28, retained privately; see
-  `REDACTIONS.md`. Every number in this report is derived from the session and
-  incident logs below, which stay published)
+- `soak/logs/turns.jsonl` (**republished 2026-07-29**, previews stripped). See
+  the count note below and `soak/logs/README.md`.
 - `soak/logs/sessions.jsonl`
 - `soak/logs/incidents.jsonl`
 - `soak/logs/integrity_probes.jsonl`
 - `soak/probes/service_samples.jsonl`
+
+### Count note (sessions vs turns)
+
+`sessions.jsonl` has **409** records and **409** unique `session_id` values.
+`turns.jsonl` has **3,099** turn records: **3,096** with `http_status` 200 and
+**3** with `http_status` null (incomplete rows). The set of `session_id` values
+on turns, counting a null id as its own member, has size **410** (409 real ids
+plus three rows that carry no session id). Every non-null turn session id is
+present in `sessions.jsonl`. The three null-status rows are almost certainly the
+in-flight turn when the run was cut: they produced a log line without a completed
+HTTP status and without a session completion record. The published scorecard
+keeps HTTP-200 at 3,096 and sessions at 409; it does not round the discrepancy
+away.
 
 ## Operator decisions (if any)
 - Confirm final desired steady-state if not ComfyUI-primary: leave Laguna production LIVE instead of re-parking.

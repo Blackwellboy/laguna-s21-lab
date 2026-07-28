@@ -279,3 +279,18 @@ filenames included; one for any source-like field whose value carries an
 all-capitals underscore title. Both are asserted by the scanner self-test,
 which also asserts that neither fires on the synthetic source labels this
 study legitimately uses.
+
+
+## Correction, 2026-07-29: `soak/logs/turns.jsonl` republished without previews
+
+The 2026-07-28 withdrawal stands as the right call for the file that carried
+model-generated response previews. On 2026-07-29 the structural turn log is
+republished with free-text preview fields removed (`content_preview` replaced by
+`content_preview_chars`). Sanitize and supplementary public-surface scans over
+the staged file returned CLEAN before the push.
+
+The published scorecard numbers (409 sessions, 3,099 turns logged, 3,096
+HTTP-200) re-derive from this file. The three non-200 rows have null
+`http_status` and are the incomplete in-flight records at cut; unique session
+ids on the turn log are 410 when the null id is counted as a member and 409
+when it is not.
