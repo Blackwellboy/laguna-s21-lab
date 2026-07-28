@@ -6,6 +6,15 @@ name: claim-integrity
 # maintained; this workflow fetches them rather than keeping a second copy.
 # A duplicated checker would drift, and drift is the failure being fixed.
 #
+# The checkers are fetched to RUNNER_TEMP, OUTSIDE the workspace. The first
+# version put them at .checkers/ inside it, which meant every file of the
+# registry repo was scanned twice: once correctly under its own repo name, and
+# once under this one's, where its exemptions did not apply. That run passed,
+# but it passed by luck rather than by being right: the duplicated hits all
+# happened to land near a correction. The sibling workflow in the registry repo
+# had the same layout and went red on it. Same fix both sides, plus the
+# checkers now prune nested checkouts on their own.
+#
 # The sanitizer whole-tree scan is NOT here. Its pattern file lists the
 # internal names it scans for and cannot be published. It runs locally from
 # the private kit before every push.
@@ -20,38 +29,72 @@ jobs:
   claims:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      - uses: actions/checkout@v4
+      - name: fetch the checkers
+        uses: actions/checkout@v5
         with:
           repository: Blackwellboy/model-serving-minefield
-          path: .checkers
+          path: checkers-src
           fetch-depth: 1
 
-      - uses: actions/setup-python@v5
+      - name: move the checkers out of the workspace
+        id: checkers
+        run: |
+          mkdir -p "$RUNNER_TEMP/checkers"
+          mv checkers-src "$RUNNER_TEMP/checkers/model-serving-minefield"
+          echo "path=$RUNNER_TEMP/checkers/model-serving-minefield" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
       - name: claim propagation
+        id: claims
+        if: always()
         run: |
-          python3 .checkers/integrity/claim_propagation.py \
-            --ledger .checkers/integrity/claims.json \
-            --repo laguna=. --repo minefield=.checkers
+          C="${{ steps.checkers.outputs.path }}"
+          python3 "$C/integrity/claim_propagation.py" --github \
+            --ledger "$C/integrity/claims.json" \
+            --repo laguna=. --repo minefield="$C"
 
       - name: do-not-cite on added text
+        id: dnc
+        if: always()
         run: |
+          C="${{ steps.checkers.outputs.path }}"
           BASE="${{ github.event.pull_request.base.sha }}"
           if [ -z "$BASE" ]; then BASE="${{ github.event.before }}"; fi
           if [ -z "$BASE" ] || ! git cat-file -e "$BASE" 2>/dev/null; then
             BASE="$(git rev-parse HEAD~1 2>/dev/null || git rev-parse HEAD)"
           fi
-          python3 .checkers/integrity/do_not_cite.py \
-            --list .checkers/integrity/do_not_cite.json \
-            --root . --base "$BASE"
+          python3 "$C/integrity/do_not_cite.py" --github \
+            --list "$C/integrity/do_not_cite.json" --root . --base "$BASE"
 
       - name: sanitizer status
+        if: always()
         run: |
           echo "SANITIZER WHOLE-TREE SCAN: not run here, by design."
-          echo "See .checkers/integrity/README.md."
+          echo "See integrity/README.md in the registry repo."
+          echo "This repo additionally has an outstanding supplementary-scan"
+          echo "backlog recorded in _proofs/sanitizer_adjudicated.txt."
+
+      - name: verdict
+        if: always()
+        run: |
+          fail=0
+          for pair in \
+            "claim propagation=${{ steps.claims.outcome }}" \
+            "do-not-cite=${{ steps.dnc.outcome }}"; do
+            name="${pair%%=*}"; outcome="${pair##*=}"
+            if [ "$outcome" = "success" ]; then
+              echo "PASS  $name"
+            else
+              echo "FAIL  $name ($outcome)"
+              echo "::error title=claim-integrity::$name failed. Its step log above names the file and the finding."
+              fail=1
+            fi
+          done
+          exit $fail
