@@ -122,7 +122,8 @@ retracted as a schema-suppression effect. In-run interleaved control found
 no depth difference between tools and no-tools arms (p = 1.0); the shorter
 pooled median under schemas is task composition plus tool-boundary
 truncation (reasoning measured before a tool-call exit is structurally
-shorter: median 462 pre-call vs 1293 for direct answers on the same arm).
+shorter: median 462 pre-call at n=20 vs 1293 for direct answers at n=4 on
+the same arm).
 See [c7-depth-collapse/](c7-depth-collapse/C7_DEPTH_COLLAPSE_20260727.md).
 
 **SCALE CAVEAT (2026-07-28).** The 24/40 and 29/40 figures are n=40
