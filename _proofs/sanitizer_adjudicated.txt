@@ -7,6 +7,14 @@
 # by the generator, never hand-pinned, so an entry cannot go quietly dead when
 # a file shifts.
 #
+# GENERATED FILE. Produced by _proofs/regen_adjudication.py, which derives every
+# line number from the tree. REGENERATE AFTER ANY CONTENT EDIT: inserting or
+# deleting lines in a scanned file shifts the numbers below and the scan goes
+# dirty on entries that were already reviewed. That is not a leak, but it is
+# indistinguishable from one at a glance, so do not leave it.
+#
+#     python3 _proofs/regen_adjudication.py
+#
 # Rulings of 2026-07-28 (owner), applied by session registry-integrity-ci:
 #
 #   em/en dash        Prose dashes REMOVED in an authorised pass. What remains
@@ -40,12 +48,12 @@ CONTAINER_BUILD_RUNBOOK.md:71: the project's own public name, in its own harness
 CONTAINER_BUILD_RUNBOOK.md:73: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
 CONTAINER_BUILD_RUNBOOK.md:74: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
 README.md:10: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
-README.md:50: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
-README.md:188: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
-README.md:205: the integrity probe's own labelled TESTONLY credential, or text naming it. No real credential exists in this tree.
-README.md:283: a genuine emoji glyph. The kit's emoji class was narrowed on 2026-07-28 so arrows in measurement notation no longer fire here; what remains is a warning marker in our own prose, an as-posted thread glyph, or model-generated raw. Owner ruling: adjudicated.
-README.md:361: a genuine emoji glyph. The kit's emoji class was narrowed on 2026-07-28 so arrows in measurement notation no longer fire here; what remains is a warning marker in our own prose, an as-posted thread glyph, or model-generated raw. Owner ruling: adjudicated.
-README.md:407: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
+README.md:57: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
+README.md:195: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
+README.md:212: the integrity probe's own labelled TESTONLY credential, or text naming it. No real credential exists in this tree.
+README.md:290: a genuine emoji glyph. The kit's emoji class was narrowed on 2026-07-28 so arrows in measurement notation no longer fire here; what remains is a warning marker in our own prose, an as-posted thread glyph, or model-generated raw. Owner ruling: adjudicated.
+README.md:368: a genuine emoji glyph. The kit's emoji class was narrowed on 2026-07-28 so arrows in measurement notation no longer fire here; what remains is a warning marker in our own prose, an as-posted thread glyph, or model-generated raw. Owner ruling: adjudicated.
+README.md:414: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
 REDACTIONS.md:31: the integrity probe's own labelled TESTONLY credential, or text naming it. No real credential exists in this tree.
 REDACTIONS.md:50: the redaction record naming the overlay-network product.
 REDACTIONS.md:51: the redaction record naming the synthetic IP it documents.

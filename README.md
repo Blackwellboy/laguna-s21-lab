@@ -27,6 +27,13 @@ assumed to transfer to the FP8 build. See the
 [model-serving-minefield registry](https://github.com/Blackwellboy/model-serving-minefield)
 (methodology preamble and traps 06 and 07).
 
+**AI assistance:** the runs, analysis and writeups in this lab are executed by
+an AI agent (Claude) and reviewed by @Blackwellboy before publication. It is
+stated here once, as a property of the lab, rather than repeated on each study.
+The evidence bar is unchanged by it and a named human is accountable for every
+claim in this repo; the full position is in the registry's
+[CONTRIBUTING](https://github.com/Blackwellboy/model-serving-minefield/blob/main/CONTRIBUTING.md#ai-assistance).
+
 **Dating convention:** the date on a document, section, or entry follows the
 **commit that shipped it**, git/GitHub commit timestamps are canonical for
 all public-facing dates, since they are externally verifiable. Raw log `ts`
