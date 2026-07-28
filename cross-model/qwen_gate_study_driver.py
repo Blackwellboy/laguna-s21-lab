@@ -14,7 +14,7 @@ UNCHANGED from the Laguna driver (this is the point of the replication):
   - tool schemas for C8
 
 ADAPTED (documented deviations):
-  1. Endpoint/model -> Qwen lane gb10-a :8100 (nvidia/Qwen3.6-35B-A3B-NVFP4).
+  1. Endpoint/model -> Qwen lane spark-node-a :8100 (nvidia/Qwen3.6-35B-A3B-NVFP4).
   2. Sampling -> Qwen's OWN generation_config defaults (temp 1.0, top_p 0.95,
      top_k 20). Laguna's study used Laguna's defaults (0.7/0.95/20). Each model
      is run at its own recommended sampling; that is the like-for-like choice.
@@ -40,7 +40,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from threading import Lock
 
-ENDPOINT = os.environ.get("QWEN_ENDPOINT", "http://GB10-A:8100/v1")
+# No default on purpose. This used to default to a real host:port on our own
+# fabric, which meant the published file carried the shape of that fabric as a
+# working value and would silently try to reach it. The endpoint must be named
+# explicitly; require_endpoint() below fails loudly if it is not.
+ENDPOINT = os.environ.get("QWEN_ENDPOINT")
 MODEL = os.environ.get("QWEN_MODEL", "nvidia/Qwen3.6-35B-A3B-NVFP4")
 OUT = Path(os.path.expanduser("<STUDY_ROOT>/qwen_gate_study_20260728"))
 LOGS = OUT / "logs"
@@ -287,7 +291,29 @@ def run_turn(logfile, phase, cond, sysprompt, tools, task_type, idx, prompt):
     return row
 
 
+def require_endpoint():
+    """Fail with something a stranger can act on, rather than attempting a
+    host that means nothing outside our lab."""
+    if ENDPOINT:
+        return
+    sys.stderr.write(
+        "QWEN_ENDPOINT is not set.\n"
+        "\n"
+        "This driver has no default endpoint. Point it at the OpenAI-compatible\n"
+        "server you want to study, including the /v1 suffix:\n"
+        "\n"
+        "    export QWEN_ENDPOINT=http://localhost:8100/v1\n"
+        "    export QWEN_MODEL=nvidia/Qwen3.6-35B-A3B-NVFP4   # optional\n"
+        "    python3 qwen_gate_study_driver.py\n"
+        "\n"
+        "It previously defaulted to a host on the lab fabric that this name does\n"
+        "not resolve to anywhere else, so the failure looked like a network\n"
+        "problem instead of a missing setting.\n")
+    sys.exit(2)
+
+
 def main():
+    require_endpoint()
     note(f"qwen gate study start endpoint={ENDPOINT} model={MODEL} conc={CONC}")
     note(f"sampling temp={TEMPERATURE} top_p={TOP_P} top_k={TOP_K} (Qwen generation_config defaults)")
     if os.environ.get("SKIP_PARSER") == "1":

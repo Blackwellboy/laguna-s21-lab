@@ -3,7 +3,7 @@
 > **Dating note:** the `_20260728` slug in this filename is a campaign-day label written ahead of the clock; the actual run/ship date is 2026-07-26 (see the [lab README dating convention](../README.md)). Filename kept so inbound links keep resolving.
 
 
-TEMPORARY HANDOFF, NOT CANONICAL. Date 2026-07-26. Lane: gb10-a :8100.
+TEMPORARY HANDOFF, NOT CANONICAL. Date 2026-07-26. Lane: spark-node-a :8100.
 
 ## Headline
 

@@ -21,7 +21,7 @@ Design:
     byte-identical from the 2026-07-27 gate-study driver).
   - 4 task types byte-identical (imported), 10 samples/cell, nonce-prefixed,
     thinking enabled, ceiling 4096, model-card sampling per lane.
-  - Both lanes: spark-node-b :8101 Laguna hybrid (gated) + GB10-A :8100 Qwen
+  - Both lanes: spark-node-b :8101 Laguna hybrid (gated) + spark-node-a :8100 Qwen
     (ungated). Single-turn THROUGHOUT — per the §3a standing rule this study
     is therefore unaffected by the multi-turn reasoning-stripping mechanism.
   - Laguna stray leading '</think>' leak cleaned per context-mass driver shim;

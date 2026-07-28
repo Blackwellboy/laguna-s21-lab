@@ -1,7 +1,7 @@
 # Prompt-Topology Study: does prompt FORMAT act as a latent control on thinking? (2026-07-30)
 
 TEMPORARY HANDOFF, NOT CANONICAL. Run date 2026-07-27 (UTC). Author: Claude (fable), lab driver.
-Lanes: spark-node-b :8101 `laguna-s-2.1-tr3-hybrid` (0xSero 3.25bpw EXL3-hybrid, vLLM 0.25.2.dev, poolside_v1 parser, the GATED model) and GB10-A :8100 `nvidia/Qwen3.6-35B-A3B-NVFP4` (the UNGATED comparator).
+Lanes: spark-node-b :8101 `laguna-s-2.1-tr3-hybrid` (0xSero 3.25bpw EXL3-hybrid, vLLM 0.25.2.dev, poolside_v1 parser, the GATED model) and spark-node-a :8100 `nvidia/Qwen3.6-35B-A3B-NVFP4` (the UNGATED comparator).
 Raw JSONL: `logs/grid_{laguna,qwen}.jsonl` (400 each), `logs/order_{laguna,qwen}.jsonl` (160 each). 1,120 turns total, **1,120/1,120 HTTP 200, zero failed cells**.
 
 ## Origin

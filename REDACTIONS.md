@@ -116,9 +116,30 @@ Same policy, applied on the staged copies and re-proven on the in-repo copies
 with the six-class pattern set plus the ops-language extended sweep: **zero
 hits** in both trees before push. Substitutions per the standing tables, with
 this batch using node aliases `spark-node-a` (the Qwen test lane) and
-`spark-node-b` (the hybrid test lane); the same physical lanes appear as
-`gb10-a` / `gb10-b` in the 2026-07-26 additions; alias drift between batches
-is cosmetic, the ports (:8100/:8101) disambiguate. Endpoints in drivers →
+`spark-node-b` (the hybrid test lane).
+
+**CANONICAL LANE ALIASES (resolved 2026-07-28, owner-directed).** The
+2026-07-26 additions used a second alias set for the same two physical lanes,
+and this document previously called that drift "cosmetic" on the grounds that
+the ports disambiguate. That was the wrong call: inconsistent pseudonyms are
+how a real name reappears later, because the next person substituting has two
+patterns to remember and will miss one. One set now applies everywhere, in
+both public repos:
+
+| Canonical alias | Port | Lane | Superseded aliases |
+|---|---|---|---|
+| `spark-node-a` | `:8100` | the Qwen test lane | `gb10-a`, `GB10-A` |
+| `spark-node-b` | `:8101` | the hybrid Laguna test lane | `gb10-b`, `GB10-B` |
+
+`spark-node-*` wins because it is the alias the standing table above already
+declares for internal node codenames, and because `gb10-a` mixes a hardware
+fact (the GB10 SoC) into a host label. The superseded aliases were replaced
+across the tree on 2026-07-28 and must not be reintroduced. Note that bare
+`GB10` naming the SoC is a hardware fact, not a host alias, and is untouched.
+
+Separately, `spark-host-1/-2/-3` remains the substitution for internal
+HOSTNAMES and is a different axis from these lane aliases; the two are not
+interchangeable. Endpoints in drivers →
 `http://localhost:<port>`; the upstream driver import path in the two new
 drivers → `<UPSTREAM_DRIVER>/qwen_gate_study_driver.py` (byte-identity of the
 reused prompts is asserted against the published `cross-model/` driver).
