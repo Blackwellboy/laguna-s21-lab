@@ -123,6 +123,12 @@ is cosmetic, the ports (:8100/:8101) disambiguate. Endpoints in drivers →
 drivers → `<UPSTREAM_DRIVER>/qwen_gate_study_driver.py` (byte-identity of the
 reused prompts is asserted against the published `cross-model/` driver).
 
+NOTE, 2026-07-28: the claim in the following paragraph that the identifiers in
+the retained `src` document names were scrubbed was wrong. They were not
+scrubbed until 2026-07-28; see the second correction at the end of this
+document. The paragraph is left in place, uncorrected, so the failure is
+visible. Original text follows.
+
 Raw-log fidelity notes: `context-mass/logs/history_turns.jsonl` stores corpus
 user turns as source-name + sha1 prefix + char count only (the soak ingest
 corpus is internal notes and is not published; identifiers in the retained
@@ -203,3 +209,52 @@ subdirectory being added. `soak/` was proven on 2026-07-26 against the check
 list of that date, and was never re-proven as that list grew. The standing rule
 is now that a tree counts as proven clean only by a scan of the entire
 published tree at the current tip, under the current check list.
+
+
+## Correction, 2026-07-28: private corpus document names in `context-mass/logs/`
+
+The "Raw-log fidelity notes" paragraph above (added 2026-07-27) stated that the
+identifiers in the retained `src` document names had been scrubbed per the
+substitution tables. They had not been. Two files,
+`context-mass/logs/history_turns.jsonl` and
+`context-mass/logs/preserved_arm_turns.jsonl`, carried unmodified filenames
+from the private ingest corpus in their `src` field: 91 occurrences, 24
+distinct documents. The names are deliberately not repeated here. Each was a
+numbered corpus entry followed by a descriptive title, and several of those
+titles described the contents of internal working documents.
+
+What was exposed, exactly: the `src` field, and nothing else. Neither file
+contains corpus text. `history_turns.jsonl` records each history turn as a
+source label, a sha1 prefix and character counts, and has no preview fields at
+all. `preserved_arm_turns.jsonl` carries 200-char previews, but only on probe
+rows, and those previews are model answers to the synthetic constraint puzzle
+used as the probe task. No corpus content, credentials, real names, usernames,
+home paths or network addresses were involved, and the rest of both trees was
+clean under the full check set.
+
+What was done, on 2026-07-28: the two files were scrubbed in place rather than
+withdrawn. Every `src` value of the form <numbered entry>_<title> was replaced
+by the bare numbered label, so a reader can still see which turns drew on the
+same document and the sweep stays checkable turn by turn, while the titles are
+gone. 91 values changed across 386 rows; no other field, in any row, was
+altered. The pre-scrub bytes were purged from git history and both public
+repositories were re-verified by fresh clone at the new tip.
+
+Why scrubbed here and withdrawn there: in `soak/logs/turns.jsonl` the leak sat
+inside model-generated response previews, which are that file's payload, so no
+substitution could be trusted to be complete and the file did not survive its
+own redaction. Here the leak is a single structured field, written by our own
+driver from a known finite set of values. The scrub is mechanical, total, and
+verifiable by re-parsing every row and asserting the field's shape, which is
+what was done.
+
+Why the earlier proofs missed it: every check in both scanners matches a known
+string, a hostname or a username or a path or a control-plane word. A private
+document title is in no such list and never can be, since the list would have
+to enumerate the private corpus it exists to protect. This leak was a shape,
+not a string. Two shape checks were added to the supplementary scanner on
+2026-07-28: one for numbered corpus document identifiers anywhere in a tree,
+filenames included; one for any source-like field whose value carries an
+all-capitals underscore title. Both are asserted by the scanner self-test,
+which also asserts that neither fires on the synthetic source labels this
+study legitimately uses.

@@ -176,6 +176,7 @@ preserved history had reasoning on only 5/10 turns and still recovered to
 - `transfer_verdict.json`, `transfer_verdict_n40.json`,
   `preserved_arm_summary.json` (v1), `preserved_arm_v2_summary.json`
 - `logs/*.jsonl` — control pair, transfer check, history turns (corpus text
-  logged as source-name + hash only), probe turns, arm turns
+  logged as a generic numbered source label + hash only; the labels were
+  originally document filenames, corrected 2026-07-28, see REDACTIONS.md), probe turns, arm turns
 - stdout logs: `driver_stdout.log` (stopped run), `sweep_stdout.log`,
   `arm_stdout.log`, `arm_v2_stdout.log`
