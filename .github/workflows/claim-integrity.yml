@@ -1,0 +1,57 @@
+name: claim-integrity
+
+# This lab is the repo where most of the published claims live, so it is the
+# repo where a retracted claim most often survives on a second surface. The
+# checkers themselves live in the registry repo, which is where the ledger is
+# maintained; this workflow fetches them rather than keeping a second copy.
+# A duplicated checker would drift, and drift is the failure being fixed.
+#
+# The sanitizer whole-tree scan is NOT here. Its pattern file lists the
+# internal names it scans for and cannot be published. It runs locally from
+# the private kit before every push.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  claims:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/checkout@v4
+        with:
+          repository: Blackwellboy/model-serving-minefield
+          path: .checkers
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: claim propagation
+        run: |
+          python3 .checkers/integrity/claim_propagation.py \
+            --ledger .checkers/integrity/claims.json \
+            --repo laguna=. --repo minefield=.checkers
+
+      - name: do-not-cite on added text
+        run: |
+          BASE="${{ github.event.pull_request.base.sha }}"
+          if [ -z "$BASE" ]; then BASE="${{ github.event.before }}"; fi
+          if [ -z "$BASE" ] || ! git cat-file -e "$BASE" 2>/dev/null; then
+            BASE="$(git rev-parse HEAD~1 2>/dev/null || git rev-parse HEAD)"
+          fi
+          python3 .checkers/integrity/do_not_cite.py \
+            --list .checkers/integrity/do_not_cite.json \
+            --root . --base "$BASE"
+
+      - name: sanitizer status
+        run: |
+          echo "SANITIZER WHOLE-TREE SCAN: not run here, by design."
+          echo "See .checkers/integrity/README.md."

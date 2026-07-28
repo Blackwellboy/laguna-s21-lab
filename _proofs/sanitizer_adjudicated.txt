@@ -1,0 +1,39 @@
+# Reviewed false positives for the private sanitizer kit, this repo.
+# Format: relpath:lineno: reason. Passed with --adjudicated.
+#
+# Nothing here is hidden: the scanner still prints every line below in its own
+# ADJUDICATED section with the reason attached, and no pattern is weakened.
+# Delete a line and the hit comes back.
+#
+# Adjudicated 2026-07-28, session registry-integrity-ci, one line at a time.
+# Every entry traces to a disposition already written down in REDACTIONS.md.
+#
+# NOT COVERED HERE, and still outstanding: the supplementary shape scan's
+# newer checks (em/en dash, project name, emoji, lane ports) were added to the
+# kit after this repo was published, and the published tree does not satisfy
+# them: roughly 1300 hits across prose that predates the rules. Several of
+# those classes are arguably intentional public content rather than leaks.
+# That needs its own pass and an owner decision, and is deliberately NOT
+# blanket-adjudicated here.
+
+REDACTIONS.md:51: the redaction record naming the synthetic IP it is documenting.
+head-to-head/arm_a_agentic.py:51: 10.0.0.5 inside a synthetic agent task prompt written for the benchmark. Not infrastructure; documented in REDACTIONS.md.
+REDACTIONS.md:50: the redaction record naming the overlay-network product it is documenting.
+quant-floor/intel16_hybrid325.json:172: Tailscale named inside a model-generated answer under test. Model output, not our config.
+quant-floor/intel16_hybrid325.json:380: as above, model-generated answer.
+quant-floor/intel16_hybrid325.json:588: as above, model-generated answer.
+head-to-head/intel16_qwen35b_thinking_mt4000.json:172: as above, model-generated answer.
+head-to-head/intel16_qwen35b_thinking_mt4000.json:380: as above, model-generated answer.
+head-to-head/intel16_qwen35b_thinking_mt4000.json:588: as above, model-generated answer.
+head-to-head/intel16_qwen35b.json:174: as above, model-generated answer.
+head-to-head/intel16_qwen35b.json:382: as above, model-generated answer.
+head-to-head/intel16_qwen35b.json:590: as above, model-generated answer.
+quant-floor/HYBRID_325BPW_VS_NVFP4_20260727.md:9: ghcr.io/anemll/dspark-vllm-gx10 is a public third-party image tag. The gx10 substring is theirs, not a hostname of ours.
+REDACTIONS.md:72: AWS's own published documentation example access key, named as such.
+spine-probes/qwen_spine_results.json:12: the AKIA shape appears inside a model-generated answer to the history-rewrite probe. Model output.
+README.md:205: names the labelled fake credential planted by the integrity probe.
+REDACTIONS.md:31: the redaction record naming that same planted fake credential.
+soak/LAGUNA_SOAK_12H_20260725_RESULTS.md:149: model refusal text quoting the planted fake credential.
+soak/LAGUNA_SOAK_12H_20260725_RESULTS.md:171: model refusal text quoting the planted fake credential.
+soak/logs/integrity_probes.jsonl:1: the integrity probe's own planted TESTONLY credential. No real credential exists in this tree.
+soak/logs/integrity_probes.jsonl:3: as above, the planted TESTONLY credential.

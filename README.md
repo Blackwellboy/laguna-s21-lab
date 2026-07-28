@@ -325,7 +325,20 @@ prompt makes Qwen *finish more reliably*.
 **Unified claim, and the limit of it:** in both models tested, system-prompt
 content modulates thinking, dose-responsively. Laguna's modulation is a **gate**
 (whether it thinks at all); Qwen's is a **throttle** (how long it thinks before
-answering). Two models is not a law — this says the gate does not generalise,
+answering).
+
+**[CORRECTION 2026-07-28: the throttle half of this is not settled and this
+section should not have kept stating it as if it were. The depth-effect framing
+was retracted on the Laguna side on 2026-07-27, and the same tool-boundary
+truncation confound reaches the Qwen cell that carries the effect: C8 is the
+only Qwen condition that produces tool calls (14/40), and reasoning measured
+before a tool-call exit is structurally shorter. The 2927 to 1311 medians are
+real measurements of those cells. Whether Qwen has a genuine dose-depth effect
+is OPEN until the same in-run interleaved control is run on Qwen. This
+correction was already on record in
+[`cross-model/QWEN_GATE_CURVE_20260728.md`](cross-model/QWEN_GATE_CURVE_20260728.md)
+and did not propagate here; it was found by the claim-propagation check, not by
+a reader.]** Two models is not a law — this says the gate does not generalise,
 and that "system prompts change thinking behaviour" survived its first
 cross-model test in a different form.
 
