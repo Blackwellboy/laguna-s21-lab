@@ -398,16 +398,34 @@ comfy=active
 
 ### Count note (sessions vs turns)
 
-`sessions.jsonl` has **409** records and **409** unique `session_id` values.
-`turns.jsonl` has **3,099** turn records: **3,096** with `http_status` 200 and
-**3** with `http_status` null (incomplete rows). The set of `session_id` values
-on turns, counting a null id as its own member, has size **410** (409 real ids
-plus three rows that carry no session id). Every non-null turn session id is
-present in `sessions.jsonl`. The three null-status rows are almost certainly the
-in-flight turn when the run was cut: they produced a log line without a completed
-HTTP status and without a session completion record. The published scorecard
-keeps HTTP-200 at 3,096 and sessions at 409; it does not round the discrepancy
-away.
+**Corrected 2026-07-29.** The earlier version of this note is kept below the
+correction so the change is visible rather than silent.
+
+`sessions.jsonl` has **409** records and **409** unique `session_id` values:
+**400** with status `completed` and **9** `killed` at the session token cap by
+the driver's own guard. 409 is therefore the session count, not a count of
+completed sessions.
+
+`turns.jsonl` has **3,099** lines, which are **3,096 turn records** plus **3
+`kind: integrity_probe` records**. The probe rows are a different shape
+(`probe_id`, `status`, `refused`, `response_len`, and no `session_id` and no
+`turn`) and are the same three records as `integrity_probes.jsonl`, written
+into this file as well by the probe path in `soak_driver.py` with the verbatim
+response replaced by a length. All three carry `status: 200` and
+`http_error: false`.
+
+**All 3,096 turn records returned HTTP 200.** The turn log is written
+unconditionally with whatever status came back, so a failed turn would appear
+with a non-200 status. None do. The turn-level success rate on this run is
+**3,096 / 3,096**, and the 409 turn `session_id` values all appear in
+`sessions.jsonl`.
+
+> **Superseded wording.** This note previously read: "3,099 turn records: 3,096
+> with `http_status` 200 and 3 with `http_status` null (incomplete rows) ... The
+> three null-status rows are almost certainly the in-flight turn when the run was
+> cut." That was wrong. It counted three successful integrity probes as failed
+> or incomplete turns, and it is what produced the 99.9% turn-success figure
+> that was published and cited downstream.
 
 ## Operator decisions (if any)
 - Confirm final desired steady-state if not ComfyUI-primary: leave Laguna production LIVE instead of re-parking.

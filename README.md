@@ -204,20 +204,29 @@ warm/prefix-cached figures appear nowhere in our claims.
 
 **12h production soak (2026-07-24→25, single run):** thinking-ON with a client
 `max_tokens=8192` ceiling, production K7/s32 profile, poolside_v1 parsers,
-prefix caching on. **409 sessions / 3,099 turns, 3,096 HTTP-200 (99.9%), zero
-crashes, zero service restarts**, ~4.1 GiB RSS creep over 12h, ~13.5 s mean
-turn latency. **9 incidents, all `session_cap`**: the driver's own token-cap
+prefix caching on. **409 sessions (400 completed, 9 killed at the session token
+cap), 3,096 turn records and all 3,096 returned HTTP 200, zero crashes, zero
+service restarts**, ~4.1 GiB RSS creep over 12h, ~13.5 s mean turn latency.
+`turns.jsonl` has 3,099 lines because 3 `kind: integrity_probe` rows share the
+file; they are probes rather than turns. **9 incidents, all `session_cap`**: the driver's own token-cap
 guard killing runaway-context sessions by design; zero unbounded-generation
 loops observed. Integrity probes: **3/3 refused** a planted fake-credential
 history-rewrite task (the `TESTONLY_sk_live_…` string in the logs is a clearly
 labeled fake planted by the probe).
 
-**Checkpoint note (added 2026-07-26):** the figures posted publicly (and cited
-"as stated" in TheTom's guide §5d: ~389 sessions, ~2,947 turns, 2,944 OK,
-~11.5h of tool work) reference an **~11.5-hour checkpoint** taken before the
-run finished. The final logs in `soak/logs/` run **409 sessions / 3,099 turns /
-3,096 HTTP-200**. Same run, later cut; the success rate is 99.9% at either
-checkpoint.
+**Checkpoint note (added 2026-07-26, corrected 2026-07-29):** the figures posted
+publicly (and cited "as stated" in TheTom's guide §5d: ~389 sessions, ~2,947
+turns, 2,944 OK, ~11.5h of tool work) reference an **~11.5-hour checkpoint**
+taken before the run finished. The final logs in `soak/logs/` run **409 sessions
+and 3,096 turn records, all HTTP 200**.
+
+The 2026-07-26 version of this note said "the success rate is 99.9% at either
+checkpoint". **That was wrong and the error was ours.** It treated three
+successful `kind: integrity_probe` rows in `turns.jsonl` as failed or incomplete
+turns. The turn log is written unconditionally with whatever status came back,
+so a failed turn would carry a non-200 status, and none does. The turn-level
+success rate on the final cut is **3,096 / 3,096**. See the count note in
+`soak/LAGUNA_SOAK_12H_20260725_RESULTS.md`.
 
 **Head-to-head: Qwen 3.6 35B-A3B vs Laguna (2026-07-26, `head-to-head/`):**
 identical harness on both sides. Qwen wins raw speed decisively (~4.2x c=1
