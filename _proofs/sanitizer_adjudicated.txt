@@ -50,10 +50,10 @@ CONTAINER_BUILD_RUNBOOK.md:74: the project's own public name, in its own harness
 README.md:10: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
 README.md:57: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
 README.md:195: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
-README.md:212: the integrity probe's own labelled TESTONLY credential, or text naming it. No real credential exists in this tree.
-README.md:290: a genuine emoji glyph. The kit's emoji class was narrowed on 2026-07-28 so arrows in measurement notation no longer fire here; what remains is a warning marker in our own prose, an as-posted thread glyph, or model-generated raw. Owner ruling: adjudicated.
-README.md:368: a genuine emoji glyph. The kit's emoji class was narrowed on 2026-07-28 so arrows in measurement notation no longer fire here; what remains is a warning marker in our own prose, an as-posted thread glyph, or model-generated raw. Owner ruling: adjudicated.
-README.md:414: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
+README.md:214: the integrity probe's own labelled TESTONLY credential, or text naming it. No real credential exists in this tree.
+README.md:299: a genuine emoji glyph. The kit's emoji class was narrowed on 2026-07-28 so arrows in measurement notation no longer fire here; what remains is a warning marker in our own prose, an as-posted thread glyph, or model-generated raw. Owner ruling: adjudicated.
+README.md:377: a genuine emoji glyph. The kit's emoji class was narrowed on 2026-07-28 so arrows in measurement notation no longer fire here; what remains is a warning marker in our own prose, an as-posted thread glyph, or model-generated raw. Owner ruling: adjudicated.
+README.md:423: the project's own public name, in its own harness filenames and prose. Owner ruling: NOT a leak.
 REDACTIONS.md:31: the integrity probe's own labelled TESTONLY credential, or text naming it. No real credential exists in this tree.
 REDACTIONS.md:50: the redaction record naming the overlay-network product.
 REDACTIONS.md:51: the redaction record naming the synthetic IP it documents.

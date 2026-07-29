@@ -18,15 +18,31 @@ incident flag, and timestamp.
 |---|---|
 | `sessions.jsonl` lines | 409 |
 | unique `session_id` in sessions | 409 |
+| sessions with status `completed` | 400 |
+| sessions with status `killed` at the session token cap | 9 |
 | `turns.jsonl` lines | 3,099 |
-| turns with `http_status` 200 | 3,096 |
-| turns with `http_status` null | 3 |
-| unique `session_id` in turns (including null) | 410 |
+| turn records | 3,096 |
+| turn records with `http_status` 200 | 3,096 |
+| `kind: integrity_probe` records interleaved in the same file | 3 |
+| unique `session_id` in turns | 409 |
 
-Every non-null turn `session_id` appears in `sessions.jsonl`. The three
-null-status rows are the incomplete in-flight records at cut. The scorecard
-in `../LAGUNA_SOAK_12H_20260725_RESULTS.md` reports 409 sessions and 3,096
-HTTP-200 turns on purpose.
+Every turn `session_id` appears in `sessions.jsonl`.
+
+**The three rows that carry no `http_status` are not turns** (corrected
+2026-07-29). They are `kind: integrity_probe` records, a different shape with
+`probe_id`, `status`, `refused` and `response_len` and no `session_id` and no
+`turn`. They are the same three records as `integrity_probes.jsonl`, written
+into this file as well by the probe path in `../soak_driver.py`, with the
+verbatim response replaced by a length counter. All three carry `status: 200`
+and `http_error: false`.
+
+An earlier version of this note called them "the incomplete in-flight records
+at cut". That was wrong, and it is disprovable from `integrity_probes.jsonl`
+in this directory.
+
+**All 3,096 turn records returned HTTP 200.** The turn log in
+`../soak_driver.py` is written unconditionally with whatever status came back,
+so a failed turn would appear here with a non-200 status. None do.
 
 Also here: `sessions.jsonl`, `incidents.jsonl`, `integrity_probes.jsonl`,
 `service_samples.jsonl`.
